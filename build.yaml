@@ -1,0 +1,15 @@
+targets:
+  $default:
+    sources:
+      include:
+        - "lib/$lib$"
+        - "tokenbuilder.yaml"
+
+builders:
+  design_tokens_builder:
+    import: "package:design_tokens_builder/design_tokens_builder.dart"
+    builder_factories: ["designTokensFactory"]
+    build_extensions: {
+     "$lib$": ["tokens.dart"]
+    }
+    build_to: source
