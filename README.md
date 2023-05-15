@@ -41,7 +41,9 @@ return Theme(
   child: Container(),
 );
 ```
-By listening Brightness changes you could then easily switch between themes. You could also easily change the token set 
+By listening on Brightness changes you could then easily switch between themes. You could also easily change the token set. 
+
+This package also exposes the generated theme extensions by building a `BuildContext` extension. You can use the shortcut like this `context.yourExtension`. We also provide shortcuts for theme related properties like `context.colorScheme` and `context.textTheme`.
 
 ## Additional information
 
@@ -50,7 +52,7 @@ By listening Brightness changes you could then easily switch between themes. You
 
 ## Future capabilities
 
-We want to extend the package later to also be able to generate/parse more material themes like `ButtonTheme` etc. We 
+We want to extend the package to also be able to generate/parse more material themes like `ButtonTheme` etc. We 
 also want to add extension for paddings, dimensions and other tokens.
 
 Let us know if you miss something by creating an issue or by actively contributing! 
