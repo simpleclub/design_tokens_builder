@@ -1,39 +1,56 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A package for generating a flutter `ThemeData` from an exported design token json that is used e.g. [in this Figma plugin](https://tokens.studio/). It rather aims to create a flutter `Theme` 
+based on Material 3 than creating a lot of custom widgets for each token.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Right now we support generating/parsing the following:
+- `ColorScheme`
+- `TextStyle`
+  - Font family mapping (from Figma font name to flutter name)
+  - Font weight
+  - Line height
+  - Font size
+  - Letter spacing
+  - Text decoration
+- Theme extension
+  - Custom colors
+- Exposing theming and extensions via a `BuildContext` extension
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+1. Add a `.json` file containing the tokens describing your app design.
+2. Add a `tokenbuilder.yaml` configuration file in your `lib` directory
+   1. Add the path leading to the json to the configuration file 
+   2. Map Figma font names to flutter font family names in configuration file
+3. Add this builder to `build.yaml`
+```yaml
+targets:
+  $default:
+    builders:
+      design_tokens_builder:design_tokens_builder:
+        enabled: true
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+Before you can use the tokens you have to start the build runner by executing `flutter pub run build_runner build`.
+After that just make sure to use one of the `GeneratedTokenSet` for the selected `Brightness` in your `ThemeWidget`.
 ```dart
-const like = 'sample';
+return Theme(
+  data: GeneratedTokenSet.general.data.dark,
+  child: Container(),
+);
 ```
+By listening Brightness changes you could then easily switch between themes. You could also easily change the token set 
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+- Explain how `sys` tokens work
+- Explain how extensions work
+
+## Future capabilities
+
+We want to extend the package later to also be able to generate/parse more material themes like `ButtonTheme` etc. We 
+also want to add extension for paddings, dimensions and other tokens.
+
+Let us know if you miss something by creating an issue or by actively contributing! 

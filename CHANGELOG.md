@@ -1,3 +1,3 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Adds the capability of generating colors, text styles, custom theme extensions and `Theme` from a design token studio exported .json file. 

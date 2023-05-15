@@ -27,6 +27,10 @@ bool hasNestedType(MapEntry<String, dynamic> data, {required String type}) {
   return hasNestedType(value.entries.first, type: type);
 }
 
+/// Returns a map of all tokens for a specific type.
+///
+/// When `fallbackSetData` is set `tokenSetData` gets merged and overridden
+/// with the provided map.
 Map<String, dynamic> getTokensOfType(
   String type, {
   required Map<String, dynamic> tokenSetData,
