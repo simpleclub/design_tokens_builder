@@ -25,20 +25,13 @@ void main() {
         }
       });
 
-      try {
-        expect(result, '''extension BuildContextExtension on BuildContext {
-   ThemeData get theme => Theme.of(this);
-        
-  // Extension shortcuts.
-  ContentColors get contentColors => theme.extension<ContentColors>()!;
+      expect(result, '''extension BuildContextExtension on BuildContext {
+  ThemeData get theme => Theme.of(this);
   
-  // Theme shortcuts.
+  ContentColors get contentColors => theme.extension<ContentColors>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
 }''');
-      } catch (e, s) {
-        print(s);
-      }
     });
 
     test('without extensions', () {
@@ -58,7 +51,6 @@ void main() {
       expect(result, '''extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   
-  // Theme shortcuts.
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
 }''');

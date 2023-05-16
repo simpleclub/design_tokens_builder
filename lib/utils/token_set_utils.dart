@@ -14,7 +14,7 @@ Map<String, dynamic> overrideAndMergeTokenSet(
   Map<String, dynamic> baseSet, {
   required Map<String, dynamic> withSet,
 }) {
-  return [baseSet, withSet].reduce((map1, map2) => map1..addAll(map2));
+  return baseSet..addAll(withSet);
 }
 
 /// Check if `data` has any child that has type `type`.

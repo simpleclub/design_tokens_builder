@@ -15,16 +15,14 @@ String buildContextExtension(Map<String, dynamic> tokens) {
           '$name get ${name.firstLowerCased} => theme.extension<$name>()!;');
     }
 
-    extensionPart += '// Extension shortcuts.\n  ';
     extensionPart += extensionShortcuts.join('\n');
-    extensionPart += '\n\n  ';
+    extensionPart += '\n  ';
   }
 
   return '''extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   
-  $extensionPart// Theme shortcuts.
-  ColorScheme get colorScheme => theme.colorScheme;
+  ${extensionPart}ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
 }''';
 }
