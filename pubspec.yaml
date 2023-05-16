@@ -1,9 +1,10 @@
 name: design_tokens_builder
-description: A new Flutter package project.
-version: 0.0.1
+description: >-2
+  Package for generating Flutter ThemeData from Figma design tokens using BuildRunner.
+version: 0.1.0
 
 environment:
-  sdk: '>=2.19.5 <3.0.0'
+  sdk: ">=2.19.5 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

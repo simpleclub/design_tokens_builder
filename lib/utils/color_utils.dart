@@ -1,3 +1,4 @@
+/// Parses a hex color to flutter readable color.
 String parseColor(String color) {
   try {
     color = color.replaceAll('#', '');

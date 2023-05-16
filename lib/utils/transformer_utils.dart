@@ -1,5 +1,6 @@
 import 'package:math_expressions/math_expressions.dart';
 
+/// Prepares the tokens by resolving the aliases.
 Map<String, dynamic> preProcess(Map<String, dynamic> map) {
   final metadata = map['\$metadata'];
   final List<String> tokenSetOrder =
@@ -7,7 +8,7 @@ Map<String, dynamic> preProcess(Map<String, dynamic> map) {
 
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
-      final replaced = replaceVariables(
+      final replaced = resolveAliasesAndMath(
         entry.value,
         tokenSetOrder: tokenSetOrder.toList(),
         globalMap: map,
@@ -18,7 +19,9 @@ Map<String, dynamic> preProcess(Map<String, dynamic> map) {
   return map;
 }
 
-Map<String, dynamic> replaceVariables(
+/// Resolves aliases by looking in `globalMap` for the referenced values and
+/// calculates math expressions.
+Map<String, dynamic> resolveAliasesAndMath(
   Map<String, dynamic> map, {
   required List<String> tokenSetOrder,
   required Map<String, dynamic> globalMap,
@@ -26,7 +29,7 @@ Map<String, dynamic> replaceVariables(
   for (final entry in map.entries) {
     final value = entry.value;
     if (value is Map<String, dynamic>) {
-      map[entry.key] = replaceVariables(
+      map[entry.key] = resolveAliasesAndMath(
         value,
         tokenSetOrder: tokenSetOrder,
         globalMap: globalMap,
@@ -68,6 +71,7 @@ Map<String, dynamic> replaceVariables(
   return map;
 }
 
+/// Finds and returns a variable for a given name.
 dynamic findVariable(
   Map<String, dynamic> globalMap, {
   required List<String> tokenSetOrder,
@@ -85,8 +89,11 @@ dynamic findVariable(
   return null;
 }
 
+/// Gets and returns a variable in a given `tokenSet`.
 dynamic getTokenSetVariable(
-    Map<String, dynamic> tokenSet, String variableName) {
+  Map<String, dynamic> tokenSet,
+  String variableName,
+) {
   final path = variableName.split('.');
   dynamic value = tokenSet;
   for (final key in path) {

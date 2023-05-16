@@ -1,7 +1,7 @@
 <h1 align="center">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/simpleclub/design_tokens_builder/assets/35028202/0e70832e-78f2-4906-a5b1-940804f2619a">
-      <img alt="Logo" src="https://github.com/simpleclub/design_tokens_builder/assets/35028202/6ec91bfa-3124-4430-9ed0-6d616fe5c838">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/simpleclub/design_tokens_builder/assets/35028202/6ec91bfa-3124-4430-9ed0-6d616fe5c838">
+      <img alt="Logo" src="https://github.com/simpleclub/design_tokens_builder/assets/35028202/0e70832e-78f2-4906-a5b1-940804f2619a">
     </picture>
 </h1>
 
