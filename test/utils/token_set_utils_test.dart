@@ -96,22 +96,21 @@ void main() {
 
     test('succeeds with fallback', () {
       final result = getTokensOfType('someType', tokenSetData: {
-        'small': {'value': 'Some value', 'type': 'someType'},
+        'small': {'value': 'Some new value', 'type': 'someType'},
         'medium': {'value': 'Some value', 'type': 'someType 3'},
         'display': {
           'large': {'value': 'Some value', 'type': 'someType'}
         },
       }, fallbackSetData: {
-        'small': {'value': 'Some new value', 'type': 'someType'},
+        'small': {'value': 'Some value', 'type': 'someType'},
         'large': {'value': 'Some value', 'type': 'someType'},
       });
 
-      expect(result, {
-        'small': {'value': 'Some new value', 'type': 'someType'},
-        'large': {'value': 'Some value', 'type': 'someType'},
-        'display': {
-          'large': {'value': 'Some value', 'type': 'someType'}
-        },
+      expect(result.keys.length, 3);
+      expect(result['small'], {'value': 'Some new value', 'type': 'someType'});
+      expect(result['large'], {'value': 'Some value', 'type': 'someType'});
+      expect(result['display'], {
+        'large': {'value': 'Some value', 'type': 'someType'}
       });
     });
   });

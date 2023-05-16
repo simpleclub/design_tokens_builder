@@ -133,7 +133,7 @@ void main() {
 
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
-  general(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
+  custom(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
 
   const GeneratedTokenSet(this.data);
 
@@ -141,13 +141,21 @@ void main() {
 }''');
     });
 
-    test('with two complete sets', () {
-      final tokenSets = ['global', 'light', 'dark', 'allyLight', 'allyDark'];
+    test('with two complete sets and custom', () {
+      final tokenSets = [
+        'global',
+        'light',
+        'dark',
+        'allyLight',
+        'allyDark',
+        'custom'
+      ];
 
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
   general(BrightnessAdapted(dark: DarkThemeData(), light: LightThemeData())),
-  ally(BrightnessAdapted(dark: AllyDarkThemeData(), light: AllyLightThemeData()));
+  ally(BrightnessAdapted(dark: AllyDarkThemeData(), light: AllyLightThemeData())),
+  custom(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
 
   const GeneratedTokenSet(this.data);
 

@@ -3,6 +3,7 @@ import 'package:design_tokens_builder/utils/color_utils.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:design_tokens_builder/utils/typography_utils.dart';
+import 'package:tuple/tuple.dart';
 import 'package:yaml/yaml.dart';
 
 /// Generates theming for all available token sets.
@@ -251,15 +252,28 @@ String parseFontFamily(dynamic value, {required YamlMap config}) {
 /// ```
 String generateTokenSetEnum(List<String> tokenSets) {
   var cases = <String>[];
+  tokenSets.remove('global');
   final tokenSetsString = tokenSets.join(',');
   final regex = RegExp(r'\b(\w*)(?:light|dark|Light|Dark)\w*\b');
   final matches = regex.allMatches(tokenSetsString);
-  final matchSetPrefix = matches.map((e) => e.group(1)).toSet().toList();
+  final nonMatchedSets =
+      tokenSets.where((set) => !matches.any((match) => match.group(0) == set));
 
-  for (final prefix in matchSetPrefix) {
-    final themeMatches = matches.where((element) => element.group(1) == prefix);
+  // List of tuples containing all prefixes for topics.
+  // Tuple: (prefix, initial match)
+  final prefixes = [
+    ...matches.map((match) => Tuple2(match.group(1), match.group(0))),
+    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch))
+  ];
+
+  // A list of all unique prefixes.
+  final uniquePrefixes = prefixes.map((e) => e.item1).toSet().toList();
+
+  for (final uniquePrefix in uniquePrefixes) {
+    final themeMatches =
+        prefixes.where((element) => element.item1 == uniquePrefix);
     final themes =
-        themeMatches.map((e) => '${e.group(0)?.firstUpperCased}ThemeData()');
+        themeMatches.map((e) => '${e.item2?.firstUpperCased}ThemeData()');
     final lightTheme = themes.firstWhere(
       (element) => element.contains('Light'),
       orElse: () => themes.first,
@@ -269,7 +283,7 @@ String generateTokenSetEnum(List<String> tokenSets) {
       orElse: () => themes.first,
     );
 
-    final set = (prefix?.isEmpty ?? true) ? 'general' : prefix;
+    final set = (uniquePrefix?.isEmpty ?? true) ? 'general' : uniquePrefix;
 
     cases.add('$set(BrightnessAdapted(dark: $darkTheme, light: $lightTheme))');
   }
