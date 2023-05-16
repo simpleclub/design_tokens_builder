@@ -182,3 +182,12 @@ We want to extend the package to also be able to generate/parse more material th
 also want to add extension for paddings, dimensions and other tokens.
 
 Let us know if you miss something by creating an issue or by actively contributing!
+
+## Contributing
+
+With this open source repositories we want to create a tool that helps Flutter to integrate with more tools to 
+streamline and simplify the design handoff experience by utilizing Flutters API. Since this is not only a problem we
+face we want to share and collaborate on this software as a way to give back to the
+community. Any contributions are more than welcome!
+
+See our [contributing guide](https://github.com/simpleclub/design_tokens_builder/blob/main/CONTRIBUTING.md) for more information.

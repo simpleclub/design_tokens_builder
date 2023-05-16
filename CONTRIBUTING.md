@@ -48,8 +48,8 @@ We require contributors to sign our [Contributor License Agreement (CLA)][CLA].
 In order for us to review and merge your code, please follow the link and sign the agreement.
 
 [repo]: https://github.com/simpleclub/design_tokens_builder
-[pubspec]: https://github.com/simpleclub/design_tokens_builder/blob/main/design_tokens_builder/pubspec.yaml
-[changelog]: https://github.com/simpleclub/design_tokens_builder/blob/main/design_tokens_builder/CHANGELOG.md
+[pubspec]: https://github.com/simpleclub/design_tokens_builder/blob/main/pubspec.yaml
+[changelog]: https://github.com/simpleclub/design_tokens_builder/blob/main/CHANGELOG.md
 [create pr]: https://help.github.com/en/articles/creating-a-pull-request-from-a-fork
 [GitHub hub]: https://hub.github.com
 [ssh key]: https://help.github.com/articles/generating-ssh-keys
