@@ -1,5 +1,6 @@
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:yaml/yaml.dart';
 
 void main() {
   group('Try parsing pixel', () {
@@ -36,6 +37,83 @@ void main() {
     });
   });
 
+  group('Try parse font weight', () {
+    test('succeeds', () {
+      final result = tryParseFontWeight('500');
+      expect(result, 'FontWeight.w500');
+    });
+
+    test('fails because weight is not allowed', () {
+      final result = tryParseFontWeight('420');
+      expect(result, null);
+    });
+
+    test('fails because value is not string', () {
+      final result = tryParseFontWeight(500);
+      expect(result, null);
+    });
+  });
+
+  group('Parse text decoration', () {
+    test('none succeeds', () {
+      final result = parseTextDecoration('none');
+      expect(result, 'TextDecoration.none');
+    });
+
+    test('underline succeeds', () {
+      final result = parseTextDecoration('underline');
+      expect(result, 'TextDecoration.underline');
+    });
+
+    test('line-through succeeds', () {
+      final result = parseTextDecoration('line-through');
+      expect(result, 'TextDecoration.lineThrough');
+    });
+
+    test('non mappable value returns empty string', () {
+      final result = parseTextDecoration('test');
+      expect(result, '');
+    });
+  });
+
+  group('Parse font family', () {
+    test('returns mapped flutter name with config', () {
+      final config = YamlMap.wrap({
+        'fontConfig': [
+          {
+            'family': 'This is a font',
+            'flutterName': 'FlutterFont',
+          }
+        ],
+      });
+
+      final result = parseFontFamily('This is a font', config: config);
+      expect(result, '\'FlutterFont\'');
+    });
+
+    test('returns value when no fontConfig is available', () {
+      final result = parseFontFamily(
+        'This is a font',
+        config: YamlMap.wrap({}),
+      );
+      expect(result, '\'This is a font\'');
+    });
+
+    test('returns value when font family is not found in config', () {
+      final config = YamlMap.wrap({
+        'fontConfig': [
+          {
+            'family': 'This is a font',
+            'flutterName': 'FlutterFont',
+          }
+        ],
+      });
+
+      final result = parseFontFamily('Some other font', config: config);
+      expect(result, '\'Some other font\'');
+    });
+  });
+
   group('Generate token set enum', () {
     test('with light, dark and global token sets', () {
       final tokenSets = ['global', 'light', 'dark'];
@@ -43,6 +121,19 @@ void main() {
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
   general(BrightnessAdapted(dark: DarkThemeData(), light: LightThemeData()));
+
+  const GeneratedTokenSet(this.data);
+
+  final BrightnessAdapted<GeneratedThemeData> data;
+}''');
+    });
+
+    test('with custom token set', () {
+      final tokenSets = ['custom'];
+
+      final result = generateTokenSetEnum(tokenSets);
+      expect(result, '''enum GeneratedTokenSet {
+  general(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
 
   const GeneratedTokenSet(this.data);
 

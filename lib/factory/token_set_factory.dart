@@ -5,6 +5,12 @@ import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:design_tokens_builder/utils/typography_utils.dart';
 import 'package:yaml/yaml.dart';
 
+/// Generates theming for all available token sets.
+///
+/// Theming includes:
+/// - `ColorScheme`
+/// - `TextStyle`
+/// - `ThemeData` with all extensions
 String buildTokenSet(
   Map<String, dynamic> tokens, {
   required YamlMap config,
@@ -21,7 +27,7 @@ String buildTokenSet(
     var textTheme = '';
     final sys = setData.remove('sys') as Map<String, dynamic>?;
     if (sys != null) {
-      /// Generate color scheme
+      /// Generate color scheme.
       final systemColors = getTokensOfType(
         'color',
         tokenSetData: sys,
@@ -34,7 +40,7 @@ String buildTokenSet(
             '@override\n  ColorScheme get _colorScheme => const ColorScheme.$tokenSet(\n    ${colorSchemeValues.join(',\n    ')}\n  );';
       }
 
-      /// Generate text theme
+      /// Generate text style.
       var systemTextTheme = getTokensOfType(
         'typography',
         tokenSetData: sys,
@@ -78,8 +84,11 @@ ${generateTokenSetEnum(tokenSets)}''';
 }
 
 /// Parses all tokens and parses all attributes to dart readable format.
-String buildAttributeMap(Map<String, dynamic> global, YamlMap config,
-    [int depth = 1]) {
+String buildAttributeMap(
+  Map<String, dynamic> global,
+  YamlMap config, [
+  int depth = 1,
+]) {
   String recursiveMap(Map<String, dynamic> map, depth) {
     var output = '';
     for (final key in map.keys) {
@@ -168,15 +177,25 @@ double? tryParsePercentageToDouble(dynamic value) {
   return null;
 }
 
+/// Try to parse and return a flutter readable font weight.
+///
+/// If parsing fails returns `null`.
 String? tryParseFontWeight(dynamic value) {
   if (value is String) {
     final abs = double.parse(value).toInt();
-    return 'FontWeight.w$abs';
+    final allowedWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+    if (allowedWeights.contains(abs)) {
+      return 'FontWeight.w$abs';
+    }
   }
 
   return null;
 }
 
+/// Try to parse and return a flutter readable text decoration.
+///
+/// If parsing fails returns `null`.
 String parseTextDecoration(String value) {
   switch (value) {
     case 'none':
@@ -191,11 +210,25 @@ String parseTextDecoration(String value) {
   }
 }
 
+/// Parses and return a flutter readable font family.
+///
+/// Replaces the font name of the token value with its configured flutter name
+/// found in `tokenbuilder.yaml`.
+/// Returns `value` if no font config was set in `config`.
 String parseFontFamily(dynamic value, {required YamlMap config}) {
-  final mappedFonts = config['fontConfig'] as YamlList;
-  final currentFont =
-      mappedFonts.firstWhere((element) => element['family'] == value);
-  return '\'${currentFont['flutterName']}\'';
+  if (config.containsKey('fontConfig')) {
+    final mappedFonts = config['fontConfig'] as YamlList;
+    if (!mappedFonts.any((element) => element['family'] == value)) {
+      return '\'$value\'';
+    }
+
+    final currentFont =
+        mappedFonts.firstWhere((element) => element['family'] == value);
+
+    return '\'${currentFont['flutterName']}\'';
+  }
+
+  return '\'$value\'';
 }
 
 /// Generates an enum with all available token sets.

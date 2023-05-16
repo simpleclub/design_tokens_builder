@@ -11,6 +11,7 @@ import 'package:yaml/yaml.dart';
 
 Builder designTokensFactory(BuilderOptions _) => DesignTokensFactory();
 
+/// Builder for generating tokens based on design token data.
 class DesignTokensFactory implements Builder {
   @override
   final Map<String, List<String>> buildExtensions = {

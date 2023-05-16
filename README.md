@@ -49,6 +49,97 @@ This package also exposes the generated theme extensions by building a `BuildCon
 
 - Explain how `sys` tokens work
 - Explain how extensions work
+- Explain how math works https://docs.tokens.studio/tokens/using-math
+
+### Tokens Studio for Figma feature parity
+Please also see [Tokens Studio for figma documentation](https://docs.tokens.studio/available-tokens/available-tokens).
+
+<details>
+    <summary>Expand table</summary>
+
+| Group                   | Parsable | Exposed via Extension |
+|-------------------------|----------|-----------------------|
+| Sizing                  | ✅        | ❌                     |
+| Spacing                 | ❌        | ❌                     |
+| Color                   | ✅        | ✅                     |
+| Border radius           | ❌        | ❌                     |
+| Border width            | ❌        | ❌                     |
+| Box shadow              | ❌        | ❌                     |
+| Opacity                 | ❌        | ❌                     |
+| Font family             | ✅        | ❌                     |
+| Font weight             | ✅        | ❌                     |
+| Font size               | ✅        | ❌                     |
+| Line height             | ✅        | ❌                     |
+| Letter spacing          | ✅        | ❌                     |
+| Paragraph spacing       | ❌        | ❌                     |
+| Text case               | ❌        | ❌                     |
+| Text decoration         | ✅        | ❌                     |
+| Typography compositions | ✅        | ❌                     |
+| Assets                  | ❌        | ❌                     |
+| Composition             | ❌        | ❌                     |
+| Dimension               | ✅        | ❌                     |
+| Border                  | ❌        | ❌                     |
+
+</details>
+
+### Flutter theming
+The following table shows which themes the package is able to generate.
+<details>
+    <summary>Expand table</summary>
+
+| Properties                  | Supported |
+|-----------------------------|-----------|
+| `colorScheme`               | ✅         |
+| `iconTheme`                 | ❌         |
+| `textTheme`                 | ✅         |
+| `appBarTheme`               | ❌         |
+| `badgeTheme`                | ❌         |
+| `bannerTheme`               | ❌         |
+| `bottomAppBarTheme`         | ❌         |
+| `bottomNavigationBarTheme`  | ❌         |
+| `bottomSheetTheme`          | ❌         |
+| `buttonBarTheme`            | ❌         |
+| `buttonTheme`               | ❌         |
+| `cardTheme`                 | ❌         |
+| `checkboxTheme`             | ❌         |
+| `chipTheme`                 | ❌         |
+| `dataTableTheme`            | ❌         |
+| `datePickerTheme`           | ❌         |
+| `dialogTheme`               | ❌         |
+| `dividerTheme`              | ❌         |
+| `drawerTheme`               | ❌         |
+| `dropdownMenuTheme`         | ❌         |
+| `elevatedButtonTheme`       | ❌         |
+| `expansionTileTheme`        | ❌         |
+| `filledButtonTheme`         | ❌         |
+| `floatingActionButtonTheme` | ❌         |
+| `iconButtonTheme`           | ❌         |
+| `listTileTheme`             | ❌         |
+| `menuBarTheme`              | ❌         |
+| `menuButtonTheme`           | ❌         |
+| `menuTheme`                 | ❌         |
+| `navigationBarTheme`        | ❌         |
+| `navigationDrawerTheme`     | ❌         |
+| `navigationRailTheme`       | ❌         |
+| `outlinedButtonTheme`       | ❌         |
+| `popupMenuTheme`            | ❌         |
+| `progressIndicatorTheme`    | ❌         |
+| `radioTheme`                | ❌         |
+| `searchBarTheme`            | ❌         |
+| `searchViewTheme`           | ❌         |
+| `segmentedButtonTheme`      | ❌         |
+| `sliderTheme`               | ❌         |
+| `snackBarTheme`             | ❌         |
+| `switchTheme`               | ❌         |
+| `tabBarTheme`               | ❌         |
+| `textButtonTheme`           | ❌         |
+| `textSelectionTheme`        | ❌         |
+| `timePickerTheme`           | ❌         |
+| `toggleButtonsTheme`        | ❌         |
+| `tooltipTheme`              | ❌         |
+
+</details>
+
 
 ## Future capabilities
 
