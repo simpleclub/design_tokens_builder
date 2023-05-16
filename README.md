@@ -7,7 +7,7 @@
 
 ![design_tokens_builder on Pub](https://img.shields.io/pub/v/design_tokens_builder.svg)
 
-A package for generating a flutter `ThemeData` from an exported design token json that is used e.g. [in this Figma plugin](https://tokens.studio/). It rather aims to create a flutter `Theme` 
+A package for generating a Flutter `ThemeData` from an exported design token json that is used e.g. [in this Figma plugin](https://tokens.studio/). It rather aims to create a Flutter `Theme` 
 based on Material 3 than creating a lot of custom widgets for each token.
 
 ## Features
@@ -15,7 +15,7 @@ based on Material 3 than creating a lot of custom widgets for each token.
 Right now we support generating/parsing the following:
 - `ColorScheme`
 - `TextStyle`
-  - Font family mapping (from Figma font name to flutter name)
+  - Font family mapping (from Figma font name to Flutter name)
   - Font weight
   - Line height
   - Font size
@@ -30,7 +30,7 @@ Right now we support generating/parsing the following:
 1. Add a `.json` file containing the tokens describing your app design.
 2. Add a `tokenbuilder.yaml` configuration file in your `lib` directory
    1. Add the path leading to the json to the configuration file 
-   2. Map Figma font names to flutter font family names in configuration file
+   2. Map Figma font names to Flutter font family names in configuration file
 3. Add this builder to `build.yaml`
 ```yaml
 targets:
@@ -64,10 +64,10 @@ design tokens (e.g. yourSetLight, yourSetDark). You also might have a global or 
 not change based on the selected brightness. In that case make sure to call this set `global`. It will be recognised by 
 the builder and ignored when creating `GeneratedTokenSets`.
 
-### Generation of flutter `ThemeData`
-The package allows for easy and simple generation of flutters `ThemeData`. For doing so, you have to have a certain 
-structure for your design tokens. Since this is a system token related to material 3 the tokens used to generate flutters
-`ThemeData` should always start with `sys`. If you then e.g. want to set the primary color in flutters `ColorScheme` you
+### Generation of Flutter `ThemeData`
+The package allows for easy and simple generation of Flutter's `ThemeData`. For doing so, you have to have a certain 
+structure for your design tokens. Since this is a system token related to material 3 the tokens used to generate Flutter's
+`ThemeData` should always start with `sys`. If you then e.g. want to set the primary color in Flutter's `ColorScheme` you
 have to add a token called `sys.primary` with type `color` to your json file containing all of your tokens. `primary` is
 the name of `ColorScheme`s `primary` field. Keep in mind to exactly write the field names in camel case so the package is
 able to recognize them properly. 
@@ -76,10 +76,10 @@ Token Studio we decided to split the text style naming. So if you want to genera
 `sys.display.small` token of type `typography`.
 
 ### Generation of theme extensions
-Theme extension are a great way providing custom tokens that are not in flutters `ThemeData` defined. In order to create
-a new extension you can just use a different prefix then `sys` for your tokens. Based on that name and the type of the
-tokens inside that group an extension will get generated and added to the `ThemeData`. So a custom set of colors called
-`custom` in your token json with the type `color` will generate a class `CustomColors` which extends 
+Theme extensions are a great way of providing custom parameters that are not defined in `ThemeData` defined. In order to 
+create a new extension you can just use a different prefix than `sys` for your tokens. Based on that name and the type 
+of the tokens inside that group an extension will get generated and added to the `ThemeData`. So a custom set of colors 
+called `custom` in your token json with the type `color` will generate a class `CustomColors` which extends 
 `ThemeExtension<CustomColors>`.
 
 ### Using math and aliases in your tokens
@@ -186,7 +186,7 @@ Let us know if you miss something by creating an issue or by actively contributi
 ## Contributing
 
 With this open source repositories we want to create a tool that helps Flutter to integrate with more tools to 
-streamline and simplify the design handoff experience by utilizing Flutters API. Since this is not only a problem we
+streamline and simplify the design handoff experience by utilizing Flutter's API. Since this is not only a problem we
 face we want to share and collaborate on this software as a way to give back to the
 community. Any contributions are more than welcome!
 
