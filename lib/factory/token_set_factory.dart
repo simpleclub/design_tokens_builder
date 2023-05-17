@@ -26,6 +26,7 @@ String buildTokenSet(
 
     var colorScheme = '';
     var textTheme = '';
+    var brightness = _brightness(tokenSet: tokenSet);
     final sys = setData.remove('sys') as Map<String, dynamic>?;
     if (sys != null) {
       /// Generate color scheme.
@@ -38,7 +39,7 @@ String buildTokenSet(
         final colorSchemeValues = systemColors.keys
             .map((key) => '$key: ${_parseAttribute(sys[key], config: config)}');
         colorScheme +=
-            '@override\n  ColorScheme get _colorScheme => const ColorScheme.$tokenSet(\n    ${colorSchemeValues.join(',\n    ')}\n  );';
+            '@override\n  ColorScheme get _colorScheme => const ColorScheme.$brightness(\n    ${colorSchemeValues.join(',\n    ')}\n  );';
       }
 
       /// Generate text style.
@@ -59,7 +60,7 @@ String buildTokenSet(
 
     final extensions = getExtensions(tokens);
     var themeData = '''@override
-  ThemeData get themeData => ThemeData.$tokenSet().copyWith(
+  ThemeData get themeData => ThemeData.$brightness().copyWith(
     colorScheme: _colorScheme,
     textTheme: _textTheme,
     extensions: [
@@ -68,8 +69,8 @@ String buildTokenSet(
   );''';
 
     output +=
-        '''class ${tokenSet.toCapitalized()}ThemeData with GeneratedThemeData {
-  const ${tokenSet.toCapitalized()}ThemeData();
+        '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
+  const ${tokenSet.firstUpperCased}ThemeData();
 
   $colorScheme
   
@@ -82,6 +83,19 @@ String buildTokenSet(
   return '''$output
   
 ${generateTokenSetEnum(tokenSets)}''';
+}
+
+/// Returns the brightness based on the token set name.
+///
+/// Returns light if name contains light or Light.
+/// Returns dark if name contains dark or Dark.
+///
+/// Returns light by default.
+String _brightness({required tokenSet}) {
+  final darkRegex = RegExp(r'\b(\w*)(?:dark|Dark)\w*\b');
+  if (darkRegex.hasMatch(tokenSet)) return 'dark';
+
+  return 'light';
 }
 
 /// Parses all tokens and parses all attributes to dart readable format.

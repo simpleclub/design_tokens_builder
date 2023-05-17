@@ -4,7 +4,7 @@ import 'package:tuple/tuple.dart';
 
 /// Generates all extension.
 ///
-/// Creates an extension for each color group that has no `sys` key in it.
+/// Creates an extension for each token group that is not `sys`.
 String buildExtensions(Map<String, dynamic> tokens) {
   final extensions = getExtensions(tokens);
 

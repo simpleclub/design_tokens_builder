@@ -31,7 +31,7 @@ class DesignTokensFactory implements Builder {
     final string = await buildStep.readAsString(tokenAsset.first);
     final token = jsonDecode(string);
 
-    final processedToken = preProcess(token);
+    final processedToken = prepareTokens(token);
 
     await buildStep.writeAsString(
       AssetId(buildStep.inputId.package, 'lib/tokens.dart'),

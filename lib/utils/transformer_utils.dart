@@ -1,14 +1,15 @@
 import 'package:math_expressions/math_expressions.dart';
 
-/// Prepares the tokens by resolving the aliases.
-Map<String, dynamic> preProcess(Map<String, dynamic> map) {
+/// Prepares the tokens by resolving the aliases and solving mathematical
+/// expressions.
+Map<String, dynamic> prepareTokens(Map<String, dynamic> map) {
   final metadata = map['\$metadata'];
   final List<String> tokenSetOrder =
       List<String>.from(metadata['tokenSetOrder']);
 
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
-      final replaced = resolveAliasesAndMath(
+      final replaced = _resolveAliasesAndMath(
         entry.value,
         tokenSetOrder: tokenSetOrder.toList(),
         globalMap: map,
@@ -20,8 +21,8 @@ Map<String, dynamic> preProcess(Map<String, dynamic> map) {
 }
 
 /// Resolves aliases by looking in `globalMap` for the referenced values and
-/// calculates math expressions.
-Map<String, dynamic> resolveAliasesAndMath(
+/// calculates math expressions recursively.
+Map<String, dynamic> _resolveAliasesAndMath(
   Map<String, dynamic> map, {
   required List<String> tokenSetOrder,
   required Map<String, dynamic> globalMap,
@@ -29,7 +30,7 @@ Map<String, dynamic> resolveAliasesAndMath(
   for (final entry in map.entries) {
     final value = entry.value;
     if (value is Map<String, dynamic>) {
-      map[entry.key] = resolveAliasesAndMath(
+      map[entry.key] = _resolveAliasesAndMath(
         value,
         tokenSetOrder: tokenSetOrder,
         globalMap: globalMap,
@@ -42,7 +43,7 @@ Map<String, dynamic> resolveAliasesAndMath(
         final variableName = match.group(1)?.trim();
         String resolvedVariable;
         if (variableName != null) {
-          resolvedVariable = findVariable(
+          resolvedVariable = _findVariable(
             globalMap,
             tokenSetOrder: tokenSetOrder,
             variableName: variableName,
@@ -56,6 +57,8 @@ Map<String, dynamic> resolveAliasesAndMath(
       // Resolve math expression if possible.
       try {
         final parser = Parser();
+        // Need to add roundTo method manually since its nothing
+        // math_expressions package supports.
         parser.addFunction(
             'roundTo', (List<double> args) => args.first.round());
         Expression exp = parser.parse(newValue);
@@ -71,8 +74,8 @@ Map<String, dynamic> resolveAliasesAndMath(
   return map;
 }
 
-/// Finds and returns a variable for a given name.
-dynamic findVariable(
+/// Finds and returns a value of a variable for a given name in any token set.
+dynamic _findVariable(
   Map<String, dynamic> globalMap, {
   required List<String> tokenSetOrder,
   required String variableName,
@@ -80,7 +83,7 @@ dynamic findVariable(
   for (final tokenSetName in tokenSetOrder) {
     final tokenSet = globalMap[tokenSetName];
     if (tokenSet != null) {
-      final resolvedVariable = getTokenSetVariable(tokenSet, variableName);
+      final resolvedVariable = _getTokenSetVariable(tokenSet, variableName);
       if (resolvedVariable != null) {
         return resolvedVariable;
       }
@@ -90,7 +93,7 @@ dynamic findVariable(
 }
 
 /// Gets and returns a variable in a given `tokenSet`.
-dynamic getTokenSetVariable(
+dynamic _getTokenSetVariable(
   Map<String, dynamic> tokenSet,
   String variableName,
 ) {

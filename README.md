@@ -78,9 +78,38 @@ Token Studio we decided to split the text style naming. So if you want to genera
 ### Generation of theme extensions
 Theme extensions are a great way of providing custom parameters that are not defined in `ThemeData` defined. In order to 
 create a new extension you can just use a different prefix than `sys` for your tokens. Based on that name and the type 
-of the tokens inside that group an extension will get generated and added to the `ThemeData`. So a custom set of colors 
+of the tokens inside that [token group](https://docs.tokens.studio/tokens/creating-tokens#token-groups) an extension will get generated and added to the `ThemeData`. So a custom set of colors 
 called `custom` in your token json with the type `color` will generate a class `CustomColors` which extends 
 `ThemeExtension<CustomColors>`.
+
+_Example token json:_
+```json
+{
+  "light": { // <- Token set
+    "sys": { // <- Token group sys - Used for Flutter ThemeData
+      "primary": { // <- Token for primary color in ColorScheme
+        "value": "#0000FF",
+        "type": "color"
+      },
+      "background": {
+        "value": "#FFFFFF",
+        "type": "color"
+      },
+      "onBackground": {
+        "value": "#000000",
+        "type": "color"
+      },
+      …
+    }
+  },
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "light"
+    ]
+  }
+}
+```
 
 ### Using math and aliases in your tokens
 [Using math operations](https://docs.tokens.studio/tokens/using-math) and [aliases](https://docs.tokens.studio/tokens/aliases) 

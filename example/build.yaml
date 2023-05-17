@@ -1,0 +1,5 @@
+targets:
+  $default:
+    builders:
+      design_tokens_builder:design_tokens_builder:
+        enabled: true
