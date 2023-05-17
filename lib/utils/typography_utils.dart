@@ -39,7 +39,11 @@ Map<String, dynamic> prepareTypographyTokens(Map<String, dynamic> tokenSet) {
 /// readable values.
 ///
 /// Returns a string representing a flutter `TextStyle`.
-String parseTextStyle(Map<String, dynamic> data, {required YamlMap config}) {
+String parseTextStyle(
+  Map<String, dynamic> data, {
+  required YamlMap config,
+  int indentationLevel = 2,
+}) {
   final casted = data.cast<String, Map<String, dynamic>>();
   final transformedEntries = casted['value']
       ?.entries
@@ -47,11 +51,12 @@ String parseTextStyle(Map<String, dynamic> data, {required YamlMap config}) {
       .where((element) => element != null)
       .toList()
       .cast<MapEntry<String, dynamic>>();
-  final content =
-      transformedEntries?.map((e) => '${e.key}: ${e.value}').join(',\n\t\t\t');
+  final content = transformedEntries
+      ?.map((e) => '${e.key}: ${e.value}')
+      .join(',\n${indentation(level: indentationLevel + 1)}');
 
   if (content == null) return 'TextStyle()';
-  return 'TextStyle(\n\t\t\t$content\n\t\t)';
+  return 'TextStyle(\n${indentation(level: indentationLevel + 1)}$content\n${indentation(level: indentationLevel)})';
 }
 
 MapEntry<String, dynamic>? _transform(

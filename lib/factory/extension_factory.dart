@@ -13,7 +13,6 @@ String buildExtensions(Map<String, dynamic> tokens) {
     final extension = entry.value;
     final name = buildExtensionName(entry);
     output += '''class $name extends ThemeExtension<$name> {
-
   $name({\n${extension.map((e) => '    this.${e.item1}').join(',\n')}\n  });
 
 ${extension.map((e) => '  final ${e.item2['type'].toString().toCapitalized()}? ${e.item1};').join('\n')}
@@ -36,7 +35,9 @@ ${extension.map((e) => '      ${e.item1}: ${e.item1} ?? this.${e.item1},').join(
 ${extension.map((e) => '      ${e.item1}: ${e.item2['type'].toString().toCapitalized()}.lerp(${e.item1}, other.${e.item1}, t),').join('\n')}
     );
   }
-}''';
+}
+
+''';
   }
 
   output += '''extension GeneratedTheme on ThemeData {
@@ -45,7 +46,7 @@ ${extensions.keys.map((e) {
         '${extensions[e]!.first.item2['type'].toString().toCapitalized()}s';
     return '  ${e.toCapitalized()}$typeName? get $e$typeName => extension<${e.toCapitalized()}$typeName>();';
   }).join('\n')}
-}\n\n''';
+}''';
 
   return output;
 }

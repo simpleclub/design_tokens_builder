@@ -77,12 +77,12 @@ String buildTokenSet(
   $textTheme
 
   $themeData
-}''';
+}
+
+''';
   }
 
-  return '''$output
-  
-${generateTokenSetEnum(tokenSets)}''';
+  return '$output${generateTokenSetEnum(tokenSets)}';
 }
 
 /// Returns the brightness based on the token set name.
@@ -110,7 +110,7 @@ String buildAttributeMap(
       final attr = map[key] as Map<String, dynamic>;
       final dynamic value;
       if (attr.keys.contains('value') && attr.keys.contains('type')) {
-        value = _parseAttribute(attr, config: config);
+        value = _parseAttribute(attr, config: config, indentationLevel: depth);
       } else {
         value = '{\n${recursiveMap(attr, depth + 1)}${'  ' * depth}}';
       }
@@ -122,13 +122,21 @@ String buildAttributeMap(
   return '{\n${recursiveMap(global, depth)}}';
 }
 
-dynamic _parseAttribute(Map<String, dynamic> attr, {required YamlMap config}) {
+dynamic _parseAttribute(
+  Map<String, dynamic> attr, {
+  required YamlMap config,
+  final int indentationLevel = 2,
+}) {
   final value = attr['value'] as dynamic;
   switch (attr['type']) {
     case 'color':
       return parseColor(attr['value']);
     case 'typography':
-      return parseTextStyle(attr, config: config);
+      return parseTextStyle(
+        attr,
+        config: config,
+        indentationLevel: indentationLevel,
+      );
     case 'fontFamilies':
       return parseFontFamily(value, config: config);
     case 'fontWeights':
