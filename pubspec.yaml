@@ -26,3 +26,9 @@ dev_dependencies:
 screenshots:
   - description: 'Image showing the conversion from a Design Token Studio json to Flutter code.'
     path: screenshots/conversion.png
+topics:
+  - Figma
+  - Design Tokens
+  - Material
+  - Theme
+  - Generator
