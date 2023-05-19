@@ -13,7 +13,7 @@ String buildExtensions(Map<String, dynamic> tokens) {
     final extension = entry.value;
     final name = buildExtensionName(entry);
     output += '''class $name extends ThemeExtension<$name> {
-  $name({\n${extension.map((e) => '    this.${e.item1}').join(',\n')}\n  });
+  $name({\n${extension.map((e) => '    this.${e.item1}').join(',\n')},\n  });
 
 ${extension.map((e) => '  final ${e.item2['type'].toString().toCapitalized()}? ${e.item1};').join('\n')}
 

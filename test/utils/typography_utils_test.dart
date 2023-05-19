@@ -77,7 +77,7 @@ void main() {
           '\t\t\theight: null,\n'
           '\t\t\tfontSize: 16,\n'
           '\t\t\tletterSpacing: 0,\n'
-          '\t\t\tdecoration: TextDecoration.none\n'
+          '\t\t\tdecoration: TextDecoration.none,\n'
           '\t\t)');
     });
 

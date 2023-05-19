@@ -41,133 +41,133 @@ const attributes = {
   'sys': {
     'display': {
       'small': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w900,
-				height: 1.1,
-				fontSize: 31.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w900,
+        height: 1.1,
+        fontSize: 31.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
       'medium': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w900,
-				height: 1.1,
-				fontSize: 34.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w900,
+        height: 1.1,
+        fontSize: 34.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
       'large': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w900,
-				height: 1.1,
-				fontSize: 37.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w900,
+        height: 1.1,
+        fontSize: 37.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
     },
     'headline': {
       'small': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w900,
-				height: 1.5,
-				fontSize: 22.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w900,
+        height: 1.5,
+        fontSize: 22.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
       'medium': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w900,
-				height: 1.5,
-				fontSize: 25.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w900,
+        height: 1.5,
+        fontSize: 25.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
       'large': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w900,
-				height: 1.5,
-				fontSize: 28.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w900,
+        height: 1.5,
+        fontSize: 28.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
     },
     'title': {
       'small': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w800,
-				height: 1.5,
-				fontSize: 13.0,
-				letterSpacing: 0.1,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontSize: 13.0,
+        letterSpacing: 0.1,
+        decoration: TextDecoration.none,
+      ),
       'medium': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w800,
-				height: 1.5,
-				fontSize: 16.0,
-				letterSpacing: 0.1,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontSize: 16.0,
+        letterSpacing: 0.1,
+        decoration: TextDecoration.none,
+      ),
       'large': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w800,
-				height: 1.5,
-				fontSize: 22.0,
-				letterSpacing: 0.0,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontSize: 22.0,
+        letterSpacing: 0.0,
+        decoration: TextDecoration.none,
+      ),
     },
     'label': {
       'small': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w800,
-				height: 1.5,
-				fontSize: 10.0,
-				letterSpacing: 0.5,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontSize: 10.0,
+        letterSpacing: 0.5,
+        decoration: TextDecoration.none,
+      ),
       'medium': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w800,
-				height: 1.5,
-				fontSize: 13.0,
-				letterSpacing: 0.5,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontSize: 13.0,
+        letterSpacing: 0.5,
+        decoration: TextDecoration.none,
+      ),
       'large': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w800,
-				height: 1.5,
-				fontSize: 16.0,
-				letterSpacing: 0.1,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w800,
+        height: 1.5,
+        fontSize: 16.0,
+        letterSpacing: 0.1,
+        decoration: TextDecoration.none,
+      ),
     },
     'body': {
       'small': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w400,
-				height: 1.5,
-				fontSize: 10.0,
-				letterSpacing: 0.5,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        fontSize: 10.0,
+        letterSpacing: 0.5,
+        decoration: TextDecoration.none,
+      ),
       'medium': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w400,
-				height: 1.5,
-				fontSize: 13.0,
-				letterSpacing: 0.25,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        fontSize: 13.0,
+        letterSpacing: 0.25,
+        decoration: TextDecoration.none,
+      ),
       'large': TextStyle(
-				fontFamily: 'Roboto',
-				fontWeight: FontWeight.w400,
-				height: 1.5,
-				fontSize: 16.0,
-				letterSpacing: 0.1,
-				decoration: TextDecoration.none
-			),
+        fontFamily: 'Roboto',
+        fontWeight: FontWeight.w400,
+        height: 1.5,
+        fontSize: 16.0,
+        letterSpacing: 0.1,
+        decoration: TextDecoration.none,
+      ),
     },
   },
   'textCase': {
@@ -204,147 +204,147 @@ class DarkThemeData with GeneratedThemeData {
 
   @override
   ColorScheme get _colorScheme => const ColorScheme.dark(
-    background: Color(0xFF293133),
-    onBackground: Color(0xFFffffff),
-    primary: Color(0xFF0000FF),
-    onPrimary: Color(0xFFffffff)
-  );
-  
+        background: Color(0xFF293133),
+        onBackground: Color(0xFFffffff),
+        primary: Color(0xFF0000FF),
+        onPrimary: Color(0xFFffffff),
+      );
+
   @override
-	TextTheme get _textTheme => const TextTheme(
-		displaySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 31.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 34.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 37.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 25.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 28.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		titleSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		labelSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		bodySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		bodyMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.25,
-			decoration: TextDecoration.none
-		),
-		bodyLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		)
-	);
+  TextTheme get _textTheme => const TextTheme(
+        displaySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 31.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 34.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 37.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 25.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 28.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.25,
+          decoration: TextDecoration.none,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+      );
 
   @override
   ThemeData get themeData => ThemeData.dark().copyWith(
-    colorScheme: _colorScheme,
-    textTheme: _textTheme,
-    extensions: [
-      SpecialColors(
-        color1: const Color(0xFF00FF00),
-        color2: const Color(0xFFFF0000)
-      )
-    ],
-  );
+        colorScheme: _colorScheme,
+        textTheme: _textTheme,
+        extensions: [
+          SpecialColors(
+            color1: const Color(0xFF00FF00),
+            color2: const Color(0xFFFF0000),
+          ),
+        ],
+      );
 }
 
 class LightThemeData with GeneratedThemeData {
@@ -352,147 +352,147 @@ class LightThemeData with GeneratedThemeData {
 
   @override
   ColorScheme get _colorScheme => const ColorScheme.light(
-    background: Color(0xFFffffff),
-    onBackground: Color(0xFF293133),
-    primary: Color(0xFF0000FF),
-    onPrimary: Color(0xFFffffff)
-  );
-  
+        background: Color(0xFFffffff),
+        onBackground: Color(0xFF293133),
+        primary: Color(0xFF0000FF),
+        onPrimary: Color(0xFFffffff),
+      );
+
   @override
-	TextTheme get _textTheme => const TextTheme(
-		displaySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 31.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 34.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 37.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 25.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 28.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		titleSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		labelSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		bodySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		bodyMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.25,
-			decoration: TextDecoration.none
-		),
-		bodyLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		)
-	);
+  TextTheme get _textTheme => const TextTheme(
+        displaySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 31.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 34.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 37.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 25.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 28.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.25,
+          decoration: TextDecoration.none,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+      );
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
-    colorScheme: _colorScheme,
-    textTheme: _textTheme,
-    extensions: [
-      SpecialColors(
-        color1: const Color(0xFF00FF00),
-        color2: const Color(0xFFFF0000)
-      )
-    ],
-  );
+        colorScheme: _colorScheme,
+        textTheme: _textTheme,
+        extensions: [
+          SpecialColors(
+            color1: const Color(0xFF00FF00),
+            color2: const Color(0xFFFF0000),
+          ),
+        ],
+      );
 }
 
 class CustomThemeData with GeneratedThemeData {
@@ -500,147 +500,147 @@ class CustomThemeData with GeneratedThemeData {
 
   @override
   ColorScheme get _colorScheme => const ColorScheme.light(
-    background: Color(0xFFCBD0CC),
-    onBackground: Color(0xFF293133),
-    primary: Color(0xFFBDECB6),
-    onPrimary: Color(0xFF293133)
-  );
-  
+        background: Color(0xFFCBD0CC),
+        onBackground: Color(0xFF293133),
+        primary: Color(0xFFBDECB6),
+        onPrimary: Color(0xFF293133),
+      );
+
   @override
-	TextTheme get _textTheme => const TextTheme(
-		displaySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 31.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 34.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 37.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 25.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 28.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		titleSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		labelSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		bodySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		bodyMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.25,
-			decoration: TextDecoration.none
-		),
-		bodyLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		)
-	);
+  TextTheme get _textTheme => const TextTheme(
+        displaySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 31.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 34.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 37.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 25.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 28.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.25,
+          decoration: TextDecoration.none,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+      );
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
-    colorScheme: _colorScheme,
-    textTheme: _textTheme,
-    extensions: [
-      SpecialColors(
-        color1: const Color(0xFF00FF00),
-        color2: const Color(0xFFFF0000)
-      )
-    ],
-  );
+        colorScheme: _colorScheme,
+        textTheme: _textTheme,
+        extensions: [
+          SpecialColors(
+            color1: const Color(0xFF00FF00),
+            color2: const Color(0xFFFF0000),
+          ),
+        ],
+      );
 }
 
 class PartyLightThemeData with GeneratedThemeData {
@@ -648,147 +648,147 @@ class PartyLightThemeData with GeneratedThemeData {
 
   @override
   ColorScheme get _colorScheme => const ColorScheme.light(
-    background: Color(0xFFffffff),
-    onBackground: Color(0xFF293133),
-    primary: Color(0xFFFE0000),
-    onPrimary: Color(0xFFffffff)
-  );
-  
+        background: Color(0xFFffffff),
+        onBackground: Color(0xFF293133),
+        primary: Color(0xFFFE0000),
+        onPrimary: Color(0xFFffffff),
+      );
+
   @override
-	TextTheme get _textTheme => const TextTheme(
-		displaySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 31.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 34.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 37.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 25.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 28.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		titleSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		labelSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		bodySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		bodyMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.25,
-			decoration: TextDecoration.none
-		),
-		bodyLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		)
-	);
+  TextTheme get _textTheme => const TextTheme(
+        displaySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 31.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 34.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 37.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 25.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 28.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.25,
+          decoration: TextDecoration.none,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+      );
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
-    colorScheme: _colorScheme,
-    textTheme: _textTheme,
-    extensions: [
-      SpecialColors(
-        color1: const Color(0xFF00FF00),
-        color2: const Color(0xFFFF0000)
-      )
-    ],
-  );
+        colorScheme: _colorScheme,
+        textTheme: _textTheme,
+        extensions: [
+          SpecialColors(
+            color1: const Color(0xFF00FF00),
+            color2: const Color(0xFFFF0000),
+          ),
+        ],
+      );
 }
 
 class PartyDarkThemeData with GeneratedThemeData {
@@ -796,153 +796,162 @@ class PartyDarkThemeData with GeneratedThemeData {
 
   @override
   ColorScheme get _colorScheme => const ColorScheme.dark(
-    background: Color(0xFF293133),
-    onBackground: Color(0xFFffffff),
-    primary: Color(0xFFF8F32B),
-    onPrimary: Color(0xFF293133)
-  );
-  
+        background: Color(0xFF293133),
+        onBackground: Color(0xFFffffff),
+        primary: Color(0xFFF8F32B),
+        onPrimary: Color(0xFF293133),
+      );
+
   @override
-	TextTheme get _textTheme => const TextTheme(
-		displaySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 31.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 34.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		displayLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.1,
-			fontSize: 37.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 25.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		headlineLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w900,
-			height: 1.5,
-			fontSize: 28.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		titleSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		titleLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 22.0,
-			letterSpacing: 0.0,
-			decoration: TextDecoration.none
-		),
-		labelSmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		labelLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w800,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		),
-		bodySmall: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 10.0,
-			letterSpacing: 0.5,
-			decoration: TextDecoration.none
-		),
-		bodyMedium: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 13.0,
-			letterSpacing: 0.25,
-			decoration: TextDecoration.none
-		),
-		bodyLarge: TextStyle(
-			fontFamily: 'Roboto',
-			fontWeight: FontWeight.w400,
-			height: 1.5,
-			fontSize: 16.0,
-			letterSpacing: 0.1,
-			decoration: TextDecoration.none
-		)
-	);
+  TextTheme get _textTheme => const TextTheme(
+        displaySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 31.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 34.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        displayLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.1,
+          fontSize: 37.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 25.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        headlineLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w900,
+          height: 1.5,
+          fontSize: 28.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 22.0,
+          letterSpacing: 0.0,
+          decoration: TextDecoration.none,
+        ),
+        labelSmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 10.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.25,
+          decoration: TextDecoration.none,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w400,
+          height: 1.5,
+          fontSize: 16.0,
+          letterSpacing: 0.1,
+          decoration: TextDecoration.none,
+        ),
+      );
 
   @override
   ThemeData get themeData => ThemeData.dark().copyWith(
-    colorScheme: _colorScheme,
-    textTheme: _textTheme,
-    extensions: [
-      SpecialColors(
-        color1: const Color(0xFF00FF00),
-        color2: const Color(0xFFFF0000)
-      )
-    ],
-  );
+        colorScheme: _colorScheme,
+        textTheme: _textTheme,
+        extensions: [
+          SpecialColors(
+            color1: const Color(0xFF00FF00),
+            color2: const Color(0xFFFF0000),
+          ),
+        ],
+      );
 }
 
 enum GeneratedTokenSet {
-  general(BrightnessAdapted(dark: DarkThemeData(), light: LightThemeData())),
-  party(BrightnessAdapted(dark: PartyDarkThemeData(), light: PartyLightThemeData())),
-  custom(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
+  general(BrightnessAdapted(
+    dark: DarkThemeData(),
+    light: LightThemeData(),
+  )),
+  party(BrightnessAdapted(
+    dark: PartyDarkThemeData(),
+    light: PartyLightThemeData(),
+  )),
+  custom(BrightnessAdapted(
+    dark: CustomThemeData(),
+    light: CustomThemeData(),
+  ));
 
   const GeneratedTokenSet(this.data);
 
@@ -952,7 +961,7 @@ enum GeneratedTokenSet {
 class SpecialColors extends ThemeExtension<SpecialColors> {
   SpecialColors({
     this.color1,
-    this.color2
+    this.color2,
   });
 
   final Color? color1;
@@ -987,7 +996,7 @@ extension GeneratedTheme on ThemeData {
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
-  
+
   SpecialColors get specialColors => theme.extension<SpecialColors>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;

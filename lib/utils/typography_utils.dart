@@ -56,7 +56,7 @@ String parseTextStyle(
       .join(',\n${indentation(level: indentationLevel + 1)}');
 
   if (content == null) return 'TextStyle()';
-  return 'TextStyle(\n${indentation(level: indentationLevel + 1)}$content\n${indentation(level: indentationLevel)})';
+  return 'TextStyle(\n${indentation(level: indentationLevel + 1)}$content,\n${indentation(level: indentationLevel)})';
 }
 
 MapEntry<String, dynamic>? _transform(

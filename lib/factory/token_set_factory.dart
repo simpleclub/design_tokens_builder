@@ -39,7 +39,7 @@ String buildTokenSet(
         final colorSchemeValues = systemColors.keys
             .map((key) => '$key: ${_parseAttribute(sys[key], config: config)}');
         colorScheme +=
-            '@override\n  ColorScheme get _colorScheme => const ColorScheme.$brightness(\n    ${colorSchemeValues.join(',\n    ')}\n  );';
+            '@override\n  ColorScheme get _colorScheme => const ColorScheme.$brightness(\n    ${colorSchemeValues.join(',\n    ')},\n  );';
       }
 
       /// Generate text style.
@@ -54,7 +54,7 @@ String buildTokenSet(
         final textThemeValues = systemTextTheme.keys.map((key) =>
             '$key: ${_parseAttribute(systemTextTheme[key], config: config)}');
         textTheme +=
-            '@override\n\tTextTheme get _textTheme => const TextTheme(\n\t\t${textThemeValues.join(',\n\t\t')}\n\t);';
+            '@override\n\tTextTheme get _textTheme => const TextTheme(\n${indentation(level: 4)}${textThemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
     }
 
@@ -64,7 +64,7 @@ String buildTokenSet(
     colorScheme: _colorScheme,
     textTheme: _textTheme,
     extensions: [
-      ${extensions.keys.map((e) => '${e.toCapitalized()}${extensions[e]!.first.item2['type'].toString().toCapitalized()}s(\n        ${extensions[e]!.map((e) => '${e.item1}: const ${_parseAttribute(e.item2, config: config)}').join(',\n        ')}\n      )').join(',\n      ')}
+      ${extensions.keys.map((e) => '${e.toCapitalized()}${extensions[e]!.first.item2['type'].toString().toCapitalized()}s(\n        ${extensions[e]!.map((e) => '${e.item1}: const ${_parseAttribute(e.item2, config: config)}').join(',\n        ')},\n      )').join(',\n      ')},
     ],
   );''';
 
@@ -307,7 +307,8 @@ String generateTokenSetEnum(List<String> tokenSets) {
 
     final set = (uniquePrefix?.isEmpty ?? true) ? 'general' : uniquePrefix;
 
-    cases.add('$set(BrightnessAdapted(dark: $darkTheme, light: $lightTheme))');
+    cases.add(
+        '$set(BrightnessAdapted(\n${indentation(level: 2)}dark: $darkTheme,\n${indentation(level: 2)}light: $lightTheme,\n${indentation(level: 1)}))');
   }
 
   return '''enum GeneratedTokenSet {
