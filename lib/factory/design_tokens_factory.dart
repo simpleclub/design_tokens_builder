@@ -42,8 +42,6 @@ import 'package:flutter/material.dart';
 const attributes = ${buildAttributeMap(processedToken['global'], config)};
 
 abstract class GeneratedThemeData {
-  ColorScheme get _colorScheme;
-  TextTheme get _textTheme;
   ThemeData get themeData;
 }
 

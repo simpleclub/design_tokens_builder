@@ -39,7 +39,7 @@ String buildTokenSet(
         final colorSchemeValues = systemColors.keys
             .map((key) => '$key: ${_parseAttribute(sys[key], config: config)}');
         colorScheme +=
-            '@override\n  ColorScheme get _colorScheme => const ColorScheme.$brightness(\n    ${colorSchemeValues.join(',\n    ')},\n  );';
+            'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(level: 4)}${colorSchemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
 
       /// Generate text style.
@@ -51,22 +51,26 @@ String buildTokenSet(
       systemTextTheme = prepareTypographyTokens(systemTextTheme);
 
       if (systemTextTheme.isNotEmpty) {
-        final textThemeValues = systemTextTheme.keys.map((key) =>
-            '$key: ${_parseAttribute(systemTextTheme[key], config: config)}');
+        final textThemeValues =
+            systemTextTheme.keys.map((key) => '$key: ${_parseAttribute(
+                  systemTextTheme[key],
+                  config: config,
+                  indentationLevel: 4,
+                )}');
         textTheme +=
-            '@override\n\tTextTheme get _textTheme => const TextTheme(\n${indentation(level: 4)}${textThemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
+            'TextTheme get _textTheme => const TextTheme(\n${indentation(level: 4)}${textThemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
     }
 
     final extensions = getExtensions(tokens);
     var themeData = '''@override
   ThemeData get themeData => ThemeData.$brightness().copyWith(
-    colorScheme: _colorScheme,
-    textTheme: _textTheme,
-    extensions: [
-      ${extensions.keys.map((e) => '${e.toCapitalized()}${extensions[e]!.first.item2['type'].toString().toCapitalized()}s(\n        ${extensions[e]!.map((e) => '${e.item1}: const ${_parseAttribute(e.item2, config: config)}').join(',\n        ')},\n      )').join(',\n      ')},
-    ],
-  );''';
+        colorScheme: _colorScheme,
+        textTheme: _textTheme,
+        extensions: [
+          ${extensions.keys.map((e) => '${e.toCapitalized()}${extensions[e]!.first.item2['type'].toString().toCapitalized()}s(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: const ${_parseAttribute(e.item2, config: config)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
+        ],
+      );''';
 
     output +=
         '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {

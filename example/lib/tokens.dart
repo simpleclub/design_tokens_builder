@@ -187,8 +187,6 @@ const attributes = {
 };
 
 abstract class GeneratedThemeData {
-  ColorScheme get _colorScheme;
-  TextTheme get _textTheme;
   ThemeData get themeData;
 }
 
@@ -202,15 +200,13 @@ class BrightnessAdapted<T> {
 class DarkThemeData with GeneratedThemeData {
   const DarkThemeData();
 
-  @override
   ColorScheme get _colorScheme => const ColorScheme.dark(
         background: Color(0xFF293133),
         onBackground: Color(0xFFffffff),
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-
-  @override
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -350,15 +346,13 @@ class DarkThemeData with GeneratedThemeData {
 class LightThemeData with GeneratedThemeData {
   const LightThemeData();
 
-  @override
   ColorScheme get _colorScheme => const ColorScheme.light(
         background: Color(0xFFffffff),
         onBackground: Color(0xFF293133),
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-
-  @override
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -498,15 +492,13 @@ class LightThemeData with GeneratedThemeData {
 class CustomThemeData with GeneratedThemeData {
   const CustomThemeData();
 
-  @override
   ColorScheme get _colorScheme => const ColorScheme.light(
         background: Color(0xFFCBD0CC),
         onBackground: Color(0xFF293133),
         primary: Color(0xFFBDECB6),
         onPrimary: Color(0xFF293133),
       );
-
-  @override
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -646,15 +638,13 @@ class CustomThemeData with GeneratedThemeData {
 class PartyLightThemeData with GeneratedThemeData {
   const PartyLightThemeData();
 
-  @override
   ColorScheme get _colorScheme => const ColorScheme.light(
         background: Color(0xFFffffff),
         onBackground: Color(0xFF293133),
         primary: Color(0xFFFE0000),
         onPrimary: Color(0xFFffffff),
       );
-
-  @override
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -794,15 +784,13 @@ class PartyLightThemeData with GeneratedThemeData {
 class PartyDarkThemeData with GeneratedThemeData {
   const PartyDarkThemeData();
 
-  @override
   ColorScheme get _colorScheme => const ColorScheme.dark(
         background: Color(0xFF293133),
         onBackground: Color(0xFFffffff),
         primary: Color(0xFFF8F32B),
         onPrimary: Color(0xFF293133),
       );
-
-  @override
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -996,7 +984,7 @@ extension GeneratedTheme on ThemeData {
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
-
+  
   SpecialColors get specialColors => theme.extension<SpecialColors>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
