@@ -206,7 +206,7 @@ class DarkThemeData with GeneratedThemeData {
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-  
+
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -352,7 +352,7 @@ class LightThemeData with GeneratedThemeData {
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-  
+
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -498,7 +498,7 @@ class CustomThemeData with GeneratedThemeData {
         primary: Color(0xFFBDECB6),
         onPrimary: Color(0xFF293133),
       );
-  
+
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -644,7 +644,7 @@ class PartyLightThemeData with GeneratedThemeData {
         primary: Color(0xFFFE0000),
         onPrimary: Color(0xFFffffff),
       );
-  
+
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -790,7 +790,7 @@ class PartyDarkThemeData with GeneratedThemeData {
         primary: Color(0xFFF8F32B),
         onPrimary: Color(0xFF293133),
       );
-  
+
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -984,7 +984,7 @@ extension GeneratedTheme on ThemeData {
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
-  
+
   SpecialColors get specialColors => theme.extension<SpecialColors>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
