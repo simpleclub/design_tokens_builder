@@ -232,7 +232,6 @@ String parseTextDecoration(String value) {
     case 'line-through':
       return 'TextDecoration.lineThrough';
     default:
-      print('Parse Text Decoration: Unknown value: $value');
       return '';
   }
 }

@@ -120,7 +120,10 @@ void main() {
 
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
-  general(BrightnessAdapted(dark: DarkThemeData(), light: LightThemeData()));
+  general(BrightnessAdapted(
+    dark: DarkThemeData(),
+    light: LightThemeData(),
+  ));
 
   const GeneratedTokenSet(this.data);
 
@@ -133,7 +136,10 @@ void main() {
 
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
-  custom(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
+  custom(BrightnessAdapted(
+    dark: CustomThemeData(),
+    light: CustomThemeData(),
+  ));
 
   const GeneratedTokenSet(this.data);
 
@@ -153,9 +159,18 @@ void main() {
 
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
-  general(BrightnessAdapted(dark: DarkThemeData(), light: LightThemeData())),
-  ally(BrightnessAdapted(dark: AllyDarkThemeData(), light: AllyLightThemeData())),
-  custom(BrightnessAdapted(dark: CustomThemeData(), light: CustomThemeData()));
+  general(BrightnessAdapted(
+    dark: DarkThemeData(),
+    light: LightThemeData(),
+  )),
+  ally(BrightnessAdapted(
+    dark: AllyDarkThemeData(),
+    light: AllyLightThemeData(),
+  )),
+  custom(BrightnessAdapted(
+    dark: CustomThemeData(),
+    light: CustomThemeData(),
+  ));
 
   const GeneratedTokenSet(this.data);
 
@@ -168,7 +183,10 @@ void main() {
 
       final result = generateTokenSetEnum(tokenSets);
       expect(result, '''enum GeneratedTokenSet {
-  general(BrightnessAdapted(dark: LightThemeData(), light: LightThemeData()));
+  general(BrightnessAdapted(
+    dark: LightThemeData(),
+    light: LightThemeData(),
+  ));
 
   const GeneratedTokenSet(this.data);
 

@@ -72,13 +72,13 @@ void main() {
       expect(
           result,
           'TextStyle(\n'
-          '\t\t\tfontFamily: \'MyFont\',\n'
-          '\t\t\tfontWeight: null,\n'
-          '\t\t\theight: null,\n'
-          '\t\t\tfontSize: 16,\n'
-          '\t\t\tletterSpacing: 0,\n'
-          '\t\t\tdecoration: TextDecoration.none,\n'
-          '\t\t)');
+          '      fontFamily: \'MyFont\',\n'
+          '      fontWeight: null,\n'
+          '      height: null,\n'
+          '      fontSize: 16,\n'
+          '      letterSpacing: 0,\n'
+          '      decoration: TextDecoration.none,\n'
+          '    )');
     });
 
     test('without any tokens available', () {
