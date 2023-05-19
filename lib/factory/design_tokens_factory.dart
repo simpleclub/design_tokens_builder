@@ -56,7 +56,8 @@ ${buildTokenSet(processedToken, config: config)}
 
 ${ef.buildExtensions(processedToken)}
 
-${buildContextExtension(processedToken)}''',
+${buildContextExtension(processedToken)}
+''',
     );
   }
 }
