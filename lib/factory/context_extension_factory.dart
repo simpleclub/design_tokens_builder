@@ -10,7 +10,7 @@ String buildContextExtension(Map<String, dynamic> tokens) {
 
   if (extensions.isNotEmpty) {
     for (final entry in extensions.entries) {
-      final name = buildExtensionName(entry);
+      final name = buildExtensionName(entry.key);
       extensionShortcuts.add(
           '$name get ${name.firstLowerCased} => theme.extension<$name>()!;');
     }

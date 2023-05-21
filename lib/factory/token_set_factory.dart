@@ -68,7 +68,7 @@ String buildTokenSet(
         colorScheme: _colorScheme,
         textTheme: _textTheme,
         extensions: [
-          ${extensions.keys.map((e) => '${e.toCapitalized()}${extensions[e]!.first.item2['type'].toString().toCapitalized()}s(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: const ${_parseAttribute(e.item2, config: config)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
+          ${extensions.keys.map((e) => '${buildExtensionName(e)}(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: ${_parseAttribute(e.item2, config: config)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
         ],
       );''';
 
@@ -134,13 +134,13 @@ dynamic _parseAttribute(
   final value = attr['value'] as dynamic;
   switch (attr['type']) {
     case 'color':
-      return parseColor(attr['value']);
+      return 'const ${parseColor(attr['value'])}';
     case 'typography':
-      return parseTextStyle(
+      return 'const ${parseTextStyle(
         attr,
         config: config,
         indentationLevel: indentationLevel,
-      );
+      )}';
     case 'fontFamilies':
       return parseFontFamily(value, config: config);
     case 'fontWeights':
@@ -151,15 +151,38 @@ dynamic _parseAttribute(
     case 'textDecoration':
       return parseTextDecoration(value);
     case 'lineHeights':
+    case 'opacity':
       final parsed = tryParsePercentageToDouble(value);
       if (parsed == null) return value;
 
       return parsed;
+    case 'sizing':
+    case 'borderWidth':
     case 'dimension':
       final parsed = tryParsePixel(value);
       if (parsed == null) return value;
 
       return parsed;
+    case 'spacing':
+      final parsed = tryParseSpacing(value);
+      if (parsed == null) return value;
+
+      return 'const $parsed';
+    case 'borderRadius':
+      final parsed = tryParseBorderRadius(value);
+      if (parsed == null) return value;
+
+      return 'const $parsed';
+    case 'boxShadow':
+      final parsed = tryParseBoxShadow(value);
+      if (parsed == null) return value;
+
+      return 'const $parsed';
+    case 'border':
+      final parsed = tryParseBorder(value);
+      if (parsed == null) return value;
+
+      return '$parsed';
     case 'textCase':
     case 'fontSizes':
     case 'letterSpacing':
@@ -190,15 +213,154 @@ int? tryParsePixel(dynamic value) {
   return null;
 }
 
+/// Parses spacing according to
+/// [Tokens Studio](https://docs.tokens.studio/available-tokens/spacing-tokens)
+/// and returns a string representing Flutters `EdgeInsets`.
+String? tryParseSpacing(dynamic value) {
+  if (value is String) {
+    final spacingValues = value.split(' ');
+
+    switch (spacingValues.length) {
+      case 1:
+        final space = tryParsePixel(spacingValues[0]) ?? 0;
+        return 'EdgeInsets.all($space)';
+      case 2:
+        final vSpace = tryParsePixel(spacingValues[0]) ?? 0;
+        final hSpace = tryParsePixel(spacingValues[1]) ?? 0;
+
+        return 'EdgeInsets.symmetric(vertical: $vSpace, horizontal: $hSpace)';
+      case 3:
+        final top = tryParsePixel(spacingValues[0]) ?? 0;
+        final hSpace = tryParsePixel(spacingValues[1]) ?? 0;
+        final bottom = tryParsePixel(spacingValues[2]) ?? 0;
+
+        return 'EdgeInsets.only(top: $top, right: $hSpace, bottom: $bottom, left: $hSpace)';
+      case 4:
+        final top = tryParsePixel(spacingValues[0]) ?? 0;
+        final right = tryParsePixel(spacingValues[1]) ?? 0;
+        final bottom = tryParsePixel(spacingValues[2]) ?? 0;
+        final left = tryParsePixel(spacingValues[3]) ?? 0;
+
+        return 'EdgeInsets.only(top: $top, right: $right, bottom: $bottom, left: $left)';
+      default:
+        throw Exception(
+            'Cannot parse spacing since there are ${spacingValues.length} values. Please provide 1-4 values.');
+    }
+  }
+
+  return null;
+}
+
+/// Parses border radius according to
+/// [Tokens Studio](https://docs.tokens.studio/available-tokens/border-radius-tokens)
+/// and returns a string representing Flutters `BorderRadius`.
+///
+/// Returns `null` if parsing failed.
+String? tryParseBorderRadius(dynamic value) {
+  String radius(dynamic value) => 'Radius.circular($value)';
+
+  if (value is String) {
+    final radiiValues = value.split(' ');
+
+    switch (radiiValues.length) {
+      case 1:
+        final r = tryParsePixel(radiiValues[0]) ?? 0;
+        return 'BorderRadius.all(${radius(r)})';
+      case 2:
+        final r1 = tryParsePixel(radiiValues[0]) ?? 0;
+        final r2 = tryParsePixel(radiiValues[1]) ?? 0;
+
+        return 'BorderRadius.only(topLeft: ${radius(r1)}, topRight: ${radius(r2)}, bottomLeft: ${radius(r2)}, bottomRight: ${radius(r1)})';
+      case 3:
+        final r1 = tryParsePixel(radiiValues[0]) ?? 0;
+        final r2 = tryParsePixel(radiiValues[1]) ?? 0;
+        final r3 = tryParsePixel(radiiValues[2]) ?? 0;
+
+        return 'BorderRadius.only(topLeft: ${radius(r1)}, topRight: ${radius(r2)}, bottomLeft: ${radius(r2)}, bottomRight: ${radius(r3)})';
+      case 4:
+        final r1 = tryParsePixel(radiiValues[0]) ?? 0;
+        final r2 = tryParsePixel(radiiValues[1]) ?? 0;
+        final r3 = tryParsePixel(radiiValues[2]) ?? 0;
+        final r4 = tryParsePixel(radiiValues[3]) ?? 0;
+
+        return 'BorderRadius.only(topLeft: ${radius(r1)}, topRight: ${radius(r2)}, bottomLeft: ${radius(r4)}, bottomRight: ${radius(r3)})';
+      default:
+        throw Exception(
+            'Cannot parse border radius since there are ${radiiValues.length} values. Please provide 1-4 values.');
+    }
+  }
+
+  return null;
+}
+
 /// Tries to parse a value that looks like `120%` to a double like this `1.2`.
 ///
 /// Returns `null` if parsing failed.
 double? tryParsePercentageToDouble(dynamic value) {
+  // TODO: Add support for doubles here. https://docs.tokens.studio/available-tokens/opacity-tokens
   if (value is String) {
     final abs = int.tryParse(value.split('%').first);
     if (abs != null) {
       return abs / 100;
     }
+  }
+
+  return null;
+}
+
+/// Parses box shadows according to
+/// [Tokens Studio](https://docs.tokens.studio/available-tokens/shadow-tokens)
+/// and returns a string representing a Flutter `List<BoxShadow>`.
+///
+/// Returns `null` if parsing failed.
+String? tryParseBoxShadow(dynamic value) {
+  String parseShadow(Map<String, dynamic> shadow) {
+    final x = tryParsePixel(shadow['x']) ?? 0;
+    final y = tryParsePixel(shadow['y']) ?? 0;
+    final offset = 'Offset($x, $y)';
+    final spread = tryParsePixel(shadow['spread']) ?? 0;
+    final color = parseColor(shadow['color']);
+    final blur = tryParsePixel(shadow['blur']) ?? 0;
+    final style =
+        shadow['type'] == 'dropShadow' ? 'BlurStyle.normal' : 'BlurStyle.inner';
+
+    return 'BoxShadow(color: $color, offset: $offset, blurRadius: $blur, spreadRadius: $spread, blurStyle: $style)';
+  }
+
+  if (value is Map<String, dynamic>) {
+    return '[${parseShadow(value)}]';
+  } else if (value is List<dynamic>) {
+    var parsedShadows = <String>[];
+
+    for (final shadow in value) {
+      parsedShadows.add(parseShadow(shadow));
+    }
+
+    return '[${parsedShadows.join(',')}]';
+  }
+
+  return null;
+}
+
+/// Parses borders according to
+/// [Tokens Studio](https://docs.tokens.studio/available-tokens/border-tokens)
+/// and returns a string representing a Flutter `Border`.
+///
+/// Returns `null` if parsing failed.
+///
+/// Right now we only support solid borders since flutter does support dashed
+/// borders by default.
+String? tryParseBorder(dynamic value) {
+  if (value is Map<String, dynamic>) {
+    final color = parseColor(value['color']);
+    final width = tryParsePixel(value['width']) ?? 0;
+
+    if (value['style'] == 'dashed') {
+      throw Exception(
+          'Unable to parse dashed border. Please use solid instead.');
+    }
+
+    return 'Border.all(width: $width, color: const $color)';
   }
 
   return null;

@@ -2,10 +2,17 @@
 /// sets.
 ///
 /// Removed the default set from the output.
-List<String> getTokenSets(Map<String, dynamic> tokens) {
-  final tokenSets = (tokens['\$metadata']['tokenSetOrder'] as List)
-      .cast<String>()
-    ..remove('global');
+List<String> getTokenSets(
+  Map<String, dynamic> tokens, {
+  bool includeDefaultSet = false,
+}) {
+  final tokenSets = List<String>.from(
+      (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>());
+
+  if (!includeDefaultSet) {
+    tokenSets.remove('global');
+  }
+
   return tokenSets;
 }
 

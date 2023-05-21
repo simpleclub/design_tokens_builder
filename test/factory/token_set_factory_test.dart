@@ -20,6 +20,61 @@ void main() {
     });
   });
 
+  group('Try parse spacing', () {
+    test('All sides', () {
+      final result = tryParseSpacing('16px');
+      expect(result, 'EdgeInsets.all(16)');
+    });
+
+    test('Symmetric sides', () {
+      final result = tryParseSpacing('16px 4');
+      expect(result, 'EdgeInsets.symmetric(vertical: 16, horizontal: 4)');
+    });
+
+    test('Top, horizontal and bottom', () {
+      final result = tryParseSpacing('16px 4 0px');
+      expect(result, 'EdgeInsets.only(top: 16, right: 4, bottom: 0, left: 4)');
+    });
+
+    test('Top, right, bottom and left', () {
+      final result = tryParseSpacing('16px 4 0px 8px');
+      expect(result, 'EdgeInsets.only(top: 16, right: 4, bottom: 0, left: 8)');
+    });
+
+    test('Fails', () {
+      expect(() => tryParseSpacing('16px 4 0px 8px 7'), throwsException);
+    });
+  });
+
+  group('Try parse border radius', () {
+    test('All sides', () {
+      final result = tryParseBorderRadius('16px');
+      expect(result, 'BorderRadius.all(Radius.circular(16))');
+    });
+
+    test('top-left-and-bottom-right | top-right-and-bottom-left', () {
+      final result = tryParseBorderRadius('16px 4');
+      expect(result,
+          'BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(4), bottomLeft: Radius.circular(4), bottomRight: Radius.circular(16))');
+    });
+
+    test('top-left | top-right-and-bottom-left | bottom-right', () {
+      final result = tryParseBorderRadius('16px 4 0px');
+      expect(result,
+          'BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(4), bottomLeft: Radius.circular(4), bottomRight: Radius.circular(0))');
+    });
+
+    test('top-left | top-right | bottom-right | bottom-left', () {
+      final result = tryParseBorderRadius('16px 4 0px 8px');
+      expect(result,
+          'BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(4), bottomLeft: Radius.circular(8), bottomRight: Radius.circular(0))');
+    });
+
+    test('Fails', () {
+      expect(() => tryParseBorderRadius('16px 4 0px 8px 7'), throwsException);
+    });
+  });
+
   group('Try parsing percentage to double', () {
     test('succeeds with %', () {
       final result = tryParsePercentageToDouble('420%');

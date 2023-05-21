@@ -39,7 +39,7 @@ class DesignTokensFactory implements Builder {
 
 import 'package:flutter/material.dart';
 
-const attributes = ${buildAttributeMap(processedToken['global'], config)};
+final attributes = ${buildAttributeMap(processedToken['global'], config)};
 
 abstract class GeneratedThemeData {
   ThemeData get themeData;
