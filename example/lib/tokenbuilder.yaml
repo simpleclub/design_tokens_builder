@@ -1,0 +1,5 @@
+tokenFilePath: lib/tokens.json
+
+fontConfig:
+    - family: System Roboto
+      flutterName: Roboto

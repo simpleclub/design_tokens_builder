@@ -1,0 +1,76 @@
+name: checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/checks.yml'
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/web/**'
+      - '**/macos/**'
+      - '**/windows/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+      - '**/assets/**'
+      - '**/integration_test/**'
+
+jobs:
+  analyze:
+    timeout-minutes: 11
+    runs-on: ubuntu-latest
+    name: analysis on ${{ matrix.channel }}
+    strategy:
+      matrix:
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'master'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ matrix.channel }}
+      - name: pub get
+        run: flutter pub get
+      - name: dart format
+        run: dart format . --fix --set-exit-if-changed
+      - run: flutter analyze
+
+  test:
+    timeout-minutes: 16
+    runs-on: macos-latest
+    name: testing on ${{ matrix.channel }}
+    strategy:
+      matrix:
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'master'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ matrix.channel }}
+      - run: flutter pub get
+      - name: Run unit tests
+        if: ${{ matrix.channel == 'master' || matrix.channel == 'beta' }}
+        run: flutter test
+      - name: Run unit tests with coverage
+        if: ${{ matrix.channel == 'stable' }}
+        run: flutter test --coverage
+      - name: Upload coverage to Codecov
+        if: ${{ matrix.channel == 'stable' }}
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/lcov.info

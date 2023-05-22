@@ -1,0 +1,34 @@
+name: design_tokens_builder
+description: >-2
+  Package for generating Flutter ThemeData from Figma design tokens using BuildRunner.
+version: 0.1.0
+homepage: https://github.com/simpleclub/design_tokens_builder
+
+environment:
+  sdk: ">=2.19.5 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  build: ^2.3.1
+  build_config: ^1.1.1
+  glob: ^2.1.1
+  tuple: ^2.0.1
+  math_expressions: ^2.4.0
+  yaml: ^3.1.2
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+screenshots:
+  - description: 'Image showing the conversion from a Design Token Studio json to Flutter code.'
+    path: screenshots/conversion.png
+topics:
+  - Figma
+  - Design Tokens
+  - Material
+  - Theme
+  - Generator
