@@ -17,8 +17,7 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^2.0.0
-  flutter_test:
-    sdk: flutter
+  test: ^1.24.3
 
 screenshots:
   - description: 'Image showing the conversion from a Design Token Studio json to Flutter code.'

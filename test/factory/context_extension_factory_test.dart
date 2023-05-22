@@ -1,5 +1,5 @@
 import 'package:design_tokens_builder/factory/context_extension_factory.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   group('Build context extensions', () {
