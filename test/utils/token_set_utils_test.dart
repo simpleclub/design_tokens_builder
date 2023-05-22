@@ -1,5 +1,5 @@
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Get token sets', () {
