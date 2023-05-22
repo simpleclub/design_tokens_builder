@@ -15,7 +15,7 @@ void main() {
 
     test('succeeds without default theme', () {
       final result = getTokenSets({
-        '\$metadata': {
+        r'$metadata': {
           'tokenSetOrder': ['light', 'dark'],
         },
       });
