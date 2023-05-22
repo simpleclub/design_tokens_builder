@@ -5,17 +5,17 @@ import 'package:yaml/yaml.dart';
 void main() {
   group('Try parsing pixel', () {
     test('succeeds with px', () {
-      final result = tryParsePixel('420px');
+      final result = parsePixel('420px');
       expect(result, 420);
     });
 
     test('succeeds without px', () {
-      final result = tryParsePixel('69');
+      final result = parsePixel('69');
       expect(result, 69);
     });
 
     test('fails', () {
-      final result = tryParsePixel('example');
+      final result = parsePixel('example');
       expect(result, null);
     });
   });
@@ -77,17 +77,17 @@ void main() {
 
   group('Try parsing percentage to double', () {
     test('succeeds with %', () {
-      final result = tryParsePercentageToDouble('420%');
+      final result = parsePercentage('420%');
       expect(result, 4.2);
     });
 
     test('succeeds without %', () {
-      final result = tryParsePercentageToDouble('69');
+      final result = parsePercentage('69');
       expect(result, 0.69);
     });
 
     test('fails', () {
-      final result = tryParsePercentageToDouble('example');
+      final result = parsePercentage('example');
       expect(result, null);
     });
   });

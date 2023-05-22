@@ -3,17 +3,17 @@
 import 'package:flutter/material.dart';
 
 final attributes = {
-  'white': const Color(0xFFffffff),
-  'black': const Color(0xFF293133),
+  'white': Color(0xFFffffff),
+  'black': Color(0xFF293133),
   'fontFamilies': {
     'primary': 'Roboto',
   },
   'fontWeights': {
-    '400': FontWeight.w400,
-    '600': FontWeight.w600,
-    '700': FontWeight.w700,
-    '800': FontWeight.w800,
-    '900': FontWeight.w900,
+    'w400': FontWeight.w400,
+    'w600': FontWeight.w600,
+    'w700': FontWeight.w700,
+    'w800': FontWeight.w800,
+    'w900': FontWeight.w900,
   },
   'fontSize': {
     'base': 10.0,
@@ -23,151 +23,41 @@ final attributes = {
     'md': 16.0,
     'lg': 19.0,
     'xl': 22.0,
-    '2xl': 25.0,
-    '3xl': 28.0,
-    '4xl': 31.0,
-    '5xl': 34.0,
-    '6xl': 37.0,
   },
   'letterSpacing': {
-    '0': 0.0,
+    'none': 0.0,
     'sm': 0.1,
     'md': 0.25,
     'lg': 0.5,
   },
   'paragraphSpacing': {
-    '0': 0.0,
+    'none': 0.0,
   },
   'sys': {
     'display': {
-      'small': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w900,
-        height: 1.1,
-        fontSize: 31.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
-      'medium': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w900,
-        height: 1.1,
-        fontSize: 34.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
-      'large': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w900,
-        height: 1.1,
-        fontSize: 37.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
+      'small': TextStyle(),
+      'medium': TextStyle(),
+      'large': TextStyle(),
     },
     'headline': {
-      'small': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w900,
-        height: 1.5,
-        fontSize: 22.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
-      'medium': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w900,
-        height: 1.5,
-        fontSize: 25.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
-      'large': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w900,
-        height: 1.5,
-        fontSize: 28.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
+      'small': TextStyle(),
+      'medium': TextStyle(),
+      'large': TextStyle(),
     },
     'title': {
-      'small': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w800,
-        height: 1.5,
-        fontSize: 13.0,
-        letterSpacing: 0.1,
-        decoration: TextDecoration.none,
-      ),
-      'medium': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w800,
-        height: 1.5,
-        fontSize: 16.0,
-        letterSpacing: 0.1,
-        decoration: TextDecoration.none,
-      ),
-      'large': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w800,
-        height: 1.5,
-        fontSize: 22.0,
-        letterSpacing: 0.0,
-        decoration: TextDecoration.none,
-      ),
+      'small': TextStyle(),
+      'medium': TextStyle(),
+      'large': TextStyle(),
     },
     'label': {
-      'small': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w800,
-        height: 1.5,
-        fontSize: 10.0,
-        letterSpacing: 0.5,
-        decoration: TextDecoration.none,
-      ),
-      'medium': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w800,
-        height: 1.5,
-        fontSize: 13.0,
-        letterSpacing: 0.5,
-        decoration: TextDecoration.none,
-      ),
-      'large': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w800,
-        height: 1.5,
-        fontSize: 16.0,
-        letterSpacing: 0.1,
-        decoration: TextDecoration.none,
-      ),
+      'small': TextStyle(),
+      'medium': TextStyle(),
+      'large': TextStyle(),
     },
     'body': {
-      'small': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w400,
-        height: 1.5,
-        fontSize: 10.0,
-        letterSpacing: 0.5,
-        decoration: TextDecoration.none,
-      ),
-      'medium': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w400,
-        height: 1.5,
-        fontSize: 13.0,
-        letterSpacing: 0.25,
-        decoration: TextDecoration.none,
-      ),
-      'large': const TextStyle(
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w400,
-        height: 1.5,
-        fontSize: 16.0,
-        letterSpacing: 0.1,
-        decoration: TextDecoration.none,
-      ),
+      'small': TextStyle(),
+      'medium': TextStyle(),
+      'large': TextStyle(),
     },
   },
   'textCase': {
@@ -177,7 +67,7 @@ final attributes = {
     'none': TextDecoration.none,
   },
   'paragraphIndent': {
-    '0': 0,
+    'none': 0,
   },
   'lineHeights': {
     'xs': 1.1,
@@ -186,11 +76,11 @@ final attributes = {
   },
   'elevatedButton': {
     'height': 38.0,
-    'color': const Color(0xFF3A9BDC),
-    'padding': const EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
-    'borderRadius': const BorderRadius.all(Radius.circular(0)),
-    'shadow': const [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
-    'border': Border.all(width: 0, color: const Color(0xFF293133)),
+    'color': Color(0xFF3A9BDC),
+    'padding': EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
+    'borderRadius': 16.0,
+    'shadow': [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
+    'border': {color: #293133, width: 3.0, style: solid},
   },
 };
 
@@ -209,133 +99,28 @@ class DarkThemeData with GeneratedThemeData {
   const DarkThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.dark(
-        background: const Color(0xFF293133),
-        onBackground: const Color(0xFFffffff),
-        primary: const Color(0xFF0000FF),
-        onPrimary: const Color(0xFFffffff),
+        background: Color(0xFF293133),
+        onBackground: Color(0xFFffffff),
+        primary: Color(0xFF0000FF),
+        onPrimary: Color(0xFFffffff),
       );
   
   TextTheme get _textTheme => const TextTheme(
-        displaySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 31.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 34.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 37.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 25.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 28.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        titleSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        labelSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        bodySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        bodyMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.25,
-          decoration: TextDecoration.none,
-        ),
-        bodyLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
+        displaySmall: TextStyle(),
+        displayMedium: TextStyle(),
+        displayLarge: TextStyle(),
+        headlineSmall: TextStyle(),
+        headlineMedium: TextStyle(),
+        headlineLarge: TextStyle(),
+        titleSmall: TextStyle(),
+        titleMedium: TextStyle(),
+        titleLarge: TextStyle(),
+        labelSmall: TextStyle(),
+        labelMedium: TextStyle(),
+        labelLarge: TextStyle(),
+        bodySmall: TextStyle(),
+        bodyMedium: TextStyle(),
+        bodyLarge: TextStyle(),
       );
 
   @override
@@ -347,11 +132,11 @@ class DarkThemeData with GeneratedThemeData {
             primary: 'Roboto',
           ),
         FontWeightsThemeExtension(
-            400: FontWeight.w400,
-            600: FontWeight.w600,
-            700: FontWeight.w700,
-            800: FontWeight.w800,
-            900: FontWeight.w900,
+            w400: FontWeight.w400,
+            w600: FontWeight.w600,
+            w700: FontWeight.w700,
+            w800: FontWeight.w800,
+            w900: FontWeight.w900,
           ),
         FontSizeThemeExtension(
             base: 10.0,
@@ -361,20 +146,15 @@ class DarkThemeData with GeneratedThemeData {
             md: 16.0,
             lg: 19.0,
             xl: 22.0,
-            2xl: 25.0,
-            3xl: 28.0,
-            4xl: 31.0,
-            5xl: 34.0,
-            6xl: 37.0,
           ),
         LetterSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
         ParagraphSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
           ),
         TextCaseThemeExtension(
             none: 'none',
@@ -383,7 +163,7 @@ class DarkThemeData with GeneratedThemeData {
             none: TextDecoration.none,
           ),
         ParagraphIndentThemeExtension(
-            0: 0,
+            none: 0,
           ),
         LineHeightsThemeExtension(
             xs: 1.1,
@@ -392,15 +172,15 @@ class DarkThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
-            borderRadius: const BorderRadius.all(Radius.circular(0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
-            border: Border.all(width: 0, color: const Color(0xFF293133)),
+            color: Color(0xFF3A9BDC),
+            padding: EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
+            borderRadius: 16.0,
+            shadow: [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
+            border: {color: #293133, width: 3.0, style: solid},
           ),
         SpecialColorsThemeExtension(
-            color1: const Color(0xFF00FF00),
-            color2: const Color(0xFFFF0000),
+            color1: Color(0xFF00FF00),
+            color2: Color(0xFFFF0000),
           ),
         ],
       );
@@ -410,133 +190,28 @@ class LightThemeData with GeneratedThemeData {
   const LightThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.light(
-        background: const Color(0xFFffffff),
-        onBackground: const Color(0xFF293133),
-        primary: const Color(0xFF0000FF),
-        onPrimary: const Color(0xFFffffff),
+        background: Color(0xFFffffff),
+        onBackground: Color(0xFF293133),
+        primary: Color(0xFF0000FF),
+        onPrimary: Color(0xFFffffff),
       );
   
   TextTheme get _textTheme => const TextTheme(
-        displaySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 31.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 34.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 37.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 25.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 28.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        titleSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        labelSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        bodySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        bodyMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.25,
-          decoration: TextDecoration.none,
-        ),
-        bodyLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
+        displaySmall: TextStyle(),
+        displayMedium: TextStyle(),
+        displayLarge: TextStyle(),
+        headlineSmall: TextStyle(),
+        headlineMedium: TextStyle(),
+        headlineLarge: TextStyle(),
+        titleSmall: TextStyle(),
+        titleMedium: TextStyle(),
+        titleLarge: TextStyle(),
+        labelSmall: TextStyle(),
+        labelMedium: TextStyle(),
+        labelLarge: TextStyle(),
+        bodySmall: TextStyle(),
+        bodyMedium: TextStyle(),
+        bodyLarge: TextStyle(),
       );
 
   @override
@@ -548,11 +223,11 @@ class LightThemeData with GeneratedThemeData {
             primary: 'Roboto',
           ),
         FontWeightsThemeExtension(
-            400: FontWeight.w400,
-            600: FontWeight.w600,
-            700: FontWeight.w700,
-            800: FontWeight.w800,
-            900: FontWeight.w900,
+            w400: FontWeight.w400,
+            w600: FontWeight.w600,
+            w700: FontWeight.w700,
+            w800: FontWeight.w800,
+            w900: FontWeight.w900,
           ),
         FontSizeThemeExtension(
             base: 10.0,
@@ -562,20 +237,15 @@ class LightThemeData with GeneratedThemeData {
             md: 16.0,
             lg: 19.0,
             xl: 22.0,
-            2xl: 25.0,
-            3xl: 28.0,
-            4xl: 31.0,
-            5xl: 34.0,
-            6xl: 37.0,
           ),
         LetterSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
         ParagraphSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
           ),
         TextCaseThemeExtension(
             none: 'none',
@@ -584,7 +254,7 @@ class LightThemeData with GeneratedThemeData {
             none: TextDecoration.none,
           ),
         ParagraphIndentThemeExtension(
-            0: 0,
+            none: 0,
           ),
         LineHeightsThemeExtension(
             xs: 1.1,
@@ -593,15 +263,15 @@ class LightThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
-            borderRadius: const BorderRadius.all(Radius.circular(0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
-            border: Border.all(width: 0, color: const Color(0xFF293133)),
+            color: Color(0xFF3A9BDC),
+            padding: EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
+            borderRadius: 16.0,
+            shadow: [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
+            border: {color: #293133, width: 3.0, style: solid},
           ),
         SpecialColorsThemeExtension(
-            color1: const Color(0xFF00FF00),
-            color2: const Color(0xFFFF0000),
+            color1: Color(0xFF00FF00),
+            color2: Color(0xFFFF0000),
           ),
         ],
       );
@@ -611,133 +281,28 @@ class CustomThemeData with GeneratedThemeData {
   const CustomThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.light(
-        background: const Color(0xFFCBD0CC),
-        onBackground: const Color(0xFF293133),
-        primary: const Color(0xFFBDECB6),
-        onPrimary: const Color(0xFF293133),
+        background: Color(0xFFCBD0CC),
+        onBackground: Color(0xFF293133),
+        primary: Color(0xFFBDECB6),
+        onPrimary: Color(0xFF293133),
       );
   
   TextTheme get _textTheme => const TextTheme(
-        displaySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 31.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 34.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 37.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 25.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 28.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        titleSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        labelSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        bodySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        bodyMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.25,
-          decoration: TextDecoration.none,
-        ),
-        bodyLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
+        displaySmall: TextStyle(),
+        displayMedium: TextStyle(),
+        displayLarge: TextStyle(),
+        headlineSmall: TextStyle(),
+        headlineMedium: TextStyle(),
+        headlineLarge: TextStyle(),
+        titleSmall: TextStyle(),
+        titleMedium: TextStyle(),
+        titleLarge: TextStyle(),
+        labelSmall: TextStyle(),
+        labelMedium: TextStyle(),
+        labelLarge: TextStyle(),
+        bodySmall: TextStyle(),
+        bodyMedium: TextStyle(),
+        bodyLarge: TextStyle(),
       );
 
   @override
@@ -749,11 +314,11 @@ class CustomThemeData with GeneratedThemeData {
             primary: 'Roboto',
           ),
         FontWeightsThemeExtension(
-            400: FontWeight.w400,
-            600: FontWeight.w600,
-            700: FontWeight.w700,
-            800: FontWeight.w800,
-            900: FontWeight.w900,
+            w400: FontWeight.w400,
+            w600: FontWeight.w600,
+            w700: FontWeight.w700,
+            w800: FontWeight.w800,
+            w900: FontWeight.w900,
           ),
         FontSizeThemeExtension(
             base: 10.0,
@@ -763,20 +328,15 @@ class CustomThemeData with GeneratedThemeData {
             md: 16.0,
             lg: 19.0,
             xl: 22.0,
-            2xl: 25.0,
-            3xl: 28.0,
-            4xl: 31.0,
-            5xl: 34.0,
-            6xl: 37.0,
           ),
         LetterSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
         ParagraphSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
           ),
         TextCaseThemeExtension(
             none: 'none',
@@ -785,7 +345,7 @@ class CustomThemeData with GeneratedThemeData {
             none: TextDecoration.none,
           ),
         ParagraphIndentThemeExtension(
-            0: 0,
+            none: 0,
           ),
         LineHeightsThemeExtension(
             xs: 1.1,
@@ -794,15 +354,15 @@ class CustomThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
-            borderRadius: const BorderRadius.all(Radius.circular(0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
-            border: Border.all(width: 0, color: const Color(0xFF293133)),
+            color: Color(0xFF3A9BDC),
+            padding: EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
+            borderRadius: 16.0,
+            shadow: [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
+            border: {color: #293133, width: 3.0, style: solid},
           ),
         SpecialColorsThemeExtension(
-            color1: const Color(0xFF00FF00),
-            color2: const Color(0xFFFF0000),
+            color1: Color(0xFF00FF00),
+            color2: Color(0xFFFF0000),
           ),
         ],
       );
@@ -812,133 +372,28 @@ class PartyLightThemeData with GeneratedThemeData {
   const PartyLightThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.light(
-        background: const Color(0xFFffffff),
-        onBackground: const Color(0xFF293133),
-        primary: const Color(0xFFFE0000),
-        onPrimary: const Color(0xFFffffff),
+        background: Color(0xFFffffff),
+        onBackground: Color(0xFF293133),
+        primary: Color(0xFFFE0000),
+        onPrimary: Color(0xFFffffff),
       );
   
   TextTheme get _textTheme => const TextTheme(
-        displaySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 31.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 34.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 37.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 25.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 28.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        titleSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        labelSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        bodySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        bodyMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.25,
-          decoration: TextDecoration.none,
-        ),
-        bodyLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
+        displaySmall: TextStyle(),
+        displayMedium: TextStyle(),
+        displayLarge: TextStyle(),
+        headlineSmall: TextStyle(),
+        headlineMedium: TextStyle(),
+        headlineLarge: TextStyle(),
+        titleSmall: TextStyle(),
+        titleMedium: TextStyle(),
+        titleLarge: TextStyle(),
+        labelSmall: TextStyle(),
+        labelMedium: TextStyle(),
+        labelLarge: TextStyle(),
+        bodySmall: TextStyle(),
+        bodyMedium: TextStyle(),
+        bodyLarge: TextStyle(),
       );
 
   @override
@@ -950,11 +405,11 @@ class PartyLightThemeData with GeneratedThemeData {
             primary: 'Roboto',
           ),
         FontWeightsThemeExtension(
-            400: FontWeight.w400,
-            600: FontWeight.w600,
-            700: FontWeight.w700,
-            800: FontWeight.w800,
-            900: FontWeight.w900,
+            w400: FontWeight.w400,
+            w600: FontWeight.w600,
+            w700: FontWeight.w700,
+            w800: FontWeight.w800,
+            w900: FontWeight.w900,
           ),
         FontSizeThemeExtension(
             base: 10.0,
@@ -964,20 +419,15 @@ class PartyLightThemeData with GeneratedThemeData {
             md: 16.0,
             lg: 19.0,
             xl: 22.0,
-            2xl: 25.0,
-            3xl: 28.0,
-            4xl: 31.0,
-            5xl: 34.0,
-            6xl: 37.0,
           ),
         LetterSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
         ParagraphSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
           ),
         TextCaseThemeExtension(
             none: 'none',
@@ -986,7 +436,7 @@ class PartyLightThemeData with GeneratedThemeData {
             none: TextDecoration.none,
           ),
         ParagraphIndentThemeExtension(
-            0: 0,
+            none: 0,
           ),
         LineHeightsThemeExtension(
             xs: 1.1,
@@ -995,15 +445,15 @@ class PartyLightThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
-            borderRadius: const BorderRadius.all(Radius.circular(0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
-            border: Border.all(width: 0, color: const Color(0xFF293133)),
+            color: Color(0xFF3A9BDC),
+            padding: EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
+            borderRadius: 16.0,
+            shadow: [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
+            border: {color: #293133, width: 3.0, style: solid},
           ),
         SpecialColorsThemeExtension(
-            color1: const Color(0xFF00FF00),
-            color2: const Color(0xFFFF0000),
+            color1: Color(0xFF00FF00),
+            color2: Color(0xFFFF0000),
           ),
         ],
       );
@@ -1013,133 +463,28 @@ class PartyDarkThemeData with GeneratedThemeData {
   const PartyDarkThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.dark(
-        background: const Color(0xFF293133),
-        onBackground: const Color(0xFFffffff),
-        primary: const Color(0xFFF8F32B),
-        onPrimary: const Color(0xFF293133),
+        background: Color(0xFF293133),
+        onBackground: Color(0xFFffffff),
+        primary: Color(0xFFF8F32B),
+        onPrimary: Color(0xFF293133),
       );
   
   TextTheme get _textTheme => const TextTheme(
-        displaySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 31.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 34.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        displayLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 37.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 25.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        headlineLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.5,
-          fontSize: 28.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        titleSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        titleLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-        ),
-        labelSmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        labelLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w800,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
-        bodySmall: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 10.0,
-          letterSpacing: 0.5,
-          decoration: TextDecoration.none,
-        ),
-        bodyMedium: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 13.0,
-          letterSpacing: 0.25,
-          decoration: TextDecoration.none,
-        ),
-        bodyLarge: const TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w400,
-          height: 1.5,
-          fontSize: 16.0,
-          letterSpacing: 0.1,
-          decoration: TextDecoration.none,
-        ),
+        displaySmall: TextStyle(),
+        displayMedium: TextStyle(),
+        displayLarge: TextStyle(),
+        headlineSmall: TextStyle(),
+        headlineMedium: TextStyle(),
+        headlineLarge: TextStyle(),
+        titleSmall: TextStyle(),
+        titleMedium: TextStyle(),
+        titleLarge: TextStyle(),
+        labelSmall: TextStyle(),
+        labelMedium: TextStyle(),
+        labelLarge: TextStyle(),
+        bodySmall: TextStyle(),
+        bodyMedium: TextStyle(),
+        bodyLarge: TextStyle(),
       );
 
   @override
@@ -1151,11 +496,11 @@ class PartyDarkThemeData with GeneratedThemeData {
             primary: 'Roboto',
           ),
         FontWeightsThemeExtension(
-            400: FontWeight.w400,
-            600: FontWeight.w600,
-            700: FontWeight.w700,
-            800: FontWeight.w800,
-            900: FontWeight.w900,
+            w400: FontWeight.w400,
+            w600: FontWeight.w600,
+            w700: FontWeight.w700,
+            w800: FontWeight.w800,
+            w900: FontWeight.w900,
           ),
         FontSizeThemeExtension(
             base: 10.0,
@@ -1165,20 +510,15 @@ class PartyDarkThemeData with GeneratedThemeData {
             md: 16.0,
             lg: 19.0,
             xl: 22.0,
-            2xl: 25.0,
-            3xl: 28.0,
-            4xl: 31.0,
-            5xl: 34.0,
-            6xl: 37.0,
           ),
         LetterSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
         ParagraphSpacingThemeExtension(
-            0: 0.0,
+            none: 0.0,
           ),
         TextCaseThemeExtension(
             none: 'none',
@@ -1187,7 +527,7 @@ class PartyDarkThemeData with GeneratedThemeData {
             none: TextDecoration.none,
           ),
         ParagraphIndentThemeExtension(
-            0: 0,
+            none: 0,
           ),
         LineHeightsThemeExtension(
             xs: 1.1,
@@ -1196,15 +536,15 @@ class PartyDarkThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
-            borderRadius: const BorderRadius.all(Radius.circular(0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
-            border: Border.all(width: 0, color: const Color(0xFF293133)),
+            color: Color(0xFF3A9BDC),
+            padding: EdgeInsets.only(top: 1, right: 0, bottom: 3, left: 4),
+            borderRadius: 16.0,
+            shadow: [BoxShadow(color: Color(0xFF000000), offset: Offset(0, 3), blurRadius: 5, spreadRadius: 0, blurStyle: BlurStyle.normal),BoxShadow(color: Color(0xFF000000), offset: Offset(0, 0), blurRadius: 0, spreadRadius: 0, blurStyle: BlurStyle.inner)],
+            border: {color: #293133, width: 3.0, style: solid},
           ),
         SpecialColorsThemeExtension(
-            color1: const Color(0xFF00FF00),
-            color2: const Color(0xFFFF0000),
+            color1: Color(0xFF00FF00),
+            color2: Color(0xFFFF0000),
           ),
         ],
       );
@@ -1258,33 +598,33 @@ class FontFamiliesThemeExtension extends ThemeExtension<FontFamiliesThemeExtensi
 
 class FontWeightsThemeExtension extends ThemeExtension<FontWeightsThemeExtension> {
   FontWeightsThemeExtension({
-    this.400,
-    this.600,
-    this.700,
-    this.800,
-    this.900,
+    this.w400,
+    this.w600,
+    this.w700,
+    this.w800,
+    this.w900,
   });
 
-  final FontWeight? 400;
-  final FontWeight? 600;
-  final FontWeight? 700;
-  final FontWeight? 800;
-  final FontWeight? 900;
+  final FontWeight? w400;
+  final FontWeight? w600;
+  final FontWeight? w700;
+  final FontWeight? w800;
+  final FontWeight? w900;
 
   @override
   FontWeightsThemeExtension copyWith({
-    FontWeight? 400,
-    FontWeight? 600,
-    FontWeight? 700,
-    FontWeight? 800,
-    FontWeight? 900,
+    FontWeight? w400,
+    FontWeight? w600,
+    FontWeight? w700,
+    FontWeight? w800,
+    FontWeight? w900,
   }) {
     return FontWeightsThemeExtension(
-      400: 400 ?? this.400,
-      600: 600 ?? this.600,
-      700: 700 ?? this.700,
-      800: 800 ?? this.800,
-      900: 900 ?? this.900,
+      w400: w400 ?? this.w400,
+      w600: w600 ?? this.w600,
+      w700: w700 ?? this.w700,
+      w800: w800 ?? this.w800,
+      w900: w900 ?? this.w900,
     );
   }
 
@@ -1294,11 +634,11 @@ class FontWeightsThemeExtension extends ThemeExtension<FontWeightsThemeExtension
       return this;
     }
     return FontWeightsThemeExtension(
-      400: FontWeight.lerp(400, other.400, t),
-      600: FontWeight.lerp(600, other.600, t),
-      700: FontWeight.lerp(700, other.700, t),
-      800: FontWeight.lerp(800, other.800, t),
-      900: FontWeight.lerp(900, other.900, t),
+      w400: FontWeight.lerp(w400, other.w400, t),
+      w600: FontWeight.lerp(w600, other.w600, t),
+      w700: FontWeight.lerp(w700, other.w700, t),
+      w800: FontWeight.lerp(w800, other.w800, t),
+      w900: FontWeight.lerp(w900, other.w900, t),
     );
   }
 }
@@ -1312,11 +652,6 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
     this.md,
     this.lg,
     this.xl,
-    this.2xl,
-    this.3xl,
-    this.4xl,
-    this.5xl,
-    this.6xl,
   });
 
   final double? base;
@@ -1326,11 +661,6 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
   final double? md;
   final double? lg;
   final double? xl;
-  final double? 2xl;
-  final double? 3xl;
-  final double? 4xl;
-  final double? 5xl;
-  final double? 6xl;
 
   @override
   FontSizeThemeExtension copyWith({
@@ -1341,11 +671,6 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
     double? md,
     double? lg,
     double? xl,
-    double? 2xl,
-    double? 3xl,
-    double? 4xl,
-    double? 5xl,
-    double? 6xl,
   }) {
     return FontSizeThemeExtension(
       base: base ?? this.base,
@@ -1355,11 +680,6 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
       md: md ?? this.md,
       lg: lg ?? this.lg,
       xl: xl ?? this.xl,
-      2xl: 2xl ?? this.2xl,
-      3xl: 3xl ?? this.3xl,
-      4xl: 4xl ?? this.4xl,
-      5xl: 5xl ?? this.5xl,
-      6xl: 6xl ?? this.6xl,
     );
   }
 
@@ -1376,37 +696,32 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
       md: double.lerp(md, other.md, t),
       lg: double.lerp(lg, other.lg, t),
       xl: double.lerp(xl, other.xl, t),
-      2xl: double.lerp(2xl, other.2xl, t),
-      3xl: double.lerp(3xl, other.3xl, t),
-      4xl: double.lerp(4xl, other.4xl, t),
-      5xl: double.lerp(5xl, other.5xl, t),
-      6xl: double.lerp(6xl, other.6xl, t),
     );
   }
 }
 
 class LetterSpacingThemeExtension extends ThemeExtension<LetterSpacingThemeExtension> {
   LetterSpacingThemeExtension({
-    this.0,
+    this.none,
     this.sm,
     this.md,
     this.lg,
   });
 
-  final double? 0;
+  final double? none;
   final double? sm;
   final double? md;
   final double? lg;
 
   @override
   LetterSpacingThemeExtension copyWith({
-    double? 0,
+    double? none,
     double? sm,
     double? md,
     double? lg,
   }) {
     return LetterSpacingThemeExtension(
-      0: 0 ?? this.0,
+      none: none ?? this.none,
       sm: sm ?? this.sm,
       md: md ?? this.md,
       lg: lg ?? this.lg,
@@ -1419,7 +734,7 @@ class LetterSpacingThemeExtension extends ThemeExtension<LetterSpacingThemeExten
       return this;
     }
     return LetterSpacingThemeExtension(
-      0: double.lerp(0, other.0, t),
+      none: double.lerp(none, other.none, t),
       sm: double.lerp(sm, other.sm, t),
       md: double.lerp(md, other.md, t),
       lg: double.lerp(lg, other.lg, t),
@@ -1429,17 +744,17 @@ class LetterSpacingThemeExtension extends ThemeExtension<LetterSpacingThemeExten
 
 class ParagraphSpacingThemeExtension extends ThemeExtension<ParagraphSpacingThemeExtension> {
   ParagraphSpacingThemeExtension({
-    this.0,
+    this.none,
   });
 
-  final double? 0;
+  final double? none;
 
   @override
   ParagraphSpacingThemeExtension copyWith({
-    double? 0,
+    double? none,
   }) {
     return ParagraphSpacingThemeExtension(
-      0: 0 ?? this.0,
+      none: none ?? this.none,
     );
   }
 
@@ -1449,7 +764,7 @@ class ParagraphSpacingThemeExtension extends ThemeExtension<ParagraphSpacingThem
       return this;
     }
     return ParagraphSpacingThemeExtension(
-      0: double.lerp(0, other.0, t),
+      none: double.lerp(none, other.none, t),
     );
   }
 }
@@ -1510,17 +825,17 @@ class TextDecorationThemeExtension extends ThemeExtension<TextDecorationThemeExt
 
 class ParagraphIndentThemeExtension extends ThemeExtension<ParagraphIndentThemeExtension> {
   ParagraphIndentThemeExtension({
-    this.0,
+    this.none,
   });
 
-  final double? 0;
+  final double? none;
 
   @override
   ParagraphIndentThemeExtension copyWith({
-    double? 0,
+    double? none,
   }) {
     return ParagraphIndentThemeExtension(
-      0: 0 ?? this.0,
+      none: none ?? this.none,
     );
   }
 
@@ -1530,7 +845,7 @@ class ParagraphIndentThemeExtension extends ThemeExtension<ParagraphIndentThemeE
       return this;
     }
     return ParagraphIndentThemeExtension(
-      0: double.lerp(0, other.0, t),
+      none: double.lerp(none, other.none, t),
     );
   }
 }
@@ -1618,7 +933,7 @@ class ElevatedButtonThemeExtension extends ThemeExtension<ElevatedButtonThemeExt
       color: Color.lerp(color, other.color, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      shadow: List<BoxShadow>(shadow, other.shadow, t),
+      shadow: List<BoxShadow>.lerp(shadow, other.shadow, t),
       border: BoxBorder.lerp(border, other.border, t),
     );
   }
@@ -1674,16 +989,16 @@ extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   
   FontFamiliesThemeExtension get fontFamiliesThemeExtension => theme.extension<FontFamiliesThemeExtension>()!;
-FontWeightsThemeExtension get fontWeightsThemeExtension => theme.extension<FontWeightsThemeExtension>()!;
-FontSizeThemeExtension get fontSizeThemeExtension => theme.extension<FontSizeThemeExtension>()!;
-LetterSpacingThemeExtension get letterSpacingThemeExtension => theme.extension<LetterSpacingThemeExtension>()!;
-ParagraphSpacingThemeExtension get paragraphSpacingThemeExtension => theme.extension<ParagraphSpacingThemeExtension>()!;
-TextCaseThemeExtension get textCaseThemeExtension => theme.extension<TextCaseThemeExtension>()!;
-TextDecorationThemeExtension get textDecorationThemeExtension => theme.extension<TextDecorationThemeExtension>()!;
-ParagraphIndentThemeExtension get paragraphIndentThemeExtension => theme.extension<ParagraphIndentThemeExtension>()!;
-LineHeightsThemeExtension get lineHeightsThemeExtension => theme.extension<LineHeightsThemeExtension>()!;
-ElevatedButtonThemeExtension get elevatedButtonThemeExtension => theme.extension<ElevatedButtonThemeExtension>()!;
-SpecialColorsThemeExtension get specialColorsThemeExtension => theme.extension<SpecialColorsThemeExtension>()!;
+  FontWeightsThemeExtension get fontWeightsThemeExtension => theme.extension<FontWeightsThemeExtension>()!;
+  FontSizeThemeExtension get fontSizeThemeExtension => theme.extension<FontSizeThemeExtension>()!;
+  LetterSpacingThemeExtension get letterSpacingThemeExtension => theme.extension<LetterSpacingThemeExtension>()!;
+  ParagraphSpacingThemeExtension get paragraphSpacingThemeExtension => theme.extension<ParagraphSpacingThemeExtension>()!;
+  TextCaseThemeExtension get textCaseThemeExtension => theme.extension<TextCaseThemeExtension>()!;
+  TextDecorationThemeExtension get textDecorationThemeExtension => theme.extension<TextDecorationThemeExtension>()!;
+  ParagraphIndentThemeExtension get paragraphIndentThemeExtension => theme.extension<ParagraphIndentThemeExtension>()!;
+  LineHeightsThemeExtension get lineHeightsThemeExtension => theme.extension<LineHeightsThemeExtension>()!;
+  ElevatedButtonThemeExtension get elevatedButtonThemeExtension => theme.extension<ElevatedButtonThemeExtension>()!;
+  SpecialColorsThemeExtension get specialColorsThemeExtension => theme.extension<SpecialColorsThemeExtension>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
 }
