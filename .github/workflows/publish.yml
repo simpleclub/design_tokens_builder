@@ -9,4 +9,12 @@ on:
 # Publish using the reusable workflow from dart-lang.
 jobs:
   publish:
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter pub publish --dry-run
+      - run: flutter pub publish --force
