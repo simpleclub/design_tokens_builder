@@ -9,6 +9,7 @@ on:
 # Publish using the reusable workflow from dart-lang.
 jobs:
   publish:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: dart-lang/setup-dart@v1
