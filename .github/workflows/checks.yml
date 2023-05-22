@@ -1,6 +1,9 @@
 name: checks
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -61,4 +64,13 @@ jobs:
           channel: ${{ matrix.channel }}
       - run: flutter pub get
       - name: Run unit tests
+        if: ${{ matrix.channel == 'master' || matrix.channel == 'beta' }}
         run: flutter test
+      - name: Run unit tests with coverage
+        if: ${{ matrix.channel == 'stable' }}
+        run: flutter test --coverage
+      - name: Upload coverage to Codecov
+        if: ${{ matrix.channel == 'stable' }}
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage/lcov.info

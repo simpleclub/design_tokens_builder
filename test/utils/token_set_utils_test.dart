@@ -5,7 +5,7 @@ void main() {
   group('Get token sets', () {
     test('succeeds', () {
       final result = getTokenSets({
-        '\$metadata': {
+        r'$metadata': {
           'tokenSetOrder': ['global', 'light', 'dark'],
         },
       });
@@ -15,7 +15,7 @@ void main() {
 
     test('succeeds without default theme', () {
       final result = getTokenSets({
-        '\$metadata': {
+        r'$metadata': {
           'tokenSetOrder': ['light', 'dark'],
         },
       });
@@ -92,6 +92,7 @@ void main() {
           'large': {'value': 'Some value', 'type': 'someType'}
         },
       });
+      expect(result['medium'], null);
     });
 
     test('succeeds with fallback', () {
@@ -112,6 +113,7 @@ void main() {
       expect(result['display'], {
         'large': {'value': 'Some value', 'type': 'someType'}
       });
+      expect(result['medium'], null);
     });
   });
 }

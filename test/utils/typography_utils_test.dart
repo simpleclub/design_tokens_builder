@@ -47,8 +47,8 @@ void main() {
         {
           'value': {
             'fontFamily': 'Custom Font',
-            'fontWeight': 400,
-            'lineHeight': 1,
+            'fontWeight': '400',
+            'lineHeight': '111%',
             'fontSize': 16,
             'letterSpacing': 0,
             'paragraphSpacing': 0,
@@ -73,8 +73,8 @@ void main() {
           result,
           'TextStyle(\n'
           '      fontFamily: \'MyFont\',\n'
-          '      fontWeight: null,\n'
-          '      height: null,\n'
+          '      fontWeight: FontWeight.w400,\n'
+          '      height: 1.11,\n'
           '      fontSize: 16,\n'
           '      letterSpacing: 0,\n'
           '      decoration: TextDecoration.none,\n'
