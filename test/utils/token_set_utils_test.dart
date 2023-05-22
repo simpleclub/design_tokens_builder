@@ -92,6 +92,7 @@ void main() {
           'large': {'value': 'Some value', 'type': 'someType'}
         },
       });
+      expect(result['medium'], null);
     });
 
     test('succeeds with fallback', () {
@@ -112,6 +113,7 @@ void main() {
       expect(result['display'], {
         'large': {'value': 'Some value', 'type': 'someType'}
       });
+      expect(result['medium'], null);
     });
   });
 }
