@@ -7,7 +7,8 @@ List<String> getTokenSets(
   bool includeDefaultSet = false,
 }) {
   final tokenSets = List<String>.from(
-      (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>());
+    (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
+  );
 
   if (!includeDefaultSet) {
     tokenSets.remove('global');

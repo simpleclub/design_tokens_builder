@@ -1,8 +1,20 @@
-import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 
+/// Parser for dimension tokens.
+///
+/// Only supports px for now but not rem.
+///
+/// E.g.
+/// Figma design tokens:
+///   "value": "14" or
+///   "value": "14px"
+///
+/// Flutter generated code:
+///   14.0
 class DimensionParser extends DesignTokenParser {
+  /// Constructs a [DimensionParser].
   DimensionParser([super.indentationLevel, super.config]);
+
   @override
   List<String> get tokenType => [
         'sizing',
@@ -11,19 +23,18 @@ class DimensionParser extends DesignTokenParser {
       ];
 
   @override
-  // TODO: implement flutterType
   String get flutterType => 'double';
 
   @override
-  String lerp(value) {
-    // TODO: implement lerp
-    throw UnimplementedError();
+  String buildLerp(String token) {
+    return 'lerpDouble($token, other.$token, t)';
   }
 
   @override
-  String parse(value) {
+  String buildValue(value) {
     if (value is String) {
-      return parsePixel(value);
+      final pixel = double.parse(value.split('px').first);
+      return pixel.toString();
     }
 
     throw Exception('Unable to parse dimension value with data: $value');

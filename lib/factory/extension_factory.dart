@@ -1,5 +1,4 @@
-import 'package:design_tokens_builder/parsers/design_token_parser.dart';
-import 'package:design_tokens_builder/parsers/type_parser.dart';
+import 'package:design_tokens_builder/utils/design_token_map_extension.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:tuple/tuple.dart';
@@ -34,7 +33,7 @@ ${extension.map((e) => '      ${e.item1}: ${e.item1} ?? this.${e.item1},').join(
       return this;
     }
     return $name(
-${extension.map((e) => '      ${e.item1}: ${e.item2.flutterType}.lerp(${e.item1}, other.${e.item1}, t),').join('\n')}
+${extension.map((e) => '${indentation(level: 3)}${e.item1}: ${e.item2.parser.buildLerp(e.item1)},').join('\n')}
     );
   }
 }

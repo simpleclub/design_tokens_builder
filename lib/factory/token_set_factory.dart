@@ -1,6 +1,5 @@
 import 'package:design_tokens_builder/factory/extension_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
-import 'package:design_tokens_builder/utils/color_utils.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:design_tokens_builder/utils/typography_utils.dart';
@@ -37,8 +36,13 @@ String buildTokenSet(
         fallbackSetData: defaultSys,
       );
       if (systemColors.isNotEmpty) {
-        final colorSchemeValues = systemColors.keys
-            .map((key) => '$key: ${_parseAttribute(sys[key], config: config)}');
+        final colorSchemeValues = systemColors.keys.map(
+          (key) => '$key: ${_parseAttribute(
+            sys[key],
+            config: config,
+            isConst: false,
+          )}',
+        );
         colorScheme +=
             'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(level: 4)}${colorSchemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
@@ -52,12 +56,14 @@ String buildTokenSet(
       systemTextTheme = prepareTypographyTokens(systemTextTheme);
 
       if (systemTextTheme.isNotEmpty) {
-        final textThemeValues =
-            systemTextTheme.keys.map((key) => '$key: ${_parseAttribute(
-                  systemTextTheme[key],
-                  config: config,
-                  indentationLevel: 4,
-                )}');
+        final textThemeValues = systemTextTheme.keys.map(
+          (key) => '$key: ${_parseAttribute(
+            systemTextTheme[key],
+            config: config,
+            indentationLevel: 4,
+            isConst: false,
+          )}',
+        );
         textTheme +=
             'TextTheme get _textTheme => const TextTheme(\n${indentation(level: 4)}${textThemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
@@ -69,7 +75,7 @@ String buildTokenSet(
         colorScheme: _colorScheme,
         textTheme: _textTheme,
         extensions: [
-          ${extensions.keys.map((e) => '${buildExtensionName(e)}(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: ${_parseAttribute(e.item2, config: config)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
+          ${extensions.keys.map((e) => '${buildExtensionName(e)}(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: ${_parseAttribute(e.item2, config: config, indentationLevel: 6)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
         ],
       );''';
 
@@ -130,44 +136,34 @@ String buildAttributeMap(
 dynamic _parseAttribute(
   Map<String, dynamic> attr, {
   required YamlMap config,
-  final int indentationLevel = 2,
+  int indentationLevel = 2,
+  bool isConst = true,
 }) {
   final value = attr['value'] as dynamic;
   final type = attr['type'] as String;
   final parser = parserForType(
     type,
-    indentationLevel: indentationLevel,
+    indentationLevel: indentationLevel + 1,
     config: config,
   );
 
   try {
-    return parser.parse(value);
+    return parser.parse(value, isConst: isConst);
   } catch (e) {
+    print(e);
     return value;
   }
-}
-
-/// Tries to parse a value that looks like `120px` to a int like this `120`.
-///
-/// Returns `null` if parsing failed.
-String parsePixel(dynamic value) {
-  if (value is String) {
-    final pixel = int.parse(value.split('px').first);
-    return pixel.toString();
-  }
-
-  throw Exception('Unable to parse pixel value with data: $value');
 }
 
 /// Tries to parse a value that looks like `120%` to a double like this `1.2`.
 ///
 /// Returns `null` if parsing failed.
-String parsePercentage(dynamic value) {
+double parsePercentage(dynamic value) {
   // TODO: Add support for doubles here. https://docs.tokens.studio/available-tokens/opacity-tokens
   if (value is String) {
     final abs = int.tryParse(value.split('%').first);
     if (abs != null) {
-      return '${abs / 100}';
+      return abs / 100;
     }
   }
 
@@ -228,7 +224,8 @@ String generateTokenSetEnum(List<String> tokenSets) {
     final set = (uniquePrefix?.isEmpty ?? true) ? 'general' : uniquePrefix;
 
     cases.add(
-        '$set(BrightnessAdapted(\n${indentation(level: 2)}dark: $darkTheme,\n${indentation(level: 2)}light: $lightTheme,\n${indentation(level: 1)}))');
+      '$set(BrightnessAdapted(\n${indentation(level: 2)}dark: $darkTheme,\n${indentation(level: 2)}light: $lightTheme,\n${indentation(level: 1)}))',
+    );
   }
 
   return '''enum GeneratedTokenSet {

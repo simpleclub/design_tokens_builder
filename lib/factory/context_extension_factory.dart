@@ -12,7 +12,8 @@ String buildContextExtension(Map<String, dynamic> tokens) {
     for (final entry in extensions.entries) {
       final name = buildExtensionName(entry.key);
       extensionShortcuts.add(
-          '$name get ${name.firstLowerCased} => theme.extension<$name>()!;');
+        '$name get ${entry.key.firstLowerCased} => theme.extension<$name>()!;',
+      );
     }
 
     extensionPart += extensionShortcuts.join('\n${indentation()}');

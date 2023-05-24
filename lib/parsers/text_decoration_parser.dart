@@ -1,8 +1,17 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 
-/// Try to parse and return a flutter readable text decoration.
+/// Try to parse and return a Flutter readable text decoration.
+///
+/// E.g.
+/// Figma design tokens:
+///   "value": "#ffffff"
+///
+/// Flutter generated code:
+///   Color(0xffffff)
 class TextDecorationParser extends DesignTokenParser {
+  /// Constructs a [TextDecorationParser].
   TextDecorationParser([super.indentationLevel, super.config]);
+
   @override
   List<String> get tokenType => ['textDecoration'];
 
@@ -10,13 +19,12 @@ class TextDecorationParser extends DesignTokenParser {
   String get flutterType => 'TextDecoration';
 
   @override
-  String lerp(value) {
-    // TODO: implement lerp
-    throw UnimplementedError();
+  String buildLerp(String token) {
+    return 'other.$token';
   }
 
   @override
-  String parse(value) {
+  String buildValue(value) {
     switch (value) {
       case 'none':
         return 'TextDecoration.none';
@@ -25,7 +33,9 @@ class TextDecorationParser extends DesignTokenParser {
       case 'line-through':
         return 'TextDecoration.lineThrough';
       default:
-        return '';
+        throw Exception(
+          'Unable to parse text decoration due to unsupported value: $value',
+        );
     }
   }
 }

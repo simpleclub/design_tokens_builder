@@ -7,23 +7,30 @@ import 'package:yaml/yaml.dart';
 /// found in `tokenbuilder.yaml`.
 /// Returns `value` if no font config was set in `config` or no `config` was
 /// provided.
+///
+/// E.g.
+/// Figma design tokens:
+///   "value": "My Font"
+///
+/// Flutter generated code:
+///   "MyFlutterFont"
 class FontFamilyParser extends DesignTokenParser {
+  /// Constructs a [FontFamilyParser].
   FontFamilyParser([super.indentationLevel, super.config]);
+
   @override
   List<String> get tokenType => ['fontFamilies'];
 
   @override
-  // TODO: implement flutterType
   String get flutterType => 'String';
 
   @override
-  String lerp(value) {
-    // TODO: implement lerp
-    throw UnimplementedError();
+  String buildLerp(String token) {
+    return 'other.$token';
   }
 
   @override
-  String parse(value) {
+  String buildValue(value) {
     if (config != null && config!.containsKey('fontConfig')) {
       final mappedFonts = config!['fontConfig'] as YamlList;
       if (!mappedFonts.any((element) => element['family'] == value)) {

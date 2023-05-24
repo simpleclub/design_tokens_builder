@@ -1,14 +1,33 @@
-import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/parsers/font_family_parser.dart';
 import 'package:design_tokens_builder/parsers/font_weight_parser.dart';
+import 'package:design_tokens_builder/parsers/line_height_parser.dart';
+import 'package:design_tokens_builder/parsers/number_parser.dart';
 import 'package:design_tokens_builder/parsers/text_decoration_parser.dart';
-import 'package:design_tokens_builder/utils/string_utils.dart';
 
-/// Parses the text style and transforms design tokens json values to flutter
+/// Parses the text style and transforms design tokens json values to Flutter
 /// readable values.
+///
+/// E.g.
+/// Figma design tokens:
+///   "value": {
+///     "fontFamily": "MyFont",
+///     "fontWeight": "400",
+///     "lineHeight": "1.1",
+///     "fontSize": "17",
+///   }
+///
+/// Flutter generated code:
+///   TextStyle(
+///     fontFamily: "MyFlutterFont",
+///     fontWeight: FontWeight.w400,
+///     height: 1.1,
+///     fontSize: 17,
+///   )
 class TypographyParser extends DesignTokenParser {
+  /// Constructs a [TypographyParser].
   TypographyParser([super.indentationLevel, super.config]);
+
   @override
   List<String> get tokenType => ['typography'];
 
@@ -16,27 +35,18 @@ class TypographyParser extends DesignTokenParser {
   String get flutterType => 'TextStyle';
 
   @override
-  String lerp(value) {
-    // TODO: implement lerp
-    throw UnimplementedError();
-  }
-
-  @override
-  String parse(value) {
+  String buildValue(value) {
     if (value is Map<String, dynamic>) {
-      final casted = value.cast<String, Map<String, dynamic>>();
-      final transformedEntries = casted['value']
-          ?.entries
+      final transformedEntries = value.entries
           .map((e) => _transform(e))
           .where((element) => element != null)
           .toList()
           .cast<MapEntry<String, dynamic>>();
       final content = transformedEntries
-          ?.map((e) => '${e.key}: ${e.value}')
-          .join(',\n${indentation(level: indentationLevel + 1)}');
+          .map((e) => '${e.key}: ${e.value}')
+          .join(',\n${indent()}');
 
-      if (content == null) return 'TextStyle()';
-      return 'TextStyle(\n${indentation(level: indentationLevel + 1)}$content,\n${indentation(level: indentationLevel)})';
+      return 'TextStyle(\n${indent()}$content,\n${indent(-1)})';
     }
 
     throw Exception('Unable to parse typography with data: $value');
@@ -51,12 +61,14 @@ class TypographyParser extends DesignTokenParser {
           parser.parse(data.value),
         );
       case 'fontWeight':
-        final parser = FontWeightParser();
+        final parser = FontWeightParser(indentationLevel, config);
         return MapEntry('fontWeight', parser.parse(data.value));
       case 'lineHeight':
-        return MapEntry('height', parsePercentage(data.value));
+        final parser = LineHeightParser(indentationLevel, config);
+        return MapEntry('height', parser.parse(data.value));
       case 'fontSize':
-        return MapEntry('fontSize', data.value);
+        final parser = NumberParser(indentationLevel, config);
+        return MapEntry('fontSize', parser.parse(data.value));
       case 'letterSpacing':
         return MapEntry('letterSpacing', data.value);
       case 'paragraphSpacing':
@@ -66,10 +78,10 @@ class TypographyParser extends DesignTokenParser {
       case 'textCase':
         return null;
       case 'textDecoration':
-        final parser = TextDecorationParser();
+        final parser = TextDecorationParser(indentationLevel, config);
         return MapEntry('decoration', parser.parse(data.value));
     }
 
-    return null;
+    throw Exception('Unable to transform value with unknown key: ${data.key}');
   }
 }

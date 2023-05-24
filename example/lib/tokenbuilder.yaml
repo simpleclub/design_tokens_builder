@@ -1,4 +1,5 @@
 tokenFilePath: lib/tokens.json
+defaultSetName: global
 
 fontConfig:
     - family: System Roboto

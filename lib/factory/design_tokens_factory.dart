@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:build/build.dart';
 import 'package:design_tokens_builder/factory/context_extension_factory.dart';
-import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/factory/extension_factory.dart' as ef;
+import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/utils/transformer_utils.dart';
 import 'package:glob/glob.dart';
-import 'package:build/build.dart';
 import 'package:yaml/yaml.dart';
 
+/// Main builder.
 Builder designTokensFactory(BuilderOptions _) => DesignTokensFactory();
 
 /// Builder for generating tokens based on design token data.
@@ -36,6 +37,8 @@ class DesignTokensFactory implements Builder {
     await buildStep.writeAsString(
       AssetId(buildStep.inputId.package, 'lib/tokens.dart'),
       '''// GENERATED CODE - DO NOT MODIFY BY HAND
+
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
