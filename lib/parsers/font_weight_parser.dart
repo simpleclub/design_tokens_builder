@@ -32,7 +32,7 @@ class FontWeightParser extends DesignTokenParser {
         return 'FontWeight.w$abs';
       } else {
         throw Exception(
-          'Unsupported font weight. Please use one of these weights: 100, 200, 300, 400, 500, 600, 700, 800, 900.',
+          'Unsupported font weight: $value. Please use one of these weights: 100, 200, 300, 400, 500, 600, 700, 800, 900.',
         );
       }
     }
