@@ -1,7 +1,8 @@
 ## 0.2.0
 
 * Adds support for most of Tokens Studio for Figma token types
-* Introduces a new `defaultSetName` property in `tokenBuilder.yaml` to configure the default set
+* Introduces a new `defaultSetName` property in `tokenbuilder.yaml` to configure the default set
+
 * Adds generation of theme extension based on `defaultSetName`
 * Adds new architecture for managing type parsers more easily
 
