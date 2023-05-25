@@ -15,8 +15,7 @@ class NumberParser extends DesignTokenParser {
   NumberParser([super.indentationLevel, super.config]);
 
   @override
-  List<String> get tokenType =>
-      [
+  List<String> get tokenType => [
         'fontSizes',
         'letterSpacing',
         'paragraphSpacing',

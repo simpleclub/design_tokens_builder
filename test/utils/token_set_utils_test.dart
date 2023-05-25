@@ -26,13 +26,16 @@ void main() {
 
   group('Override and merge token set', () {
     test('works properly', () {
-      final result = overrideAndMergeTokenSet({
-        'key1': 'value1',
-        'key2': 'value2',
-      }, withSet: {
-        'key2': 'newValue2',
-        'key3': 'value3',
-      });
+      final result = overrideAndMergeTokenSet(
+        {
+          'key1': 'value1',
+          'key2': 'value2',
+        },
+        withSet: {
+          'key2': 'newValue2',
+          'key3': 'value3',
+        },
+      );
 
       expect(result, {
         'key1': 'value1',
@@ -78,13 +81,16 @@ void main() {
 
   group('Get tokens of type', () {
     test('succeeds', () {
-      final result = getTokensOfType('someType', tokenSetData: {
-        'small': {'value': 'Some value', 'type': 'someType'},
-        'medium': {'value': 'Some value', 'type': 'someType 3'},
-        'display': {
-          'large': {'value': 'Some value', 'type': 'someType'}
+      final result = getTokensOfType(
+        'someType',
+        tokenSetData: {
+          'small': {'value': 'Some value', 'type': 'someType'},
+          'medium': {'value': 'Some value', 'type': 'someType 3'},
+          'display': {
+            'large': {'value': 'Some value', 'type': 'someType'}
+          },
         },
-      });
+      );
 
       expect(result, {
         'small': {'value': 'Some value', 'type': 'someType'},
@@ -96,16 +102,20 @@ void main() {
     });
 
     test('succeeds with fallback', () {
-      final result = getTokensOfType('someType', tokenSetData: {
-        'small': {'value': 'Some new value', 'type': 'someType'},
-        'medium': {'value': 'Some value', 'type': 'someType 3'},
-        'display': {
-          'large': {'value': 'Some value', 'type': 'someType'}
+      final result = getTokensOfType(
+        'someType',
+        tokenSetData: {
+          'small': {'value': 'Some new value', 'type': 'someType'},
+          'medium': {'value': 'Some value', 'type': 'someType 3'},
+          'display': {
+            'large': {'value': 'Some value', 'type': 'someType'}
+          },
         },
-      }, fallbackSetData: {
-        'small': {'value': 'Some value', 'type': 'someType'},
-        'large': {'value': 'Some value', 'type': 'someType'},
-      });
+        fallbackSetData: {
+          'small': {'value': 'Some value', 'type': 'someType'},
+          'large': {'value': 'Some value', 'type': 'someType'},
+        },
+      );
 
       expect(result.keys.length, 3);
       expect(result['small'], {'value': 'Some new value', 'type': 'someType'});
