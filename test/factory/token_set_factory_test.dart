@@ -1,3 +1,4 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -19,10 +20,15 @@ void main() {
   });
 
   group('Generate token set enum', () {
+    final config = BuilderConfig(
+      tokenFilePath: 'some/path',
+      defaultSetName: 'global',
+    );
+
     test('with light, dark and global token sets', () {
       final tokenSets = ['global', 'light', 'dark'];
 
-      final result = generateTokenSetEnum(tokenSets);
+      final result = generateTokenSetEnum(tokenSets, config: config);
       expect(result, '''enum GeneratedTokenSet {
   general(BrightnessAdapted(
     dark: DarkThemeData(),
@@ -38,7 +44,7 @@ void main() {
     test('with custom token set', () {
       final tokenSets = ['custom'];
 
-      final result = generateTokenSetEnum(tokenSets);
+      final result = generateTokenSetEnum(tokenSets, config: config);
       expect(result, '''enum GeneratedTokenSet {
   custom(BrightnessAdapted(
     dark: CustomThemeData(),
@@ -61,7 +67,7 @@ void main() {
         'custom'
       ];
 
-      final result = generateTokenSetEnum(tokenSets);
+      final result = generateTokenSetEnum(tokenSets, config: config);
       expect(result, '''enum GeneratedTokenSet {
   general(BrightnessAdapted(
     dark: DarkThemeData(),
@@ -85,7 +91,7 @@ void main() {
     test('with only light theme', () {
       final tokenSets = ['global', 'light'];
 
-      final result = generateTokenSetEnum(tokenSets);
+      final result = generateTokenSetEnum(tokenSets, config: config);
       expect(result, '''enum GeneratedTokenSet {
   general(BrightnessAdapted(
     dark: LightThemeData(),

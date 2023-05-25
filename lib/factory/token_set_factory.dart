@@ -1,10 +1,10 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/extension_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:design_tokens_builder/utils/typography_utils.dart';
 import 'package:tuple/tuple.dart';
-import 'package:yaml/yaml.dart';
 
 /// Generates theming for all available token sets.
 ///
@@ -14,12 +14,12 @@ import 'package:yaml/yaml.dart';
 /// - `ThemeData` with all extensions
 String buildTokenSet(
   Map<String, dynamic> tokens, {
-  required YamlMap config,
+  required BuilderConfig config,
 }) {
   var output = '';
 
-  final tokenSets = getTokenSets(tokens);
-  final defaultSetData = tokens['global'] as Map<String, dynamic>;
+  final tokenSets = getTokenSets(tokens, config: config);
+  final defaultSetData = tokens[config.defaultSetName] as Map<String, dynamic>;
   final defaultSys = defaultSetData['sys'] as Map<String, dynamic>;
   for (final tokenSet in tokenSets) {
     final setData = tokens[tokenSet] as Map<String, dynamic>;
@@ -93,7 +93,7 @@ String buildTokenSet(
 ''';
   }
 
-  return '$output${generateTokenSetEnum(tokenSets)}';
+  return '$output${generateTokenSetEnum(tokenSets, config: config)}';
 }
 
 /// Returns the brightness based on the token set name.
@@ -112,7 +112,7 @@ String _brightness({required tokenSet}) {
 /// Parses all tokens and parses all attributes to dart readable format.
 String buildAttributeMap(
   Map<String, dynamic> global,
-  YamlMap config, [
+  BuilderConfig config, [
   int depth = 1,
 ]) {
   String recursiveMap(Map<String, dynamic> map, depth) {
@@ -135,7 +135,7 @@ String buildAttributeMap(
 
 dynamic _parseAttribute(
   Map<String, dynamic> attr, {
-  required YamlMap config,
+  required BuilderConfig config,
   int indentationLevel = 2,
   bool isConst = true,
 }) {
@@ -188,9 +188,12 @@ double parsePercentage(dynamic value) {
 ///   final BrightnessAdapted<GeneratedThemeData> data;
 /// }
 /// ```
-String generateTokenSetEnum(List<String> tokenSets) {
+String generateTokenSetEnum(
+  List<String> tokenSets, {
+  required BuilderConfig config,
+}) {
   var cases = <String>[];
-  tokenSets.remove('global');
+  tokenSets.remove(config.defaultSetName);
   final tokenSetsString = tokenSets.join(',');
   final regex = RegExp(r'\b(\w*)(?:light|dark|Light|Dark)\w*\b');
   final matches = regex.allMatches(tokenSetsString);

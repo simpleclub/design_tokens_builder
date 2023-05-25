@@ -1,3 +1,4 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/parsers/border_parser.dart';
 import 'package:design_tokens_builder/parsers/border_radius_parser.dart';
 import 'package:design_tokens_builder/parsers/box_shadow_parser.dart';
@@ -13,7 +14,6 @@ import 'package:design_tokens_builder/parsers/text_case_parser.dart';
 import 'package:design_tokens_builder/parsers/text_decoration_parser.dart';
 import 'package:design_tokens_builder/parsers/typography_parser.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
-import 'package:yaml/yaml.dart';
 
 /// Returns the [DesignTokenParser] for the given type.
 ///
@@ -24,7 +24,7 @@ import 'package:yaml/yaml.dart';
 DesignTokenParser parserForType(
   String type, {
   int indentationLevel = 1,
-  YamlMap? config,
+  BuilderConfig? config,
 }) {
   try {
     return [
@@ -63,7 +63,7 @@ abstract class DesignTokenParser {
   final int indentationLevel;
 
   /// The global config of the builder.
-  final YamlMap? config;
+  final BuilderConfig? config;
 
   /// The indentation string for [indentationLevel].
   String indent([int add = 0]) => indentation(level: indentationLevel + add);

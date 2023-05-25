@@ -1,5 +1,4 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
-import 'package:yaml/yaml.dart';
 
 /// Parses and return a flutter readable code for font family.
 ///
@@ -31,16 +30,16 @@ class FontFamilyParser extends DesignTokenParser {
 
   @override
   String buildValue(value) {
-    if (config != null && config!.containsKey('fontConfig')) {
-      final mappedFonts = config!['fontConfig'] as YamlList;
-      if (!mappedFonts.any((element) => element['family'] == value)) {
+    if (config != null && config!.fontConfig.isNotEmpty) {
+      final mappedFonts = config!.fontConfig;
+      if (!mappedFonts.any((element) => element.family == value)) {
         return '\'$value\'';
       }
 
       final currentFont =
-          mappedFonts.firstWhere((element) => element['family'] == value);
+          mappedFonts.firstWhere((element) => element.family == value);
 
-      return '\'${currentFont['flutterName']}\'';
+      return '\'${currentFont.flutterName}\'';
     }
 
     return '\'$value\'';

@@ -1,16 +1,14 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/parsers/typography_parser.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:yaml/yaml.dart';
 
 void main() {
-  final config = YamlMap.wrap({
-    'fontConfig': [
-      {
-        'family': 'My Font',
-        'flutterName': 'MyFlutterFont',
-      },
-    ]
-  });
+  final config = BuilderConfig(
+    tokenFilePath: 'some/path',
+    fontConfig: [
+      FontConfig(family: 'My Font', flutterName: 'MyFlutterFont'),
+    ],
+  );
   final parser = TypographyParser(1, config);
 
   test('correct setup', () {
