@@ -60,9 +60,9 @@ class BrightnessAdapted<T> {
 
 ${buildTokenSet(processedToken, config: config)}
 
-${ef.buildExtensions(processedToken)}
+${ef.buildExtensions(processedToken, config: config)}
 
-${buildContextExtension(processedToken)}\n''',
+${buildContextExtension(processedToken, config: config)}\n''',
     );
   }
 }

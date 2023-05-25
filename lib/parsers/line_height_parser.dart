@@ -3,16 +3,14 @@ import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 
 /// Parses the line height according to Design Token Studio.
 ///
-/// Supports not only percentage values like 42% but also font sizes like 16.
+/// Only supports parsing percentages since Flutter is not able to .
 ///
 /// E.g.
 /// Figma design tokens:
-///   "value": "42%" or
-///   "value": "16"
+///   "value": "42%"
 ///
 /// Flutter generated code:
-///   0.42 or
-///   16
+///   0.42
 class LineHeightParser extends DesignTokenParser {
   /// Constructs a [LineHeightParser].
   LineHeightParser([super.indentationLevel, super.config]);
@@ -33,12 +31,6 @@ class LineHeightParser extends DesignTokenParser {
     if (value is String) {
       if (value.contains('%')) {
         return '${parsePercentage(value)}';
-      } else {
-        try {
-          return double.parse(value).toString();
-        } catch (e) {
-          throw Exception('Unable to parse line height with data: $value');
-        }
       }
     }
 

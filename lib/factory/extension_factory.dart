@@ -1,3 +1,4 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/utils/design_token_map_extension.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
@@ -6,8 +7,11 @@ import 'package:tuple/tuple.dart';
 /// Generates all extension.
 ///
 /// Creates an extension for each token group that is not `sys`.
-String buildExtensions(Map<String, dynamic> tokens) {
-  final extensions = getExtensions(tokens);
+String buildExtensions(
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+}) {
+  final extensions = getExtensions(tokens, config: config);
 
   var output = '';
   for (final entry in extensions.entries) {
@@ -94,11 +98,16 @@ String buildExtensionName(String extensionName) {
 /// }
 /// ```
 Map<String, List<Tuple2<String, Map<String, dynamic>>>> getExtensions(
-  Map<String, dynamic> tokens,
-) {
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+}) {
   Map<String, List<Tuple2<String, Map<String, dynamic>>>> extensions = {};
 
-  final tokenSets = getTokenSets(tokens, includeDefaultSet: true);
+  final tokenSets = getTokenSets(
+    tokens,
+    includeDefaultSet: true,
+    config: config,
+  );
   for (final tokenSet in tokenSets) {
     final setData = tokens[tokenSet] as Map<String, dynamic>;
     final setDataKeys = setData.keys.toList()..remove('sys');

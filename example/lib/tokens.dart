@@ -184,23 +184,9 @@ final attributes = {
   'elevatedButton': {
     'height': 38.0,
     'color': const Color(0xFF3A9BDC),
-    'padding':
-        const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+    'padding': const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
     'borderRadius': const BorderRadius.all(Radius.circular(16.0)),
-    'shadow': const [
-      BoxShadow(
-          color: Color(0xFF000000),
-          offset: Offset(0.0, 3.0),
-          blurRadius: 5.0,
-          spreadRadius: 0.0,
-          blurStyle: BlurStyle.normal),
-      BoxShadow(
-          color: Color(0xFF000000),
-          offset: Offset(0.0, 0.0),
-          blurRadius: 0.0,
-          spreadRadius: 0.0,
-          blurStyle: BlurStyle.inner)
-    ],
+    'shadow': const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
     'border': Border.all(
       width: 3.0,
       color: const Color(0xFF293133),
@@ -228,7 +214,7 @@ class DarkThemeData with GeneratedThemeData {
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -360,14 +346,14 @@ class DarkThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -376,55 +362,41 @@ class DarkThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(
-                top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.normal),
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 0.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.inner)
-            ],
+            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
             ),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -441,7 +413,7 @@ class LightThemeData with GeneratedThemeData {
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -573,14 +545,14 @@ class LightThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -589,55 +561,41 @@ class LightThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(
-                top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.normal),
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 0.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.inner)
-            ],
+            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
             ),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -654,7 +612,7 @@ class CustomThemeData with GeneratedThemeData {
         primary: Color(0xFFBDECB6),
         onPrimary: Color(0xFF293133),
       );
-
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -786,14 +744,14 @@ class CustomThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -802,55 +760,41 @@ class CustomThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(
-                top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.normal),
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 0.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.inner)
-            ],
+            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
             ),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -867,7 +811,7 @@ class PartyLightThemeData with GeneratedThemeData {
         primary: Color(0xFFFE0000),
         onPrimary: Color(0xFFffffff),
       );
-
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -999,14 +943,14 @@ class PartyLightThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -1015,55 +959,41 @@ class PartyLightThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(
-                top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.normal),
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 0.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.inner)
-            ],
+            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
             ),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -1080,7 +1010,7 @@ class PartyDarkThemeData with GeneratedThemeData {
         primary: Color(0xFFF8F32B),
         onPrimary: Color(0xFF293133),
       );
-
+  
   TextTheme get _textTheme => const TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -1212,14 +1142,14 @@ class PartyDarkThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -1228,55 +1158,41 @@ class PartyDarkThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(
-                top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 3.0),
-                  blurRadius: 5.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.normal),
-              BoxShadow(
-                  color: Color(0xFF000000),
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 0.0,
-                  spreadRadius: 0.0,
-                  blurStyle: BlurStyle.inner)
-            ],
+            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
             ),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -1303,8 +1219,7 @@ enum GeneratedTokenSet {
   final BrightnessAdapted<GeneratedThemeData> data;
 }
 
-class FontFamiliesThemeExtension
-    extends ThemeExtension<FontFamiliesThemeExtension> {
+class FontFamiliesThemeExtension extends ThemeExtension<FontFamiliesThemeExtension> {
   FontFamiliesThemeExtension({
     this.primary,
   });
@@ -1331,8 +1246,7 @@ class FontFamiliesThemeExtension
   }
 }
 
-class FontWeightsThemeExtension
-    extends ThemeExtension<FontWeightsThemeExtension> {
+class FontWeightsThemeExtension extends ThemeExtension<FontWeightsThemeExtension> {
   FontWeightsThemeExtension({
     this.w400,
     this.w600,
@@ -1436,8 +1350,7 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
   }
 }
 
-class LetterSpacingThemeExtension
-    extends ThemeExtension<LetterSpacingThemeExtension> {
+class LetterSpacingThemeExtension extends ThemeExtension<LetterSpacingThemeExtension> {
   LetterSpacingThemeExtension({
     this.none,
     this.sm,
@@ -1466,8 +1379,7 @@ class LetterSpacingThemeExtension
   }
 
   @override
-  LetterSpacingThemeExtension lerp(
-      LetterSpacingThemeExtension? other, double t) {
+  LetterSpacingThemeExtension lerp(LetterSpacingThemeExtension? other, double t) {
     if (other is! LetterSpacingThemeExtension) {
       return this;
     }
@@ -1480,8 +1392,7 @@ class LetterSpacingThemeExtension
   }
 }
 
-class ParagraphSpacingThemeExtension
-    extends ThemeExtension<ParagraphSpacingThemeExtension> {
+class ParagraphSpacingThemeExtension extends ThemeExtension<ParagraphSpacingThemeExtension> {
   ParagraphSpacingThemeExtension({
     this.none,
   });
@@ -1498,8 +1409,7 @@ class ParagraphSpacingThemeExtension
   }
 
   @override
-  ParagraphSpacingThemeExtension lerp(
-      ParagraphSpacingThemeExtension? other, double t) {
+  ParagraphSpacingThemeExtension lerp(ParagraphSpacingThemeExtension? other, double t) {
     if (other is! ParagraphSpacingThemeExtension) {
       return this;
     }
@@ -1536,8 +1446,7 @@ class TextCaseThemeExtension extends ThemeExtension<TextCaseThemeExtension> {
   }
 }
 
-class TextDecorationThemeExtension
-    extends ThemeExtension<TextDecorationThemeExtension> {
+class TextDecorationThemeExtension extends ThemeExtension<TextDecorationThemeExtension> {
   TextDecorationThemeExtension({
     this.none,
   });
@@ -1554,8 +1463,7 @@ class TextDecorationThemeExtension
   }
 
   @override
-  TextDecorationThemeExtension lerp(
-      TextDecorationThemeExtension? other, double t) {
+  TextDecorationThemeExtension lerp(TextDecorationThemeExtension? other, double t) {
     if (other is! TextDecorationThemeExtension) {
       return this;
     }
@@ -1565,8 +1473,7 @@ class TextDecorationThemeExtension
   }
 }
 
-class ParagraphIndentThemeExtension
-    extends ThemeExtension<ParagraphIndentThemeExtension> {
+class ParagraphIndentThemeExtension extends ThemeExtension<ParagraphIndentThemeExtension> {
   ParagraphIndentThemeExtension({
     this.none,
   });
@@ -1583,8 +1490,7 @@ class ParagraphIndentThemeExtension
   }
 
   @override
-  ParagraphIndentThemeExtension lerp(
-      ParagraphIndentThemeExtension? other, double t) {
+  ParagraphIndentThemeExtension lerp(ParagraphIndentThemeExtension? other, double t) {
     if (other is! ParagraphIndentThemeExtension) {
       return this;
     }
@@ -1594,8 +1500,7 @@ class ParagraphIndentThemeExtension
   }
 }
 
-class LineHeightsThemeExtension
-    extends ThemeExtension<LineHeightsThemeExtension> {
+class LineHeightsThemeExtension extends ThemeExtension<LineHeightsThemeExtension> {
   LineHeightsThemeExtension({
     this.xs,
     this.sm,
@@ -1632,8 +1537,7 @@ class LineHeightsThemeExtension
   }
 }
 
-class ElevatedButtonThemeExtension
-    extends ThemeExtension<ElevatedButtonThemeExtension> {
+class ElevatedButtonThemeExtension extends ThemeExtension<ElevatedButtonThemeExtension> {
   ElevatedButtonThemeExtension({
     this.height,
     this.color,
@@ -1670,8 +1574,7 @@ class ElevatedButtonThemeExtension
   }
 
   @override
-  ElevatedButtonThemeExtension lerp(
-      ElevatedButtonThemeExtension? other, double t) {
+  ElevatedButtonThemeExtension lerp(ElevatedButtonThemeExtension? other, double t) {
     if (other is! ElevatedButtonThemeExtension) {
       return this;
     }
@@ -1686,8 +1589,7 @@ class ElevatedButtonThemeExtension
   }
 }
 
-class SpecialColorsThemeExtension
-    extends ThemeExtension<SpecialColorsThemeExtension> {
+class SpecialColorsThemeExtension extends ThemeExtension<SpecialColorsThemeExtension> {
   SpecialColorsThemeExtension({
     this.color1,
     this.color2,
@@ -1708,8 +1610,7 @@ class SpecialColorsThemeExtension
   }
 
   @override
-  SpecialColorsThemeExtension lerp(
-      SpecialColorsThemeExtension? other, double t) {
+  SpecialColorsThemeExtension lerp(SpecialColorsThemeExtension? other, double t) {
     if (other is! SpecialColorsThemeExtension) {
       return this;
     }
@@ -1721,53 +1622,33 @@ class SpecialColorsThemeExtension
 }
 
 extension GeneratedTheme on ThemeData {
-  FontFamiliesThemeExtension? get fontFamilies =>
-      extension<FontFamiliesThemeExtension>();
-  FontWeightsThemeExtension? get fontWeights =>
-      extension<FontWeightsThemeExtension>();
+  FontFamiliesThemeExtension? get fontFamilies => extension<FontFamiliesThemeExtension>();
+  FontWeightsThemeExtension? get fontWeights => extension<FontWeightsThemeExtension>();
   FontSizeThemeExtension? get fontSize => extension<FontSizeThemeExtension>();
-  LetterSpacingThemeExtension? get letterSpacing =>
-      extension<LetterSpacingThemeExtension>();
-  ParagraphSpacingThemeExtension? get paragraphSpacing =>
-      extension<ParagraphSpacingThemeExtension>();
+  LetterSpacingThemeExtension? get letterSpacing => extension<LetterSpacingThemeExtension>();
+  ParagraphSpacingThemeExtension? get paragraphSpacing => extension<ParagraphSpacingThemeExtension>();
   TextCaseThemeExtension? get textCase => extension<TextCaseThemeExtension>();
-  TextDecorationThemeExtension? get textDecoration =>
-      extension<TextDecorationThemeExtension>();
-  ParagraphIndentThemeExtension? get paragraphIndent =>
-      extension<ParagraphIndentThemeExtension>();
-  LineHeightsThemeExtension? get lineHeights =>
-      extension<LineHeightsThemeExtension>();
-  ElevatedButtonThemeExtension? get elevatedButton =>
-      extension<ElevatedButtonThemeExtension>();
-  SpecialColorsThemeExtension? get specialColors =>
-      extension<SpecialColorsThemeExtension>();
+  TextDecorationThemeExtension? get textDecoration => extension<TextDecorationThemeExtension>();
+  ParagraphIndentThemeExtension? get paragraphIndent => extension<ParagraphIndentThemeExtension>();
+  LineHeightsThemeExtension? get lineHeights => extension<LineHeightsThemeExtension>();
+  ElevatedButtonThemeExtension? get elevatedButton => extension<ElevatedButtonThemeExtension>();
+  SpecialColorsThemeExtension? get specialColors => extension<SpecialColorsThemeExtension>();
 }
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
-
-  FontFamiliesThemeExtension get fontFamilies =>
-      theme.extension<FontFamiliesThemeExtension>()!;
-  FontWeightsThemeExtension get fontWeights =>
-      theme.extension<FontWeightsThemeExtension>()!;
-  FontSizeThemeExtension get fontSize =>
-      theme.extension<FontSizeThemeExtension>()!;
-  LetterSpacingThemeExtension get letterSpacing =>
-      theme.extension<LetterSpacingThemeExtension>()!;
-  ParagraphSpacingThemeExtension get paragraphSpacing =>
-      theme.extension<ParagraphSpacingThemeExtension>()!;
-  TextCaseThemeExtension get textCase =>
-      theme.extension<TextCaseThemeExtension>()!;
-  TextDecorationThemeExtension get textDecoration =>
-      theme.extension<TextDecorationThemeExtension>()!;
-  ParagraphIndentThemeExtension get paragraphIndent =>
-      theme.extension<ParagraphIndentThemeExtension>()!;
-  LineHeightsThemeExtension get lineHeights =>
-      theme.extension<LineHeightsThemeExtension>()!;
-  ElevatedButtonThemeExtension get elevatedButton =>
-      theme.extension<ElevatedButtonThemeExtension>()!;
-  SpecialColorsThemeExtension get specialColors =>
-      theme.extension<SpecialColorsThemeExtension>()!;
+  
+  FontFamiliesThemeExtension get fontFamilies => theme.extension<FontFamiliesThemeExtension>()!;
+  FontWeightsThemeExtension get fontWeights => theme.extension<FontWeightsThemeExtension>()!;
+  FontSizeThemeExtension get fontSize => theme.extension<FontSizeThemeExtension>()!;
+  LetterSpacingThemeExtension get letterSpacing => theme.extension<LetterSpacingThemeExtension>()!;
+  ParagraphSpacingThemeExtension get paragraphSpacing => theme.extension<ParagraphSpacingThemeExtension>()!;
+  TextCaseThemeExtension get textCase => theme.extension<TextCaseThemeExtension>()!;
+  TextDecorationThemeExtension get textDecoration => theme.extension<TextDecorationThemeExtension>()!;
+  ParagraphIndentThemeExtension get paragraphIndent => theme.extension<ParagraphIndentThemeExtension>()!;
+  LineHeightsThemeExtension get lineHeights => theme.extension<LineHeightsThemeExtension>()!;
+  ElevatedButtonThemeExtension get elevatedButton => theme.extension<ElevatedButtonThemeExtension>()!;
+  SpecialColorsThemeExtension get specialColors => theme.extension<SpecialColorsThemeExtension>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
 }

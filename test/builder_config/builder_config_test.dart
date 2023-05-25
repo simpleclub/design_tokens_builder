@@ -14,6 +14,8 @@ void main() {
         ]
       });
 
+      print(BuilderConfig.fromYaml(yaml));
+
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
@@ -45,7 +47,7 @@ void main() {
     test('fails', () {
       final yaml = YamlMap.wrap({});
 
-      expect(() => BuilderConfig.fromYaml(yaml), throwsAssertionError);
+      expect(() => BuilderConfig.fromYaml(yaml), throwsException);
     });
   });
 }

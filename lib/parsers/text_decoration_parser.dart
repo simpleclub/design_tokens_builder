@@ -4,10 +4,10 @@ import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 ///
 /// E.g.
 /// Figma design tokens:
-///   "value": "#ffffff"
+///   "value": "underline"
 ///
 /// Flutter generated code:
-///   Color(0xffffff)
+///   TextDecoration.underline
 class TextDecorationParser extends DesignTokenParser {
   /// Constructs a [TextDecorationParser].
   TextDecorationParser([super.indentationLevel, super.config]);

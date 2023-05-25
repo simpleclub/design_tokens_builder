@@ -1,10 +1,14 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/extension_factory.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 
 /// Generates an extension on `BuildContext` to access extensions and theme
 /// properties more easily.
-String buildContextExtension(Map<String, dynamic> tokens) {
-  final extensions = getExtensions(tokens);
+String buildContextExtension(
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+}) {
+  final extensions = getExtensions(tokens, config: config);
   var extensionShortcuts = <String>[];
   var extensionPart = '';
 

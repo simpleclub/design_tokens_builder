@@ -31,7 +31,7 @@ Right now we support generating/parsing the following:
     - Dimensions (also with px)
     - Font families
     - Font weights
-    - Line height (also with %)
+    - Line height (only %)
     - Numbers
     - Opacity (also with %)
     - Edge insets

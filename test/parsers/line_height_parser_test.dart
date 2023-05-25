@@ -10,14 +10,13 @@ void main() {
   });
 
   group('build value', () {
-    test('succeeds', () {
-      final result = parser.buildValue('16');
-      expect(result, '16.0');
-    });
-
     test('succeeds with %', () {
       final result = parser.buildValue('12%');
       expect(result, '0.12');
+    });
+
+    test('fails due to unsupported format', () {
+      expect(() => parser.buildValue('16'), throwsException);
     });
 
     test('fails', () {

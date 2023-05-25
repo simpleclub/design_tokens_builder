@@ -1,24 +1,35 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Get token sets', () {
+    final config = BuilderConfig(
+      tokenFilePath: 'some/path',
+    );
+
     test('succeeds', () {
-      final result = getTokenSets({
-        r'$metadata': {
-          'tokenSetOrder': ['global', 'light', 'dark'],
+      final result = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['global', 'light', 'dark'],
+          },
         },
-      });
+        config: config,
+      );
 
       expect(result, ['light', 'dark']);
     });
 
     test('succeeds without default theme', () {
-      final result = getTokenSets({
-        r'$metadata': {
-          'tokenSetOrder': ['light', 'dark'],
+      final result = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark'],
+          },
         },
-      });
+        config: config,
+      );
 
       expect(result, ['light', 'dark']);
     });

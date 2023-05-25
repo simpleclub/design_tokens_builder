@@ -6,15 +6,15 @@ import 'package:design_tokens_builder/builder_config/builder_config.dart';
 /// Removed the default set from the output.
 List<String> getTokenSets(
   Map<String, dynamic> tokens, {
+  required BuilderConfig config,
   bool includeDefaultSet = false,
-  BuilderConfig? config,
 }) {
   final tokenSets = List<String>.from(
     (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
   );
 
   if (!includeDefaultSet) {
-    tokenSets.remove(config?.defaultSetName ?? fallbackDefaultSetName);
+    tokenSets.remove(config.defaultSetName);
   }
 
   return tokenSets;

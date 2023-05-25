@@ -12,8 +12,7 @@ import 'package:tuple/tuple.dart';
 /// - `ColorScheme`
 /// - `TextStyle`
 /// - `ThemeData` with all extensions
-String buildTokenSet(
-  Map<String, dynamic> tokens, {
+String buildTokenSet(Map<String, dynamic> tokens, {
   required BuilderConfig config,
 }) {
   var output = '';
@@ -37,14 +36,16 @@ String buildTokenSet(
       );
       if (systemColors.isNotEmpty) {
         final colorSchemeValues = systemColors.keys.map(
-          (key) => '$key: ${_parseAttribute(
+              (key) => '$key: ${_parseAttribute(
             sys[key],
             config: config,
             isConst: false,
           )}',
         );
         colorScheme +=
-            'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(level: 4)}${colorSchemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
+        'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(
+            level: 4)}${colorSchemeValues.join(
+            ',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
 
       /// Generate text style.
@@ -57,7 +58,7 @@ String buildTokenSet(
 
       if (systemTextTheme.isNotEmpty) {
         final textThemeValues = systemTextTheme.keys.map(
-          (key) => '$key: ${_parseAttribute(
+              (key) => '$key: ${_parseAttribute(
             systemTextTheme[key],
             config: config,
             indentationLevel: 4,
@@ -65,22 +66,29 @@ String buildTokenSet(
           )}',
         );
         textTheme +=
-            'TextTheme get _textTheme => const TextTheme(\n${indentation(level: 4)}${textThemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
+        'TextTheme get _textTheme => const TextTheme(\n${indentation(
+            level: 4)}${textThemeValues.join(
+            ',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
       }
     }
 
-    final extensions = getExtensions(tokens);
+    final extensions = getExtensions(tokens, config: config);
     var themeData = '''@override
   ThemeData get themeData => ThemeData.$brightness().copyWith(
         colorScheme: _colorScheme,
         textTheme: _textTheme,
         extensions: [
-          ${extensions.keys.map((e) => '${buildExtensionName(e)}(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: ${_parseAttribute(e.item2, config: config, indentationLevel: 6)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
+          ${extensions.keys.map((e) => '${buildExtensionName(
+        e)}(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e
+        .item1}: ${_parseAttribute(
+        e.item2, config: config, indentationLevel: 6)}').join(
+        ',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(
+        ',\n${indentation(level: 4)}')},
         ],
       );''';
 
     output +=
-        '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
+    '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
   const ${tokenSet.firstUpperCased}ThemeData();
 
   $colorScheme
@@ -110,11 +118,10 @@ String _brightness({required tokenSet}) {
 }
 
 /// Parses all tokens and parses all attributes to dart readable format.
-String buildAttributeMap(
-  Map<String, dynamic> global,
-  BuilderConfig config, [
-  int depth = 1,
-]) {
+String buildAttributeMap(Map<String, dynamic> global,
+    BuilderConfig config, [
+      int depth = 1,
+    ]) {
   String recursiveMap(Map<String, dynamic> map, depth) {
     var output = '';
     for (final key in map.keys) {
@@ -133,8 +140,7 @@ String buildAttributeMap(
   return '{\n${recursiveMap(global, depth)}}';
 }
 
-dynamic _parseAttribute(
-  Map<String, dynamic> attr, {
+dynamic _parseAttribute(Map<String, dynamic> attr, {
   required BuilderConfig config,
   int indentationLevel = 2,
   bool isConst = true,
@@ -147,21 +153,17 @@ dynamic _parseAttribute(
     config: config,
   );
 
-  try {
-    return parser.parse(value, isConst: isConst);
-  } catch (e) {
-    print(e);
-    return value;
-  }
+  return parser.parse(value, isConst: isConst);
 }
 
 /// Tries to parse a value that looks like `120%` to a double like this `1.2`.
 ///
 /// Returns `null` if parsing failed.
 double parsePercentage(dynamic value) {
-  // TODO: Add support for doubles here. https://docs.tokens.studio/available-tokens/opacity-tokens
   if (value is String) {
-    final abs = int.tryParse(value.split('%').first);
+    final abs = int.tryParse(value
+        .split('%')
+        .first);
     if (abs != null) {
       return abs / 100;
     }
@@ -188,8 +190,7 @@ double parsePercentage(dynamic value) {
 ///   final BrightnessAdapted<GeneratedThemeData> data;
 /// }
 /// ```
-String generateTokenSetEnum(
-  List<String> tokenSets, {
+String generateTokenSetEnum(List<String> tokenSets, {
   required BuilderConfig config,
 }) {
   var cases = <String>[];
@@ -198,7 +199,7 @@ String generateTokenSetEnum(
   final regex = RegExp(r'\b(\w*)(?:light|dark|Light|Dark)\w*\b');
   final matches = regex.allMatches(tokenSetsString);
   final nonMatchedSets =
-      tokenSets.where((set) => !matches.any((match) => match.group(0) == set));
+  tokenSets.where((set) => !matches.any((match) => match.group(0) == set));
 
   // List of tuples containing all prefixes for topics.
   // Tuple: (prefix, initial match)
@@ -212,22 +213,24 @@ String generateTokenSetEnum(
 
   for (final uniquePrefix in uniquePrefixes) {
     final themeMatches =
-        prefixes.where((element) => element.item1 == uniquePrefix);
+    prefixes.where((element) => element.item1 == uniquePrefix);
     final themes =
-        themeMatches.map((e) => '${e.item2?.firstUpperCased}ThemeData()');
+    themeMatches.map((e) => '${e.item2?.firstUpperCased}ThemeData()');
     final lightTheme = themes.firstWhere(
-      (element) => element.contains('Light'),
+          (element) => element.contains('Light'),
       orElse: () => themes.first,
     );
     final darkTheme = themes.firstWhere(
-      (element) => element.contains('Dark'),
+          (element) => element.contains('Dark'),
       orElse: () => themes.first,
     );
 
     final set = (uniquePrefix?.isEmpty ?? true) ? 'general' : uniquePrefix;
 
     cases.add(
-      '$set(BrightnessAdapted(\n${indentation(level: 2)}dark: $darkTheme,\n${indentation(level: 2)}light: $lightTheme,\n${indentation(level: 1)}))',
+      '$set(BrightnessAdapted(\n${indentation(
+          level: 2)}dark: $darkTheme,\n${indentation(
+          level: 2)}light: $lightTheme,\n${indentation(level: 1)}))',
     );
   }
 
