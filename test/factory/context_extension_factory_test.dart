@@ -43,18 +43,21 @@ void main() {
     });
 
     test('without extensions', () {
-      final result = buildContextExtension({
-        'dark': {
-          'sys': {
-            'primary': {'value': '#f8e912', 'type': 'color'},
+      final result = buildContextExtension(
+        {
+          'dark': {
+            'sys': {
+              'primary': {'value': '#f8e912', 'type': 'color'},
+            }
+          },
+          '\$metadata': {
+            'tokenSetOrder': [
+              'dark',
+            ]
           }
         },
-        '\$metadata': {
-          'tokenSetOrder': [
-            'dark',
-          ]
-        }
-      }, config: config,);
+        config: config,
+      );
 
       expect(result, '''extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
