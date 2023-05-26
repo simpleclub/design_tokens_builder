@@ -34,7 +34,8 @@ class LineHeightParser extends DesignTokenParser {
         return '${parsePercentage(value)}';
       } else {
         throw Exception(
-            'Unable to parse line height that does not contain a %. Value: $value');
+          'Unable to parse line height that does not contain "%". Value: $value',
+        );
       }
     }
 
