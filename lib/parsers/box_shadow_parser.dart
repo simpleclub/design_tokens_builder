@@ -46,7 +46,7 @@ class BoxShadowParser extends DesignTokenParser {
   @override
   String buildValue(value) {
     if (value is Map<String, dynamic>) {
-      return '[${_parseShadow(value)}]';
+      return '[\n${indent()}${_parseShadow(value)},\n${indent(-1)}]';
     } else if (value is List<dynamic>) {
       var parsedShadows = <String>[];
 
@@ -54,13 +54,15 @@ class BoxShadowParser extends DesignTokenParser {
         parsedShadows.add(_parseShadow(shadow));
       }
 
-      return '[${parsedShadows.join(', ')}]';
+      return '[\n${indent()}${parsedShadows.join(',\n${indent()}')},\n${indent(-1)}]';
     }
 
     throw Exception('Unable to parse box shadow with data: $value');
   }
 
-  String _parseShadow(Map<String, dynamic> shadow) {
+  String _parseShadow(
+    Map<String, dynamic> shadow,
+  ) {
     final parseDimension = DimensionParser().parse;
     final x = parseDimension(shadow['x']);
     final y = parseDimension(shadow['y']);
@@ -71,6 +73,6 @@ class BoxShadowParser extends DesignTokenParser {
     final style =
         shadow['type'] == 'dropShadow' ? 'BlurStyle.normal' : 'BlurStyle.inner';
 
-    return 'BoxShadow(color: $color, offset: $offset, blurRadius: $blur, spreadRadius: $spread, blurStyle: $style)';
+    return 'BoxShadow(\n${indent(1)}color: $color,\n${indent(1)}offset: $offset,\n${indent(1)}blurRadius: $blur,\n${indent(1)}spreadRadius: $spread,\n${indent(1)}blurStyle: $style,\n${indent()})';
   }
 }

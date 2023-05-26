@@ -22,7 +22,7 @@ void main() {
 
       expect(
         parser.buildValue(map),
-        '[BoxShadow(color: Color(0xFFFFFFFF), offset: Offset(4.0, 2.0), blurRadius: 5.0, spreadRadius: 3.0, blurStyle: BlurStyle.normal)]',
+        '[\n  BoxShadow(\n    color: Color(0xFFFFFFFF),\n    offset: Offset(4.0, 2.0),\n    blurRadius: 5.0,\n    spreadRadius: 3.0,\n    blurStyle: BlurStyle.normal,\n  ),\n]',
       );
     });
 
@@ -48,7 +48,7 @@ void main() {
 
       expect(
         parser.buildValue(map),
-        '[BoxShadow(color: Color(0xFFFFFFFF), offset: Offset(4.0, 2.0), blurRadius: 5.0, spreadRadius: 3.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFFFFFFFF), offset: Offset(4.0, 2.0), blurRadius: 5.0, spreadRadius: 3.0, blurStyle: BlurStyle.inner)]',
+        '[\n  BoxShadow(\n    color: Color(0xFFFFFFFF),\n    offset: Offset(4.0, 2.0),\n    blurRadius: 5.0,\n    spreadRadius: 3.0,\n    blurStyle: BlurStyle.normal,\n  ),\n  BoxShadow(\n    color: Color(0xFFFFFFFF),\n    offset: Offset(4.0, 2.0),\n    blurRadius: 5.0,\n    spreadRadius: 3.0,\n    blurStyle: BlurStyle.inner,\n  ),\n]',
       );
     });
 

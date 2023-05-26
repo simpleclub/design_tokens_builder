@@ -36,20 +36,20 @@ class SpacingParser extends DesignTokenParser {
           final vSpace = parseDimension(spacingValues[0]);
           final hSpace = parseDimension(spacingValues[1]);
 
-          return 'EdgeInsets.symmetric(vertical: $vSpace, horizontal: $hSpace)';
+          return 'EdgeInsets.symmetric(\n${indent()}vertical: $vSpace,\n${indent()}horizontal: $hSpace,\n${indent(-1)})';
         case 3:
           final top = parseDimension(spacingValues[0]);
           final hSpace = parseDimension(spacingValues[1]);
           final bottom = parseDimension(spacingValues[2]);
 
-          return 'EdgeInsets.only(top: $top, right: $hSpace, bottom: $bottom, left: $hSpace)';
+          return 'EdgeInsets.only(\n${indent()}top: $top,\n${indent()}right: $hSpace,\n${indent()}bottom: $bottom,\n${indent()}left: $hSpace,\n${indent(-1)})';
         case 4:
           final top = parseDimension(spacingValues[0]);
           final right = parseDimension(spacingValues[1]);
           final bottom = parseDimension(spacingValues[2]);
           final left = parseDimension(spacingValues[3]);
 
-          return 'EdgeInsets.only(top: $top, right: $right, bottom: $bottom, left: $left)';
+          return 'EdgeInsets.only(\n${indent()}top: $top,\n${indent()}right: $right,\n${indent()}bottom: $bottom,\n${indent()}left: $left,\n${indent(-1)})';
         default:
           throw Exception(
             'Cannot parse spacing since there are ${spacingValues.length} values. Please provide 1-4 values.',

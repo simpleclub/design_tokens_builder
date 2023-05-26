@@ -21,7 +21,7 @@ void main() {
 
       expect(
         parser.buildValue(value),
-        'EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0)',
+        'EdgeInsets.symmetric(\n  vertical: 4.0,\n  horizontal: 10.0,\n)',
       );
     });
 
@@ -30,7 +30,7 @@ void main() {
 
       expect(
         parser.buildValue(value),
-        'EdgeInsets.only(top: 4.0, right: 10.0, bottom: 2.0, left: 10.0)',
+        'EdgeInsets.only(\n  top: 4.0,\n  right: 10.0,\n  bottom: 2.0,\n  left: 10.0,\n)',
       );
     });
 
@@ -39,7 +39,7 @@ void main() {
 
       expect(
         parser.buildValue(value),
-        'EdgeInsets.only(top: 4.0, right: 10.0, bottom: 2.0, left: 5.0)',
+        'EdgeInsets.only(\n  top: 4.0,\n  right: 10.0,\n  bottom: 2.0,\n  left: 5.0,\n)',
       );
     });
 

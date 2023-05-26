@@ -184,9 +184,29 @@ final attributes = {
   'elevatedButton': {
     'height': 38.0,
     'color': const Color(0xFF3A9BDC),
-    'padding': const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+    'padding': const EdgeInsets.only(
+      top: 1.0,
+      right: 0.0,
+      bottom: 3.0,
+      left: 4.0,
+    ),
     'borderRadius': const BorderRadius.all(Radius.circular(16.0)),
-    'shadow': const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
+    'shadow': const [
+      BoxShadow(
+        color: Color(0xFF000000),
+        offset: Offset(0.0, 3.0),
+        blurRadius: 5.0,
+        spreadRadius: 0.0,
+        blurStyle: BlurStyle.normal,
+      ),
+      BoxShadow(
+        color: Color(0xFF000000),
+        offset: Offset(0.0, 0.0),
+        blurRadius: 0.0,
+        spreadRadius: 0.0,
+        blurStyle: BlurStyle.inner,
+      ),
+    ],
     'border': Border.all(
       width: 3.0,
       color: const Color(0xFF293133),
@@ -388,9 +408,29 @@ class DarkThemeData with GeneratedThemeData {
         ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(
+              top: 1.0,
+              right: 0.0,
+              bottom: 3.0,
+              left: 4.0,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
+            shadow: const [
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 3.0),
+                blurRadius: 5.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.normal,
+              ),
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.inner,
+              ),
+            ],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
@@ -587,9 +627,29 @@ class LightThemeData with GeneratedThemeData {
         ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(
+              top: 1.0,
+              right: 0.0,
+              bottom: 3.0,
+              left: 4.0,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
+            shadow: const [
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 3.0),
+                blurRadius: 5.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.normal,
+              ),
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.inner,
+              ),
+            ],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
@@ -786,9 +846,29 @@ class CustomThemeData with GeneratedThemeData {
         ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(
+              top: 1.0,
+              right: 0.0,
+              bottom: 3.0,
+              left: 4.0,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
+            shadow: const [
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 3.0),
+                blurRadius: 5.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.normal,
+              ),
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.inner,
+              ),
+            ],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
@@ -985,9 +1065,29 @@ class PartyLightThemeData with GeneratedThemeData {
         ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(
+              top: 1.0,
+              right: 0.0,
+              bottom: 3.0,
+              left: 4.0,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
+            shadow: const [
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 3.0),
+                blurRadius: 5.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.normal,
+              ),
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.inner,
+              ),
+            ],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
@@ -1184,9 +1284,29 @@ class PartyDarkThemeData with GeneratedThemeData {
         ElevatedButtonThemeExtension(
             height: 38.0,
             color: const Color(0xFF3A9BDC),
-            padding: const EdgeInsets.only(top: 1.0, right: 0.0, bottom: 3.0, left: 4.0),
+            padding: const EdgeInsets.only(
+              top: 1.0,
+              right: 0.0,
+              bottom: 3.0,
+              left: 4.0,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-            shadow: const [BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 3.0), blurRadius: 5.0, spreadRadius: 0.0, blurStyle: BlurStyle.normal), BoxShadow(color: Color(0xFF000000), offset: Offset(0.0, 0.0), blurRadius: 0.0, spreadRadius: 0.0, blurStyle: BlurStyle.inner)],
+            shadow: const [
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 3.0),
+                blurRadius: 5.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.normal,
+              ),
+              BoxShadow(
+                color: Color(0xFF000000),
+                offset: Offset(0.0, 0.0),
+                blurRadius: 0.0,
+                spreadRadius: 0.0,
+                blurStyle: BlurStyle.inner,
+              ),
+            ],
             border: Border.all(
               width: 3.0,
               color: const Color(0xFF293133),
