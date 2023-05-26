@@ -1,10 +1,10 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/extension_factory.dart';
-import 'package:design_tokens_builder/utils/color_utils.dart';
+import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:design_tokens_builder/utils/typography_utils.dart';
 import 'package:tuple/tuple.dart';
-import 'package:yaml/yaml.dart';
 
 /// Generates theming for all available token sets.
 ///
@@ -14,12 +14,12 @@ import 'package:yaml/yaml.dart';
 /// - `ThemeData` with all extensions
 String buildTokenSet(
   Map<String, dynamic> tokens, {
-  required YamlMap config,
+  required BuilderConfig config,
 }) {
   var output = '';
 
-  final tokenSets = getTokenSets(tokens);
-  final defaultSetData = tokens['global'] as Map<String, dynamic>;
+  final tokenSets = getTokenSets(tokens, config: config);
+  final defaultSetData = tokens[config.defaultSetName] as Map<String, dynamic>;
   final defaultSys = defaultSetData['sys'] as Map<String, dynamic>;
   for (final tokenSet in tokenSets) {
     final setData = tokens[tokenSet] as Map<String, dynamic>;
@@ -36,10 +36,19 @@ String buildTokenSet(
         fallbackSetData: defaultSys,
       );
       if (systemColors.isNotEmpty) {
-        final colorSchemeValues = systemColors.keys
-            .map((key) => '$key: ${_parseAttribute(sys[key], config: config)}');
+        final colorSchemeValues = systemColors.keys.map(
+          (key) => '$key: ${_parseAttribute(
+            sys[key],
+            config: config,
+            isConst: false,
+          )}',
+        );
         colorScheme +=
-            'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(level: 4)}${colorSchemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
+            'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(
+          level: 4,
+        )}${colorSchemeValues.join(
+          ',\n${indentation(level: 4)}',
+        )},\n${indentation(level: 3)});';
       }
 
       /// Generate text style.
@@ -51,24 +60,44 @@ String buildTokenSet(
       systemTextTheme = prepareTypographyTokens(systemTextTheme);
 
       if (systemTextTheme.isNotEmpty) {
-        final textThemeValues =
-            systemTextTheme.keys.map((key) => '$key: ${_parseAttribute(
-                  systemTextTheme[key],
-                  config: config,
-                  indentationLevel: 4,
-                )}');
+        final textThemeValues = systemTextTheme.keys.map(
+          (key) => '$key: ${_parseAttribute(
+            systemTextTheme[key],
+            config: config,
+            indentationLevel: 4,
+            isConst: false,
+          )}',
+        );
         textTheme +=
-            'TextTheme get _textTheme => const TextTheme(\n${indentation(level: 4)}${textThemeValues.join(',\n${indentation(level: 4)}')},\n${indentation(level: 3)});';
+            'TextTheme get _textTheme => const TextTheme(\n${indentation(
+          level: 4,
+        )}${textThemeValues.join(
+          ',\n${indentation(level: 4)}',
+        )},\n${indentation(level: 3)});';
       }
     }
 
-    final extensions = getExtensions(tokens);
+    final extensions = getExtensions(tokens, config: config);
     var themeData = '''@override
   ThemeData get themeData => ThemeData.$brightness().copyWith(
         colorScheme: _colorScheme,
         textTheme: _textTheme,
         extensions: [
-          ${extensions.keys.map((e) => '${e.toCapitalized()}${extensions[e]!.first.item2['type'].toString().toCapitalized()}s(\n${indentation(level: 6)}${extensions[e]!.map((e) => '${e.item1}: const ${_parseAttribute(e.item2, config: config)}').join(',\n${indentation(level: 6)}')},\n${indentation(level: 5)})').join(',\n${indentation(level: 4)}')},
+          ${extensions.keys.map(
+              (e) => '${buildExtensionName(
+                e,
+              )}(\n${indentation(level: 6)}${extensions[e]!.map(
+                    (e) => '${e.item1}: ${_parseAttribute(
+                      e.item2,
+                      config: config,
+                      indentationLevel: 6,
+                    )}',
+                  ).join(
+                    ',\n${indentation(level: 6)}',
+                  )},\n${indentation(level: 5)})',
+            ).join(
+              ',\n${indentation(level: 4)}',
+            )},
         ],
       );''';
 
@@ -86,7 +115,7 @@ String buildTokenSet(
 ''';
   }
 
-  return '$output${generateTokenSetEnum(tokenSets)}';
+  return '$output${generateTokenSetEnum(tokenSets, config: config)}';
 }
 
 /// Returns the brightness based on the token set name.
@@ -105,7 +134,7 @@ String _brightness({required tokenSet}) {
 /// Parses all tokens and parses all attributes to dart readable format.
 String buildAttributeMap(
   Map<String, dynamic> global,
-  YamlMap config, [
+  BuilderConfig config, [
   int depth = 1,
 ]) {
   String recursiveMap(Map<String, dynamic> map, depth) {
@@ -128,133 +157,35 @@ String buildAttributeMap(
 
 dynamic _parseAttribute(
   Map<String, dynamic> attr, {
-  required YamlMap config,
-  final int indentationLevel = 2,
+  required BuilderConfig config,
+  int indentationLevel = 2,
+  bool isConst = true,
 }) {
   final value = attr['value'] as dynamic;
-  switch (attr['type']) {
-    case 'color':
-      return parseColor(attr['value']);
-    case 'typography':
-      return parseTextStyle(
-        attr,
-        config: config,
-        indentationLevel: indentationLevel,
-      );
-    case 'fontFamilies':
-      return parseFontFamily(value, config: config);
-    case 'fontWeights':
-      final parsed = tryParseFontWeight(value);
-      if (parsed == null) return value;
+  final type = attr['type'] as String;
+  final parser = parserForType(
+    type,
+    indentationLevel: indentationLevel + 1,
+    config: config,
+  );
 
-      return parsed;
-    case 'textDecoration':
-      return parseTextDecoration(value);
-    case 'lineHeights':
-      final parsed = tryParsePercentageToDouble(value);
-      if (parsed == null) return value;
-
-      return parsed;
-    case 'dimension':
-      final parsed = tryParsePixel(value);
-      if (parsed == null) return value;
-
-      return parsed;
-    case 'textCase':
-    case 'fontSizes':
-    case 'letterSpacing':
-    case 'paragraphSpacing':
-      final number = double.tryParse(value);
-      if (number != null) return number;
-
-      final integer = int.tryParse(value);
-      if (integer != null) return integer;
-
-      return '\'$value\'';
-    default:
-      throw Exception('Unknown attribute type: ${attr['type']}');
-  }
-}
-
-/// Tries to parse a value that looks like `120px` to a int like this `120`.
-///
-/// Returns `null` if parsing failed.
-int? tryParsePixel(dynamic value) {
-  if (value is String) {
-    final pixel = int.tryParse(value.split('px').first);
-    if (pixel != null) {
-      return pixel;
-    }
-  }
-
-  return null;
+  return parser.parse(value, isConst: isConst);
 }
 
 /// Tries to parse a value that looks like `120%` to a double like this `1.2`.
 ///
 /// Returns `null` if parsing failed.
-double? tryParsePercentageToDouble(dynamic value) {
+double parsePercentage(dynamic value) {
   if (value is String) {
-    final abs = int.tryParse(value.split('%').first);
+    final abs = int.tryParse(
+      value.split('%').first,
+    );
     if (abs != null) {
       return abs / 100;
     }
   }
 
-  return null;
-}
-
-/// Try to parse and return a flutter readable font weight.
-///
-/// If parsing fails returns `null`.
-String? tryParseFontWeight(dynamic value) {
-  if (value is String) {
-    final abs = double.parse(value).toInt();
-    final allowedWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-
-    if (allowedWeights.contains(abs)) {
-      return 'FontWeight.w$abs';
-    }
-  }
-
-  return null;
-}
-
-/// Try to parse and return a flutter readable text decoration.
-///
-/// If parsing fails returns `null`.
-String parseTextDecoration(String value) {
-  switch (value) {
-    case 'none':
-      return 'TextDecoration.none';
-    case 'underline':
-      return 'TextDecoration.underline';
-    case 'line-through':
-      return 'TextDecoration.lineThrough';
-    default:
-      return '';
-  }
-}
-
-/// Parses and return a flutter readable font family.
-///
-/// Replaces the font name of the token value with its configured flutter name
-/// found in `tokenbuilder.yaml`.
-/// Returns `value` if no font config was set in `config`.
-String parseFontFamily(dynamic value, {required YamlMap config}) {
-  if (config.containsKey('fontConfig')) {
-    final mappedFonts = config['fontConfig'] as YamlList;
-    if (!mappedFonts.any((element) => element['family'] == value)) {
-      return '\'$value\'';
-    }
-
-    final currentFont =
-        mappedFonts.firstWhere((element) => element['family'] == value);
-
-    return '\'${currentFont['flutterName']}\'';
-  }
-
-  return '\'$value\'';
+  throw Exception('Unable to parse percentage value with data: $value');
 }
 
 /// Generates an enum with all available token sets.
@@ -275,9 +206,12 @@ String parseFontFamily(dynamic value, {required YamlMap config}) {
 ///   final BrightnessAdapted<GeneratedThemeData> data;
 /// }
 /// ```
-String generateTokenSetEnum(List<String> tokenSets) {
+String generateTokenSetEnum(
+  List<String> tokenSets, {
+  required BuilderConfig config,
+}) {
   var cases = <String>[];
-  tokenSets.remove('global');
+  tokenSets.remove(config.defaultSetName);
   final tokenSetsString = tokenSets.join(',');
   final regex = RegExp(r'\b(\w*)(?:light|dark|Light|Dark)\w*\b');
   final matches = regex.allMatches(tokenSetsString);
@@ -311,7 +245,12 @@ String generateTokenSetEnum(List<String> tokenSets) {
     final set = (uniquePrefix?.isEmpty ?? true) ? 'general' : uniquePrefix;
 
     cases.add(
-        '$set(BrightnessAdapted(\n${indentation(level: 2)}dark: $darkTheme,\n${indentation(level: 2)}light: $lightTheme,\n${indentation(level: 1)}))');
+      '$set(BrightnessAdapted(\n${indentation(
+        level: 2,
+      )}dark: $darkTheme,\n${indentation(
+        level: 2,
+      )}light: $lightTheme,\n${indentation(level: 1)}))',
+    );
   }
 
   return '''enum GeneratedTokenSet {

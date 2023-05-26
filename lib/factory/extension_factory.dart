@@ -1,3 +1,5 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
+import 'package:design_tokens_builder/utils/design_token_map_extension.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:tuple/tuple.dart';
@@ -5,21 +7,24 @@ import 'package:tuple/tuple.dart';
 /// Generates all extension.
 ///
 /// Creates an extension for each token group that is not `sys`.
-String buildExtensions(Map<String, dynamic> tokens) {
-  final extensions = getExtensions(tokens);
+String buildExtensions(
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+}) {
+  final extensions = getExtensions(tokens, config: config);
 
   var output = '';
   for (final entry in extensions.entries) {
     final extension = entry.value;
-    final name = buildExtensionName(entry);
+    final name = buildExtensionName(entry.key);
     output += '''class $name extends ThemeExtension<$name> {
   $name({\n${extension.map((e) => '    this.${e.item1}').join(',\n')},\n  });
 
-${extension.map((e) => '  final ${e.item2['type'].toString().toCapitalized()}? ${e.item1};').join('\n')}
+${extension.map((e) => '  final ${e.item2.flutterType}? ${e.item1};').join('\n')}
 
   @override
   $name copyWith({
-${extension.map((e) => '    ${e.item2['type'].toString().toCapitalized()}? ${e.item1},').join('\n')}
+${extension.map((e) => '    ${e.item2.flutterType}? ${e.item1},').join('\n')}
   }) {
     return $name(
 ${extension.map((e) => '      ${e.item1}: ${e.item1} ?? this.${e.item1},').join('\n')}
@@ -32,7 +37,7 @@ ${extension.map((e) => '      ${e.item1}: ${e.item1} ?? this.${e.item1},').join(
       return this;
     }
     return $name(
-${extension.map((e) => '      ${e.item1}: ${e.item2['type'].toString().toCapitalized()}.lerp(${e.item1}, other.${e.item1}, t),').join('\n')}
+${extension.map((e) => '${indentation(level: 3)}${e.item1}: ${e.item2.parser.buildLerp(e.item1)},').join('\n')}
     );
   }
 }
@@ -42,9 +47,9 @@ ${extension.map((e) => '      ${e.item1}: ${e.item2['type'].toString().toCapital
 
   output += '''extension GeneratedTheme on ThemeData {
 ${extensions.keys.map((e) {
-    final typeName =
-        '${extensions[e]!.first.item2['type'].toString().toCapitalized()}s';
-    return '  ${e.toCapitalized()}$typeName? get $e$typeName => extension<${e.toCapitalized()}$typeName>();';
+    final extensionTypeName = buildExtensionName(e);
+    final extensionVariableName = e.firstLowerCased;
+    return '  $extensionTypeName? get $extensionVariableName => extension<$extensionTypeName>();';
   }).join('\n')}
 }''';
 
@@ -57,18 +62,16 @@ ${extensions.keys.map((e) {
 /// E.g.
 /// Design token:
 /// ```
-/// content: {
+/// specialColors: {
 ///   color1: {
 ///     value: #000000,
 ///     type: color
 ///   }
 /// }
 /// ```
-/// to name -> `ContentColors`
-String buildExtensionName(
-    MapEntry<String, List<Tuple2<String, Map<String, dynamic>>>> extension) {
-  final type = extension.value.first.item2['type'].toString();
-  return '${extension.key.firstUpperCased}${type.toCapitalized()}s';
+/// to name -> `SpecialColorsThemeExtension`
+String buildExtensionName(String extensionName) {
+  return '${extensionName.firstUpperCased}ThemeExtension';
 }
 
 /// Returns a map consisting of all available extensions.
@@ -95,20 +98,29 @@ String buildExtensionName(
 /// }
 /// ```
 Map<String, List<Tuple2<String, Map<String, dynamic>>>> getExtensions(
-  Map<String, dynamic> tokens,
-) {
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+}) {
   Map<String, List<Tuple2<String, Map<String, dynamic>>>> extensions = {};
 
-  final tokenSets = getTokenSets(tokens);
+  final tokenSets = getTokenSets(
+    tokens,
+    includeDefaultSet: true,
+    config: config,
+  );
   for (final tokenSet in tokenSets) {
     final setData = tokens[tokenSet] as Map<String, dynamic>;
     final setDataKeys = setData.keys.toList()..remove('sys');
     for (final key in setDataKeys) {
       if (!extensions.keys.contains(key)) {
-        extensions[key] = (setData[key] as Map<String, dynamic>)
-            .keys
-            .map((e) => Tuple2(e, setData[key][e] as Map<String, dynamic>))
-            .toList();
+        final extension = setData[key] as Map<String, dynamic>;
+        // Only create an extension when the key does not have an value and
+        // therefore is a group.
+        if (!extension.containsKey('value')) {
+          extensions[key] = extension.keys
+              .map((e) => Tuple2(e, setData[key][e] as Map<String, dynamic>))
+              .toList();
+        }
       }
     }
   }

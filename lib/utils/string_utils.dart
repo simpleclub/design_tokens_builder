@@ -19,4 +19,5 @@ extension StringCasingExtension on String {
       length > 0 ? '${this[0].toLowerCase()}${substring(1)}' : '';
 }
 
+/// Returns a string representing the indentation for the given [level].
 String indentation({int level = 1}) => '  ' * level;

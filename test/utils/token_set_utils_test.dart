@@ -1,24 +1,35 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Get token sets', () {
+    final config = BuilderConfig(
+      tokenFilePath: 'some/path',
+    );
+
     test('succeeds', () {
-      final result = getTokenSets({
-        r'$metadata': {
-          'tokenSetOrder': ['global', 'light', 'dark'],
+      final result = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['global', 'light', 'dark'],
+          },
         },
-      });
+        config: config,
+      );
 
       expect(result, ['light', 'dark']);
     });
 
     test('succeeds without default theme', () {
-      final result = getTokenSets({
-        r'$metadata': {
-          'tokenSetOrder': ['light', 'dark'],
+      final result = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark'],
+          },
         },
-      });
+        config: config,
+      );
 
       expect(result, ['light', 'dark']);
     });
@@ -26,13 +37,16 @@ void main() {
 
   group('Override and merge token set', () {
     test('works properly', () {
-      final result = overrideAndMergeTokenSet({
-        'key1': 'value1',
-        'key2': 'value2',
-      }, withSet: {
-        'key2': 'newValue2',
-        'key3': 'value3',
-      });
+      final result = overrideAndMergeTokenSet(
+        {
+          'key1': 'value1',
+          'key2': 'value2',
+        },
+        withSet: {
+          'key2': 'newValue2',
+          'key3': 'value3',
+        },
+      );
 
       expect(result, {
         'key1': 'value1',
@@ -78,13 +92,16 @@ void main() {
 
   group('Get tokens of type', () {
     test('succeeds', () {
-      final result = getTokensOfType('someType', tokenSetData: {
-        'small': {'value': 'Some value', 'type': 'someType'},
-        'medium': {'value': 'Some value', 'type': 'someType 3'},
-        'display': {
-          'large': {'value': 'Some value', 'type': 'someType'}
+      final result = getTokensOfType(
+        'someType',
+        tokenSetData: {
+          'small': {'value': 'Some value', 'type': 'someType'},
+          'medium': {'value': 'Some value', 'type': 'someType 3'},
+          'display': {
+            'large': {'value': 'Some value', 'type': 'someType'}
+          },
         },
-      });
+      );
 
       expect(result, {
         'small': {'value': 'Some value', 'type': 'someType'},
@@ -96,16 +113,20 @@ void main() {
     });
 
     test('succeeds with fallback', () {
-      final result = getTokensOfType('someType', tokenSetData: {
-        'small': {'value': 'Some new value', 'type': 'someType'},
-        'medium': {'value': 'Some value', 'type': 'someType 3'},
-        'display': {
-          'large': {'value': 'Some value', 'type': 'someType'}
+      final result = getTokensOfType(
+        'someType',
+        tokenSetData: {
+          'small': {'value': 'Some new value', 'type': 'someType'},
+          'medium': {'value': 'Some value', 'type': 'someType 3'},
+          'display': {
+            'large': {'value': 'Some value', 'type': 'someType'}
+          },
         },
-      }, fallbackSetData: {
-        'small': {'value': 'Some value', 'type': 'someType'},
-        'large': {'value': 'Some value', 'type': 'someType'},
-      });
+        fallbackSetData: {
+          'small': {'value': 'Some value', 'type': 'someType'},
+          'large': {'value': 'Some value', 'type': 'someType'},
+        },
+      );
 
       expect(result.keys.length, 3);
       expect(result['small'], {'value': 'Some new value', 'type': 'someType'});

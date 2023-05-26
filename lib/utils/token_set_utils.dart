@@ -1,11 +1,22 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
+
 /// Parses token sets from token data and returns a list of all available tokens
 /// sets.
 ///
 /// Removed the default set from the output.
-List<String> getTokenSets(Map<String, dynamic> tokens) {
-  final tokenSets = (tokens['\$metadata']['tokenSetOrder'] as List)
-      .cast<String>()
-    ..remove('global');
+List<String> getTokenSets(
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+  bool includeDefaultSet = false,
+}) {
+  final tokenSets = List<String>.from(
+    (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
+  );
+
+  if (!includeDefaultSet) {
+    tokenSets.remove(config.defaultSetName);
+  }
+
   return tokenSets;
 }
 

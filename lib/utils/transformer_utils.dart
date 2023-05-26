@@ -60,12 +60,14 @@ Map<String, dynamic> _resolveAliasesAndMath(
         // Need to add roundTo method manually since its nothing
         // math_expressions package supports.
         parser.addFunction(
-            'roundTo', (List<double> args) => args.first.round());
+          'roundTo',
+          (List<double> args) => args.first.round(),
+        );
         Expression exp = parser.parse(newValue);
         newValue = '${exp.evaluate(EvaluationType.REAL, ContextModel())}';
       } catch (e) {
         // We do not catch anything here since we only want to evaluate
-        // mathematical expressions and dont care about anything else.
+        // mathematical expressions and don't care about anything else.
       }
       map[entry.key] = newValue;
     }
