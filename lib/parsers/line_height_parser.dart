@@ -3,7 +3,8 @@ import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 
 /// Parses the line height according to Design Token Studio.
 ///
-/// Only supports parsing percentages since Flutter is not able to .
+/// Only supports parsing percentages since Flutter is not able to use absolute
+/// line heights. See https://api.flutter.dev/flutter/painting/TextStyle/height.html
 ///
 /// E.g.
 /// Figma design tokens:
@@ -31,6 +32,9 @@ class LineHeightParser extends DesignTokenParser {
     if (value is String) {
       if (value.contains('%')) {
         return '${parsePercentage(value)}';
+      } else {
+        throw Exception(
+            'Unable to parse line height that does not contain a %. Value: $value');
       }
     }
 

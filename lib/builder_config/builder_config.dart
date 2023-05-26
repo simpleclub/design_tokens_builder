@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+import 'package:collection/collection.dart';
 import 'package:yaml/yaml.dart';
 
 /// Fallback value for `defaultSetName` config.
@@ -16,7 +16,7 @@ String _tokenFilePath(YamlMap yaml) {
 
 /// Class representing the structure of the required builder config file
 /// `tokenbuilder.yaml`.
-class BuilderConfig extends Equatable {
+class BuilderConfig {
   /// Constructs a [BuilderConfig].
   BuilderConfig({
     required this.tokenFilePath,
@@ -46,15 +46,21 @@ class BuilderConfig extends Equatable {
   final List<FontConfig> fontConfig;
 
   @override
-  List<Object?> get props => [
-        tokenFilePath,
-        defaultSetName,
-        fontConfig,
-      ];
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BuilderConfig &&
+          runtimeType == other.runtimeType &&
+          tokenFilePath == other.tokenFilePath &&
+          defaultSetName == other.defaultSetName &&
+          DeepCollectionEquality().equals(fontConfig, other.fontConfig);
+
+  @override
+  int get hashCode =>
+      tokenFilePath.hashCode ^ defaultSetName.hashCode ^ fontConfig.hashCode;
 }
 
 /// Class representing the configuration of fonts used in design token.
-class FontConfig extends Equatable {
+class FontConfig {
   /// Constructs a [FontConfig].
   FontConfig({required this.family, required this.flutterName});
 
@@ -70,8 +76,13 @@ class FontConfig extends Equatable {
   final String flutterName;
 
   @override
-  List<Object?> get props => [
-        family,
-        flutterName,
-      ];
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FontConfig &&
+          runtimeType == other.runtimeType &&
+          family == other.family &&
+          flutterName == other.flutterName;
+
+  @override
+  int get hashCode => family.hashCode ^ flutterName.hashCode;
 }
