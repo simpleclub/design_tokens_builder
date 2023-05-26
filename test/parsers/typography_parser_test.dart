@@ -21,14 +21,14 @@ void main() {
       final map = {
         'fontFamily': 'My Font',
         'fontWeight': '400',
-        'lineHeight': '16',
+        'lineHeight': '120%',
         'fontSize': '17',
         'textDecoration': 'underline',
       };
 
       expect(
         parser.buildValue(map),
-        'TextStyle(\n  fontFamily: \'MyFlutterFont\',\n  fontWeight: FontWeight.w400,\n  height: 16.0,\n  fontSize: 17.0,\n  decoration: TextDecoration.underline,\n)',
+        'TextStyle(\n  fontFamily: \'MyFlutterFont\',\n  fontWeight: FontWeight.w400,\n  height: 1.2,\n  fontSize: 17.0,\n  decoration: TextDecoration.underline,\n)',
       );
     });
 
