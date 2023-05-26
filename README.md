@@ -1,5 +1,5 @@
 <h1 align="center">
-    ![Cover image](https://github.com/simpleclub/design_tokens_builder/assets/35028202/618f71e9-1b30-4955-b3ae-9708f3b8d22c)
+    <img src="https://github.com/simpleclub/design_tokens_builder/assets/35028202/618f71e9-1b30-4955-b3ae-9708f3b8d22c" alt="Cover image" />
 </h1>
 
 ![design_tokens_builder on Pub](https://img.shields.io/pub/v/design_tokens_builder.svg)
