@@ -1,7 +1,3 @@
-// Ignores this rule because Flutter actually depends on the package so in
-// theory it is available for us to use. Analyzer only complains because we do
-// not depend directly on it.
-// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:yaml/yaml.dart';
 
