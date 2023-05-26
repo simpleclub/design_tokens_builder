@@ -65,13 +65,8 @@ your `ThemeWidget`.
 
 ```dart
 return Theme(
-data: GeneratedTokenSet.general.data.dark,
-child
-:
-Container
-(
-)
-,
+  data: GeneratedTokenSet.general.data.dark,
+  child: Container(),
 );
 ```
 
