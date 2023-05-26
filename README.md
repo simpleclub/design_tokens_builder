@@ -1,8 +1,5 @@
 <h1 align="center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/simpleclub/design_tokens_builder/assets/35028202/6ec91bfa-3124-4430-9ed0-6d616fe5c838">
-      <img alt="Logo" src="https://github.com/simpleclub/design_tokens_builder/assets/35028202/0e70832e-78f2-4906-a5b1-940804f2619a">
-    </picture>
+    <img src="https://github.com/simpleclub/design_tokens_builder/assets/35028202/618f71e9-1b30-4955-b3ae-9708f3b8d22c" alt="Cover image" />
 </h1>
 
 ![design_tokens_builder on Pub](https://img.shields.io/pub/v/design_tokens_builder.svg)
@@ -13,7 +10,7 @@ based on Material 3 than creating a lot of custom widgets for each token.
 
 ## Features
 
-Right now we support generating/parsing the following:
+Right now, we support generating/parsing the following:
 
 - `ColorScheme`
 - `TextStyle`
@@ -48,7 +45,7 @@ Right now we support generating/parsing the following:
    file ([see example project](https://github.com/simpleclub/design_tokens_builder/blob/main/example/lib/tokenbuilder.yaml))
    in your `lib` directory
     1. Add the path leading to the json to the configuration file
-    2. Map Figma font names to Flutter font family names in configuration file
+    2. Map Figma font names to Flutter font family names in the configuration file
 3. Add this builder to `build.yaml`
 
 ```yaml
@@ -61,70 +58,65 @@ targets:
 
 ## Usage
 
-Before you can use the tokens you have to start the build runner by
+Before you can use the tokens, you have to start the build runner by
 executing `flutter pub run build_runner build`.
-After that just make sure to use one of the `GeneratedTokenSet` for the selected `Brightness` in
+After that, just make sure to use one of the `GeneratedTokenSet` for the selected `Brightness` in
 your `ThemeWidget`.
 
 ```dart
 return Theme(
-data: GeneratedTokenSet.general.data.dark,
-child
-:
-Container
-(
-)
-,
+  data: GeneratedTokenSet.general.data.dark,
+  child: Container(),
 );
 ```
 
-By listening on Brightness changes you could then easily switch between themes. You could also
+By listening to Brightness changes, you could then easily switch between themes. You could also
 easily change the token set.
 
 This package also exposes the generated theme extensions by building a `BuildContext` extension. You
-can use the shortcut like this `context.yourExtension`. We also provide shortcuts for theme related
+can use the shortcut like this `context.yourExtension`. We also provide shortcuts for theme-related
 properties like `context.colorScheme` and `context.textTheme`.
 
 ## Additional information
 
 ### Multi-theming and dark and light mode
 
-The package can generate multiple themes based on
+The package can generate themes based on
 multiple [token sets](https://docs.tokens.studio/themes/token-sets) in
 your token data json. Every set will be available through a `GeneratedTokenSet`. This enum contains
 all set pairs and
-`ThemeData` for light and dark themes. In order to specify the brightness of your set use Light/Dark
+`ThemeData` for light and dark themes. To specify the brightness of your set, use Light/Dark
 as a suffix in
 design tokens (e.g. yourSetLight, yourSetDark). You also might have a global or core set with
 universal tokens that do
-not change based on the selected brightness. In that case make sure to call this set `global`. It
-will be recognised by
+not change based on the selected brightness. In that case, make sure to call this set `global`. It
+will be recognized by
 the builder and ignored when creating `GeneratedTokenSets`.
 
 ### Generation of Flutter `ThemeData`
 
-The package allows for easy and simple generation of Flutter's `ThemeData`. For doing so, you have
+The package allows for the straightforward generation of Flutter's `ThemeData`. To do so, you have
 to have a certain
-structure for your design tokens. Since this is a system token related to material 3 the tokens used
+structure for your design tokens. Since this is a system token related to Material 3 the tokens used
 to generate Flutter's
 `ThemeData` should always start with `sys`. If you then e.g. want to set the primary color in
 Flutter's `ColorScheme` you
 have to add a token called `sys.primary` with type `color` to your json file containing all of your
 tokens. `primary` is
-the name of `ColorScheme`s `primary` field. Keep in mind to exactly write the field names in camel
-case so the package is
-able to recognize them properly.
-For text styles it works similar. Here also use `sys` as the leading part of your token. To better
+the name of `ColorScheme`s `primary` field. Remember to write the field names in camel case so the
+package can recognize them correctly.
+For text styles, it works similarly. Here also use `sys` as the leading part of your token. To
+better
 organize the tokens in
-Token Studio we decided to split the text style naming. So if you want to generate `displaySmall`
-text style just use a
+Token Studio, we decided to split the text style naming. So if you want to generate `displaySmall`
+text style, just use a
 `sys.display.small` token of type `typography`.
 
 ### Generation of theme extensions
 
 Theme extensions are a great way of providing custom parameters that are not defined in `ThemeData`
-defined. In order to
-create a new extension you can just use a different prefix than `sys` for your tokens. Based on that
+defined. You can
+create a new extension using a different prefix than `sys` for your tokens. Based on that
 name and the type
 of the tokens inside
 that [token group](https://docs.tokens.studio/tokens/creating-tokens#token-groups) an extension will
@@ -208,7 +200,7 @@ see [Tokens Studio for figma documentation](https://docs.tokens.studio/available
 
 ### Flutter theming
 
-The following table shows which themes the package is able to generate.
+The following table shows which themes the package can generate.
 <details>
     <summary>Expand table</summary>
 
@@ -267,18 +259,18 @@ The following table shows which themes the package is able to generate.
 
 ## Future capabilities
 
-We want to extend the package to also be able to generate/parse more material themes
+We want to extend the package also to be able to generate/parse more material themes
 like `ButtonTheme` etc.
 
 Let us know if you miss something by creating an issue or by actively contributing!
 
 ## Contributing
 
-With this open source repositories we want to create a tool that helps Flutter to integrate with
+With this open-source repository, we want to create a tool that helps Flutter integrate with
 more tools to
 streamline and simplify the design handoff experience by utilizing Flutter's API. Since this is not
 only a problem we
-face we want to share and collaborate on this software as a way to give back to the
+face, we want to share and collaborate on this software to give back to the
 community. Any contributions are more than welcome!
 
 See
