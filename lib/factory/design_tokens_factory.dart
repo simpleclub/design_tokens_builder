@@ -23,7 +23,7 @@ class DesignTokensFactory implements Builder {
   @override
   Future<void> build(BuildStep buildStep) async {
     final configFile =
-        (await buildStep.findAssets(Glob('lib/tokenbuilder.yaml')).toList())
+        (await buildStep.findAssets(Glob('**/tokenbuilder.yaml')).toList())
             .first;
     final configString = await buildStep.readAsString(configFile);
     final yaml = loadYaml(configString) as YamlMap;
@@ -37,8 +37,12 @@ class DesignTokensFactory implements Builder {
     final processedToken = prepareTokens(token);
     final processedDefaultSet = processedToken[config.defaultSetName];
 
+    final destinationPathSegments = tokenFilePath.split('/');
+    destinationPathSegments.last = 'tokens.dart';
+    final destinationPath = destinationPathSegments.join('/');
+
     await buildStep.writeAsString(
-      AssetId(buildStep.inputId.package, 'lib/tokens.dart'),
+      AssetId(buildStep.inputId.package, destinationPath),
       '''// GENERATED CODE - DO NOT MODIFY BY HAND
 
 import 'dart:ui';

@@ -18,9 +18,9 @@ String buildExtensions(
     final extension = entry.value;
     final name = buildExtensionName(entry.key);
     output += '''class $name extends ThemeExtension<$name> {
-  $name({\n${extension.map((e) => '    this.${e.item1}').join(',\n')},\n  });
+  $name({\n${extension.map((e) => '    required this.${e.item1}').join(',\n')},\n  });
 
-${extension.map((e) => '  final ${e.item2.flutterType}? ${e.item1};').join('\n')}
+${extension.map((e) => '  final ${e.item2.flutterType} ${e.item1};').join('\n')}
 
   @override
   $name copyWith({

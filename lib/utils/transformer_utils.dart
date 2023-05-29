@@ -108,6 +108,7 @@ dynamic _getTokenSetVariable(
 
     if (value is Map) {
       value = value[key];
+      if (value == null) return null;
     }
   }
   return value['value'];

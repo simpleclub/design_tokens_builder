@@ -61,15 +61,20 @@ String buildTokenSet(
 
       if (systemTextTheme.isNotEmpty) {
         final textThemeValues = systemTextTheme.keys.map(
-          (key) => '$key: ${_parseAttribute(
-            systemTextTheme[key],
-            config: config,
-            indentationLevel: 4,
-            isConst: false,
-          )}',
+          (key) {
+            // Add default text style color to style.
+            final textTheme =
+                Map.from(systemTextTheme[key]).cast<String, dynamic>();
+            textTheme['value']['color'] = '_colorScheme.onBackground';
+            return '$key: ${_parseAttribute(
+              textTheme,
+              config: config,
+              indentationLevel: 4,
+              isConst: false,
+            )}';
+          },
         );
-        textTheme +=
-            'TextTheme get _textTheme => const TextTheme(\n${indentation(
+        textTheme += 'TextTheme get _textTheme => TextTheme(\n${indentation(
           level: 4,
         )}${textThemeValues.join(
           ',\n${indentation(level: 4)}',

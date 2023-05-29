@@ -62,12 +62,17 @@ class BuilderConfig {
 /// Class representing the configuration of fonts used in design token.
 class FontConfig {
   /// Constructs a [FontConfig].
-  FontConfig({required this.family, required this.flutterName});
+  FontConfig({
+    required this.family,
+    required this.flutterName,
+    this.package,
+  });
 
   /// Constructs a [FontConfig] from a [yaml].
   FontConfig.fromYaml(YamlMap map)
       : family = map['family'] as String,
-        flutterName = map['flutterName'] as String;
+        flutterName = map['flutterName'] as String,
+        package = map['package'] as String;
 
   /// The family name as seen in Figma.
   final String family;
@@ -75,14 +80,20 @@ class FontConfig {
   /// The name of the family according to the definition in your `pubspec.yaml`.
   final String flutterName;
 
+  /// The package where the font files are found.
+  ///
+  /// `package` property on `TextStyle` will not be set if `null`.
+  final String? package;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is FontConfig &&
           runtimeType == other.runtimeType &&
           family == other.family &&
-          flutterName == other.flutterName;
+          flutterName == other.flutterName &&
+          package == other.package;
 
   @override
-  int get hashCode => family.hashCode ^ flutterName.hashCode;
+  int get hashCode => family.hashCode ^ flutterName.hashCode ^ package.hashCode;
 }
