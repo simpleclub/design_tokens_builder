@@ -21,7 +21,6 @@ void main() {
 
   group('Generate token set enum', () {
     final config = BuilderConfig(
-      tokenFilePath: 'some/path',
       defaultSetName: 'global',
     );
 

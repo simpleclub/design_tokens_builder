@@ -4,37 +4,22 @@ import 'package:yaml/yaml.dart';
 /// Fallback value for `defaultSetName` config.
 const _fallbackDefaultSetName = 'global';
 
-String _tokenFilePath(YamlMap yaml) {
-  if (!yaml.containsKey('tokenFilePath')) {
-    throw Exception(
-      'Unable to parse tokenbuilder.yaml due to missing required tokenFilePath key',
-    );
-  }
-
-  return yaml['tokenFilePath'];
-}
-
 /// Class representing the structure of the required builder config file
 /// `tokenbuilder.yaml`.
 class BuilderConfig {
   /// Constructs a [BuilderConfig].
   BuilderConfig({
-    required this.tokenFilePath,
     this.defaultSetName = _fallbackDefaultSetName,
     this.fontConfig = const [],
   });
 
   /// Constructs a [BuilderConfig] from a [yaml].
   BuilderConfig.fromYaml(YamlMap yaml)
-      : tokenFilePath = _tokenFilePath(yaml),
-        defaultSetName = yaml['defaultSetName'] ?? _fallbackDefaultSetName,
+      : defaultSetName = yaml['defaultSetName'] ?? _fallbackDefaultSetName,
         fontConfig = (yaml['fontConfig'] ?? [])
             .map((e) => FontConfig.fromYaml(e))
             .toList()
             .cast<FontConfig>();
-
-  /// The path leading to the json file containing the token data.
-  final String tokenFilePath;
 
   /// The name of the default set.
   ///
@@ -50,13 +35,11 @@ class BuilderConfig {
       identical(this, other) ||
       other is BuilderConfig &&
           runtimeType == other.runtimeType &&
-          tokenFilePath == other.tokenFilePath &&
           defaultSetName == other.defaultSetName &&
           DeepCollectionEquality().equals(fontConfig, other.fontConfig);
 
   @override
-  int get hashCode =>
-      tokenFilePath.hashCode ^ defaultSetName.hashCode ^ fontConfig.hashCode;
+  int get hashCode => defaultSetName.hashCode ^ fontConfig.hashCode;
 }
 
 /// Class representing the configuration of fonts used in design token.
@@ -72,7 +55,7 @@ class FontConfig {
   FontConfig.fromYaml(YamlMap map)
       : family = map['family'] as String,
         flutterName = map['flutterName'] as String,
-        package = map['package'] as String;
+        package = map['package'] as String?;
 
   /// The family name as seen in Figma.
   final String family;

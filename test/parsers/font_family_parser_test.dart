@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final config = BuilderConfig(
-    tokenFilePath: 'some/path',
     fontConfig: [
       FontConfig(family: 'My Font', flutterName: 'MyFlutterFont'),
     ],

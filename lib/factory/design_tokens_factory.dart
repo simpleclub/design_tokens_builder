@@ -17,32 +17,28 @@ Builder designTokensFactory(BuilderOptions _) => DesignTokensFactory();
 class DesignTokensFactory implements Builder {
   @override
   final Map<String, List<String>> buildExtensions = {
-    r'$lib$': ['tokens.dart'],
+    'tokens.json': ['tokens.dart'],
   };
 
   @override
   Future<void> build(BuildStep buildStep) async {
+    final inputId = buildStep.inputId;
+    final outputId = inputId.changeExtension('.dart');
     final configFile =
         (await buildStep.findAssets(Glob('**/tokenbuilder.yaml')).toList())
             .first;
     final configString = await buildStep.readAsString(configFile);
     final yaml = loadYaml(configString) as YamlMap;
     final config = BuilderConfig.fromYaml(yaml);
-    final tokenFilePath = config.tokenFilePath;
 
-    final tokenAsset = await buildStep.findAssets(Glob(tokenFilePath)).toList();
-    final string = await buildStep.readAsString(tokenAsset.first);
+    final string = await buildStep.readAsString(inputId);
     final token = jsonDecode(string);
 
     final processedToken = prepareTokens(token);
     final processedDefaultSet = processedToken[config.defaultSetName];
 
-    final destinationPathSegments = tokenFilePath.split('/');
-    destinationPathSegments.last = 'tokens.dart';
-    final destinationPath = destinationPathSegments.join('/');
-
     await buildStep.writeAsString(
-      AssetId(buildStep.inputId.package, destinationPath),
+      outputId,
       '''// GENERATED CODE - DO NOT MODIFY BY HAND
 
 import 'dart:ui';

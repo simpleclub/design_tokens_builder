@@ -1,6 +1,6 @@
 # TODO: Document this file!
 
-tokenFilePath: lib/tokens.json
+tokenFilePath: lib/tokens/tokens.json
 defaultSetName: global
 
 fontConfig:

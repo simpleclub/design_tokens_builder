@@ -4,9 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Build context extensions', () {
-    final config = BuilderConfig(
-      tokenFilePath: 'some/path',
-    );
+    final config = BuilderConfig();
 
     test('with one extension', () {
       final result = buildContextExtension(
