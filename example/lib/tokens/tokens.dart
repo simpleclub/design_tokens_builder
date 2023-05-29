@@ -198,7 +198,6 @@ final attributes = {
   },
   'elevatedButton': {
     'height': 38.0,
-    'color': const Color(0xFF3A9BDC),
     'padding': const EdgeInsets.only(
       top: 1.0,
       right: 0.0,
@@ -452,7 +451,6 @@ class DarkThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -480,6 +478,7 @@ class DarkThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
         SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
@@ -701,7 +700,6 @@ class LightThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -729,6 +727,7 @@ class LightThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
         SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
@@ -950,7 +949,6 @@ class CustomThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -978,6 +976,7 @@ class CustomThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
         SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
@@ -1199,7 +1198,6 @@ class PartyLightThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -1227,6 +1225,7 @@ class PartyLightThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
         SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
@@ -1448,7 +1447,6 @@ class PartyDarkThemeData with GeneratedThemeData {
           ),
         ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -1476,6 +1474,7 @@ class PartyDarkThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
         SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
@@ -1825,36 +1824,36 @@ class LineHeightsThemeExtension extends ThemeExtension<LineHeightsThemeExtension
 class ElevatedButtonThemeExtension extends ThemeExtension<ElevatedButtonThemeExtension> {
   ElevatedButtonThemeExtension({
     required this.height,
-    required this.color,
     required this.padding,
     required this.borderRadius,
     required this.shadow,
     required this.border,
+    required this.color,
   });
 
   final double height;
-  final Color color;
   final EdgeInsets padding;
   final BorderRadius borderRadius;
   final List<BoxShadow> shadow;
   final BoxBorder border;
+  final Color color;
 
   @override
   ElevatedButtonThemeExtension copyWith({
     double? height,
-    Color? color,
     EdgeInsets? padding,
     BorderRadius? borderRadius,
     List<BoxShadow>? shadow,
     BoxBorder? border,
+    Color? color,
   }) {
     return ElevatedButtonThemeExtension(
       height: height ?? this.height,
-      color: color ?? this.color,
       padding: padding ?? this.padding,
       borderRadius: borderRadius ?? this.borderRadius,
       shadow: shadow ?? this.shadow,
       border: border ?? this.border,
+      color: color ?? this.color,
     );
   }
 
@@ -1865,11 +1864,11 @@ class ElevatedButtonThemeExtension extends ThemeExtension<ElevatedButtonThemeExt
     }
     return ElevatedButtonThemeExtension(
       height: lerpDouble(height, other.height, t) ?? other.height,
-      color: Color.lerp(color, other.color, t) ?? other.color,
       padding: EdgeInsets.lerp(padding, other.padding, t) ?? other.padding,
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t) ?? other.borderRadius,
       shadow: BoxShadow.lerpList(shadow, other.shadow, t) ?? other.shadow,
       border: BoxBorder.lerp(border, other.border, t) ?? other.border,
+      color: Color.lerp(color, other.color, t) ?? other.color,
     );
   }
 }
