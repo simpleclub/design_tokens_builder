@@ -24,6 +24,11 @@ void main() {
       expect(result, '69.0');
     });
 
+    test('succeeds with floating number', () {
+      final result = parser.buildValue('69.0px');
+      expect(result, '69.0');
+    });
+
     test('fails', () {
       expect(() => parser.buildValue(1), throwsException);
       expect(() => parser.buildValue('some value'), throwsException);

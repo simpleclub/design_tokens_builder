@@ -1,7 +1,6 @@
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/extension_factory.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tuple/tuple.dart';
 
 void main() {
   test('Build extension name', () {
@@ -39,18 +38,16 @@ void main() {
       };
 
       final result = getExtensions(tokens, config: config);
-      expect(result, {
-        'button': [
-          Tuple2<String, Map<String, dynamic>>('height', {
-            'value': '38px',
-            'type': 'dimension',
-          }),
-          Tuple2<String, Map<String, dynamic>>('color', {
-            'value': '#FFFFFF',
-            'type': 'color',
-          }),
-        ]
-      });
+
+      expect(result.values.first.map((e) => e.item1), ['height', 'color']);
+      expect(result.values.first.map((e) => e.item2), [{
+        'value': '38px',
+        'type': 'dimension',
+      }, {
+        'value': '#FFFFFF',
+        'type': 'color',
+      }
+      ]);
     });
   });
 }
