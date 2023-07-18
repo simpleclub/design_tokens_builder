@@ -246,24 +246,24 @@
         "description": "The color used as an overlay on color to indicate elevation."
       },
       "elevation": {
-        "value": "1.0",
+        "value": "",
         "type": "number",
         "description": "The z-coordinate at which to place this card. This controls the size of the shadow below the card."
       },
       "margin": {
-        "value": "4.0",
+        "value": "",
         "type": "spacing",
         "description": "The empty space that surrounds the card."
       },
       "borderRadius": {
-        "value": "0",
+        "value": "",
         "type": "borderRadius",
         "description": "Border radius of the card."
       }
     },
     "elevatedButton": {
       "animationDuration": {
-        "value": "200",
+        "value": "",
         "type": "number",
         "description": "Defines the duration of animated changes for shape and elevation in ms. "
       },
