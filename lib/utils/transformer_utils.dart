@@ -1,4 +1,5 @@
 import 'package:math_expressions/math_expressions.dart';
+import 'package:tuple/tuple.dart';
 
 /// Prepares the tokens by resolving the aliases and solving mathematical
 /// expressions.
@@ -56,15 +57,7 @@ Map<String, dynamic> _resolveAliasesAndMath(
 
       // Resolve math expression if possible.
       try {
-        final parser = Parser();
-        // Need to add roundTo method manually since its nothing
-        // math_expressions package supports.
-        parser.addFunction(
-          'roundTo',
-          (List<double> args) => args.first.round(),
-        );
-        Expression exp = parser.parse(newValue);
-        newValue = '${exp.evaluate(EvaluationType.REAL, ContextModel())}';
+        newValue = evaluateMathExpression(newValue);
       } catch (e) {
         // We do not catch anything here since we only want to evaluate
         // mathematical expressions and don't care about anything else.
@@ -74,6 +67,35 @@ Map<String, dynamic> _resolveAliasesAndMath(
   }
 
   return map;
+}
+
+/// Returns a tuple with the matching unit and the cleaned equation.
+///
+/// E.g. 3px + 42 -> (px, 3 + 42)
+Tuple2<String, String> _prepareMathEvaluation(String value) {
+  var newValue = value;
+  final pxRegex = RegExp(r'\b(\d+(?:\.\d+)?)px\b');
+  for (final match in pxRegex.allMatches(value)) {
+    newValue = newValue.replaceFirst(match.group(0)!, match.group(1)!);
+  }
+
+  final unit = pxRegex.hasMatch(value) ? 'px' : '';
+
+  return Tuple2(unit, newValue);
+}
+
+String evaluateMathExpression(String value) {
+  final equation = _prepareMathEvaluation(value);
+
+  final parser = Parser();
+  // Need to add roundTo method manually since its nothing
+  // math_expressions package supports.
+  parser.addFunction(
+    'roundTo',
+    (List<double> args) => args.first.round(),
+  );
+  Expression exp = parser.parse(equation.item2);
+  return '${exp.evaluate(EvaluationType.REAL, ContextModel())}${equation.item1}';
 }
 
 /// Finds and returns a value of a variable for a given name in any token set.
@@ -108,6 +130,7 @@ dynamic _getTokenSetVariable(
 
     if (value is Map) {
       value = value[key];
+      if (value == null) return null;
     }
   }
   return value['value'];

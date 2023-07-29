@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:design_tokens_builder/parsers/color_parser.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/parsers/font_family_parser.dart';
 import 'package:design_tokens_builder/parsers/font_weight_parser.dart';
@@ -40,8 +42,15 @@ class TypographyParser extends DesignTokenParser {
       final transformedEntries = value.entries
           .map((e) => _transform(e))
           .where((element) => element != null)
-          .toList()
-          .cast<MapEntry<String, dynamic>>();
+          .cast<MapEntry<String, dynamic>>()
+          .toList();
+      final family = value['fontFamily'] as String?;
+      final package = _fontPackage(family);
+
+      if (package != null) {
+        transformedEntries.add(MapEntry('package', '\'$package\''));
+      }
+
       final content = transformedEntries
           .map((e) => '${e.key}: ${e.value}')
           .join(',\n${indent()}');
@@ -53,24 +62,25 @@ class TypographyParser extends DesignTokenParser {
   }
 
   MapEntry<String, dynamic>? _transform(MapEntry<String, dynamic> data) {
+    final value = data.value;
     switch (data.key) {
       case 'fontFamily':
         final parser = FontFamilyParser(indentationLevel, config);
         return MapEntry(
           'fontFamily',
-          parser.parse(data.value),
+          parser.parse(value),
         );
       case 'fontWeight':
         final parser = FontWeightParser(indentationLevel, config);
-        return MapEntry('fontWeight', parser.parse(data.value));
+        return MapEntry('fontWeight', parser.parse(value));
       case 'lineHeight':
         final parser = LineHeightParser(indentationLevel, config);
-        return MapEntry('height', parser.parse(data.value));
+        return MapEntry('height', parser.parse(value));
       case 'fontSize':
         final parser = NumberParser(indentationLevel, config);
-        return MapEntry('fontSize', parser.parse(data.value));
+        return MapEntry('fontSize', parser.parse(value));
       case 'letterSpacing':
-        return MapEntry('letterSpacing', data.value);
+        return MapEntry('letterSpacing', value);
       case 'paragraphSpacing':
         return null;
       case 'paragraphIndent':
@@ -79,9 +89,27 @@ class TypographyParser extends DesignTokenParser {
         return null;
       case 'textDecoration':
         final parser = TextDecorationParser(indentationLevel, config);
-        return MapEntry('decoration', parser.parse(data.value));
+        return MapEntry('decoration', parser.parse(value));
+      case 'color':
+        var colorValue = value;
+        // Parse color if hex color.
+        if (value is String && value.startsWith('#')) {
+          final parser = ColorParser(indentationLevel, config);
+          colorValue = parser.parse(value);
+        }
+
+        return MapEntry('color', colorValue);
     }
 
     throw Exception('Unable to transform value with unknown key: ${data.key}');
+  }
+
+  String? _fontPackage(String? fontFamily) {
+    if (fontFamily == null) return null;
+
+    final fontConfig = config?.fontConfig.firstWhereOrNull(
+      (config) => config.family == fontFamily,
+    );
+    return fontConfig?.package;
   }
 }

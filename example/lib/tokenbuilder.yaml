@@ -1,6 +1,9 @@
-tokenFilePath: lib/tokens.json
+# TODO: Document this file!
+
+tokenFilePath: lib/tokens/tokens.json
 defaultSetName: global
 
 fontConfig:
-    - family: System Roboto
-      flutterName: Roboto
+  - family: System Roboto
+    flutterName: Roboto
+    package: 'design_tokens_builder'

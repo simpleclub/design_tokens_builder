@@ -1,4 +1,4 @@
-import 'package:example/tokens.dart';
+import 'package:example/tokens/tokens.dart';
 import 'package:flutter/material.dart';
 
 void main() {

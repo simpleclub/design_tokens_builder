@@ -44,6 +44,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'medium': const TextStyle(
         fontFamily: 'Roboto',
@@ -52,6 +53,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'large': const TextStyle(
         fontFamily: 'Roboto',
@@ -60,6 +62,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
     },
     'headline': {
@@ -70,6 +73,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'medium': const TextStyle(
         fontFamily: 'Roboto',
@@ -78,6 +82,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'large': const TextStyle(
         fontFamily: 'Roboto',
@@ -86,6 +91,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
     },
     'title': {
@@ -96,6 +102,7 @@ final attributes = {
         fontSize: 13.0,
         letterSpacing: 0.1,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'medium': const TextStyle(
         fontFamily: 'Roboto',
@@ -104,6 +111,7 @@ final attributes = {
         fontSize: 16.0,
         letterSpacing: 0.1,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'large': const TextStyle(
         fontFamily: 'Roboto',
@@ -112,6 +120,7 @@ final attributes = {
         fontSize: 22.0,
         letterSpacing: 0.0,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
     },
     'label': {
@@ -122,6 +131,7 @@ final attributes = {
         fontSize: 10.0,
         letterSpacing: 0.5,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'medium': const TextStyle(
         fontFamily: 'Roboto',
@@ -130,6 +140,7 @@ final attributes = {
         fontSize: 13.0,
         letterSpacing: 0.5,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'large': const TextStyle(
         fontFamily: 'Roboto',
@@ -138,6 +149,7 @@ final attributes = {
         fontSize: 16.0,
         letterSpacing: 0.1,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
     },
     'body': {
@@ -148,6 +160,7 @@ final attributes = {
         fontSize: 10.0,
         letterSpacing: 0.5,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'medium': const TextStyle(
         fontFamily: 'Roboto',
@@ -156,6 +169,7 @@ final attributes = {
         fontSize: 13.0,
         letterSpacing: 0.25,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
       'large': const TextStyle(
         fontFamily: 'Roboto',
@@ -164,6 +178,7 @@ final attributes = {
         fontSize: 16.0,
         letterSpacing: 0.1,
         decoration: TextDecoration.none,
+        package: 'design_tokens_builder',
       ),
     },
   },
@@ -183,7 +198,6 @@ final attributes = {
   },
   'elevatedButton': {
     'height': 38.0,
-    'color': const Color(0xFF3A9BDC),
     'padding': const EdgeInsets.only(
       top: 1.0,
       right: 0.0,
@@ -234,8 +248,8 @@ class DarkThemeData with GeneratedThemeData {
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-
-  TextTheme get _textTheme => const TextTheme(
+  
+  TextTheme get _textTheme => TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w900,
@@ -243,6 +257,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -251,6 +267,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -259,6 +277,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -267,6 +287,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -275,6 +297,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -283,6 +307,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -291,6 +317,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -299,6 +327,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -307,6 +337,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -315,6 +347,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -323,6 +357,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -331,6 +367,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -339,6 +377,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -347,6 +387,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.25,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -355,6 +397,8 @@ class DarkThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
       );
 
@@ -366,14 +410,14 @@ class DarkThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -382,32 +426,31 @@ class DarkThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -435,8 +478,9 @@ class DarkThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -453,8 +497,8 @@ class LightThemeData with GeneratedThemeData {
         primary: Color(0xFF0000FF),
         onPrimary: Color(0xFFffffff),
       );
-
-  TextTheme get _textTheme => const TextTheme(
+  
+  TextTheme get _textTheme => TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w900,
@@ -462,6 +506,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -470,6 +516,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -478,6 +526,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -486,6 +536,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -494,6 +546,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -502,6 +556,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -510,6 +566,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -518,6 +576,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -526,6 +586,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -534,6 +596,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -542,6 +606,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -550,6 +616,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -558,6 +626,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -566,6 +636,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.25,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -574,6 +646,8 @@ class LightThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
       );
 
@@ -585,14 +659,14 @@ class LightThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -601,32 +675,31 @@ class LightThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -654,8 +727,9 @@ class LightThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -672,8 +746,8 @@ class CustomThemeData with GeneratedThemeData {
         primary: Color(0xFFBDECB6),
         onPrimary: Color(0xFF293133),
       );
-
-  TextTheme get _textTheme => const TextTheme(
+  
+  TextTheme get _textTheme => TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w900,
@@ -681,6 +755,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -689,6 +765,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -697,6 +775,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -705,6 +785,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -713,6 +795,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -721,6 +805,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -729,6 +815,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -737,6 +825,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -745,6 +835,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -753,6 +845,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -761,6 +855,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -769,6 +865,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -777,6 +875,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -785,6 +885,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.25,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -793,6 +895,8 @@ class CustomThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
       );
 
@@ -804,14 +908,14 @@ class CustomThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -820,32 +924,31 @@ class CustomThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -873,8 +976,9 @@ class CustomThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -891,8 +995,8 @@ class PartyLightThemeData with GeneratedThemeData {
         primary: Color(0xFFFE0000),
         onPrimary: Color(0xFFffffff),
       );
-
-  TextTheme get _textTheme => const TextTheme(
+  
+  TextTheme get _textTheme => TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w900,
@@ -900,6 +1004,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -908,6 +1014,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -916,6 +1024,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -924,6 +1034,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -932,6 +1044,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -940,6 +1054,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -948,6 +1064,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -956,6 +1074,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -964,6 +1084,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -972,6 +1094,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -980,6 +1104,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -988,6 +1114,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -996,6 +1124,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -1004,6 +1134,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.25,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -1012,6 +1144,8 @@ class PartyLightThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
       );
 
@@ -1023,14 +1157,14 @@ class PartyLightThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -1039,32 +1173,31 @@ class PartyLightThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -1092,8 +1225,9 @@ class PartyLightThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -1110,8 +1244,8 @@ class PartyDarkThemeData with GeneratedThemeData {
         primary: Color(0xFFF8F32B),
         onPrimary: Color(0xFF293133),
       );
-
-  TextTheme get _textTheme => const TextTheme(
+  
+  TextTheme get _textTheme => TextTheme(
         displaySmall: TextStyle(
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w900,
@@ -1119,6 +1253,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -1127,6 +1263,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         displayLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -1135,6 +1273,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -1143,6 +1283,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -1151,6 +1293,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         headlineLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -1159,6 +1303,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -1167,6 +1313,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -1175,6 +1323,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         titleLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -1183,6 +1333,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 22.0,
           letterSpacing: 0.0,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelSmall: TextStyle(
           fontFamily: 'Roboto',
@@ -1191,6 +1343,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -1199,6 +1353,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         labelLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -1207,6 +1363,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodySmall: TextStyle(
           fontFamily: 'Roboto',
@@ -1215,6 +1373,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 10.0,
           letterSpacing: 0.5,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyMedium: TextStyle(
           fontFamily: 'Roboto',
@@ -1223,6 +1383,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 13.0,
           letterSpacing: 0.25,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
         bodyLarge: TextStyle(
           fontFamily: 'Roboto',
@@ -1231,6 +1393,8 @@ class PartyDarkThemeData with GeneratedThemeData {
           fontSize: 16.0,
           letterSpacing: 0.1,
           decoration: TextDecoration.none,
+          color: _colorScheme.onBackground,
+          package: 'design_tokens_builder',
         ),
       );
 
@@ -1242,14 +1406,14 @@ class PartyDarkThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -1258,32 +1422,31 @@ class PartyDarkThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
-            color: const Color(0xFF3A9BDC),
             padding: const EdgeInsets.only(
               top: 1.0,
               right: 0.0,
@@ -1311,8 +1474,9 @@ class PartyDarkThemeData with GeneratedThemeData {
               width: 3.0,
               color: const Color(0xFF293133),
             ),
+            color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -1339,13 +1503,12 @@ enum GeneratedTokenSet {
   final BrightnessAdapted<GeneratedThemeData> data;
 }
 
-class FontFamiliesThemeExtension
-    extends ThemeExtension<FontFamiliesThemeExtension> {
+class FontFamiliesThemeExtension extends ThemeExtension<FontFamiliesThemeExtension> {
   FontFamiliesThemeExtension({
-    this.primary,
+    required this.primary,
   });
 
-  final String? primary;
+  final String primary;
 
   @override
   FontFamiliesThemeExtension copyWith({
@@ -1367,21 +1530,20 @@ class FontFamiliesThemeExtension
   }
 }
 
-class FontWeightsThemeExtension
-    extends ThemeExtension<FontWeightsThemeExtension> {
+class FontWeightsThemeExtension extends ThemeExtension<FontWeightsThemeExtension> {
   FontWeightsThemeExtension({
-    this.w400,
-    this.w600,
-    this.w700,
-    this.w800,
-    this.w900,
+    required this.w400,
+    required this.w600,
+    required this.w700,
+    required this.w800,
+    required this.w900,
   });
 
-  final FontWeight? w400;
-  final FontWeight? w600;
-  final FontWeight? w700;
-  final FontWeight? w800;
-  final FontWeight? w900;
+  final FontWeight w400;
+  final FontWeight w600;
+  final FontWeight w700;
+  final FontWeight w800;
+  final FontWeight w900;
 
   @override
   FontWeightsThemeExtension copyWith({
@@ -1406,33 +1568,33 @@ class FontWeightsThemeExtension
       return this;
     }
     return FontWeightsThemeExtension(
-      w400: FontWeight.lerp(w400, other.w400, t),
-      w600: FontWeight.lerp(w600, other.w600, t),
-      w700: FontWeight.lerp(w700, other.w700, t),
-      w800: FontWeight.lerp(w800, other.w800, t),
-      w900: FontWeight.lerp(w900, other.w900, t),
+      w400: FontWeight.lerp(w400, other.w400, t) ?? other.w400,
+      w600: FontWeight.lerp(w600, other.w600, t) ?? other.w600,
+      w700: FontWeight.lerp(w700, other.w700, t) ?? other.w700,
+      w800: FontWeight.lerp(w800, other.w800, t) ?? other.w800,
+      w900: FontWeight.lerp(w900, other.w900, t) ?? other.w900,
     );
   }
 }
 
 class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
   FontSizeThemeExtension({
-    this.base,
-    this.scale,
-    this.xs,
-    this.sm,
-    this.md,
-    this.lg,
-    this.xl,
+    required this.base,
+    required this.scale,
+    required this.xs,
+    required this.sm,
+    required this.md,
+    required this.lg,
+    required this.xl,
   });
 
-  final double? base;
-  final double? scale;
-  final double? xs;
-  final double? sm;
-  final double? md;
-  final double? lg;
-  final double? xl;
+  final double base;
+  final double scale;
+  final double xs;
+  final double sm;
+  final double md;
+  final double lg;
+  final double xl;
 
   @override
   FontSizeThemeExtension copyWith({
@@ -1461,30 +1623,29 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
       return this;
     }
     return FontSizeThemeExtension(
-      base: lerpDouble(base, other.base, t),
-      scale: lerpDouble(scale, other.scale, t),
-      xs: lerpDouble(xs, other.xs, t),
-      sm: lerpDouble(sm, other.sm, t),
-      md: lerpDouble(md, other.md, t),
-      lg: lerpDouble(lg, other.lg, t),
-      xl: lerpDouble(xl, other.xl, t),
+      base: lerpDouble(base, other.base, t) ?? other.base,
+      scale: lerpDouble(scale, other.scale, t) ?? other.scale,
+      xs: lerpDouble(xs, other.xs, t) ?? other.xs,
+      sm: lerpDouble(sm, other.sm, t) ?? other.sm,
+      md: lerpDouble(md, other.md, t) ?? other.md,
+      lg: lerpDouble(lg, other.lg, t) ?? other.lg,
+      xl: lerpDouble(xl, other.xl, t) ?? other.xl,
     );
   }
 }
 
-class LetterSpacingThemeExtension
-    extends ThemeExtension<LetterSpacingThemeExtension> {
+class LetterSpacingThemeExtension extends ThemeExtension<LetterSpacingThemeExtension> {
   LetterSpacingThemeExtension({
-    this.none,
-    this.sm,
-    this.md,
-    this.lg,
+    required this.none,
+    required this.sm,
+    required this.md,
+    required this.lg,
   });
 
-  final double? none;
-  final double? sm;
-  final double? md;
-  final double? lg;
+  final double none;
+  final double sm;
+  final double md;
+  final double lg;
 
   @override
   LetterSpacingThemeExtension copyWith({
@@ -1502,27 +1663,25 @@ class LetterSpacingThemeExtension
   }
 
   @override
-  LetterSpacingThemeExtension lerp(
-      LetterSpacingThemeExtension? other, double t) {
+  LetterSpacingThemeExtension lerp(LetterSpacingThemeExtension? other, double t) {
     if (other is! LetterSpacingThemeExtension) {
       return this;
     }
     return LetterSpacingThemeExtension(
-      none: lerpDouble(none, other.none, t),
-      sm: lerpDouble(sm, other.sm, t),
-      md: lerpDouble(md, other.md, t),
-      lg: lerpDouble(lg, other.lg, t),
+      none: lerpDouble(none, other.none, t) ?? other.none,
+      sm: lerpDouble(sm, other.sm, t) ?? other.sm,
+      md: lerpDouble(md, other.md, t) ?? other.md,
+      lg: lerpDouble(lg, other.lg, t) ?? other.lg,
     );
   }
 }
 
-class ParagraphSpacingThemeExtension
-    extends ThemeExtension<ParagraphSpacingThemeExtension> {
+class ParagraphSpacingThemeExtension extends ThemeExtension<ParagraphSpacingThemeExtension> {
   ParagraphSpacingThemeExtension({
-    this.none,
+    required this.none,
   });
 
-  final double? none;
+  final double none;
 
   @override
   ParagraphSpacingThemeExtension copyWith({
@@ -1534,23 +1693,22 @@ class ParagraphSpacingThemeExtension
   }
 
   @override
-  ParagraphSpacingThemeExtension lerp(
-      ParagraphSpacingThemeExtension? other, double t) {
+  ParagraphSpacingThemeExtension lerp(ParagraphSpacingThemeExtension? other, double t) {
     if (other is! ParagraphSpacingThemeExtension) {
       return this;
     }
     return ParagraphSpacingThemeExtension(
-      none: lerpDouble(none, other.none, t),
+      none: lerpDouble(none, other.none, t) ?? other.none,
     );
   }
 }
 
 class TextCaseThemeExtension extends ThemeExtension<TextCaseThemeExtension> {
   TextCaseThemeExtension({
-    this.none,
+    required this.none,
   });
 
-  final String? none;
+  final String none;
 
   @override
   TextCaseThemeExtension copyWith({
@@ -1572,13 +1730,12 @@ class TextCaseThemeExtension extends ThemeExtension<TextCaseThemeExtension> {
   }
 }
 
-class TextDecorationThemeExtension
-    extends ThemeExtension<TextDecorationThemeExtension> {
+class TextDecorationThemeExtension extends ThemeExtension<TextDecorationThemeExtension> {
   TextDecorationThemeExtension({
-    this.none,
+    required this.none,
   });
 
-  final TextDecoration? none;
+  final TextDecoration none;
 
   @override
   TextDecorationThemeExtension copyWith({
@@ -1590,8 +1747,7 @@ class TextDecorationThemeExtension
   }
 
   @override
-  TextDecorationThemeExtension lerp(
-      TextDecorationThemeExtension? other, double t) {
+  TextDecorationThemeExtension lerp(TextDecorationThemeExtension? other, double t) {
     if (other is! TextDecorationThemeExtension) {
       return this;
     }
@@ -1601,13 +1757,12 @@ class TextDecorationThemeExtension
   }
 }
 
-class ParagraphIndentThemeExtension
-    extends ThemeExtension<ParagraphIndentThemeExtension> {
+class ParagraphIndentThemeExtension extends ThemeExtension<ParagraphIndentThemeExtension> {
   ParagraphIndentThemeExtension({
-    this.none,
+    required this.none,
   });
 
-  final double? none;
+  final double none;
 
   @override
   ParagraphIndentThemeExtension copyWith({
@@ -1619,28 +1774,26 @@ class ParagraphIndentThemeExtension
   }
 
   @override
-  ParagraphIndentThemeExtension lerp(
-      ParagraphIndentThemeExtension? other, double t) {
+  ParagraphIndentThemeExtension lerp(ParagraphIndentThemeExtension? other, double t) {
     if (other is! ParagraphIndentThemeExtension) {
       return this;
     }
     return ParagraphIndentThemeExtension(
-      none: lerpDouble(none, other.none, t),
+      none: lerpDouble(none, other.none, t) ?? other.none,
     );
   }
 }
 
-class LineHeightsThemeExtension
-    extends ThemeExtension<LineHeightsThemeExtension> {
+class LineHeightsThemeExtension extends ThemeExtension<LineHeightsThemeExtension> {
   LineHeightsThemeExtension({
-    this.xs,
-    this.sm,
-    this.md,
+    required this.xs,
+    required this.sm,
+    required this.md,
   });
 
-  final double? xs;
-  final double? sm;
-  final double? md;
+  final double xs;
+  final double sm;
+  final double md;
 
   @override
   LineHeightsThemeExtension copyWith({
@@ -1661,76 +1814,73 @@ class LineHeightsThemeExtension
       return this;
     }
     return LineHeightsThemeExtension(
-      xs: lerpDouble(xs, other.xs, t),
-      sm: lerpDouble(sm, other.sm, t),
-      md: lerpDouble(md, other.md, t),
+      xs: lerpDouble(xs, other.xs, t) ?? other.xs,
+      sm: lerpDouble(sm, other.sm, t) ?? other.sm,
+      md: lerpDouble(md, other.md, t) ?? other.md,
     );
   }
 }
 
-class ElevatedButtonThemeExtension
-    extends ThemeExtension<ElevatedButtonThemeExtension> {
+class ElevatedButtonThemeExtension extends ThemeExtension<ElevatedButtonThemeExtension> {
   ElevatedButtonThemeExtension({
-    this.height,
-    this.color,
-    this.padding,
-    this.borderRadius,
-    this.shadow,
-    this.border,
+    required this.height,
+    required this.padding,
+    required this.borderRadius,
+    required this.shadow,
+    required this.border,
+    required this.color,
   });
 
-  final double? height;
-  final Color? color;
-  final EdgeInsets? padding;
-  final BorderRadius? borderRadius;
-  final List<BoxShadow>? shadow;
-  final BoxBorder? border;
+  final double height;
+  final EdgeInsets padding;
+  final BorderRadius borderRadius;
+  final List<BoxShadow> shadow;
+  final BoxBorder border;
+  final Color color;
 
   @override
   ElevatedButtonThemeExtension copyWith({
     double? height,
-    Color? color,
     EdgeInsets? padding,
     BorderRadius? borderRadius,
     List<BoxShadow>? shadow,
     BoxBorder? border,
+    Color? color,
   }) {
     return ElevatedButtonThemeExtension(
       height: height ?? this.height,
-      color: color ?? this.color,
       padding: padding ?? this.padding,
       borderRadius: borderRadius ?? this.borderRadius,
       shadow: shadow ?? this.shadow,
       border: border ?? this.border,
+      color: color ?? this.color,
     );
   }
 
   @override
-  ElevatedButtonThemeExtension lerp(
-      ElevatedButtonThemeExtension? other, double t) {
+  ElevatedButtonThemeExtension lerp(ElevatedButtonThemeExtension? other, double t) {
     if (other is! ElevatedButtonThemeExtension) {
       return this;
     }
     return ElevatedButtonThemeExtension(
-      height: lerpDouble(height, other.height, t),
-      color: Color.lerp(color, other.color, t),
-      padding: EdgeInsets.lerp(padding, other.padding, t),
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      shadow: BoxShadow.lerpList(shadow, other.shadow, t),
-      border: BoxBorder.lerp(border, other.border, t),
+      height: lerpDouble(height, other.height, t) ?? other.height,
+      padding: EdgeInsets.lerp(padding, other.padding, t) ?? other.padding,
+      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t) ?? other.borderRadius,
+      shadow: BoxShadow.lerpList(shadow, other.shadow, t) ?? other.shadow,
+      border: BoxBorder.lerp(border, other.border, t) ?? other.border,
+      color: Color.lerp(color, other.color, t) ?? other.color,
     );
   }
 }
 
-class SpecialColorsThemeExtension
-    extends ThemeExtension<SpecialColorsThemeExtension> {
+class SpecialColorsThemeExtension extends ThemeExtension<SpecialColorsThemeExtension> {
   SpecialColorsThemeExtension({
-    this.color1,
-    this.color2,
+    required this.color1,
+    required this.color2,
   });
 
-  final Color? color1;
-  final Color? color2;
+  final Color color1;
+  final Color color2;
 
   @override
   SpecialColorsThemeExtension copyWith({
@@ -1744,66 +1894,45 @@ class SpecialColorsThemeExtension
   }
 
   @override
-  SpecialColorsThemeExtension lerp(
-      SpecialColorsThemeExtension? other, double t) {
+  SpecialColorsThemeExtension lerp(SpecialColorsThemeExtension? other, double t) {
     if (other is! SpecialColorsThemeExtension) {
       return this;
     }
     return SpecialColorsThemeExtension(
-      color1: Color.lerp(color1, other.color1, t),
-      color2: Color.lerp(color2, other.color2, t),
+      color1: Color.lerp(color1, other.color1, t) ?? other.color1,
+      color2: Color.lerp(color2, other.color2, t) ?? other.color2,
     );
   }
 }
 
 extension GeneratedTheme on ThemeData {
-  FontFamiliesThemeExtension? get fontFamilies =>
-      extension<FontFamiliesThemeExtension>();
-  FontWeightsThemeExtension? get fontWeights =>
-      extension<FontWeightsThemeExtension>();
+  FontFamiliesThemeExtension? get fontFamilies => extension<FontFamiliesThemeExtension>();
+  FontWeightsThemeExtension? get fontWeights => extension<FontWeightsThemeExtension>();
   FontSizeThemeExtension? get fontSize => extension<FontSizeThemeExtension>();
-  LetterSpacingThemeExtension? get letterSpacing =>
-      extension<LetterSpacingThemeExtension>();
-  ParagraphSpacingThemeExtension? get paragraphSpacing =>
-      extension<ParagraphSpacingThemeExtension>();
+  LetterSpacingThemeExtension? get letterSpacing => extension<LetterSpacingThemeExtension>();
+  ParagraphSpacingThemeExtension? get paragraphSpacing => extension<ParagraphSpacingThemeExtension>();
   TextCaseThemeExtension? get textCase => extension<TextCaseThemeExtension>();
-  TextDecorationThemeExtension? get textDecoration =>
-      extension<TextDecorationThemeExtension>();
-  ParagraphIndentThemeExtension? get paragraphIndent =>
-      extension<ParagraphIndentThemeExtension>();
-  LineHeightsThemeExtension? get lineHeights =>
-      extension<LineHeightsThemeExtension>();
-  ElevatedButtonThemeExtension? get elevatedButton =>
-      extension<ElevatedButtonThemeExtension>();
-  SpecialColorsThemeExtension? get specialColors =>
-      extension<SpecialColorsThemeExtension>();
+  TextDecorationThemeExtension? get textDecoration => extension<TextDecorationThemeExtension>();
+  ParagraphIndentThemeExtension? get paragraphIndent => extension<ParagraphIndentThemeExtension>();
+  LineHeightsThemeExtension? get lineHeights => extension<LineHeightsThemeExtension>();
+  ElevatedButtonThemeExtension? get elevatedButton => extension<ElevatedButtonThemeExtension>();
+  SpecialColorsThemeExtension? get specialColors => extension<SpecialColorsThemeExtension>();
 }
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
-
-  FontFamiliesThemeExtension get fontFamilies =>
-      theme.extension<FontFamiliesThemeExtension>()!;
-  FontWeightsThemeExtension get fontWeights =>
-      theme.extension<FontWeightsThemeExtension>()!;
-  FontSizeThemeExtension get fontSize =>
-      theme.extension<FontSizeThemeExtension>()!;
-  LetterSpacingThemeExtension get letterSpacing =>
-      theme.extension<LetterSpacingThemeExtension>()!;
-  ParagraphSpacingThemeExtension get paragraphSpacing =>
-      theme.extension<ParagraphSpacingThemeExtension>()!;
-  TextCaseThemeExtension get textCase =>
-      theme.extension<TextCaseThemeExtension>()!;
-  TextDecorationThemeExtension get textDecoration =>
-      theme.extension<TextDecorationThemeExtension>()!;
-  ParagraphIndentThemeExtension get paragraphIndent =>
-      theme.extension<ParagraphIndentThemeExtension>()!;
-  LineHeightsThemeExtension get lineHeights =>
-      theme.extension<LineHeightsThemeExtension>()!;
-  ElevatedButtonThemeExtension get elevatedButton =>
-      theme.extension<ElevatedButtonThemeExtension>()!;
-  SpecialColorsThemeExtension get specialColors =>
-      theme.extension<SpecialColorsThemeExtension>()!;
+  
+  FontFamiliesThemeExtension get fontFamilies => theme.extension<FontFamiliesThemeExtension>()!;
+  FontWeightsThemeExtension get fontWeights => theme.extension<FontWeightsThemeExtension>()!;
+  FontSizeThemeExtension get fontSize => theme.extension<FontSizeThemeExtension>()!;
+  LetterSpacingThemeExtension get letterSpacing => theme.extension<LetterSpacingThemeExtension>()!;
+  ParagraphSpacingThemeExtension get paragraphSpacing => theme.extension<ParagraphSpacingThemeExtension>()!;
+  TextCaseThemeExtension get textCase => theme.extension<TextCaseThemeExtension>()!;
+  TextDecorationThemeExtension get textDecoration => theme.extension<TextDecorationThemeExtension>()!;
+  ParagraphIndentThemeExtension get paragraphIndent => theme.extension<ParagraphIndentThemeExtension>()!;
+  LineHeightsThemeExtension get lineHeights => theme.extension<LineHeightsThemeExtension>()!;
+  ElevatedButtonThemeExtension get elevatedButton => theme.extension<ElevatedButtonThemeExtension>()!;
+  SpecialColorsThemeExtension get specialColors => theme.extension<SpecialColorsThemeExtension>()!;
   ColorScheme get colorScheme => theme.colorScheme;
   TextTheme get textTheme => theme.textTheme;
 }

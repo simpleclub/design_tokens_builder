@@ -40,7 +40,7 @@ class BoxShadowParser extends DesignTokenParser {
 
   @override
   String buildLerp(String token) {
-    return 'BoxShadow.lerpList($token, other.$token, t)';
+    return 'BoxShadow.lerpList($token, other.$token, t) ?? other.$token';
   }
 
   @override

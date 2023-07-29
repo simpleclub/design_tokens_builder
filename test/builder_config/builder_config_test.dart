@@ -19,7 +19,6 @@ void main() {
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
-          tokenFilePath: 'some/path',
           defaultSetName: 'core',
           fontConfig: [
             FontConfig(family: 'First Font', flutterName: 'FirstFont'),
@@ -37,17 +36,10 @@ void main() {
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
-          tokenFilePath: 'some/path',
           defaultSetName: 'global',
           fontConfig: [],
         ),
       );
-    });
-
-    test('fails', () {
-      final yaml = YamlMap.wrap({});
-
-      expect(() => BuilderConfig.fromYaml(yaml), throwsException);
     });
   });
 }

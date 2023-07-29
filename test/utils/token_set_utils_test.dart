@@ -4,9 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Get token sets', () {
-    final config = BuilderConfig(
-      tokenFilePath: 'some/path',
-    );
+    final config = BuilderConfig();
 
     test('succeeds', () {
       final result = getTokenSets(

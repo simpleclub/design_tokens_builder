@@ -110,6 +110,6 @@ abstract class DesignTokenParser {
   /// This method only works if it is used in a context where a class wants to
   /// linearly interpolate between the current and `other` value.
   String buildLerp(String token) {
-    return '$flutterType.lerp($token, other.$token, t)';
+    return '$flutterType.lerp($token, other.$token, t) ?? other.$token';
   }
 }

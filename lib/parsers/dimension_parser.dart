@@ -27,7 +27,7 @@ class DimensionParser extends DesignTokenParser {
 
   @override
   String buildLerp(String token) {
-    return 'lerpDouble($token, other.$token, t)';
+    return 'lerpDouble($token, other.$token, t) ?? other.$token';
   }
 
   @override

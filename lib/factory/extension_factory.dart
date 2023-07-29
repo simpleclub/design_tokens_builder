@@ -18,9 +18,9 @@ String buildExtensions(
     final extension = entry.value;
     final name = buildExtensionName(entry.key);
     output += '''class $name extends ThemeExtension<$name> {
-  $name({\n${extension.map((e) => '    this.${e.item1}').join(',\n')},\n  });
+  $name({\n${extension.map((e) => '    required this.${e.item1}').join(',\n')},\n  });
 
-${extension.map((e) => '  final ${e.item2.flutterType}? ${e.item1};').join('\n')}
+${extension.map((e) => '  final ${e.item2.flutterType} ${e.item1};').join('\n')}
 
   @override
   $name copyWith({
@@ -112,14 +112,26 @@ Map<String, List<Tuple2<String, Map<String, dynamic>>>> getExtensions(
     final setData = tokens[tokenSet] as Map<String, dynamic>;
     final setDataKeys = setData.keys.toList()..remove('sys');
     for (final key in setDataKeys) {
+      final extension = setData[key] as Map<String, dynamic>;
       if (!extensions.keys.contains(key)) {
-        final extension = setData[key] as Map<String, dynamic>;
         // Only create an extension when the key does not have an value and
         // therefore is a group.
         if (!extension.containsKey('value')) {
           extensions[key] = extension.keys
               .map((e) => Tuple2(e, setData[key][e] as Map<String, dynamic>))
               .toList();
+        }
+      } else {
+        for (final extensionKey in extension.keys) {
+          if (extensions[key]
+                  ?.any((element) => element.item1 == extensionKey) ??
+              false) {
+            extensions[key]!
+                .removeWhere((element) => element.item1 == extensionKey);
+          }
+
+          extensions[key]!.add(Tuple2(extensionKey,
+              setData[key][extensionKey] as Map<String, dynamic>));
         }
       }
     }
