@@ -3,6 +3,7 @@
 </h1>
 
 ![design_tokens_builder on Pub](https://img.shields.io/pub/v/design_tokens_builder.svg)
+[![codecov](https://codecov.io/gh/simpleclub/design_tokens_builder/branch/main/graph/badge.svg?token=ZKAYXRA59P)](https://codecov.io/gh/simpleclub/design_tokens_builder)
 
 A package for generating a Flutter `ThemeData` from an exported design token json that is used
 e.g. [in this Figma plugin](https://tokens.studio/). It rather aims to create a Flutter `Theme`
