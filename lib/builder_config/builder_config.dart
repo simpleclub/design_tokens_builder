@@ -9,13 +9,13 @@ const _fallbackDefaultSetName = 'global';
 class BuilderConfig {
   /// Constructs a [BuilderConfig].
   BuilderConfig({
-    this.defaultSetName = _fallbackDefaultSetName,
+    this.sourceSetName = _fallbackDefaultSetName,
     this.fontConfig = const [],
   });
 
   /// Constructs a [BuilderConfig] from a [yaml].
   BuilderConfig.fromYaml(YamlMap yaml)
-      : defaultSetName = yaml['defaultSetName'] ?? _fallbackDefaultSetName,
+      : sourceSetName = yaml['sourceSetName'] ?? _fallbackDefaultSetName,
         fontConfig = (yaml['fontConfig'] ?? [])
             .map((e) => FontConfig.fromYaml(e))
             .toList()
@@ -25,7 +25,7 @@ class BuilderConfig {
   ///
   /// Used for populating general accessible tokens. No ThemeData gets generated
   /// for this set.
-  final String defaultSetName;
+  final String sourceSetName;
 
   /// The config of the font the tokens use.
   final List<FontConfig> fontConfig;
@@ -35,11 +35,11 @@ class BuilderConfig {
       identical(this, other) ||
       other is BuilderConfig &&
           runtimeType == other.runtimeType &&
-          defaultSetName == other.defaultSetName &&
+          sourceSetName == other.sourceSetName &&
           DeepCollectionEquality().equals(fontConfig, other.fontConfig);
 
   @override
-  int get hashCode => defaultSetName.hashCode ^ fontConfig.hashCode;
+  int get hashCode => sourceSetName.hashCode ^ fontConfig.hashCode;
 }
 
 /// Class representing the configuration of fonts used in design token.

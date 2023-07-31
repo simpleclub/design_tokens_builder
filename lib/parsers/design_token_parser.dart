@@ -9,6 +9,7 @@ import 'package:design_tokens_builder/parsers/font_weight_parser.dart';
 import 'package:design_tokens_builder/parsers/line_height_parser.dart';
 import 'package:design_tokens_builder/parsers/number_parser.dart';
 import 'package:design_tokens_builder/parsers/opacity_parser.dart';
+import 'package:design_tokens_builder/parsers/other_parser.dart';
 import 'package:design_tokens_builder/parsers/spacing_parser.dart';
 import 'package:design_tokens_builder/parsers/text_case_parser.dart';
 import 'package:design_tokens_builder/parsers/text_decoration_parser.dart';
@@ -42,6 +43,7 @@ DesignTokenParser parserForType(
       TextCaseParser(indentationLevel, config),
       TextDecorationParser(indentationLevel, config),
       TypographyParser(indentationLevel, config),
+      OtherParser(indentationLevel, config),
     ].firstWhere((element) => element.tokenType.contains(type));
   } catch (e) {
     throw Exception('No parser found for type $type');
@@ -84,6 +86,7 @@ abstract class DesignTokenParser {
     'EdgeInsets',
     'BorderRadius',
     'List<BoxShadow>',
+    'Duration',
   ];
 
   /// Parses the `value` and returns flutter readable code.
@@ -94,6 +97,8 @@ abstract class DesignTokenParser {
   String parse(dynamic value, {bool isConst = true}) {
     final includeConst = isConst && _constTypes.contains(flutterType);
     final prefix = includeConst ? 'const ' : '';
+
+    if (value is String && value.isEmpty) return 'null';
 
     return '$prefix${buildValue(value)}';
   }

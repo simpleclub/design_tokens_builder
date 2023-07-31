@@ -38,6 +38,13 @@ class BorderParser extends DesignTokenParser {
       final color = ColorParser().parse(value['color']);
       final width = DimensionParser().parse(value['width']);
 
+      if (color == 'null' || width == 'null') {
+        print(
+          'Unable to parse border since color ($color) or width ($width) is null.',
+        );
+        return 'null';
+      }
+
       if (value['style'] == 'dashed') {
         throw Exception(
           'Unable to parse dashed border. Please use solid instead.',

@@ -3,18 +3,23 @@ import 'package:design_tokens_builder/builder_config/builder_config.dart';
 /// Parses token sets from token data and returns a list of all available tokens
 /// sets.
 ///
-/// Removed the default set from the output.
+/// Removed the source set and possible flutterMapping from the output.
 List<String> getTokenSets(
   Map<String, dynamic> tokens, {
   required BuilderConfig config,
-  bool includeDefaultSet = false,
+  bool includeSourceSet = false,
+  bool includeFlutterMappingSet = false,
 }) {
   final tokenSets = List<String>.from(
     (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
   );
 
-  if (!includeDefaultSet) {
-    tokenSets.remove(config.defaultSetName);
+  if (!includeSourceSet) {
+    tokenSets.remove(config.sourceSetName);
+  }
+
+  if (!includeFlutterMappingSet) {
+    tokenSets.remove('flutterMapping');
   }
 
   return tokenSets;

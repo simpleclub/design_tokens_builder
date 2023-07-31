@@ -105,7 +105,7 @@ Map<String, List<Tuple2<String, Map<String, dynamic>>>> getExtensions(
 
   final tokenSets = getTokenSets(
     tokens,
-    includeDefaultSet: true,
+    includeSourceSet: true,
     config: config,
   );
   for (final tokenSet in tokenSets) {

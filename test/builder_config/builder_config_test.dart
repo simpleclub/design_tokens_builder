@@ -19,7 +19,7 @@ void main() {
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
-          defaultSetName: 'core',
+          sourceSetName: 'core',
           fontConfig: [
             FontConfig(family: 'First Font', flutterName: 'FirstFont'),
             FontConfig(family: 'Second Font', flutterName: 'SecondFont'),
@@ -36,7 +36,7 @@ void main() {
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
-          defaultSetName: 'global',
+          sourceSetName: 'global',
           fontConfig: [],
         ),
       );

@@ -1,7 +1,7 @@
 # TODO: Document this file!
 
 tokenFilePath: lib/tokens/tokens.json
-defaultSetName: global
+sourceSetName: global
 
 fontConfig:
   - family: System Roboto

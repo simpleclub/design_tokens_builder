@@ -21,7 +21,7 @@ void main() {
 
   group('Generate token set enum', () {
     final config = BuilderConfig(
-      defaultSetName: 'global',
+      sourceSetName: 'global',
     );
 
     test('with light, dark and global token sets', () {

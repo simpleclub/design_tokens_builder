@@ -20,6 +20,7 @@ class NumberParser extends DesignTokenParser {
         'letterSpacing',
         'paragraphSpacing',
         'lineHeights',
+        'number',
       ];
 
   @override

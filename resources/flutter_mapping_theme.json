@@ -264,7 +264,7 @@
     "elevatedButton": {
       "animationDuration": {
         "value": "",
-        "type": "number",
+        "type": "other",
         "description": "Defines the duration of animated changes for shape and elevation in ms. "
       },
       "backgroundColor": {
@@ -1154,8 +1154,8 @@
     },
     "filledButton": {
       "animationDuration": {
-        "value": "200",
-        "type": "number",
+        "value": "",
+        "type": "other",
         "description": "Defines the duration of animated changes for shape and elevation in ms. "
       },
       "backgroundColor": {
@@ -2045,8 +2045,8 @@
     },
     "outlinedButton": {
       "animationDuration": {
-        "value": "200",
-        "type": "number",
+        "value": "",
+        "type": "other",
         "description": "Defines the duration of animated changes for shape and elevation in ms. "
       },
       "backgroundColor": {
@@ -2936,8 +2936,8 @@
     },
     "textButton": {
       "animationDuration": {
-        "value": "200",
-        "type": "number",
+        "value": "",
+        "type": "other",
         "description": "Defines the duration of animated changes for shape and elevation in ms. "
       },
       "backgroundColor": {
