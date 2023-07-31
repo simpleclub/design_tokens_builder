@@ -32,7 +32,6 @@ class OtherParser extends DesignTokenParser {
     final regex = r'\b(\d+(\.\d+)?)\s*(ms|s|m|h|d)\b';
     final match = RegExp(regex).firstMatch(value);
     if (match != null) {
-      print('Match group -> ${match.group(1)}');
       final durationValue = int.parse(match.group(1)!);
       final unit = match.group(3);
       var unitParam = '';

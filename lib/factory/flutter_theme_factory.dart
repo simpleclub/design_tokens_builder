@@ -6,14 +6,14 @@ import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/transformer_utils.dart';
 
-String buildFlutterTheme(Map<String, dynamic> allData, {
+String buildFlutterTheme(
+  Map<String, dynamic> allData, {
   required String setName,
   required String brightness,
   required BuilderConfig config,
 }) {
   final data = json.decode(json.encode(allData)) as Map<String, dynamic>;
   final flutterMappingSet = data['flutterMapping'] as Map<String, dynamic>;
-  print('Resolving aliases and math...');
   final flutterTokens = resolveAliasesAndMath(
     {...flutterMappingSet},
     tokenSetOrder: [setName, config.sourceSetName],
@@ -75,7 +75,8 @@ ${buildColorScheme(
 ''';
 }
 
-String buildColorScheme(Map<String, dynamic> allData, {
+String buildColorScheme(
+  Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String setName,
   required String brightness,
@@ -94,20 +95,19 @@ String buildColorScheme(Map<String, dynamic> allData, {
   }).whereNot((element) => element == '');
 
   final content = colorSchemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}${colorSchemeAttributes.join(
-      ',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}${colorSchemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
       : '';
 
   return 'ColorScheme get _colorScheme => const ColorScheme.$brightness($content);';
 }
 
-String buildTextTheme(Map<String, dynamic> allData, {
+String buildTextTheme(
+  Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String setName,
   required String brightness,
   required BuilderConfig config,
 }) {
-  print('Building text theme...');
   final textTheme = flutterTokens['textTheme'] as Map<String, dynamic>;
   final textThemeAttributes = textTheme.entries.map((e) {
     // Add default text style color to style.
@@ -124,14 +124,14 @@ String buildTextTheme(Map<String, dynamic> allData, {
   }).whereNot((element) => element == '');
 
   final content = textThemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}${textThemeAttributes.join(
-      ',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}${textThemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
       : '';
 
   return '''TextTheme get _textTheme => TextTheme($content);''';
 }
 
-String buildButtonTheme(Map<String, dynamic> allData, {
+String buildButtonTheme(
+  Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String buttonThemeName,
   required String setName,
@@ -139,7 +139,7 @@ String buildButtonTheme(Map<String, dynamic> allData, {
   required BuilderConfig config,
 }) {
   final elevatedButtonTheme =
-  flutterTokens[buttonThemeName] as Map<String, dynamic>;
+      flutterTokens[buttonThemeName] as Map<String, dynamic>;
   final buttonThemeAttributes = elevatedButtonTheme.entries.map((e) {
     final value = e.value as Map<String, dynamic>;
     var attribute = 'null';
@@ -170,10 +170,7 @@ String buildButtonTheme(Map<String, dynamic> allData, {
   }).whereNot((element) => element == '');
 
   final content = buttonThemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}style: ButtonStyle(\n${indentation(
-      level: 3)}${buttonThemeAttributes.join(
-      ',\n${indentation(level: 3)}')},\n${indentation(
-      level: 2)}),\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}style: ButtonStyle(\n${indentation(level: 3)}${buttonThemeAttributes.join(',\n${indentation(level: 3)}')},\n${indentation(level: 2)}),\n${indentation(level: 1)}'
       : '';
 
   final themeDataName = '${buttonThemeName.firstUpperCased}ThemeData';

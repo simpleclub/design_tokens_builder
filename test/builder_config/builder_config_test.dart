@@ -14,8 +14,6 @@ void main() {
         ]
       });
 
-      print(BuilderConfig.fromYaml(yaml));
-
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
