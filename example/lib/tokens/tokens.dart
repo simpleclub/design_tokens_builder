@@ -238,90 +238,126 @@ class DarkThemeData with GeneratedThemeData {
   const DarkThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.dark(
-        background: Color(0xFF293133),
-        onBackground: Color(0xFFffffff),
-        onPrimary: Color(0xFFffffff),
-        primary: Color(0xFF0000FF),
-      );
-
+    background: Color(0xFF293133),
+    onBackground: Color(0xFFffffff),
+    onPrimary: Color(0xFFffffff),
+    primary: Color(0xFF0000FF),
+  );
+  
   TextTheme get _textTheme => TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-          color: _colorScheme.onBackground,
-          package: 'design_tokens_builder',
-        ),
-        displayMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        displaySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-      );
-
+    displayLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontWeight: FontWeight.w900,
+      height: 1.1,
+      fontSize: 22.0,
+      letterSpacing: 0.0,
+      decoration: TextDecoration.none,
+      color: _colorScheme.onBackground,
+      package: 'design_tokens_builder',
+    ),
+    displayMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    displaySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+  );
+  
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+      backgroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return const Color(0xFF7D72F7);
+        }
 
+        if (states.contains(MaterialState.focused)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.pressed)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.dragged)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.selected)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.scrolledUnder)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.disabled)) {
+          return const Color(0xFFBFBFBF);
+        }
+
+        if (states.contains(MaterialState.error)) {
+          return const Color(0xFFFF271C);
+        }
+
+        return const Color(0xFF7066DE);
+      }),
+    ),
+  );
+  
   FilledButtonThemeData get _filledButtonTheme => FilledButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   OutlinedButtonThemeData get _outlinedButtonTheme => OutlinedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   TextButtonThemeData get _textButtonTheme => TextButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+
 
   @override
   ThemeData get themeData => ThemeData.dark().copyWith(
@@ -330,14 +366,14 @@ class DarkThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -346,30 +382,30 @@ class DarkThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             padding: const EdgeInsets.all(1034.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -395,7 +431,7 @@ class DarkThemeData with GeneratedThemeData {
             ),
             color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -407,90 +443,126 @@ class LightThemeData with GeneratedThemeData {
   const LightThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.light(
-        background: Color(0xFFffffff),
-        onBackground: Color(0xFF293133),
-        onPrimary: Color(0xFFffffff),
-        primary: Color(0xFF0000FF),
-      );
-
+    background: Color(0xFFffffff),
+    onBackground: Color(0xFF293133),
+    onPrimary: Color(0xFFffffff),
+    primary: Color(0xFF0000FF),
+  );
+  
   TextTheme get _textTheme => TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-          color: _colorScheme.onBackground,
-          package: 'design_tokens_builder',
-        ),
-        displayMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        displaySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-      );
-
+    displayLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontWeight: FontWeight.w900,
+      height: 1.1,
+      fontSize: 22.0,
+      letterSpacing: 0.0,
+      decoration: TextDecoration.none,
+      color: _colorScheme.onBackground,
+      package: 'design_tokens_builder',
+    ),
+    displayMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    displaySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+  );
+  
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+      backgroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return const Color(0xFF7D72F7);
+        }
 
+        if (states.contains(MaterialState.focused)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.pressed)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.dragged)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.selected)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.scrolledUnder)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.disabled)) {
+          return const Color(0xFFBFBFBF);
+        }
+
+        if (states.contains(MaterialState.error)) {
+          return const Color(0xFFFF271C);
+        }
+
+        return const Color(0xFF7066DE);
+      }),
+    ),
+  );
+  
   FilledButtonThemeData get _filledButtonTheme => FilledButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   OutlinedButtonThemeData get _outlinedButtonTheme => OutlinedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   TextButtonThemeData get _textButtonTheme => TextButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
@@ -499,14 +571,14 @@ class LightThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -515,30 +587,30 @@ class LightThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             padding: const EdgeInsets.all(1034.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -564,7 +636,7 @@ class LightThemeData with GeneratedThemeData {
             ),
             color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -576,90 +648,126 @@ class CustomThemeData with GeneratedThemeData {
   const CustomThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.light(
-        background: Color(0xFFCBD0CC),
-        onBackground: Color(0xFF293133),
-        onPrimary: Color(0xFF293133),
-        primary: Color(0xFFBDECB6),
-      );
-
+    background: Color(0xFFCBD0CC),
+    onBackground: Color(0xFF293133),
+    onPrimary: Color(0xFF293133),
+    primary: Color(0xFFBDECB6),
+  );
+  
   TextTheme get _textTheme => TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-          color: _colorScheme.onBackground,
-          package: 'design_tokens_builder',
-        ),
-        displayMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        displaySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-      );
-
+    displayLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontWeight: FontWeight.w900,
+      height: 1.1,
+      fontSize: 22.0,
+      letterSpacing: 0.0,
+      decoration: TextDecoration.none,
+      color: _colorScheme.onBackground,
+      package: 'design_tokens_builder',
+    ),
+    displayMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    displaySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+  );
+  
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+      backgroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return const Color(0xFF7D72F7);
+        }
 
+        if (states.contains(MaterialState.focused)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.pressed)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.dragged)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.selected)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.scrolledUnder)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.disabled)) {
+          return const Color(0xFFBFBFBF);
+        }
+
+        if (states.contains(MaterialState.error)) {
+          return const Color(0xFFFF271C);
+        }
+
+        return const Color(0xFF7066DE);
+      }),
+    ),
+  );
+  
   FilledButtonThemeData get _filledButtonTheme => FilledButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   OutlinedButtonThemeData get _outlinedButtonTheme => OutlinedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   TextButtonThemeData get _textButtonTheme => TextButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
@@ -668,14 +776,14 @@ class CustomThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -684,30 +792,30 @@ class CustomThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             padding: const EdgeInsets.all(1034.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -733,7 +841,7 @@ class CustomThemeData with GeneratedThemeData {
             ),
             color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -745,90 +853,126 @@ class PartyLightThemeData with GeneratedThemeData {
   const PartyLightThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.light(
-        background: Color(0xFFffffff),
-        onBackground: Color(0xFF293133),
-        onPrimary: Color(0xFFffffff),
-        primary: Color(0xFFFE0000),
-      );
-
+    background: Color(0xFFffffff),
+    onBackground: Color(0xFF293133),
+    onPrimary: Color(0xFFffffff),
+    primary: Color(0xFFFE0000),
+  );
+  
   TextTheme get _textTheme => TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-          color: _colorScheme.onBackground,
-          package: 'design_tokens_builder',
-        ),
-        displayMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        displaySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-      );
-
+    displayLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontWeight: FontWeight.w900,
+      height: 1.1,
+      fontSize: 22.0,
+      letterSpacing: 0.0,
+      decoration: TextDecoration.none,
+      color: _colorScheme.onBackground,
+      package: 'design_tokens_builder',
+    ),
+    displayMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    displaySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+  );
+  
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+      backgroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return const Color(0xFF7D72F7);
+        }
 
+        if (states.contains(MaterialState.focused)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.pressed)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.dragged)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.selected)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.scrolledUnder)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.disabled)) {
+          return const Color(0xFFBFBFBF);
+        }
+
+        if (states.contains(MaterialState.error)) {
+          return const Color(0xFFFF271C);
+        }
+
+        return const Color(0xFF7066DE);
+      }),
+    ),
+  );
+  
   FilledButtonThemeData get _filledButtonTheme => FilledButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   OutlinedButtonThemeData get _outlinedButtonTheme => OutlinedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   TextButtonThemeData get _textButtonTheme => TextButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+
 
   @override
   ThemeData get themeData => ThemeData.light().copyWith(
@@ -837,14 +981,14 @@ class PartyLightThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -853,30 +997,30 @@ class PartyLightThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             padding: const EdgeInsets.all(1034.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -902,7 +1046,7 @@ class PartyLightThemeData with GeneratedThemeData {
             ),
             color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -914,90 +1058,126 @@ class PartyDarkThemeData with GeneratedThemeData {
   const PartyDarkThemeData();
 
   ColorScheme get _colorScheme => const ColorScheme.dark(
-        background: Color(0xFF293133),
-        onBackground: Color(0xFFffffff),
-        onPrimary: Color(0xFF293133),
-        primary: Color(0xFFF8F32B),
-      );
-
+    background: Color(0xFF293133),
+    onBackground: Color(0xFFffffff),
+    onPrimary: Color(0xFF293133),
+    primary: Color(0xFFF8F32B),
+  );
+  
   TextTheme get _textTheme => TextTheme(
-        displayLarge: TextStyle(
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w900,
-          height: 1.1,
-          fontSize: 22.0,
-          letterSpacing: 0.0,
-          decoration: TextDecoration.none,
-          color: _colorScheme.onBackground,
-          package: 'design_tokens_builder',
-        ),
-        displayMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        displaySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        headlineSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        titleSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        labelSmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyLarge: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodyMedium: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-        bodySmall: TextStyle(
-          color: _colorScheme.onBackground,
-        ),
-      );
-
+    displayLarge: TextStyle(
+      fontFamily: 'Roboto',
+      fontWeight: FontWeight.w900,
+      height: 1.1,
+      fontSize: 22.0,
+      letterSpacing: 0.0,
+      decoration: TextDecoration.none,
+      color: _colorScheme.onBackground,
+      package: 'design_tokens_builder',
+    ),
+    displayMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    displaySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    headlineSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    titleSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    labelSmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyLarge: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodyMedium: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+    bodySmall: TextStyle(
+      color: _colorScheme.onBackground,
+    ),
+  );
+  
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+      backgroundColor: MaterialStateProperty.resolveWith((states) {
+        if (states.contains(MaterialState.hovered)) {
+          return const Color(0xFF7D72F7);
+        }
 
+        if (states.contains(MaterialState.focused)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.pressed)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.dragged)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.selected)) {
+          return const Color(0xFF5D54B8);
+        }
+
+        if (states.contains(MaterialState.scrolledUnder)) {
+          return const Color(0xFF7D72F7);
+        }
+
+        if (states.contains(MaterialState.disabled)) {
+          return const Color(0xFFBFBFBF);
+        }
+
+        if (states.contains(MaterialState.error)) {
+          return const Color(0xFFFF271C);
+        }
+
+        return const Color(0xFF7066DE);
+      }),
+    ),
+  );
+  
   FilledButtonThemeData get _filledButtonTheme => FilledButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   OutlinedButtonThemeData get _outlinedButtonTheme => OutlinedButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
-
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+  
   TextButtonThemeData get _textButtonTheme => TextButtonThemeData(
-        style: ButtonStyle(
-          animationDuration: Duration(milliseconds: 200),
-        ),
-      );
+    style: ButtonStyle(
+      animationDuration: const Duration(milliseconds: 200),
+    ),
+  );
+
 
   @override
   ThemeData get themeData => ThemeData.dark().copyWith(
@@ -1006,14 +1186,14 @@ class PartyDarkThemeData with GeneratedThemeData {
           FontFamiliesThemeExtension(
             primary: 'Roboto',
           ),
-          FontWeightsThemeExtension(
+        FontWeightsThemeExtension(
             w400: FontWeight.w400,
             w600: FontWeight.w600,
             w700: FontWeight.w700,
             w800: FontWeight.w800,
             w900: FontWeight.w900,
           ),
-          FontSizeThemeExtension(
+        FontSizeThemeExtension(
             base: 10.0,
             scale: 3.0,
             xs: 10.0,
@@ -1022,30 +1202,30 @@ class PartyDarkThemeData with GeneratedThemeData {
             lg: 19.0,
             xl: 22.0,
           ),
-          LetterSpacingThemeExtension(
+        LetterSpacingThemeExtension(
             none: 0.0,
             sm: 0.1,
             md: 0.25,
             lg: 0.5,
           ),
-          ParagraphSpacingThemeExtension(
+        ParagraphSpacingThemeExtension(
             none: 0.0,
           ),
-          TextCaseThemeExtension(
+        TextCaseThemeExtension(
             none: 'none',
           ),
-          TextDecorationThemeExtension(
+        TextDecorationThemeExtension(
             none: TextDecoration.none,
           ),
-          ParagraphIndentThemeExtension(
+        ParagraphIndentThemeExtension(
             none: 0.0,
           ),
-          LineHeightsThemeExtension(
+        LineHeightsThemeExtension(
             xs: 1.1,
             sm: 1.25,
             md: 1.5,
           ),
-          ElevatedButtonThemeExtension(
+        ElevatedButtonThemeExtension(
             height: 38.0,
             padding: const EdgeInsets.all(1034.0),
             borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -1071,7 +1251,7 @@ class PartyDarkThemeData with GeneratedThemeData {
             ),
             color: const Color(0xFF3A9BDC),
           ),
-          SpecialColorsThemeExtension(
+        SpecialColorsThemeExtension(
             color1: const Color(0xFF00FF00),
             color2: const Color(0xFFFF0000),
           ),
@@ -1098,8 +1278,7 @@ enum GeneratedTokenSet {
   final BrightnessAdapted<GeneratedThemeData> data;
 }
 
-class FontFamiliesThemeExtension
-    extends ThemeExtension<FontFamiliesThemeExtension> {
+class FontFamiliesThemeExtension extends ThemeExtension<FontFamiliesThemeExtension> {
   FontFamiliesThemeExtension({
     required this.primary,
   });
@@ -1126,8 +1305,7 @@ class FontFamiliesThemeExtension
   }
 }
 
-class FontWeightsThemeExtension
-    extends ThemeExtension<FontWeightsThemeExtension> {
+class FontWeightsThemeExtension extends ThemeExtension<FontWeightsThemeExtension> {
   FontWeightsThemeExtension({
     required this.w400,
     required this.w600,
@@ -1231,8 +1409,7 @@ class FontSizeThemeExtension extends ThemeExtension<FontSizeThemeExtension> {
   }
 }
 
-class LetterSpacingThemeExtension
-    extends ThemeExtension<LetterSpacingThemeExtension> {
+class LetterSpacingThemeExtension extends ThemeExtension<LetterSpacingThemeExtension> {
   LetterSpacingThemeExtension({
     required this.none,
     required this.sm,
@@ -1261,8 +1438,7 @@ class LetterSpacingThemeExtension
   }
 
   @override
-  LetterSpacingThemeExtension lerp(
-      LetterSpacingThemeExtension? other, double t) {
+  LetterSpacingThemeExtension lerp(LetterSpacingThemeExtension? other, double t) {
     if (other is! LetterSpacingThemeExtension) {
       return this;
     }
@@ -1275,8 +1451,7 @@ class LetterSpacingThemeExtension
   }
 }
 
-class ParagraphSpacingThemeExtension
-    extends ThemeExtension<ParagraphSpacingThemeExtension> {
+class ParagraphSpacingThemeExtension extends ThemeExtension<ParagraphSpacingThemeExtension> {
   ParagraphSpacingThemeExtension({
     required this.none,
   });
@@ -1293,8 +1468,7 @@ class ParagraphSpacingThemeExtension
   }
 
   @override
-  ParagraphSpacingThemeExtension lerp(
-      ParagraphSpacingThemeExtension? other, double t) {
+  ParagraphSpacingThemeExtension lerp(ParagraphSpacingThemeExtension? other, double t) {
     if (other is! ParagraphSpacingThemeExtension) {
       return this;
     }
@@ -1331,8 +1505,7 @@ class TextCaseThemeExtension extends ThemeExtension<TextCaseThemeExtension> {
   }
 }
 
-class TextDecorationThemeExtension
-    extends ThemeExtension<TextDecorationThemeExtension> {
+class TextDecorationThemeExtension extends ThemeExtension<TextDecorationThemeExtension> {
   TextDecorationThemeExtension({
     required this.none,
   });
@@ -1349,8 +1522,7 @@ class TextDecorationThemeExtension
   }
 
   @override
-  TextDecorationThemeExtension lerp(
-      TextDecorationThemeExtension? other, double t) {
+  TextDecorationThemeExtension lerp(TextDecorationThemeExtension? other, double t) {
     if (other is! TextDecorationThemeExtension) {
       return this;
     }
@@ -1360,8 +1532,7 @@ class TextDecorationThemeExtension
   }
 }
 
-class ParagraphIndentThemeExtension
-    extends ThemeExtension<ParagraphIndentThemeExtension> {
+class ParagraphIndentThemeExtension extends ThemeExtension<ParagraphIndentThemeExtension> {
   ParagraphIndentThemeExtension({
     required this.none,
   });
@@ -1378,8 +1549,7 @@ class ParagraphIndentThemeExtension
   }
 
   @override
-  ParagraphIndentThemeExtension lerp(
-      ParagraphIndentThemeExtension? other, double t) {
+  ParagraphIndentThemeExtension lerp(ParagraphIndentThemeExtension? other, double t) {
     if (other is! ParagraphIndentThemeExtension) {
       return this;
     }
@@ -1389,8 +1559,7 @@ class ParagraphIndentThemeExtension
   }
 }
 
-class LineHeightsThemeExtension
-    extends ThemeExtension<LineHeightsThemeExtension> {
+class LineHeightsThemeExtension extends ThemeExtension<LineHeightsThemeExtension> {
   LineHeightsThemeExtension({
     required this.xs,
     required this.sm,
@@ -1427,8 +1596,7 @@ class LineHeightsThemeExtension
   }
 }
 
-class ElevatedButtonThemeExtension
-    extends ThemeExtension<ElevatedButtonThemeExtension> {
+class ElevatedButtonThemeExtension extends ThemeExtension<ElevatedButtonThemeExtension> {
   ElevatedButtonThemeExtension({
     required this.height,
     required this.padding,
@@ -1465,16 +1633,14 @@ class ElevatedButtonThemeExtension
   }
 
   @override
-  ElevatedButtonThemeExtension lerp(
-      ElevatedButtonThemeExtension? other, double t) {
+  ElevatedButtonThemeExtension lerp(ElevatedButtonThemeExtension? other, double t) {
     if (other is! ElevatedButtonThemeExtension) {
       return this;
     }
     return ElevatedButtonThemeExtension(
       height: lerpDouble(height, other.height, t) ?? other.height,
       padding: EdgeInsets.lerp(padding, other.padding, t) ?? other.padding,
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t) ??
-          other.borderRadius,
+      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t) ?? other.borderRadius,
       shadow: BoxShadow.lerpList(shadow, other.shadow, t) ?? other.shadow,
       border: BoxBorder.lerp(border, other.border, t) ?? other.border,
       color: Color.lerp(color, other.color, t) ?? other.color,
@@ -1482,8 +1648,7 @@ class ElevatedButtonThemeExtension
   }
 }
 
-class SpecialColorsThemeExtension
-    extends ThemeExtension<SpecialColorsThemeExtension> {
+class SpecialColorsThemeExtension extends ThemeExtension<SpecialColorsThemeExtension> {
   SpecialColorsThemeExtension({
     required this.color1,
     required this.color2,
@@ -1504,8 +1669,7 @@ class SpecialColorsThemeExtension
   }
 
   @override
-  SpecialColorsThemeExtension lerp(
-      SpecialColorsThemeExtension? other, double t) {
+  SpecialColorsThemeExtension lerp(SpecialColorsThemeExtension? other, double t) {
     if (other is! SpecialColorsThemeExtension) {
       return this;
     }
@@ -1517,75 +1681,33 @@ class SpecialColorsThemeExtension
 }
 
 extension GeneratedTheme on ThemeData {
-  FontFamiliesThemeExtension? get fontFamilies =>
-      extension<FontFamiliesThemeExtension>();
-
-  FontWeightsThemeExtension? get fontWeights =>
-      extension<FontWeightsThemeExtension>();
-
+  FontFamiliesThemeExtension? get fontFamilies => extension<FontFamiliesThemeExtension>();
+  FontWeightsThemeExtension? get fontWeights => extension<FontWeightsThemeExtension>();
   FontSizeThemeExtension? get fontSize => extension<FontSizeThemeExtension>();
-
-  LetterSpacingThemeExtension? get letterSpacing =>
-      extension<LetterSpacingThemeExtension>();
-
-  ParagraphSpacingThemeExtension? get paragraphSpacing =>
-      extension<ParagraphSpacingThemeExtension>();
-
+  LetterSpacingThemeExtension? get letterSpacing => extension<LetterSpacingThemeExtension>();
+  ParagraphSpacingThemeExtension? get paragraphSpacing => extension<ParagraphSpacingThemeExtension>();
   TextCaseThemeExtension? get textCase => extension<TextCaseThemeExtension>();
-
-  TextDecorationThemeExtension? get textDecoration =>
-      extension<TextDecorationThemeExtension>();
-
-  ParagraphIndentThemeExtension? get paragraphIndent =>
-      extension<ParagraphIndentThemeExtension>();
-
-  LineHeightsThemeExtension? get lineHeights =>
-      extension<LineHeightsThemeExtension>();
-
-  ElevatedButtonThemeExtension? get elevatedButton =>
-      extension<ElevatedButtonThemeExtension>();
-
-  SpecialColorsThemeExtension? get specialColors =>
-      extension<SpecialColorsThemeExtension>();
+  TextDecorationThemeExtension? get textDecoration => extension<TextDecorationThemeExtension>();
+  ParagraphIndentThemeExtension? get paragraphIndent => extension<ParagraphIndentThemeExtension>();
+  LineHeightsThemeExtension? get lineHeights => extension<LineHeightsThemeExtension>();
+  ElevatedButtonThemeExtension? get elevatedButton => extension<ElevatedButtonThemeExtension>();
+  SpecialColorsThemeExtension? get specialColors => extension<SpecialColorsThemeExtension>();
 }
 
 extension BuildContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
-
-  FontFamiliesThemeExtension get fontFamilies =>
-      theme.extension<FontFamiliesThemeExtension>()!;
-
-  FontWeightsThemeExtension get fontWeights =>
-      theme.extension<FontWeightsThemeExtension>()!;
-
-  FontSizeThemeExtension get fontSize =>
-      theme.extension<FontSizeThemeExtension>()!;
-
-  LetterSpacingThemeExtension get letterSpacing =>
-      theme.extension<LetterSpacingThemeExtension>()!;
-
-  ParagraphSpacingThemeExtension get paragraphSpacing =>
-      theme.extension<ParagraphSpacingThemeExtension>()!;
-
-  TextCaseThemeExtension get textCase =>
-      theme.extension<TextCaseThemeExtension>()!;
-
-  TextDecorationThemeExtension get textDecoration =>
-      theme.extension<TextDecorationThemeExtension>()!;
-
-  ParagraphIndentThemeExtension get paragraphIndent =>
-      theme.extension<ParagraphIndentThemeExtension>()!;
-
-  LineHeightsThemeExtension get lineHeights =>
-      theme.extension<LineHeightsThemeExtension>()!;
-
-  ElevatedButtonThemeExtension get elevatedButton =>
-      theme.extension<ElevatedButtonThemeExtension>()!;
-
-  SpecialColorsThemeExtension get specialColors =>
-      theme.extension<SpecialColorsThemeExtension>()!;
-
+  
+  FontFamiliesThemeExtension get fontFamilies => theme.extension<FontFamiliesThemeExtension>()!;
+  FontWeightsThemeExtension get fontWeights => theme.extension<FontWeightsThemeExtension>()!;
+  FontSizeThemeExtension get fontSize => theme.extension<FontSizeThemeExtension>()!;
+  LetterSpacingThemeExtension get letterSpacing => theme.extension<LetterSpacingThemeExtension>()!;
+  ParagraphSpacingThemeExtension get paragraphSpacing => theme.extension<ParagraphSpacingThemeExtension>()!;
+  TextCaseThemeExtension get textCase => theme.extension<TextCaseThemeExtension>()!;
+  TextDecorationThemeExtension get textDecoration => theme.extension<TextDecorationThemeExtension>()!;
+  ParagraphIndentThemeExtension get paragraphIndent => theme.extension<ParagraphIndentThemeExtension>()!;
+  LineHeightsThemeExtension get lineHeights => theme.extension<LineHeightsThemeExtension>()!;
+  ElevatedButtonThemeExtension get elevatedButton => theme.extension<ElevatedButtonThemeExtension>()!;
+  SpecialColorsThemeExtension get specialColors => theme.extension<SpecialColorsThemeExtension>()!;
   ColorScheme get colorScheme => theme.colorScheme;
-
   TextTheme get textTheme => theme.textTheme;
 }

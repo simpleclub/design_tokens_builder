@@ -6,7 +6,7 @@ import 'package:tuple/tuple.dart';
 Map<String, dynamic> prepareTokens(Map<String, dynamic> map) {
   final metadata = map['\$metadata'];
   final List<String> tokenSetOrder =
-  List<String>.from(metadata['tokenSetOrder']);
+      List<String>.from(metadata['tokenSetOrder']);
 
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
@@ -24,13 +24,13 @@ Map<String, dynamic> prepareTokens(Map<String, dynamic> map) {
 
 /// Resolves aliases by looking in [sourceMap] for the referenced values and
 /// calculates math expressions recursively.
-Map<String, dynamic> resolveAliasesAndMath(Map<String, dynamic> map, {
+Map<String, dynamic> resolveAliasesAndMath(
+  Map<String, dynamic> map, {
   required List<String> tokenSetOrder,
   required Map<String, dynamic> sourceMap,
 }) {
   for (final entry in map.entries) {
     final value = entry.value;
-    print(value);
     if (value is Map<String, dynamic>) {
       map[entry.key] = resolveAliasesAndMath(
         value,
@@ -100,15 +100,15 @@ String evaluateMathExpression(String value) {
   // math_expressions package supports.
   parser.addFunction(
     'roundTo',
-        (List<double> args) => args.first.round(),
+    (List<double> args) => args.first.round(),
   );
   Expression exp = parser.parse(equation.item2);
-  return '${exp.evaluate(EvaluationType.REAL, ContextModel())}${equation
-      .item1}';
+  return '${exp.evaluate(EvaluationType.REAL, ContextModel())}${equation.item1}';
 }
 
 /// Finds and returns a value of a variable for a given name in any token set.
-dynamic _findVariable(Map<String, dynamic> globalMap, {
+dynamic _findVariable(
+  Map<String, dynamic> globalMap, {
   required List<String> tokenSetOrder,
   required String variableName,
 }) {
@@ -125,8 +125,10 @@ dynamic _findVariable(Map<String, dynamic> globalMap, {
 }
 
 /// Gets and returns a variable in a given `tokenSet`.
-dynamic _getTokenSetVariable(Map<String, dynamic> tokenSet,
-    String variableName,) {
+dynamic _getTokenSetVariable(
+  Map<String, dynamic> tokenSet,
+  String variableName,
+) {
   final path = variableName.split('.');
   dynamic value = tokenSet;
   for (final key in path) {

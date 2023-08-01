@@ -148,21 +148,9 @@ String buildButtonTheme(
         e.value,
         config: config,
         indentationLevel: 2,
-        isConst: false,
       );
     } else if (value.containsKey('default')) {
-      attribute = parseAttribute(
-        value['default'],
-        config: config,
-        indentationLevel: 3,
-        isConst: false,
-      );
-
-      if (attribute != 'null') {
-        attribute = '''MaterialStateProperty.resolveWith((states) {
-        return ${attribute};
-      })''';
-      }
+      attribute = buildMaterialStateProperty(value, config: config);
     }
 
     if (attribute == 'null') return '';
@@ -175,4 +163,44 @@ String buildButtonTheme(
 
   final themeDataName = '${buttonThemeName.firstUpperCased}ThemeData';
   return '$themeDataName get _${buttonThemeName}Theme => $themeDataName($content);';
+}
+
+String buildMaterialStateProperty(
+  Map<String, dynamic> value, {
+  required BuilderConfig config,
+}) {
+  final defaultValue = value['default'];
+  final defaultAttribute = parseAttribute(
+    defaultValue,
+    config: config,
+    indentationLevel: 3,
+  );
+
+  if (defaultAttribute == 'null') {
+    print('No default value found for MaterialStateProperty.');
+    return 'null';
+  }
+
+  var states = <String>[];
+
+  for (final state
+      in value.entries.where((element) => element.key != 'default')) {
+    final value = parseAttribute(
+      state.value,
+      config: config,
+      indentationLevel: 4,
+    );
+    if (value == 'null') continue;
+
+    final stateContent =
+        '''if (states.contains(MaterialState.${state.key.firstLowerCased})) {\n${indentation(level: 5)}return $value;\n${indentation(level: 4)}}''';
+    states.add(stateContent);
+  }
+
+  final statesContent =
+      '${states.join('\n\n${indentation(level: 4)}')}\n\n${indentation(level: 4)}';
+
+  return '''MaterialStateProperty.resolveWith((states) {
+        ${statesContent}return $defaultAttribute;
+      })''';
 }
