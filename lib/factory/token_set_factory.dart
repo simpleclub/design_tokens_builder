@@ -6,14 +6,16 @@ import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:tuple/tuple.dart';
 
+typedef ParserResultBuilder = String Function(
+    Map<String, dynamic> value, dynamic result);
+
 /// Generates theming for all available token sets.
 ///
 /// Theming includes:
 /// - `ColorScheme`
 /// - `TextStyle`
 /// - `ThemeData` with all extensions
-String buildTokenSet(
-  Map<String, dynamic> tokens, {
+String buildTokenSet(Map<String, dynamic> tokens, {
   required BuilderConfig config,
 }) {
   var output = '';
@@ -30,60 +32,6 @@ String buildTokenSet(
       brightness: brightness,
       config: config,
     );
-    // TODO: Generate flutter themes from flutterMappingTheme
-    // if (sys != null) {
-    //   /// Generate color scheme.
-    //   final systemColors = getTokensOfType(
-    //     'color',
-    //     tokenSetData: sys,
-    //     fallbackSetData: defaultSys,
-    //   );
-    //   if (systemColors.isNotEmpty) {
-    //     final colorSchemeValues = systemColors.keys.map(
-    //       (key) => '$key: ${_parseAttribute(
-    //         sys[key],
-    //         config: config,
-    //         isConst: false,
-    //       )}',
-    //     );
-    //     colorScheme +=
-    //         'ColorScheme get _colorScheme => const ColorScheme.$brightness(\n${indentation(
-    //       level: 4,
-    //     )}${colorSchemeValues.join(
-    //       ',\n${indentation(level: 4)}',
-    //     )},\n${indentation(level: 3)});';
-    //   }
-    //
-    //   /// Generate text style.
-    //   var systemTextTheme = getTokensOfType(
-    //     'typography',
-    //     tokenSetData: sys,
-    //     fallbackSetData: defaultSys,
-    //   );
-    //   systemTextTheme = prepareTypographyTokens(systemTextTheme);
-    //
-    //   if (systemTextTheme.isNotEmpty) {
-    //     final textThemeValues = systemTextTheme.keys.map(
-    //       (key) {
-    //         // Add default text style color to style.
-    //         final textTheme =
-    //             Map.from(systemTextTheme[key]).cast<String, dynamic>();
-    //         textTheme['value']['color'] = '_colorScheme.onBackground';
-    //         return '$key: ${_parseAttribute(
-    //           textTheme,
-    //           config: config,
-    //           indentationLevel: 4,
-    //           isConst: false,
-    //         )}';
-    //       },
-    //     );
-    //     textTheme += 'TextTheme get _textTheme => TextTheme(\n${indentation(
-    //       level: 4,
-    //     )}${textThemeValues.join(
-    //       ',\n${indentation(level: 4)}',
-    //     )},\n${indentation(level: 3)});';
-    //   }
-    // }
 
     final extensions = getExtensions(tokens, config: config);
     // textTheme: _textTheme,
@@ -92,25 +40,25 @@ String buildTokenSet(
         colorScheme: _colorScheme,
         extensions: [
           ${extensions.keys.map(
-              (e) => '${buildExtensionName(
-                e,
-              )}(\n${indentation(level: 6)}${extensions[e]!.map(
-                    (e) => '${e.item1}: ${parseAttribute(
-                      e.item2,
-                      config: config,
-                      indentationLevel: 6,
-                    )}',
-                  ).join(
-                    ',\n${indentation(level: 6)}',
-                  )},\n${indentation(level: 5)})',
-            ).join(
-              ',\n${indentation(level: 4)}',
-            )},
+          (e) => '${buildExtensionName(
+        e,
+      )}(\n${indentation(level: 6)}${extensions[e]!.map(
+            (e) => '${e.item1}: ${parseAttribute(
+          e.item2,
+          config: config,
+          indentationLevel: 6,
+        )}',
+      ).join(
+        ',\n${indentation(level: 6)}',
+      )},\n${indentation(level: 5)})',
+    ).join(
+      ',\n${indentation(level: 4)}',
+    )},
         ],
       );''';
 
     output +=
-        '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
+    '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
   const ${tokenSet.firstUpperCased}ThemeData();
 
   $flutterTheme
@@ -138,11 +86,10 @@ String _brightness({required tokenSet}) {
 }
 
 /// Parses all tokens and parses all attributes to dart readable format.
-String buildAttributeMap(
-  Map<String, dynamic> global,
-  BuilderConfig config, [
-  int depth = 1,
-]) {
+String buildAttributeMap(Map<String, dynamic> global,
+    BuilderConfig config, [
+      int depth = 1,
+    ]) {
   String recursiveMap(Map<String, dynamic> map, depth) {
     var output = '';
     for (final key in map.keys) {
@@ -191,12 +138,19 @@ String buildAttributeMap(
 //
 // }
 
-dynamic parseAttribute(
-  Map<String, dynamic> attr, {
+dynamic parseAttribute(Map<String, dynamic> attr, {
   required BuilderConfig config,
   int indentationLevel = 2,
   bool isConst = true,
+  ParserResultBuilder? resultBuilder,
 }) {
+  if (attr.containsKey('default')) {
+    return parseMaterialStateProperty(
+      attr,
+      config: config,
+      resultBuilder: resultBuilder,
+    );
+  }
   final value = attr['value'] as dynamic;
   final type = attr['type'] as String;
   final parser = parserForType(
@@ -205,7 +159,37 @@ dynamic parseAttribute(
     config: config,
   );
 
-  return parser.parse(value, isConst: isConst);
+  final result = parser.parse(value, isConst: isConst);
+
+  return resultBuilder?.call(attr, result) ?? result;
+}
+
+/// Parses the whole token instead of parsing just an attribute of a token.
+///
+/// Ensures to parse specific shape, complex size and other custom token
+/// structures properly.
+dynamic parseValue(Map<String, dynamic> value, {
+  required BuilderConfig config,
+  int indentationLevel = 2,
+  bool isConst = true,
+  ParserResultBuilder? resultBuilder,
+}) {
+  final token = value.entries.first;
+  if (token.key == ('fixedSize') ||
+      token.key == 'maximumSize' ||
+      token.key == 'minimumSize') {
+    return parseSize(token.value, config: config);
+  } else if (token.key == 'shape') {
+    return parseShape(value, config: config);
+  } else {
+    return parseAttribute(
+      token.value as Map<String, dynamic>,
+      config: config,
+      indentationLevel: indentationLevel,
+      isConst: isConst,
+      resultBuilder: resultBuilder,
+    );
+  }
 }
 
 /// Tries to parse a value that looks like `120%` to a double like this `1.2`.
@@ -214,7 +198,9 @@ dynamic parseAttribute(
 double parsePercentage(dynamic value) {
   if (value is String) {
     final abs = int.tryParse(
-      value.split('%').first,
+      value
+          .split('%')
+          .first,
     );
     if (abs != null) {
       return abs / 100;
@@ -242,8 +228,7 @@ double parsePercentage(dynamic value) {
 ///   final BrightnessAdapted<GeneratedThemeData> data;
 /// }
 /// ```
-String generateTokenSetEnum(
-  List<String> tokenSets, {
+String generateTokenSetEnum(List<String> tokenSets, {
   required BuilderConfig config,
 }) {
   var cases = <String>[];
@@ -252,7 +237,7 @@ String generateTokenSetEnum(
   final regex = RegExp(r'\b(\w*)(?:light|dark|Light|Dark)\w*\b');
   final matches = regex.allMatches(tokenSetsString);
   final nonMatchedSets =
-      tokenSets.where((set) => !matches.any((match) => match.group(0) == set));
+  tokenSets.where((set) => !matches.any((match) => match.group(0) == set));
 
   // List of tuples containing all prefixes for topics.
   // Tuple: (prefix, initial match)
@@ -266,15 +251,15 @@ String generateTokenSetEnum(
 
   for (final uniquePrefix in uniquePrefixes) {
     final themeMatches =
-        prefixes.where((element) => element.item1 == uniquePrefix);
+    prefixes.where((element) => element.item1 == uniquePrefix);
     final themes =
-        themeMatches.map((e) => '${e.item2?.firstUpperCased}ThemeData()');
+    themeMatches.map((e) => '${e.item2?.firstUpperCased}ThemeData()');
     final lightTheme = themes.firstWhere(
-      (element) => element.contains('Light'),
+          (element) => element.contains('Light'),
       orElse: () => themes.first,
     );
     final darkTheme = themes.firstWhere(
-      (element) => element.contains('Dark'),
+          (element) => element.contains('Dark'),
       orElse: () => themes.first,
     );
 
@@ -296,4 +281,127 @@ String generateTokenSetEnum(
 
   final BrightnessAdapted<GeneratedThemeData> data;
 }''';
+}
+
+String parseMaterialStateProperty(Map<String, dynamic> value, {
+  required BuilderConfig config,
+  ParserResultBuilder? resultBuilder,
+}) {
+  final defaultValue = value['default'];
+  final defaultAttribute = parseAttribute(
+    defaultValue,
+    config: config,
+    indentationLevel: 4,
+    resultBuilder: resultBuilder,
+  );
+
+  if (defaultAttribute == 'null') {
+    return 'null';
+  }
+
+  var states = <String>[];
+
+  for (final state
+  in value.entries.where((element) => element.key != 'default')) {
+    final value = parseAttribute(
+      state.value,
+      config: config,
+      indentationLevel: 4,
+      resultBuilder: resultBuilder,
+    );
+    if (value == 'null') continue;
+
+    final stateContent =
+    '''if (states.contains(MaterialState.${state.key
+        .firstLowerCased})) {\n${indentation(
+        level: 5)}return $value;\n${indentation(level: 4)}}''';
+    states.add(stateContent);
+  }
+
+  final statesContent = states.isNotEmpty
+      ? '${states.join('\n\n${indentation(level: 4)}')}\n\n${indentation(
+      level: 4)}'
+      : '';
+
+  return '''MaterialStateProperty.resolveWith((states) {
+        ${statesContent}return $defaultAttribute;
+      })''';
+}
+
+String parseSize(Map<String, dynamic> value, {
+  required BuilderConfig config,
+}) {
+  final heightToken = value['height'] as Map<String, dynamic>;
+  final widthToken = value['width'] as Map<String, dynamic>;
+
+  List<Tuple2<dynamic, dynamic>> sizes = [];
+
+  if (heightToken.entries.length > 1 && heightToken.containsKey('default')) {
+    for (var i = 0; i < heightToken.entries.length; i++) {
+      final height =
+      heightToken.entries
+          .elementAt(i)
+          .value as Map<String, dynamic>;
+      final width =
+      widthToken.entries
+          .elementAt(i)
+          .value as Map<String, dynamic>;
+
+      sizes.add(
+        Tuple2(
+          parseAttribute(width, config: config),
+          parseAttribute(height, config: config),
+        ),
+      );
+    }
+  }
+
+  return parseMaterialStateProperty(
+    heightToken,
+    config: config,
+    resultBuilder: (value, result) {
+      final size = sizes.removeAt(0);
+
+      if (size.item1 == 'null' && size.item2 == 'null') {
+        return 'null';
+      }
+
+      final width = size.item1 == 'null' ? 'double.infinity' : size.item1;
+      final height = size.item2 == 'null' ? 'double.infinity' : size.item2;
+
+      return 'const Size($width, $height)';
+    },
+  );
+}
+
+String parseShape(Map<String, dynamic> value, {
+  required BuilderConfig config,
+}) {
+  final shape = value['shape'] as Map<String, dynamic>;
+
+  if (shape.containsKey('borderRadius')) {
+    final borderRadius = shape['borderRadius'] as Map<String, dynamic>;
+
+    if (borderRadius.containsKey('default')) {
+      final borderRadiusAttribute = parseMaterialStateProperty(
+        borderRadius,
+        config: config,
+        resultBuilder: (value, result) {
+          if (result == 'null') {
+            return 'null';
+          }
+
+          return 'const RoundedRectangleBorder(borderRadius: $result)';
+        },
+      );
+
+      if (borderRadiusAttribute == 'null') {
+        return 'null';
+      }
+
+      return borderRadiusAttribute;
+    }
+  }
+
+  return 'null';
 }

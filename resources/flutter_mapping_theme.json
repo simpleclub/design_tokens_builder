@@ -735,83 +735,47 @@
       },
       "side": {
         "default": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": ""
         },
         "hovered": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when the user drags their mouse cursor over the given widget."
         },
         "focused": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when the user navigates with the keyboard to a given widget."
         },
         "pressed": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when the user is actively pressing down on the given widget."
         },
         "dragged": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when this widget is being dragged from one place to another by the user."
         },
         "selected": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when this item has been selected."
         },
         "scrolledUnder": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when this widget overlaps the content of a scrollable below."
         },
         "disabled": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when this widget is disabled and cannot be interacted with."
         },
         "error": {
-          "value": {
-            "color": "",
-            "width": "",
-            "style": "solid"
-          },
+          "value": "",
           "type": "border",
           "description": "The surface tint color when the widget has entered some form of invalid state."
         }

@@ -94,7 +94,10 @@ abstract class DesignTokenParser {
   /// Adds const by default for every Flutter type that wants to be const. By
   /// setting `isConst` to `false` you can return the parsed value without the
   /// `const` prefix.
-  String parse(dynamic value, {bool isConst = true}) {
+  String parse(
+    dynamic value, {
+    bool isConst = true,
+  }) {
     final includeConst = isConst && _constTypes.contains(flutterType);
     final prefix = includeConst ? 'const ' : '';
 

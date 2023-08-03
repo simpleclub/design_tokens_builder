@@ -109,19 +109,24 @@ String buildTextTheme(
   required BuilderConfig config,
 }) {
   final textTheme = flutterTokens['textTheme'] as Map<String, dynamic>;
-  final textThemeAttributes = textTheme.entries.map((e) {
-    // Add default text style color to style.
-    final textStyle = Map.from(e.value).cast<String, dynamic>();
-    textStyle['value']['color'] = '_colorScheme.onBackground';
-    final attribute = parseAttribute(
-      textStyle,
-      config: config,
-      indentationLevel: 2,
-      isConst: false,
-    );
-    if (attribute == 'null') return '';
-    return '${e.key}: $attribute';
-  }).whereNot((element) => element == '');
+  var textThemeAttributes = <String>[];
+  for (final entry in textTheme.entries) {
+    final textStyle = Map.from(entry.value).cast<String, dynamic>();
+
+    // Ensures that the text style has values and is not empty.
+    if (textStyle['value'] is Map<String, dynamic>) {
+      textStyle['value']['color'] = '_colorScheme.onBackground';
+      final attribute = parseAttribute(
+        textStyle,
+        config: config,
+        indentationLevel: 2,
+        isConst: false,
+      );
+
+      if (attribute == 'null') continue;
+      textThemeAttributes.add('${entry.key}: $attribute');
+    }
+  }
 
   final content = textThemeAttributes.isNotEmpty
       ? '\n${indentation(level: 2)}${textThemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
@@ -141,17 +146,23 @@ String buildButtonTheme(
   final elevatedButtonTheme =
       flutterTokens[buttonThemeName] as Map<String, dynamic>;
   final buttonThemeAttributes = elevatedButtonTheme.entries.map((e) {
-    final value = e.value as Map<String, dynamic>;
+    final value = Map.fromEntries([e]);
     var attribute = 'null';
-    if (value.containsKey('value')) {
-      attribute = parseAttribute(
-        e.value,
-        config: config,
-        indentationLevel: 2,
-      );
-    } else if (value.containsKey('default')) {
-      attribute = buildMaterialStateProperty(value, config: config);
+
+    String resultBuilder(value, result) {
+      if (value['type'] == 'border' && result != 'null') {
+        return '$result.top';
+      }
+
+      return result;
     }
+
+    attribute = parseValue(
+      value,
+      config: config,
+      indentationLevel: 2,
+      resultBuilder: resultBuilder,
+    );
 
     if (attribute == 'null') return '';
     return '${e.key}: $attribute';
@@ -163,44 +174,4 @@ String buildButtonTheme(
 
   final themeDataName = '${buttonThemeName.firstUpperCased}ThemeData';
   return '$themeDataName get _${buttonThemeName}Theme => $themeDataName($content);';
-}
-
-String buildMaterialStateProperty(
-  Map<String, dynamic> value, {
-  required BuilderConfig config,
-}) {
-  final defaultValue = value['default'];
-  final defaultAttribute = parseAttribute(
-    defaultValue,
-    config: config,
-    indentationLevel: 3,
-  );
-
-  if (defaultAttribute == 'null') {
-    print('No default value found for MaterialStateProperty.');
-    return 'null';
-  }
-
-  var states = <String>[];
-
-  for (final state
-      in value.entries.where((element) => element.key != 'default')) {
-    final value = parseAttribute(
-      state.value,
-      config: config,
-      indentationLevel: 4,
-    );
-    if (value == 'null') continue;
-
-    final stateContent =
-        '''if (states.contains(MaterialState.${state.key.firstLowerCased})) {\n${indentation(level: 5)}return $value;\n${indentation(level: 4)}}''';
-    states.add(stateContent);
-  }
-
-  final statesContent =
-      '${states.join('\n\n${indentation(level: 4)}')}\n\n${indentation(level: 4)}';
-
-  return '''MaterialStateProperty.resolveWith((states) {
-        ${statesContent}return $defaultAttribute;
-      })''';
 }

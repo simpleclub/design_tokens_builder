@@ -255,48 +255,6 @@ class DarkThemeData with GeneratedThemeData {
       color: _colorScheme.onBackground,
       package: 'design_tokens_builder',
     ),
-    displayMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    displaySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
   );
   
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
@@ -336,6 +294,35 @@ class DarkThemeData with GeneratedThemeData {
         }
 
         return const Color(0xFF7066DE);
+      }),
+      textStyle: MaterialStateProperty.resolveWith((states) {
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+          package: 'design_tokens_builder',
+        );
+      }),
+      iconSize: MaterialStateProperty.resolveWith((states) {
+        return 24.0;
+      }),
+      shape: MaterialStateProperty.resolveWith((states) {
+        return const RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.circular(8.0)));
+      }),
+      elevation: MaterialStateProperty.resolveWith((states) {
+        return 0.0;
+      }),
+      side: MaterialStateProperty.resolveWith((states) {
+        return Border.all(
+          width: 3.0,
+          color: const Color(0xFF293133),
+        ).top;
+      }),
+      fixedSize: MaterialStateProperty.resolveWith((states) {
+        return const Size(double.infinity, 38.0);
       }),
     ),
   );
@@ -460,48 +447,6 @@ class LightThemeData with GeneratedThemeData {
       color: _colorScheme.onBackground,
       package: 'design_tokens_builder',
     ),
-    displayMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    displaySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
   );
   
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
@@ -541,6 +486,35 @@ class LightThemeData with GeneratedThemeData {
         }
 
         return const Color(0xFF7066DE);
+      }),
+      textStyle: MaterialStateProperty.resolveWith((states) {
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+          package: 'design_tokens_builder',
+        );
+      }),
+      iconSize: MaterialStateProperty.resolveWith((states) {
+        return 24.0;
+      }),
+      shape: MaterialStateProperty.resolveWith((states) {
+        return const RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.circular(8.0)));
+      }),
+      elevation: MaterialStateProperty.resolveWith((states) {
+        return 0.0;
+      }),
+      side: MaterialStateProperty.resolveWith((states) {
+        return Border.all(
+          width: 3.0,
+          color: const Color(0xFF293133),
+        ).top;
+      }),
+      fixedSize: MaterialStateProperty.resolveWith((states) {
+        return const Size(double.infinity, 38.0);
       }),
     ),
   );
@@ -665,48 +639,6 @@ class CustomThemeData with GeneratedThemeData {
       color: _colorScheme.onBackground,
       package: 'design_tokens_builder',
     ),
-    displayMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    displaySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
   );
   
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
@@ -746,6 +678,35 @@ class CustomThemeData with GeneratedThemeData {
         }
 
         return const Color(0xFF7066DE);
+      }),
+      textStyle: MaterialStateProperty.resolveWith((states) {
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+          package: 'design_tokens_builder',
+        );
+      }),
+      iconSize: MaterialStateProperty.resolveWith((states) {
+        return 24.0;
+      }),
+      shape: MaterialStateProperty.resolveWith((states) {
+        return const RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.circular(8.0)));
+      }),
+      elevation: MaterialStateProperty.resolveWith((states) {
+        return 0.0;
+      }),
+      side: MaterialStateProperty.resolveWith((states) {
+        return Border.all(
+          width: 3.0,
+          color: const Color(0xFF293133),
+        ).top;
+      }),
+      fixedSize: MaterialStateProperty.resolveWith((states) {
+        return const Size(double.infinity, 38.0);
       }),
     ),
   );
@@ -870,48 +831,6 @@ class PartyLightThemeData with GeneratedThemeData {
       color: _colorScheme.onBackground,
       package: 'design_tokens_builder',
     ),
-    displayMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    displaySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
   );
   
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
@@ -951,6 +870,35 @@ class PartyLightThemeData with GeneratedThemeData {
         }
 
         return const Color(0xFF7066DE);
+      }),
+      textStyle: MaterialStateProperty.resolveWith((states) {
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+          package: 'design_tokens_builder',
+        );
+      }),
+      iconSize: MaterialStateProperty.resolveWith((states) {
+        return 24.0;
+      }),
+      shape: MaterialStateProperty.resolveWith((states) {
+        return const RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.circular(8.0)));
+      }),
+      elevation: MaterialStateProperty.resolveWith((states) {
+        return 0.0;
+      }),
+      side: MaterialStateProperty.resolveWith((states) {
+        return Border.all(
+          width: 3.0,
+          color: const Color(0xFF293133),
+        ).top;
+      }),
+      fixedSize: MaterialStateProperty.resolveWith((states) {
+        return const Size(double.infinity, 38.0);
       }),
     ),
   );
@@ -1075,48 +1023,6 @@ class PartyDarkThemeData with GeneratedThemeData {
       color: _colorScheme.onBackground,
       package: 'design_tokens_builder',
     ),
-    displayMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    displaySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    headlineSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    titleSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    labelSmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyLarge: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodyMedium: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
-    bodySmall: TextStyle(
-      color: _colorScheme.onBackground,
-    ),
   );
   
   ElevatedButtonThemeData get _elevatedButtonTheme => ElevatedButtonThemeData(
@@ -1156,6 +1062,35 @@ class PartyDarkThemeData with GeneratedThemeData {
         }
 
         return const Color(0xFF7066DE);
+      }),
+      textStyle: MaterialStateProperty.resolveWith((states) {
+        return const TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w800,
+          height: 1.5,
+          fontSize: 13.0,
+          letterSpacing: 0.5,
+          decoration: TextDecoration.none,
+          package: 'design_tokens_builder',
+        );
+      }),
+      iconSize: MaterialStateProperty.resolveWith((states) {
+        return 24.0;
+      }),
+      shape: MaterialStateProperty.resolveWith((states) {
+        return const RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.circular(8.0)));
+      }),
+      elevation: MaterialStateProperty.resolveWith((states) {
+        return 0.0;
+      }),
+      side: MaterialStateProperty.resolveWith((states) {
+        return Border.all(
+          width: 3.0,
+          color: const Color(0xFF293133),
+        ).top;
+      }),
+      fixedSize: MaterialStateProperty.resolveWith((states) {
+        return const Size(double.infinity, 38.0);
       }),
     ),
   );

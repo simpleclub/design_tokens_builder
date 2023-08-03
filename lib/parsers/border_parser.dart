@@ -39,9 +39,6 @@ class BorderParser extends DesignTokenParser {
       final width = DimensionParser().parse(value['width']);
 
       if (color == 'null' || width == 'null') {
-        print(
-          'Unable to parse border since color ($color) or width ($width) is null.',
-        );
         return 'null';
       }
 
