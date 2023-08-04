@@ -18,6 +18,7 @@ typedef ParserResultBuilder = String Function(
 String buildTokenSet(Map<String, dynamic> tokens, {
   required BuilderConfig config,
 }) {
+  print('Build token set');
   var output = '';
 
   final tokenSets = getTokenSets(tokens, config: config);
@@ -37,7 +38,7 @@ String buildTokenSet(Map<String, dynamic> tokens, {
     // textTheme: _textTheme,
     var themeData = '''@override
   ThemeData get themeData => ThemeData.$brightness().copyWith(
-        colorScheme: _colorScheme,
+        ${flutterTheme.item2.join(',\n${indentation(level: 4)}')},
         extensions: [
           ${extensions.keys.map(
           (e) => '${buildExtensionName(
@@ -61,7 +62,7 @@ String buildTokenSet(Map<String, dynamic> tokens, {
     '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
   const ${tokenSet.firstUpperCased}ThemeData();
 
-  $flutterTheme
+  ${flutterTheme.item1}
 
   $themeData
 }
@@ -86,10 +87,11 @@ String _brightness({required tokenSet}) {
 }
 
 /// Parses all tokens and parses all attributes to dart readable format.
-String buildAttributeMap(Map<String, dynamic> global,
+String buildAttributeMap(Map<String, dynamic> source,
     BuilderConfig config, [
       int depth = 1,
     ]) {
+  print('Build attribute map: $source');
   String recursiveMap(Map<String, dynamic> map, depth) {
     var output = '';
     for (final key in map.keys) {
@@ -105,7 +107,7 @@ String buildAttributeMap(Map<String, dynamic> global,
     return output;
   }
 
-  return '{\n${recursiveMap(global, depth)}}';
+  return '{\n${recursiveMap(source, depth)}}';
 }
 
 // String _buildColorScheme({

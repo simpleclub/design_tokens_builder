@@ -82,7 +82,6 @@ abstract class DesignTokenParser {
 
   final _constTypes = [
     'Color',
-    'TextStyle',
     'EdgeInsets',
     'BorderRadius',
     'List<BoxShadow>',

@@ -5,8 +5,13 @@ import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/transformer_utils.dart';
+import 'package:tuple/tuple.dart';
 
-String buildFlutterTheme(
+/// Builds all flutter related theming based on flutter theme.
+///
+/// Returns a tuple where the first entry consists of the built string and the second of an list of strings representing
+/// the list of properties that need to be added to ThemeData constructor.
+Tuple2<String, List<String>> buildFlutterTheme(
   Map<String, dynamic> allData, {
   required String setName,
   required String brightness,
@@ -19,60 +24,54 @@ String buildFlutterTheme(
     tokenSetOrder: [setName, config.sourceSetName],
     sourceMap: data,
   );
+  final themeDataPropertyList = <String>[];
+  final colorScheme = buildColorScheme(
+    allData,
+    flutterTokens: flutterTokens,
+    setName: setName,
+    brightness: brightness,
+    config: config,
+  );
+  addThemeDataProperty(themeDataPropertyList, data: colorScheme, themeProperty: 'colorScheme');
+  final textTheme = buildTextTheme(
+    allData,
+    flutterTokens: flutterTokens,
+    setName: setName,
+    brightness: brightness,
+    config: config,
+  );
+  addThemeDataProperty(themeDataPropertyList, data: textTheme, themeProperty: 'textTheme');
 
-  return '''
-${buildColorScheme(
-    allData,
-    flutterTokens: flutterTokens,
-    setName: setName,
-    brightness: brightness,
-    config: config,
-  )}
-  
-  ${buildTextTheme(
-    allData,
-    flutterTokens: flutterTokens,
-    setName: setName,
-    brightness: brightness,
-    config: config,
-  )}
-  
-  ${buildButtonTheme(
-    allData,
-    flutterTokens: flutterTokens,
-    buttonThemeName: 'elevatedButton',
-    setName: setName,
-    brightness: brightness,
-    config: config,
-  )}
-  
-  ${buildButtonTheme(
-    allData,
-    flutterTokens: flutterTokens,
-    buttonThemeName: 'filledButton',
-    setName: setName,
-    brightness: brightness,
-    config: config,
-  )}
-  
-  ${buildButtonTheme(
-    allData,
-    flutterTokens: flutterTokens,
-    buttonThemeName: 'outlinedButton',
-    setName: setName,
-    brightness: brightness,
-    config: config,
-  )}
-  
-  ${buildButtonTheme(
-    allData,
-    flutterTokens: flutterTokens,
-    buttonThemeName: 'textButton',
-    setName: setName,
-    brightness: brightness,
-    config: config,
-  )}
-''';
+  final buttonThemeNames = ['elevatedButton', 'filledButton', 'outlinedButton', 'textButton'];
+  var buttonThemes = '';
+  for (final buttonThemeName in buttonThemeNames) {
+    final data = buildButtonTheme(
+      allData,
+      flutterTokens: flutterTokens,
+      buttonThemeName: buttonThemeName,
+      setName: setName,
+      brightness: brightness,
+      config: config,
+    );
+    buttonThemes += '${indentation()}$data\n\n';
+    final themeProperty =  '${buttonThemeName}Theme';
+    addThemeDataProperty(themeDataPropertyList, data: data, themeProperty: themeProperty);
+  }
+
+  final result = '''$colorScheme
+
+$textTheme
+
+$buttonThemes''';
+
+  return Tuple2(result, themeDataPropertyList);
+}
+
+void addThemeDataProperty(List<String> list, {required String data, required String themeProperty}) {
+  print('ThemePropertyData: $themeProperty -> ${data.length}');
+  if (data.isNotEmpty) {
+    list.add('$themeProperty: _$themeProperty');
+  }
 }
 
 String buildColorScheme(
@@ -173,5 +172,7 @@ String buildButtonTheme(
       : '';
 
   final themeDataName = '${buttonThemeName.firstUpperCased}ThemeData';
+
+  if (content.isEmpty) return '';
   return '$themeDataName get _${buttonThemeName}Theme => $themeDataName($content);';
 }

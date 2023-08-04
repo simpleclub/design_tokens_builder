@@ -23,7 +23,7 @@ class OtherParser extends DesignTokenParser {
 
   @override
   String buildLerp(String token) {
-    return 'lerpDouble($token, other.$token, t) ?? other.$token';
+    return 'lerpDuration($token, other.$token, t)';
   }
 
   @override
