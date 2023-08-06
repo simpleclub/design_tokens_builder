@@ -255,10 +255,12 @@
         "type": "spacing",
         "description": "The empty space that surrounds the card."
       },
-      "borderRadius": {
-        "value": "",
-        "type": "borderRadius",
-        "description": "Border radius of the card."
+      "shape": {
+        "borderRadius": {
+          "value": "",
+          "type": "borderRadius",
+          "description": "Border radius of the card."
+        }
       }
     },
     "elevatedButton": {

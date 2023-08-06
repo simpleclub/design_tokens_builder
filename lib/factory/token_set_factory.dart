@@ -182,7 +182,7 @@ dynamic parseValue(Map<String, dynamic> value, {
       token.key == 'minimumSize') {
     return parseSize(token.value, config: config);
   } else if (token.key == 'shape') {
-    return parseShape(value, config: config);
+    return parseShape(value, config: config, isConst: isConst);
   } else {
     return parseAttribute(
       token.value as Map<String, dynamic>,
@@ -378,7 +378,18 @@ String parseSize(Map<String, dynamic> value, {
 
 String parseShape(Map<String, dynamic> value, {
   required BuilderConfig config,
+  bool isConst = true,
 }) {
+  String buildShape({String? borderRadius}) {
+    if (borderRadius == 'null') {
+      return 'null';
+    }
+
+    final prefix = isConst ? 'const ' : '';
+
+    return '${prefix}RoundedRectangleBorder(borderRadius: $borderRadius)';
+  }
+
   final shape = value['shape'] as Map<String, dynamic>;
 
   if (shape.containsKey('borderRadius')) {
@@ -389,19 +400,14 @@ String parseShape(Map<String, dynamic> value, {
         borderRadius,
         config: config,
         resultBuilder: (value, result) {
-          if (result == 'null') {
-            return 'null';
-          }
-
-          return 'const RoundedRectangleBorder(borderRadius: $result)';
+          return buildShape(borderRadius: result);
         },
       );
 
-      if (borderRadiusAttribute == 'null') {
-        return 'null';
-      }
-
       return borderRadiusAttribute;
+    } else {
+      final borderRadius = parseAttribute(shape['borderRadius'], config: config, isConst: false);
+      return buildShape(borderRadius: borderRadius);
     }
   }
 

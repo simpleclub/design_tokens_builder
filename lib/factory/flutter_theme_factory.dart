@@ -43,7 +43,7 @@ Tuple2<String, List<String>> buildFlutterTheme(
   addThemeDataProperty(themeDataPropertyList, data: textTheme, themeProperty: 'textTheme');
 
   final buttonThemeNames = ['elevatedButton', 'filledButton', 'outlinedButton', 'textButton'];
-  var buttonThemes = '';
+  var buttonThemeList = <String>[];
   for (final buttonThemeName in buttonThemeNames) {
     final data = buildButtonTheme(
       allData,
@@ -53,16 +53,28 @@ Tuple2<String, List<String>> buildFlutterTheme(
       brightness: brightness,
       config: config,
     );
-    buttonThemes += '${indentation()}$data\n\n';
+    buttonThemeList.add(data);
     final themeProperty =  '${buttonThemeName}Theme';
     addThemeDataProperty(themeDataPropertyList, data: data, themeProperty: themeProperty);
   }
+  final buttonThemes = buttonThemeList.where((element) => element.isNotEmpty).join('\n\n${indentation()}');
+
+  final cardTheme = buildCardTheme(
+    allData,
+    flutterTokens: flutterTokens,
+    setName: setName,
+    brightness: brightness,
+    config: config,
+  );
+  addThemeDataProperty(themeDataPropertyList, data: cardTheme, themeProperty: 'cardTheme');
 
   final result = '''$colorScheme
 
-$textTheme
+  $textTheme
 
-$buttonThemes''';
+  $buttonThemes
+
+  $cardTheme''';
 
   return Tuple2(result, themeDataPropertyList);
 }
@@ -175,4 +187,30 @@ String buildButtonTheme(
 
   if (content.isEmpty) return '';
   return '$themeDataName get _${buttonThemeName}Theme => $themeDataName($content);';
+}
+
+String buildCardTheme(
+    Map<String, dynamic> allData, {
+      required Map<String, dynamic> flutterTokens,
+      required String setName,
+      required String brightness,
+      required BuilderConfig config,
+    }) {
+  final cardTheme = flutterTokens['card'] as Map<String, dynamic>;
+  final cardThemeAttributes = cardTheme.entries.map((e) {
+    final attribute = parseValue(
+      Map.fromEntries([e]),
+      config: config,
+      indentationLevel: 2,
+      isConst: false,
+    );
+    if (attribute == 'null') return '';
+    return '${e.key}: $attribute';
+  }).whereNot((element) => element == '');
+
+  final content = cardThemeAttributes.isNotEmpty
+      ? '\n${indentation(level: 2)}${cardThemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
+      : '';
+
+  return 'CardTheme get _cardTheme => const CardTheme($content);';
 }
