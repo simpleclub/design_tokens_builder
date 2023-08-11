@@ -154,77 +154,77 @@
     },
     "textTheme": {
       "displayLarge": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Largest of the display styles."
       },
       "displayMedium": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Middle size of the display styles."
       },
       "displaySmall": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Smallest of the display styles."
       },
       "headlineLarge": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Largest of the headline styles."
       },
       "headlineMedium": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Middle size of the headline styles."
       },
       "headlineSmall": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Smallest of the headline styles."
       },
       "titleLarge": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Largest of the title styles."
       },
       "titleMedium": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Middle size of the title styles."
       },
       "titleSmall": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Smallest of the title styles."
       },
       "labelLarge": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Largest of the label styles."
       },
       "labelMedium": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Middle size of the label styles."
       },
       "labelSmall": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Smallest of the label styles."
       },
       "bodyLarge": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Largest of the body styles."
       },
       "bodyMedium": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Middle size of the body styles."
       },
       "bodySmall": {
-        "value": {},
+        "value": "",
         "type": "typography",
         "description": "Smallest of the body styles."
       }
