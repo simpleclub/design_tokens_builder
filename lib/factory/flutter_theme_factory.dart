@@ -32,7 +32,8 @@ Tuple2<String, List<String>> buildFlutterTheme(
     brightness: brightness,
     config: config,
   );
-  addThemeDataProperty(themeDataPropertyList, data: colorScheme, themeProperty: 'colorScheme');
+  addThemeDataProperty(themeDataPropertyList,
+      data: colorScheme, themeProperty: 'colorScheme');
   final textTheme = buildTextTheme(
     allData,
     flutterTokens: flutterTokens,
@@ -40,9 +41,15 @@ Tuple2<String, List<String>> buildFlutterTheme(
     brightness: brightness,
     config: config,
   );
-  addThemeDataProperty(themeDataPropertyList, data: textTheme, themeProperty: 'textTheme');
+  addThemeDataProperty(themeDataPropertyList,
+      data: textTheme, themeProperty: 'textTheme');
 
-  final buttonThemeNames = ['elevatedButton', 'filledButton', 'outlinedButton', 'textButton'];
+  final buttonThemeNames = [
+    'elevatedButton',
+    'filledButton',
+    'outlinedButton',
+    'textButton'
+  ];
   var buttonThemeList = <String>[];
   for (final buttonThemeName in buttonThemeNames) {
     final data = buildButtonTheme(
@@ -54,10 +61,13 @@ Tuple2<String, List<String>> buildFlutterTheme(
       config: config,
     );
     buttonThemeList.add(data);
-    final themeProperty =  '${buttonThemeName}Theme';
-    addThemeDataProperty(themeDataPropertyList, data: data, themeProperty: themeProperty);
+    final themeProperty = '${buttonThemeName}Theme';
+    addThemeDataProperty(themeDataPropertyList,
+        data: data, themeProperty: themeProperty);
   }
-  final buttonThemes = buttonThemeList.where((element) => element.isNotEmpty).join('\n\n${indentation()}');
+  final buttonThemes = buttonThemeList
+      .where((element) => element.isNotEmpty)
+      .join('\n\n${indentation()}');
 
   final cardTheme = buildCardTheme(
     allData,
@@ -66,7 +76,8 @@ Tuple2<String, List<String>> buildFlutterTheme(
     brightness: brightness,
     config: config,
   );
-  addThemeDataProperty(themeDataPropertyList, data: cardTheme, themeProperty: 'cardTheme');
+  addThemeDataProperty(themeDataPropertyList,
+      data: cardTheme, themeProperty: 'cardTheme');
 
   final result = '''$colorScheme
 
@@ -79,8 +90,8 @@ Tuple2<String, List<String>> buildFlutterTheme(
   return Tuple2(result, themeDataPropertyList);
 }
 
-void addThemeDataProperty(List<String> list, {required String data, required String themeProperty}) {
-  print('ThemePropertyData: $themeProperty -> ${data.length}');
+void addThemeDataProperty(List<String> list,
+    {required String data, required String themeProperty}) {
   if (data.isNotEmpty) {
     list.add('$themeProperty: _$themeProperty');
   }
@@ -190,12 +201,12 @@ String buildButtonTheme(
 }
 
 String buildCardTheme(
-    Map<String, dynamic> allData, {
-      required Map<String, dynamic> flutterTokens,
-      required String setName,
-      required String brightness,
-      required BuilderConfig config,
-    }) {
+  Map<String, dynamic> allData, {
+  required Map<String, dynamic> flutterTokens,
+  required String setName,
+  required String brightness,
+  required BuilderConfig config,
+}) {
   final cardTheme = flutterTokens['card'] as Map<String, dynamic>;
   final cardThemeAttributes = cardTheme.entries.map((e) {
     final attribute = parseValue(

@@ -1,5 +1,5 @@
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
-import 'package:design_tokens_builder/factory/extension_factory.dart';
+import 'package:design_tokens_builder/factory/extension/theme_extension_factory.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -40,13 +40,15 @@ void main() {
       final result = getExtensions(tokens, config: config);
 
       expect(result.values.first.map((e) => e.item1), ['height', 'color']);
-      expect(result.values.first.map((e) => e.item2), [{
-        'value': '38px',
-        'type': 'dimension',
-      }, {
-        'value': '#FFFFFF',
-        'type': 'color',
-      }
+      expect(result.values.first.map((e) => e.item2), [
+        {
+          'value': '38px',
+          'type': 'dimension',
+        },
+        {
+          'value': '#FFFFFF',
+          'type': 'color',
+        }
       ]);
     });
   });

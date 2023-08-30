@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'package:build/build.dart';
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/context_extension_factory.dart';
-import 'package:design_tokens_builder/factory/extension_factory.dart' as ef;
+import 'package:design_tokens_builder/factory/theme_extension/theme_extension_factory.dart'
+    as ef;
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/utils/transformer_utils.dart';
 import 'package:glob/glob.dart';
