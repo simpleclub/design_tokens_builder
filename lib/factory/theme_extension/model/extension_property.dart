@@ -3,7 +3,7 @@ abstract class ExtensionProperty {
 
   final String name;
 
-  String build({int indentationLevel = 0});
+  String build({int indentationLevel = 0, bool includeName = false});
 
   String get flutterType;
 }

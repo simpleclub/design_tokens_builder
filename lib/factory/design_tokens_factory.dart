@@ -50,6 +50,8 @@ import 'package:flutter/material.dart';
 final attributes = ${buildAttributeMap(processedDefaultSet, config)};
 
 abstract class GeneratedThemeData {
+  const GeneratedThemeData();
+
   ThemeData get themeData;
 }
 

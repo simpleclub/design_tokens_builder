@@ -23,6 +23,7 @@ String buildTokenSet(
 
   final tokenSets = getTokenSets(tokens, config: config);
   final sourceSetData = tokens[config.sourceSetName] as Map<String, dynamic>;
+
   for (final tokenSet in tokenSets) {
     var brightness = _brightness(tokenSet: tokenSet);
     final flutterTheme = buildFlutterTheme(
@@ -33,37 +34,31 @@ String buildTokenSet(
     );
 
     final extensions = getExtensions(tokens, config: config);
-    // textTheme: _textTheme,
-    //   var themeData = '''@override
-    // ThemeData get themeData => ThemeData.$brightness().copyWith(
-    //       ${flutterTheme.item2.join(',\n${indentation(level: 4)}')},
-    //       extensions: [
-    //         ${extensions.keys.map(
-    //             (e) => '${buildExtensionName(
-    //               e,
-    //             )}(\n${indentation(level: 6)}${extensions[e]!.map(
-    //                   (e) => '${e.item1}: ${parseAttribute(
-    //                     e.item2,
-    //                     config: config,
-    //                     indentationLevel: 6,
-    //                   )}',
-    //                 ).join(
-    //                   ',\n${indentation(level: 6)}',
-    //                 )},\n${indentation(level: 5)})',
-    //           ).join(
-    //             ',\n${indentation(level: 4)}',
-    //           )},
-    //       ],
-    //     );''';
+    final themeDataValues = flutterTheme.item2.isEmpty
+        ? ''
+        : '\n${flutterTheme.item2.join(',\n${indentation(level: 2)}')}${flutterTheme.item2.isNotEmpty ? ',' : ''}\n';
+    var themeData = '''@override
+  ThemeData get themeData => ThemeData.$brightness().copyWith($themeDataValues
+    extensions: [
+      ${extensions.map((e) => e.build(indentationLevel: 3)).join(
+              '\n${indentation(level: 3)}',
+            )},
+    ],
+  );
+''';
 
     output +=
-        '''class ${tokenSet.firstUpperCased}ThemeData with GeneratedThemeData {
+        '''class ${tokenSet.firstUpperCased}ThemeData extends GeneratedThemeData {
   const ${tokenSet.firstUpperCased}ThemeData();
+  
+''';
 
-  ${flutterTheme.item1}
-}
+    if (flutterTheme.item1.isNotEmpty) {
+      output += '${indentation()}${flutterTheme.item1}\n\n';
+    }
 
-'''; // $themeData
+    output += '${indentation()}$themeData';
+    output += '\n}\n\n';
   }
 
   return '$output${generateTokenSetEnum(tokenSets, config: config)}';

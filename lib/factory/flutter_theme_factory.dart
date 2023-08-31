@@ -11,8 +11,7 @@ import 'package:tuple/tuple.dart';
 ///
 /// Returns a tuple where the first entry consists of the built string and the second of an list of strings representing
 /// the list of properties that need to be added to ThemeData constructor.
-Tuple2<String, List<String>> buildFlutterTheme(
-  Map<String, dynamic> allData, {
+Tuple2<String, List<String>> buildFlutterTheme(Map<String, dynamic> allData, {
   required String setName,
   required String brightness,
   required BuilderConfig config,
@@ -25,6 +24,7 @@ Tuple2<String, List<String>> buildFlutterTheme(
     sourceMap: data,
   );
   final themeDataPropertyList = <String>[];
+  final themes = <String>[];
   final colorScheme = buildColorScheme(
     allData,
     flutterTokens: flutterTokens,
@@ -32,8 +32,14 @@ Tuple2<String, List<String>> buildFlutterTheme(
     brightness: brightness,
     config: config,
   );
-  addThemeDataProperty(themeDataPropertyList,
-      data: colorScheme, themeProperty: 'colorScheme');
+
+  addThemeDataProperty(
+    themeDataPropertyList,
+    data: colorScheme,
+    themeProperty: 'colorScheme',
+    themes: themes,
+  );
+
   final textTheme = buildTextTheme(
     allData,
     flutterTokens: flutterTokens,
@@ -41,8 +47,12 @@ Tuple2<String, List<String>> buildFlutterTheme(
     brightness: brightness,
     config: config,
   );
-  addThemeDataProperty(themeDataPropertyList,
-      data: textTheme, themeProperty: 'textTheme');
+  addThemeDataProperty(
+    themeDataPropertyList,
+    data: textTheme,
+    themeProperty: 'textTheme',
+    themes: themes,
+  );
 
   final buttonThemeNames = [
     'elevatedButton',
@@ -62,12 +72,13 @@ Tuple2<String, List<String>> buildFlutterTheme(
     );
     buttonThemeList.add(data);
     final themeProperty = '${buttonThemeName}Theme';
-    addThemeDataProperty(themeDataPropertyList,
-        data: data, themeProperty: themeProperty);
+    addThemeDataProperty(
+      themeDataPropertyList,
+      data: data,
+      themeProperty: themeProperty,
+      themes: themes,
+    );
   }
-  final buttonThemes = buttonThemeList
-      .where((element) => element.isNotEmpty)
-      .join('\n\n${indentation()}');
 
   final cardTheme = buildCardTheme(
     allData,
@@ -76,29 +87,30 @@ Tuple2<String, List<String>> buildFlutterTheme(
     brightness: brightness,
     config: config,
   );
-  addThemeDataProperty(themeDataPropertyList,
-      data: cardTheme, themeProperty: 'cardTheme');
+  addThemeDataProperty(
+    themeDataPropertyList,
+    data: cardTheme,
+    themeProperty: 'cardTheme',
+    themes: themes,
+  );
 
-  final result = '''$colorScheme
-
-  $textTheme
-
-  $buttonThemes
-
-  $cardTheme''';
+  final result = themes.join('\n\n${indentation()}');
 
   return Tuple2(result, themeDataPropertyList);
 }
 
-void addThemeDataProperty(List<String> list,
-    {required String data, required String themeProperty}) {
+void addThemeDataProperty(List<String> list, {
+  required String data,
+  required String themeProperty,
+  required List<String> themes,
+}) {
   if (data.isNotEmpty) {
+    themes.add(data);
     list.add('$themeProperty: _$themeProperty');
   }
 }
 
-String buildColorScheme(
-  Map<String, dynamic> allData, {
+String buildColorScheme(Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String setName,
   required String brightness,
@@ -117,14 +129,16 @@ String buildColorScheme(
   }).whereNot((element) => element == '');
 
   final content = colorSchemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}${colorSchemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}${colorSchemeAttributes.join(
+      ',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
       : '';
+
+  if (content.isEmpty) return '';
 
   return 'ColorScheme get _colorScheme => const ColorScheme.$brightness($content);';
 }
 
-String buildTextTheme(
-  Map<String, dynamic> allData, {
+String buildTextTheme(Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String setName,
   required String brightness,
@@ -151,14 +165,16 @@ String buildTextTheme(
   }
 
   final content = textThemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}${textThemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}${textThemeAttributes.join(
+      ',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
       : '';
+
+  if (content.isEmpty) return '';
 
   return '''TextTheme get _textTheme => TextTheme($content);''';
 }
 
-String buildButtonTheme(
-  Map<String, dynamic> allData, {
+String buildButtonTheme(Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String buttonThemeName,
   required String setName,
@@ -166,7 +182,7 @@ String buildButtonTheme(
   required BuilderConfig config,
 }) {
   final elevatedButtonTheme =
-      flutterTokens[buttonThemeName] as Map<String, dynamic>;
+  flutterTokens[buttonThemeName] as Map<String, dynamic>;
   final buttonThemeAttributes = elevatedButtonTheme.entries.map((e) {
     final value = Map.fromEntries([e]);
     var attribute = 'null';
@@ -191,7 +207,10 @@ String buildButtonTheme(
   }).whereNot((element) => element == '');
 
   final content = buttonThemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}style: ButtonStyle(\n${indentation(level: 3)}${buttonThemeAttributes.join(',\n${indentation(level: 3)}')},\n${indentation(level: 2)}),\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}style: ButtonStyle(\n${indentation(
+      level: 3)}${buttonThemeAttributes.join(
+      ',\n${indentation(level: 3)}')},\n${indentation(
+      level: 2)}),\n${indentation(level: 1)}'
       : '';
 
   final themeDataName = '${buttonThemeName.firstUpperCased}ThemeData';
@@ -200,8 +219,7 @@ String buildButtonTheme(
   return '$themeDataName get _${buttonThemeName}Theme => $themeDataName($content);';
 }
 
-String buildCardTheme(
-  Map<String, dynamic> allData, {
+String buildCardTheme(Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
   required String setName,
   required String brightness,
@@ -220,8 +238,11 @@ String buildCardTheme(
   }).whereNot((element) => element == '');
 
   final content = cardThemeAttributes.isNotEmpty
-      ? '\n${indentation(level: 2)}${cardThemeAttributes.join(',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
+      ? '\n${indentation(level: 2)}${cardThemeAttributes.join(
+      ',\n${indentation(level: 2)}')},\n${indentation(level: 1)}'
       : '';
+
+  if (content.isEmpty) return '';
 
   return 'CardTheme get _cardTheme => const CardTheme($content);';
 }

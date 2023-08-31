@@ -15,11 +15,10 @@ class ExtensionPropertyClass extends ExtensionProperty {
   final List<ExtensionProperty> properties;
 
   @override
-  String build({int indentationLevel = 0}) {
-    final prefix = indentationLevel > 0
-        ? '${indentation(level: indentationLevel)}$name: '
-        : '';
-    return '$prefix${buildExtensionName(prefixedName)}(\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1)).join(',\n')}),';
+  String build({int indentationLevel = 0, bool includeName = false}) {
+    final prefix =
+        includeName ? '${indentation(level: indentationLevel)}$name: ' : '';
+    return '$prefix${buildExtensionName(prefixedName)}(\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1, includeName: true)).join(',\n')},\n${indentation(level: indentationLevel)})';
   }
 
   String buildClasses() {

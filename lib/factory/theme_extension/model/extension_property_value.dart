@@ -13,7 +13,7 @@ class ExtensionPropertyValue extends ExtensionProperty {
   final String type;
 
   @override
-  String build({int indentationLevel = 0}) {
+  String build({int indentationLevel = 0, bool includeName = false}) {
     final parser = parserForType(type, indentationLevel: indentationLevel);
     return '${indentation(level: indentationLevel)}$name: ${parser.parse(value)}';
   }
