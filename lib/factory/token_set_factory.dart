@@ -6,8 +6,11 @@ import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:tuple/tuple.dart';
 
+/// Type of a function that builds a parser result.
 typedef ParserResultBuilder = String Function(
-    Map<String, dynamic> value, dynamic result);
+  Map<String, dynamic> value,
+  dynamic result,
+);
 
 /// Generates theming for all available token sets.
 ///
@@ -22,7 +25,6 @@ String buildTokenSet(
   var output = '';
 
   final tokenSets = getTokenSets(tokens, config: config);
-  final sourceSetData = tokens[config.sourceSetName] as Map<String, dynamic>;
 
   for (final tokenSet in tokenSets) {
     var brightness = _brightness(tokenSet: tokenSet);
@@ -131,6 +133,10 @@ String buildAttributeMap(
 //
 // }
 
+/// Parses a single attribute of a token.
+///
+/// Supports parsing of material state properties and all types that can be
+/// parsed by all registered [DesignTokenParser]s.
 dynamic parseAttribute(
   Map<String, dynamic> attr, {
   required BuilderConfig config,
@@ -237,7 +243,7 @@ String generateTokenSetEnum(
   // Tuple: (prefix, initial match)
   final prefixes = [
     ...matches.map((match) => Tuple2(match.group(1), match.group(0))),
-    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch))
+    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch)),
   ];
 
   // A list of all unique prefixes.
@@ -277,6 +283,7 @@ String generateTokenSetEnum(
 }''';
 }
 
+/// Parses token structure and converts them to a MaterialStateProperty.
 String parseMaterialStateProperty(
   Map<String, dynamic> value, {
   required BuilderConfig config,
@@ -320,6 +327,12 @@ String parseMaterialStateProperty(
       })''';
 }
 
+/// Parses token structure and converts them to flutter Size class.
+///
+/// The result will be wrapped with a MaterialStateProperty if the token
+/// structure indicates it.
+///
+/// TODO: Add support for parsing a simple Size token without MaterialStateProperty.
 String parseSize(
   Map<String, dynamic> value, {
   required BuilderConfig config,
@@ -363,6 +376,10 @@ String parseSize(
   );
 }
 
+/// Parses token structure and converts them to flutter Shape class.
+///
+/// Generates a RoundedRectangleBorder when the token structure contains a
+/// `borderRadius` token.
 String parseShape(
   Map<String, dynamic> value, {
   required BuilderConfig config,

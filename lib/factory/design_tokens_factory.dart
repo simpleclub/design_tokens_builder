@@ -41,6 +41,7 @@ class DesignTokensFactory implements Builder {
     await buildStep.writeAsString(
       outputId,
       '''// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: prefer_const_constructors
 
 import 'dart:ui';
 

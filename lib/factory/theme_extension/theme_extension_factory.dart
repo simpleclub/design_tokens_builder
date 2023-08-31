@@ -91,15 +91,16 @@ List<ExtensionPropertyClass> getExtensions(
         extensions.add(property);
       }
     }
-
-    // TODO: Do we need a override logic here to remove duplicates?
   }
 
   return extensions.cast<ExtensionPropertyClass>();
 }
 
-List<ExtensionProperty> buildExtensionPropertyList(Map<String, dynamic> data,
-    {String namePrefix = ''}) {
+/// Builds a list of [ExtensionProperty]s from a map recursively.
+List<ExtensionProperty> buildExtensionPropertyList(
+  Map<String, dynamic> data, {
+  String namePrefix = '',
+}) {
   return data.entries.map((entry) {
     final name = entry.key;
     final map = entry.value as Map<String, dynamic>;

@@ -19,22 +19,22 @@ void main() {
               'value': '38px',
               'type': 'dimension',
             },
-          }
+          },
         },
         'light': {
           'button': {
             'color': {
               'value': '#FFFFFF',
               'type': 'color',
-            }
-          }
+            },
+          },
         },
         r'$metadata': {
           'tokenSetOrder': [
             'global',
             'light',
-          ]
-        }
+          ],
+        },
       };
 
       final result = getExtensions(tokens, config: config);

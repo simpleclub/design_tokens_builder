@@ -11,7 +11,7 @@ void main() {
         'fontConfig': [
           {'family': 'First Font', 'flutterName': 'FirstFont'},
           {'family': 'Second Font', 'flutterName': 'SecondFont'},
-        ]
+        ],
       });
 
       expect(

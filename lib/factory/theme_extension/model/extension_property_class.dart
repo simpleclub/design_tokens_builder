@@ -4,14 +4,22 @@ import 'package:design_tokens_builder/factory/theme_extension/theme_extension_fa
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 
+/// A property that can be used in a theme extension representing a class.
 class ExtensionPropertyClass extends ExtensionProperty {
+  /// Default constructor.
   ExtensionPropertyClass({
     required super.name,
     required this.prefixedName,
     required this.properties,
   });
 
+  /// The name of the property with a prefix.
+  ///
+  /// E.g. if the name is `background` [prefixedName] could be
+  /// `colorBackground`.
   final String prefixedName;
+
+  /// A list of properties of the class.
   final List<ExtensionProperty> properties;
 
   @override
@@ -21,6 +29,7 @@ class ExtensionPropertyClass extends ExtensionProperty {
     return '$prefix${buildExtensionName(prefixedName)}(\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1, includeName: true)).join(',\n')},\n${indentation(level: indentationLevel)})';
   }
 
+  /// Builds the the class representation of the property.
   String buildClasses() {
     final className = buildExtensionName(prefixedName);
     var result = '''
@@ -60,8 +69,10 @@ class $className extends ThemeExtension<$className> {
     return result;
   }
 
-  String _buildLerpForProperty(ExtensionProperty property,
-      {int indentationLevel = 0}) {
+  String _buildLerpForProperty(
+    ExtensionProperty property, {
+    int indentationLevel = 0,
+  }) {
     if (property is ExtensionPropertyValue) {
       final parser =
           parserForType(property.type, indentationLevel: indentationLevel);
