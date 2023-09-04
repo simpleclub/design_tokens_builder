@@ -35,4 +35,33 @@ void main() {
       expect(parser.parse(value, isConst: false), 'Color(0xFFFFFFFF)');
     });
   });
+
+  group('build value', () {
+    final value = '#FFFFFF';
+
+    test('succeeds', () {
+      expect(parser.buildValue(value), 'Color(0xFFFFFFFF)');
+    });
+  });
+
+  group('build lerp', () {
+    test('succeeds', () {
+      expect(parser.buildLerp('someColor'),
+          'Color.lerp(someColor, other.someColor, t) ?? other.someColor');
+    });
+  });
+
+  group('indent', () {
+    test('1', () {
+      expect(parser.indent(1), '    ');
+    });
+
+    test('0', () {
+      expect(parser.indent(), '  ');
+    });
+
+    test('4', () {
+      expect(parser.indent(4), '          ');
+    });
+  });
 }

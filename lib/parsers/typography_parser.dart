@@ -108,7 +108,7 @@ class TypographyParser extends DesignTokenParser {
     if (fontFamily == null) return null;
 
     final fontConfig = config?.fontConfig.firstWhereOrNull(
-      (config) => config.family == fontFamily,
+          (config) => config.family == fontFamily,
     );
     return fontConfig?.package;
   }

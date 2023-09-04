@@ -1,8 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property_value.dart';
 import 'package:design_tokens_builder/factory/theme_extension/theme_extension_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
+import 'package:meta/meta.dart';
 
 /// A property that can be used in a theme extension representing a class.
 class ExtensionPropertyClass extends ExtensionProperty {
@@ -26,7 +28,10 @@ class ExtensionPropertyClass extends ExtensionProperty {
   String build({int indentationLevel = 0, bool includeName = false}) {
     final prefix =
         includeName ? '${indentation(level: indentationLevel)}$name: ' : '';
-    return '$prefix${buildExtensionName(prefixedName)}(\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1, includeName: true)).join(',\n')},\n${indentation(level: indentationLevel)})';
+    final content = properties.isEmpty
+        ? ''
+        : '\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1, includeName: true)).join(',\n')},\n${indentation(level: indentationLevel)}';
+    return '$prefix${buildExtensionName(prefixedName)}($content)';
   }
 
   /// Builds the the class representation of the property.
@@ -35,11 +40,11 @@ class ExtensionPropertyClass extends ExtensionProperty {
     var result = '''
 class $className extends ThemeExtension<$className> {
   const $className({
-    ${properties.map((e) => 'required this.${e.name}').join(',\n${indentation(level: 2)}')},\n
+    ${properties.map((e) => 'required this.${e.name}').join(',\n${indentation(level: 2)}')},
   });
-  
+
   ${properties.map((e) => 'final ${e.flutterType} ${e.name};').join('\n${indentation()}')}
-  
+
   @override
   $className copyWith({
     ${properties.map((e) => '${e.flutterType}? ${e.name},').join('\n${indentation(level: 2)}')}
@@ -55,7 +60,7 @@ class $className extends ThemeExtension<$className> {
       return this;
     }
     return $className(
-      ${properties.map((e) => '${e.name}: ${_buildLerpForProperty(e, indentationLevel: 3)},').join('\n${indentation(level: 3)}')}
+      ${properties.map((e) => '${e.name}: ${buildLerpForProperty(e, indentationLevel: 3)},').join('\n${indentation(level: 3)}')}
     );
   }
 }
@@ -63,13 +68,15 @@ class $className extends ThemeExtension<$className> {
 
     final containedClasses = properties.whereType<ExtensionPropertyClass>();
     if (containedClasses.isNotEmpty) {
-      result += containedClasses.map((e) => e.buildClasses()).join('\n');
+      result += '\n${containedClasses.map((e) => e.buildClasses()).join('\n')}';
     }
 
     return result;
   }
 
-  String _buildLerpForProperty(
+  /// Builds the lerp method for a property.
+  @visibleForTesting
+  String buildLerpForProperty(
     ExtensionProperty property, {
     int indentationLevel = 0,
   }) {
@@ -93,5 +100,16 @@ class $className extends ThemeExtension<$className> {
   }
 
   @override
-  List<Object> get props => [...super.props, prefixedName, properties];
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ExtensionPropertyClass &&
+            runtimeType == other.runtimeType &&
+            name == other.name &&
+            prefixedName == other.prefixedName &&
+            DeepCollectionEquality().equals(properties, other.properties);
+  }
+
+  @override
+  int get hashCode =>
+      name.hashCode ^ prefixedName.hashCode ^ properties.hashCode;
 }

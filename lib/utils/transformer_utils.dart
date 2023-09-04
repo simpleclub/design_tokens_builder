@@ -1,4 +1,5 @@
 import 'package:math_expressions/math_expressions.dart';
+import 'package:meta/meta.dart';
 import 'package:tuple/tuple.dart';
 
 /// Prepares the tokens by resolving the aliases and solving mathematical
@@ -45,7 +46,7 @@ Map<String, dynamic> resolveAliasesAndMath(
         final variableName = match.group(1)?.trim();
         dynamic resolvedVariable;
         if (variableName != null) {
-          resolvedVariable = _findVariable(
+          resolvedVariable = findVariable(
             sourceMap,
             tokenSetOrder: tokenSetOrder,
             variableName: variableName,
@@ -80,7 +81,8 @@ Map<String, dynamic> resolveAliasesAndMath(
 /// Returns a tuple with the matching unit and the cleaned equation.
 ///
 /// E.g. 3px + 42 -> (px, 3 + 42)
-Tuple2<String, String> _prepareMathEvaluation(String value) {
+@visibleForTesting
+Tuple2<String, String> prepareMathEvaluation(String value) {
   var newValue = value;
   final pxRegex = RegExp(r'\b(\d+(?:\.\d+)?)px\b');
   for (final match in pxRegex.allMatches(value)) {
@@ -94,7 +96,7 @@ Tuple2<String, String> _prepareMathEvaluation(String value) {
 
 /// Evaluates a mathematical expression and returns the result.
 String evaluateMathExpression(String value) {
-  final equation = _prepareMathEvaluation(value);
+  final equation = prepareMathEvaluation(value);
 
   final parser = Parser();
   // Need to add roundTo method manually since its nothing
@@ -108,15 +110,16 @@ String evaluateMathExpression(String value) {
 }
 
 /// Finds and returns a value of a variable for a given name in any token set.
-dynamic _findVariable(
-  Map<String, dynamic> globalMap, {
+@visibleForTesting
+dynamic findVariable(
+  Map<String, dynamic> data, {
   required List<String> tokenSetOrder,
   required String variableName,
 }) {
   for (final tokenSetName in tokenSetOrder) {
-    final tokenSet = globalMap[tokenSetName];
+    final tokenSet = data[tokenSetName];
     if (tokenSet != null) {
-      final resolvedVariable = _getTokenSetVariable(tokenSet, variableName);
+      final resolvedVariable = getTokenSetVariable(tokenSet, variableName);
       if (resolvedVariable != null) {
         return resolvedVariable;
       }
@@ -126,7 +129,8 @@ dynamic _findVariable(
 }
 
 /// Gets and returns a variable in a given `tokenSet`.
-dynamic _getTokenSetVariable(
+@visibleForTesting
+dynamic getTokenSetVariable(
   Map<String, dynamic> tokenSet,
   String variableName,
 ) {

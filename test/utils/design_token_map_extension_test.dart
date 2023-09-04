@@ -21,6 +21,14 @@ void main() {
 
       expect(() => map.parser, throwsException);
     });
+
+    test('fails due to missing type', () {
+      final map = {
+        'value': '42px',
+      };
+
+      expect(() => map.parser, throwsException);
+    });
   });
 
   group('flutter type', () {

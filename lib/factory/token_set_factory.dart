@@ -103,36 +103,6 @@ String buildAttributeMap(
   return '{\n${recursiveMap(source, depth)}}';
 }
 
-// String _buildColorScheme({
-//   required Map<String, dynamic> setData,
-//   required String brightness,
-// }) {
-//   final mappingTheme =
-//   final systemColors = getTokensOfType(
-//     'color',
-//     tokenSetData: sys,
-//     fallbackSetData: defaultSys,
-//   );
-//   if (systemColors.isNotEmpty) {
-//     final colorSchemeValues = systemColors.keys.map(
-//           (key) => '$key: ${_parseAttribute(
-//         sys[key],
-//         config: config,
-//         isConst: false,
-//       )}',
-//     );
-//
-//     final content = '\n${indentation(
-//       level: 4,
-//     )}${colorSchemeValues.join(
-//       ',\n${indentation(level: 4)}',
-//     )},\n${indentation(level: 3)}';
-//
-//     return
-//     'ColorScheme get _colorScheme => const ColorScheme.$brightness($content);';
-//
-// }
-
 /// Parses a single attribute of a token.
 ///
 /// Supports parsing of material state properties and all types that can be

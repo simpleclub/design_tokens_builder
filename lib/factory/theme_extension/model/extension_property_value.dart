@@ -32,5 +32,15 @@ class ExtensionPropertyValue extends ExtensionProperty {
   String get flutterType => parserForType(type).flutterType;
 
   @override
-  List<Object> get props => [...super.props, value, type];
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is ExtensionPropertyValue &&
+            runtimeType == other.runtimeType &&
+            name == other.name &&
+            value == other.value &&
+            type == other.type;
+  }
+
+  @override
+  int get hashCode => name.hashCode ^ value.hashCode ^ type.hashCode;
 }
