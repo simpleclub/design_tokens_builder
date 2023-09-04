@@ -30,7 +30,7 @@ void main() {
       var token = 'someLineHeight';
       expect(
         parser.buildLerp(token),
-        'lerpDouble(someLineHeight, other.someLineHeight, t)',
+        'lerpDouble(someLineHeight, other.someLineHeight, t) ?? other.someLineHeight',
       );
     });
   });

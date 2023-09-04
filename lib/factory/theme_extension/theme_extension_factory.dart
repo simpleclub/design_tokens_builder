@@ -75,25 +75,60 @@ List<ExtensionPropertyClass> getExtensions(
 
   final tokenSets = getTokenSets(
     tokens,
-    includeSourceSet: false,
+    includeSourceSet: true,
     config: config,
   );
-  for (final tokenSet in tokenSets) {
-    final setData = tokens[tokenSet] as Map<String, dynamic>;
-    var extensionProperties = buildExtensionPropertyList(setData);
-    // Only keep classes for top level since we won't create global variables
-    // for single tokens.
-    extensionProperties
-        .removeWhere((element) => element is ExtensionPropertyValue);
 
-    for (final property in extensionProperties) {
-      if (!extensions.any((element) => element.name == property.name)) {
-        extensions.add(property);
+  for (final tokenSet in tokenSets) {
+    if ((tokens[tokenSet] as Map).isNotEmpty) {
+      final setData = tokens[tokenSet] as Map<String, dynamic>;
+      var extensionProperties = buildExtensionPropertyList(setData);
+      // Only keep classes for top level since we won't create global variables
+      // for single tokens.
+      extensionProperties
+          .removeWhere((element) => element is ExtensionPropertyValue);
+
+      for (final property in extensionProperties) {
+        deepMergeProperty(extensions, withProperty: property);
       }
     }
   }
 
   return extensions.cast<ExtensionPropertyClass>();
+}
+
+/// Deep merges a property into a list of properties.
+///
+/// That means if the property already exists in the list, an it is a class,
+/// we merge all of the properties by adding the ones that don't exist yet. This
+/// works recursively with classes contained in a class.
+void deepMergeProperty(
+  List<ExtensionProperty> properties, {
+  required ExtensionProperty withProperty,
+}) {
+  if (properties.any((element) => element.name == withProperty.name)) {
+    final property = properties.firstWhere(
+      (element) => element.name == withProperty.name,
+    );
+
+    if (property is ExtensionPropertyValue &&
+        withProperty is ExtensionPropertyValue) {
+      return;
+    } else if (property is ExtensionPropertyValue &&
+        withProperty is ExtensionPropertyClass) {
+      return;
+    } else if (property is ExtensionPropertyClass &&
+        withProperty is ExtensionPropertyValue) {
+      deepMergeProperty(property.properties, withProperty: withProperty);
+    } else if (property is ExtensionPropertyClass &&
+        withProperty is ExtensionPropertyClass) {
+      for (final newProperty in withProperty.properties) {
+        deepMergeProperty(property.properties, withProperty: newProperty);
+      }
+    }
+  } else {
+    properties.add(withProperty);
+  }
 }
 
 /// Builds a list of [ExtensionProperty]s from a map recursively.
@@ -105,8 +140,15 @@ List<ExtensionProperty> buildExtensionPropertyList(
     final name = entry.key;
     final map = entry.value as Map<String, dynamic>;
     if (map.containsKey('value')) {
+      // Check if name is solely numeric.
+      final regexPattern = r'^[0-9]+$';
+      final regex = RegExp(regexPattern);
+      final solelyNumeric = regex.hasMatch(name);
+      final prefixedName = solelyNumeric
+          ? '${namePrefix.substring(0, 1)}${name.firstUpperCased}'
+          : name;
       return ExtensionPropertyValue(
-        name: name,
+        name: prefixedName,
         value: map['value'],
         type: map['type'] as String,
       );

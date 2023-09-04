@@ -64,7 +64,7 @@ void main() {
       var token = 'someShadow';
       expect(
         parser.buildLerp(token),
-        'BoxShadow.lerpList(someShadow, other.someShadow, t)',
+        'BoxShadow.lerpList(someShadow, other.someShadow, t) ?? other.someShadow',
       );
     });
   });

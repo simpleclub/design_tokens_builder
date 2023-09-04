@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:tuple/tuple.dart';
 
@@ -94,7 +93,6 @@ Tuple2<String, String> _prepareMathEvaluation(String value) {
 }
 
 /// Evaluates a mathematical expression and returns the result.
-@visibleForTesting
 String evaluateMathExpression(String value) {
   final equation = _prepareMathEvaluation(value);
 

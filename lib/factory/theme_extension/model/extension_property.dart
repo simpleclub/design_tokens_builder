@@ -1,5 +1,7 @@
+import 'package:equatable/equatable.dart';
+
 /// A abstract property that can be used in a theme extension.
-abstract class ExtensionProperty {
+abstract class ExtensionProperty extends Equatable {
   /// Default constructor.
   ExtensionProperty({required this.name});
 
@@ -14,4 +16,7 @@ abstract class ExtensionProperty {
 
   /// The associated flutter type of the property.
   String get flutterType;
+
+  @override
+  List<Object> get props => [name];
 }

@@ -89,6 +89,9 @@ class $className extends ThemeExtension<$className> {
 
   @override
   String toString() {
-    return 'ExtensionPropertyClass(name: $name, properties: [${properties.join(', ')}])';
+    return 'ExtensionPropertyClass(name: $name, prefixedName: $prefixedName, properties: [${properties.join(', ')}])';
   }
+
+  @override
+  List<Object> get props => [...super.props, prefixedName, properties];
 }

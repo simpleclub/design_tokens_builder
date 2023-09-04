@@ -40,7 +40,7 @@ void main() {
       var token = 'someDimension';
       expect(
         parser.buildLerp(token),
-        'lerpDouble(someDimension, other.someDimension, t)',
+        'lerpDouble(someDimension, other.someDimension, t) ?? other.someDimension',
       );
     });
   });

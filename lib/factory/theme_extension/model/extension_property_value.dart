@@ -30,4 +30,7 @@ class ExtensionPropertyValue extends ExtensionProperty {
 
   @override
   String get flutterType => parserForType(type).flutterType;
+
+  @override
+  List<Object> get props => [...super.props, value, type];
 }

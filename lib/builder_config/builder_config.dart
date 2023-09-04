@@ -40,6 +40,11 @@ class BuilderConfig {
 
   @override
   int get hashCode => sourceSetName.hashCode ^ fontConfig.hashCode;
+
+  @override
+  String toString() {
+    return 'BuilderConfig(sourceSetName: $sourceSetName, fontConfig: ${fontConfig.toString()})';
+  }
 }
 
 /// Class representing the configuration of fonts used in design token.
@@ -79,4 +84,9 @@ class FontConfig {
 
   @override
   int get hashCode => family.hashCode ^ flutterName.hashCode ^ package.hashCode;
+
+  @override
+  String toString() {
+    return 'FontConfig(family: $family, flutterName: $flutterName, package: $package)';
+  }
 }

@@ -32,7 +32,7 @@ void main() {
       var token = 'someNumber';
       expect(
         parser.buildLerp(token),
-        'lerpDouble(someNumber, other.someNumber, t)',
+        'lerpDouble(someNumber, other.someNumber, t) ?? other.someNumber',
       );
     });
   });

@@ -5,7 +5,6 @@ import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/transformer_utils.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:tuple/tuple.dart';
 
 /// Builds all flutter related theming based on flutter theme.
@@ -105,7 +104,6 @@ Tuple2<String, List<String>> buildFlutterTheme(
 /// ThemeData constructor.
 ///
 /// Also adds [data] to the list of [themes] but only if [data] is not empty.
-@visibleForTesting
 void addThemeDataProperty(
   List<String> list, {
   required String data,
@@ -119,7 +117,6 @@ void addThemeDataProperty(
 }
 
 /// Builds the flutter color scheme.
-@visibleForTesting
 String buildColorScheme(
   Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
@@ -149,7 +146,6 @@ String buildColorScheme(
 }
 
 /// Builds the flutter text theme.
-@visibleForTesting
 String buildTextTheme(
   Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
@@ -187,7 +183,6 @@ String buildTextTheme(
 }
 
 /// Builds the flutter button theme.
-@visibleForTesting
 String buildButtonTheme(
   Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,
@@ -232,7 +227,6 @@ String buildButtonTheme(
 }
 
 /// Builds the flutter card theme.
-@visibleForTesting
 String buildCardTheme(
   Map<String, dynamic> allData, {
   required Map<String, dynamic> flutterTokens,

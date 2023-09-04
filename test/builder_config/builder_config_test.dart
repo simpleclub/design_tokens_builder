@@ -7,7 +7,7 @@ void main() {
     test('succeeds', () {
       final yaml = YamlMap.wrap({
         'tokenFilePath': 'some/path',
-        'defaultSetName': 'core',
+        'sourceSetName': 'core',
         'fontConfig': [
           {'family': 'First Font', 'flutterName': 'FirstFont'},
           {'family': 'Second Font', 'flutterName': 'SecondFont'},
