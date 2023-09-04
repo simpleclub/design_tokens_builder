@@ -6,8 +6,7 @@ import 'package:tuple/tuple.dart';
 /// expressions.
 Map<String, dynamic> prepareTokens(Map<String, dynamic> map) {
   final metadata = map['\$metadata'];
-  final List<String> tokenSetOrder =
-      List<String>.from(metadata['tokenSetOrder']);
+  final List<String> tokenSetOrder = List<String>.from(metadata['tokenSetOrder']);
 
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
@@ -38,27 +37,40 @@ Map<String, dynamic> resolveAliasesAndMath(
         tokenSetOrder: tokenSetOrder,
         sourceMap: sourceMap,
       );
+    } else if (value is List<dynamic>) {
+      map[entry.key] = value.map(
+        (e) {
+          return resolveAliasesAndMath(
+            e,
+            tokenSetOrder: tokenSetOrder,
+            sourceMap: sourceMap,
+          );
+        },
+      ).toList();
     } else if (value is String) {
       const regex = r'{([^}]+)}';
-      final matches = RegExp(regex).allMatches(value);
       dynamic newValue = value;
-      for (final match in matches) {
-        final variableName = match.group(1)?.trim();
-        dynamic resolvedVariable;
-        if (variableName != null) {
-          resolvedVariable = findVariable(
-            sourceMap,
-            tokenSetOrder: tokenSetOrder,
-            variableName: variableName,
-          );
-        } else {
-          resolvedVariable = '';
-        }
+      while (newValue is String && RegExp(regex).hasMatch(newValue)) {
+        final matches = RegExp(regex).allMatches(newValue);
 
-        if (resolvedVariable is String) {
-          newValue = newValue.replaceFirst(match.pattern, resolvedVariable);
-        } else {
-          newValue = resolvedVariable;
+        for (final match in matches) {
+          final variableName = match.group(1)?.trim();
+          dynamic resolvedVariable;
+          if (variableName != null) {
+            resolvedVariable = findVariable(
+              sourceMap,
+              tokenSetOrder: tokenSetOrder,
+              variableName: variableName,
+            );
+          } else {
+            resolvedVariable = '';
+          }
+
+          if (resolvedVariable is String) {
+            newValue = newValue.replaceFirst(match.pattern, resolvedVariable);
+          } else {
+            newValue = resolvedVariable;
+          }
         }
       }
 

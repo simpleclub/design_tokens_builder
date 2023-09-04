@@ -10,9 +10,25 @@ void main() {
           'value': '2',
           'type': 'number',
         },
-      }
+      },
+      'color': {
+        'base': {
+          'value': '#123456',
+          'type': 'color',
+        },
+      },
     },
     'light': {
+      'color': {
+        'background': {
+          'value': '{color.base}',
+          'type': 'color',
+        },
+        'background': {
+          'value': '#123456',
+          'type': 'color',
+        },
+      },
       'button': {
         'size': {
           'height': {
@@ -20,6 +36,11 @@ void main() {
             'type': 'dimension',
           },
         },
+        'background':
+          {
+            'value': '{color.background}',
+            'type': 'color',
+          },
       },
       'someNumber': {
         'value': '42 * {metrics.factor}',
@@ -55,9 +76,21 @@ void main() {
               'value': '2.0',
               'type': 'number',
             },
-          }
+          },
+          'color': {
+            'base': {
+              'value': '#123456',
+              'type': 'color',
+            },
+          },
         },
         'light': {
+          'color': {
+            'background': {
+              'value': '#123456',
+              'type': 'color',
+            },
+          },
           'button': {
             'size': {
               'height': {
@@ -65,6 +98,11 @@ void main() {
                 'type': 'dimension',
               },
             },
+            'background':
+              {
+                'value': '#123456',
+                'type': 'color',
+              },
           },
           'someNumber': {
             'value': '84.0',
@@ -100,6 +138,12 @@ void main() {
       );
 
       expect(result, {
+        'color': {
+          'background': {
+            'value': '#123456',
+            'type': 'color',
+          },
+        },
         'button': {
           'size': {
             'height': {
@@ -107,10 +151,70 @@ void main() {
               'type': 'dimension',
             },
           },
+          'background': {
+              'value': '#123456',
+              'type': 'color',
+          },
         },
         'someNumber': {
           'value': '84.0',
           'type': 'number',
+        },
+      });
+    });
+
+    test('succeeds with shadows', () {
+      final shadowsMap = {
+        'shadow': {
+          'value': [
+            {
+              'x': '0',
+              'y': '1',
+              'blur': '3',
+              'spread': '0',
+              'color': '{color.background}',
+              'type': 'dropShadow',
+            },
+            {
+              'x': '0',
+              'y': '6',
+              'blur': '12',
+              'spread': '0',
+              'color': '{color.background}',
+              'type': 'dropShadow',
+            },
+          ],
+          'type': 'boxShadow',
+        },
+      };
+
+      final result = resolveAliasesAndMath(
+        shadowsMap,
+        tokenSetOrder: ['core', 'light', 'dark'],
+        sourceMap: map,
+      );
+
+      expect(result, {
+        'shadow': {
+          'value': [
+            {
+              'x': '0.0',
+              'y': '1.0',
+              'blur': '3.0',
+              'spread': '0.0',
+              'color': '#123456',
+              'type': 'dropShadow',
+            },
+            {
+              'x': '0.0',
+              'y': '6.0',
+              'blur': '12.0',
+              'spread': '0.0',
+              'color': '#123456',
+              'type': 'dropShadow',
+            },
+          ],
+          'type': 'boxShadow',
         },
       });
     });
