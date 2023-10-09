@@ -19,7 +19,7 @@ class FontWeightParser extends DesignTokenParser {
   List<String> get tokenType => ['fontWeights'];
 
   @override
-  String get flutterType => 'FontWeight';
+  String flutterType([dynamic value]) => 'FontWeight';
 
   final _allowedWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 

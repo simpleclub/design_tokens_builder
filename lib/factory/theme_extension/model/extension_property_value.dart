@@ -29,7 +29,7 @@ class ExtensionPropertyValue extends ExtensionProperty {
   }
 
   @override
-  String get flutterType => parserForType(type).flutterType;
+  String get flutterType => parserForType(type).flutterType(value);
 
   @override
   bool operator ==(Object other) {

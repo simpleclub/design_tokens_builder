@@ -11,14 +11,15 @@ import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 class TextCaseParser extends DesignTokenParser {
   /// Constructs a [TextCaseParser].
   TextCaseParser([super.indentationLevel, super.config]);
+
   @override
   List<String> get tokenType => ['textCase'];
 
   @override
-  String get flutterType => 'String';
+  String flutterType([dynamic value]) => 'String';
 
   @override
-  String buildLerp(String token) {
+  String buildLerp(String token, dynamic value) {
     return 'other.$token';
   }
 

@@ -78,7 +78,7 @@ abstract class DesignTokenParser {
 
   /// Returns a string representing the Flutter type to which the token
   /// should be converted.
-  String get flutterType => throw UnimplementedError();
+  String flutterType([dynamic value]) => throw UnimplementedError();
 
   final _constTypes = [
     'Color',
@@ -116,7 +116,7 @@ abstract class DesignTokenParser {
   ///
   /// This method only works if it is used in a context where a class wants to
   /// linearly interpolate between the current and `other` value.
-  String buildLerp(String token) {
-    return '$flutterType.lerp($token, other.$token, t) ?? other.$token';
+  String buildLerp(String token, dynamic value) {
+    return '${flutterType(value)}.lerp($token, other.$token, t) ?? other.$token';
   }
 }

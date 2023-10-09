@@ -36,10 +36,10 @@ class BoxShadowParser extends DesignTokenParser {
   List<String> get tokenType => ['boxShadow'];
 
   @override
-  String get flutterType => 'List<BoxShadow>';
+  String flutterType([dynamic value]) => 'List<BoxShadow>';
 
   @override
-  String buildLerp(String token) {
+  String buildLerp(String token, dynamic value) {
     return 'BoxShadow.lerpList($token, other.$token, t) ?? other.$token';
   }
 

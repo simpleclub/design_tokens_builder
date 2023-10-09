@@ -20,7 +20,7 @@ class SpacingParser extends DesignTokenParser {
   List<String> get tokenType => ['spacing'];
 
   @override
-  String get flutterType => 'EdgeInsets';
+  String flutterType([dynamic value]) => 'EdgeInsets';
 
   @override
   String buildValue(value) {

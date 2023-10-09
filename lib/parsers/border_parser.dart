@@ -30,7 +30,7 @@ class BorderParser extends DesignTokenParser {
   List<String> get tokenType => ['border'];
 
   @override
-  String get flutterType => 'BoxBorder';
+  String flutterType([dynamic value]) => 'BoxBorder';
 
   @override
   String buildValue(value) {

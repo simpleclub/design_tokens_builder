@@ -83,7 +83,7 @@ class $className extends ThemeExtension<$className> {
     if (property is ExtensionPropertyValue) {
       final parser =
           parserForType(property.type, indentationLevel: indentationLevel);
-      return parser.buildLerp(property.name);
+      return parser.buildLerp(property.name, property.value);
     } else if (property is ExtensionPropertyClass) {
       return '${property.name}.lerp(other.${property.name}, t)';
     }

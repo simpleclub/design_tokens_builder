@@ -23,7 +23,7 @@ extension DesignTokenMap on Map<String, dynamic> {
   /// Throws exception when no type was found for the type to parse.
   String get flutterType {
     try {
-      return parser.flutterType;
+      return parser.flutterType(this['value']);
     } catch (e) {
       throw Exception(
         'No Flutter represented type found for type ${this['type']}.',

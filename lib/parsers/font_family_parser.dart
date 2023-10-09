@@ -21,10 +21,10 @@ class FontFamilyParser extends DesignTokenParser {
   List<String> get tokenType => ['fontFamilies'];
 
   @override
-  String get flutterType => 'String';
+  String flutterType([dynamic value]) => 'String';
 
   @override
-  String buildLerp(String token) {
+  String buildLerp(String token, dynamic value) {
     return 'other.$token';
   }
 

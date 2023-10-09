@@ -19,7 +19,7 @@ class BorderRadiusParser extends DesignTokenParser {
   List<String> get tokenType => ['borderRadius'];
 
   @override
-  String get flutterType => 'BorderRadius';
+  String flutterType([dynamic value]) => 'BorderRadius';
 
   @override
   String buildValue(value) {

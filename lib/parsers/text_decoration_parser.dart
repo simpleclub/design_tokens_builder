@@ -16,10 +16,10 @@ class TextDecorationParser extends DesignTokenParser {
   List<String> get tokenType => ['textDecoration'];
 
   @override
-  String get flutterType => 'TextDecoration';
+  String flutterType([dynamic value]) => 'TextDecoration';
 
   @override
-  String buildLerp(String token) {
+  String buildLerp(String token, dynamic value) {
     return 'other.$token';
   }
 

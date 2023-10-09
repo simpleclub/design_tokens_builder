@@ -19,10 +19,10 @@ class OtherParser extends DesignTokenParser {
       ];
 
   @override
-  String get flutterType => 'Duration';
+  String flutterType([dynamic value]) => 'Duration';
 
   @override
-  String buildLerp(String token) {
+  String buildLerp(String token, dynamic value) {
     return 'lerpDuration($token, other.$token, t)';
   }
 

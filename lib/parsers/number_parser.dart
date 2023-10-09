@@ -24,10 +24,10 @@ class NumberParser extends DesignTokenParser {
       ];
 
   @override
-  String get flutterType => 'double';
+  String flutterType([dynamic value]) => 'double';
 
   @override
-  String buildLerp(String token) {
+  String buildLerp(String token, dynamic value) {
     return 'lerpDouble($token, other.$token, t) ?? other.$token';
   }
 
