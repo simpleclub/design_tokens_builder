@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Get token sets', () {
-    final config = BuilderConfig();
+    final config = BuilderConfig(sourceSetName: 'global');
 
     test('succeeds', () {
       final result = getTokenSets(

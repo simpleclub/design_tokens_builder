@@ -1,7 +1,6 @@
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/flutter_theme_factory.dart';
 import 'package:design_tokens_builder/factory/theme_extension/theme_extension_factory.dart';
-import 'package:design_tokens_builder/parsers/color_parser.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
@@ -43,7 +42,7 @@ String buildTokenSet(
     var themeData = '''@override
   ThemeData get themeData => ThemeData.$brightness().copyWith($themeDataValues
     extensions: [
-      ${extensions.map((e) => e.build(indentationLevel: 3)).join(
+      ${extensions.map((e) => e.build(indentationLevel: 3, config: config)).join(
               ',\n${indentation(level: 3)}',
             )},
     ],

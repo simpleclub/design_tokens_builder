@@ -1,3 +1,5 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
+
 /// A abstract property that can be used in a theme extension.
 abstract class ExtensionProperty {
   /// Default constructor.
@@ -10,7 +12,11 @@ abstract class ExtensionProperty {
   ///
   /// Creates a string representation of the property used for Theme extension
   /// generation.
-  String build({int indentationLevel = 0, bool includeName = false});
+  String build({
+    int indentationLevel = 0,
+    bool includeName = false,
+    BuilderConfig? config,
+  });
 
   /// The associated flutter type of the property.
   String get flutterType;

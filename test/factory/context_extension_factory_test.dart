@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Build context extensions', () {
-    final config = BuilderConfig();
+    final config = BuilderConfig(sourceSetName: 'global');
 
     test('with one extension', () {
       final result = buildContextExtension(

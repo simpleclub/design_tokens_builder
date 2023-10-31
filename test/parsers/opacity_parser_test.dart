@@ -31,7 +31,7 @@ void main() {
     test('succeeds', () {
       var token = 'someNumber';
       expect(
-        parser.buildLerp(token),
+        parser.buildLerp(token, null),
         'lerpDouble(someNumber, other.someNumber, t) ?? other.someNumber',
       );
     });

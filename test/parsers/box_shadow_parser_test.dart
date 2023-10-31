@@ -63,7 +63,7 @@ void main() {
     test('succeeds', () {
       var token = 'someShadow';
       expect(
-        parser.buildLerp(token),
+        parser.buildLerp(token, null),
         'BoxShadow.lerpList(someShadow, other.someShadow, t) ?? other.someShadow',
       );
     });

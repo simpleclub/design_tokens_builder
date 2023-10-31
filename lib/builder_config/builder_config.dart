@@ -9,7 +9,7 @@ const _fallbackDefaultSetName = 'global';
 class BuilderConfig {
   /// Constructs a [BuilderConfig].
   BuilderConfig({
-    this.sourceSetName = _fallbackDefaultSetName,
+    required this.sourceSetName,
     this.fontConfig = const [],
   });
 

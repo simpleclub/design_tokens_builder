@@ -11,7 +11,7 @@ void main() {
   });
 
   group('get extensions', () {
-    final config = BuilderConfig();
+    final config = BuilderConfig(sourceSetName: 'global');
 
     test('across multiple sets', () {
       final tokens = {

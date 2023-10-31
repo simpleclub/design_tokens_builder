@@ -33,7 +33,7 @@ void main() {
   group('build lerp', () {
     test('succeeds', () {
       expect(
-        parser.buildLerp('someOther'),
+        parser.buildLerp('someOther', null),
         'lerpDuration(someOther, other.someOther, t)',
       );
     });

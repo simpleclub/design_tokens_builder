@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final config = BuilderConfig(
+    sourceSetName: 'global',
     fontConfig: [
       FontConfig(
         family: 'My Font',
@@ -38,6 +39,7 @@ void main() {
 
     test('succeeds with package', () {
       final packageConfig = BuilderConfig(
+        sourceSetName: 'global',
         fontConfig: [
           FontConfig(
             family: 'My Font',

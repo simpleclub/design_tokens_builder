@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final config = BuilderConfig(
+    sourceSetName: 'global',
     fontConfig: [
       FontConfig(family: 'My Font', flutterName: 'MyFlutterFont'),
     ],
@@ -36,7 +37,7 @@ void main() {
   group('build lerp', () {
     test('succeeds', () {
       var token = 'someFontFamily';
-      expect(parser.buildLerp(token), 'other.someFontFamily');
+      expect(parser.buildLerp(token, null), 'other.someFontFamily');
     });
   });
 }

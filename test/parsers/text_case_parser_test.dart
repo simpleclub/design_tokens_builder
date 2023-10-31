@@ -19,7 +19,7 @@ void main() {
   group('build lerp', () {
     test('succeeds', () {
       var token = 'someTextCase';
-      expect(parser.buildLerp(token), 'other.someTextCase');
+      expect(parser.buildLerp(token, null), 'other.someTextCase');
     });
   });
 }

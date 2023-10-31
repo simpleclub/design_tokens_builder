@@ -46,7 +46,7 @@ void main() {
 
   group('build lerp', () {
     test('succeeds', () {
-      expect(parser.buildLerp('someColor'),
+      expect(parser.buildLerp('someColor', null),
           'Color.lerp(someColor, other.someColor, t) ?? other.someColor');
     });
   });

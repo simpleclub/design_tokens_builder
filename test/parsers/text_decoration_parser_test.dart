@@ -24,7 +24,7 @@ void main() {
   group('build lerp', () {
     test('succeeds', () {
       var token = 'someTextDecoration';
-      expect(parser.buildLerp(token), 'other.someTextDecoration');
+      expect(parser.buildLerp(token, null), 'other.someTextDecoration');
     });
   });
 }

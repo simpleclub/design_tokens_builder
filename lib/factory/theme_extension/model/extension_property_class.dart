@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property_value.dart';
 import 'package:design_tokens_builder/factory/theme_extension/theme_extension_factory.dart';
@@ -25,12 +26,16 @@ class ExtensionPropertyClass extends ExtensionProperty {
   final List<ExtensionProperty> properties;
 
   @override
-  String build({int indentationLevel = 0, bool includeName = false}) {
+  String build({
+    int indentationLevel = 0,
+    bool includeName = false,
+    BuilderConfig? config,
+  }) {
     final prefix =
         includeName ? '${indentation(level: indentationLevel)}$name: ' : '';
     final content = properties.isEmpty
         ? ''
-        : '\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1, includeName: true)).join(',\n')},\n${indentation(level: indentationLevel)}';
+        : '\n${properties.map((e) => e.build(indentationLevel: indentationLevel + 1, includeName: true, config: config)).join(',\n')},\n${indentation(level: indentationLevel)}';
     return '$prefix${buildExtensionName(prefixedName)}($content)';
   }
 

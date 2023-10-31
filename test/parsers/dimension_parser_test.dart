@@ -39,7 +39,7 @@ void main() {
     test('succeeds', () {
       var token = 'someDimension';
       expect(
-        parser.buildLerp(token),
+        parser.buildLerp(token, null),
         'lerpDouble(someDimension, other.someDimension, t) ?? other.someDimension',
       );
     });
