@@ -35,7 +35,12 @@ String buildTokenSet(
       config: config,
     );
 
-    final extensions = getExtensions(tokens, config: config);
+    final extensions = getExtensions(
+      tokens,
+      config: config,
+      prioritisedSet: tokenSet,
+      prioritisedBrightness: brightness,
+    );
     final themeDataValues = flutterTheme.item2.isEmpty
         ? ''
         : '\n${flutterTheme.item2.join(',\n${indentation(level: 2)}')}${flutterTheme.item2.isNotEmpty ? ',' : ''}\n';

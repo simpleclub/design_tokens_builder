@@ -70,6 +70,8 @@ String buildExtensionName(String extensionName) {
 List<ExtensionPropertyClass> getExtensions(
   Map<String, dynamic> tokens, {
   required BuilderConfig config,
+  String? prioritisedSet,
+  String? prioritisedBrightness,
 }) {
   List<ExtensionProperty> extensions = [];
 
@@ -77,6 +79,8 @@ List<ExtensionPropertyClass> getExtensions(
     tokens,
     includeSourceSet: true,
     config: config,
+    prioritisedSet: prioritisedSet,
+    prioritisedBrightness: prioritisedBrightness,
   );
 
   for (final tokenSet in tokenSets) {

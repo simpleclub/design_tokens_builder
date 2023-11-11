@@ -9,6 +9,8 @@ List<String> getTokenSets(
   required BuilderConfig config,
   bool includeSourceSet = false,
   bool includeFlutterMappingSet = false,
+  String? prioritisedSet,
+  String? prioritisedBrightness,
 }) {
   final tokenSets = List<String>.from(
     (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
@@ -20,6 +22,18 @@ List<String> getTokenSets(
 
   if (!includeFlutterMappingSet) {
     tokenSets.remove('flutterMapping');
+  }
+
+  if (prioritisedSet != null && prioritisedBrightness != null) {
+    final baseName = prioritisedSet.replaceFirst('brightness', '');
+    final prioSets =
+        tokenSets.where((element) => element.startsWith(baseName)).toList();
+    prioSets.remove(prioritisedSet);
+    prioSets.insert(0, prioritisedSet);
+
+    tokenSets.removeWhere((element) => prioSets.contains(element));
+
+    tokenSets.insertAll(0, prioSets);
   }
 
   return tokenSets;
