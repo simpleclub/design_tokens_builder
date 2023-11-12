@@ -1,3 +1,4 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/utils/transformer_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tuple/tuple.dart';
@@ -24,7 +25,7 @@ void main() {
           'value': '{color.base}',
           'type': 'color',
         },
-        'background': {
+        'foreground': {
           'value': '#123456',
           'type': 'color',
         },
@@ -36,11 +37,10 @@ void main() {
             'type': 'dimension',
           },
         },
-        'background':
-          {
-            'value': '{color.background}',
-            'type': 'color',
-          },
+        'background': {
+          'value': '{color.background}',
+          'type': 'color',
+        },
       },
       'someNumber': {
         'value': '42 * {metrics.factor}',
@@ -67,7 +67,10 @@ void main() {
 
   group('prepare tokens', () {
     test('succeeds', () {
-      final result = prepareTokens(map);
+      final result = prepareTokens(
+        map,
+        config: BuilderConfig(sourceSetName: 'core'),
+      );
 
       expect(result, {
         'core': {
@@ -98,11 +101,10 @@ void main() {
                 'type': 'dimension',
               },
             },
-            'background':
-              {
-                'value': '#123456',
-                'type': 'color',
-              },
+            'background': {
+              'value': '#123456',
+              'type': 'color',
+            },
           },
           'someNumber': {
             'value': '84.0',
@@ -152,8 +154,8 @@ void main() {
             },
           },
           'background': {
-              'value': '#123456',
-              'type': 'color',
+            'value': '#123456',
+            'type': 'color',
           },
         },
         'someNumber': {

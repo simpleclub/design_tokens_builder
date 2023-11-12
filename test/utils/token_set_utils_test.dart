@@ -19,6 +19,30 @@ void main() {
       expect(result, ['light', 'dark']);
     });
 
+    test('succeeds with prioritisation', () {
+      final data = {
+        r'$metadata': {
+          'tokenSetOrder': ['light', 'dark', 'core'],
+        },
+      };
+
+      final result1 = getTokenSets(
+        data,
+        config: config,
+        prioritisedSet: 'dark',
+      );
+
+      expect(result1, ['dark', 'light', 'core']);
+
+      final result2 = getTokenSets(
+        data,
+        config: config,
+        prioritisedSet: 'light',
+      );
+
+      expect(result2, ['light', 'dark', 'core']);
+    });
+
     test('succeeds without default theme', () {
       final result = getTokenSets(
         {

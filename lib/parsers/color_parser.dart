@@ -32,11 +32,9 @@ class ColorParser extends DesignTokenParser {
     if (value is String) {
       final hexRegex = RegExp('(?:[0-9a-fA-F]{3,4}){1,2}\$');
       if (value.startsWith('linear-gradient')) {
-        print('gradient: $value');
         // Validating linear gradient.
         value = buildLinearGradient(value);
       } else if (hexRegex.hasMatch(value)) {
-        print('hex: $value');
         // Validating HEX color.
         value = buildHex(value);
       }
@@ -49,6 +47,7 @@ class ColorParser extends DesignTokenParser {
     }
   }
 
+  /// Builds a Flutter color from a hex value.
   String? buildHex(String value) {
     String? result;
     result = value.replaceAll('#', '');
@@ -63,10 +62,10 @@ class ColorParser extends DesignTokenParser {
     return 'Color(0x$hexCode)';
   }
 
+  /// Builds a Flutter linear gradient from a linear gradient value.
   String? buildLinearGradient(String value) {
     final regex = RegExp(r'linear-gradient\((\d+)deg,(.+)\)');
     final match = regex.firstMatch(value);
-    print('$value -> $match');
 
     if (match == null) return null;
 
@@ -102,6 +101,7 @@ class ColorParser extends DesignTokenParser {
 ''';
   }
 
+  /// Parses a degree to a list of points.
   List<Point> degreesToPoints(double degrees) {
     // Convert degrees to radians with the new starting point.
     double radians = ((90 - degrees) % 360) * (pi / 180.0);

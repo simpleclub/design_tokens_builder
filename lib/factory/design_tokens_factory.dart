@@ -35,7 +35,7 @@ class DesignTokensFactory implements Builder {
     final string = await buildStep.readAsString(inputId);
     final token = jsonDecode(string) as Map<String, dynamic>;
 
-    final processedToken = prepareTokens(token);
+    final processedToken = prepareTokens(token, config: config);
     final processedDefaultSet = processedToken[config.sourceSetName];
 
     await buildStep.writeAsString(

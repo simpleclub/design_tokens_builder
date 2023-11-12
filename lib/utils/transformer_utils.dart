@@ -1,16 +1,22 @@
+import 'package:design_tokens_builder/builder_config/builder_config.dart';
+import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:meta/meta.dart';
 import 'package:tuple/tuple.dart';
 
 /// Prepares the tokens by resolving the aliases and solving mathematical
 /// expressions.
-Map<String, dynamic> prepareTokens(Map<String, dynamic> map) {
-  final metadata = map['\$metadata'];
-  final List<String> tokenSetOrder = List<String>.from(metadata['tokenSetOrder']);
-
+Map<String, dynamic> prepareTokens(Map<String, dynamic> map,
+    {required BuilderConfig config}) {
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
       if (entry.key == 'flutterMapping') continue;
+      final List<String> tokenSetOrder = getTokenSets(
+        map,
+        config: config,
+        prioritisedSet: entry.key,
+        includeSourceSet: true,
+      );
       final replaced = resolveAliasesAndMath(
         entry.value,
         tokenSetOrder: tokenSetOrder.toList(),
@@ -137,6 +143,7 @@ dynamic findVariable(
       }
     }
   }
+
   return null;
 }
 

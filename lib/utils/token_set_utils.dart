@@ -10,7 +10,6 @@ List<String> getTokenSets(
   bool includeSourceSet = false,
   bool includeFlutterMappingSet = false,
   String? prioritisedSet,
-  String? prioritisedBrightness,
 }) {
   final tokenSets = List<String>.from(
     (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
@@ -24,12 +23,13 @@ List<String> getTokenSets(
     tokenSets.remove('flutterMapping');
   }
 
-  if (prioritisedSet != null && prioritisedBrightness != null) {
-    final baseName = prioritisedSet.replaceFirst('brightness', '');
-    final prioSets =
-        tokenSets.where((element) => element.startsWith(baseName)).toList();
-    prioSets.remove(prioritisedSet);
-    prioSets.insert(0, prioritisedSet);
+  if (prioritisedSet != null) {
+    final setSibling =
+        findTokenSetSibling(set: prioritisedSet, tokenSets: tokenSets);
+    final prioSets = [
+      prioritisedSet,
+      if (setSibling != null) setSibling,
+    ];
 
     tokenSets.removeWhere((element) => prioSets.contains(element));
 
@@ -80,4 +80,27 @@ Map<String, dynamic> getTokensOfType(
   }
 
   return tokens;
+}
+
+/// Returns set name without brightness.
+///
+/// E.g. when the set is called `setLight` it returns `set`.
+String tokenSetWithoutBrightness(String set) {
+  RegExp exp = RegExp(r'\b(?:light|Light|dark|Dark)\b');
+  return set.replaceFirst(exp, '');
+}
+
+/// Returns a sibling of a token set.
+///
+/// Defined as a token set with the same name but different brightness.
+/// E.g. `light` and `dark` are siblings as `setLight` and `setDark`.
+String? findTokenSetSibling(
+    {required String set, required List<String> tokenSets}) {
+  final baseName = tokenSetWithoutBrightness(set);
+  final siblings = tokenSets
+      .where((element) => tokenSetWithoutBrightness(element) == baseName)
+      .toList();
+  siblings.remove(set);
+
+  return siblings.firstOrNull;
 }

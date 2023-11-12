@@ -97,7 +97,7 @@ abstract class DesignTokenParser {
     dynamic value, {
     bool isConst = true,
   }) {
-    final includeConst = isConst && _constTypes.contains(flutterType);
+    final includeConst = isConst && _constTypes.contains(flutterType());
     final prefix = includeConst ? 'const ' : '';
 
     if (value is String && value.isEmpty) return 'null';

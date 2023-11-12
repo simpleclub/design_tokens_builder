@@ -80,7 +80,6 @@ List<ExtensionPropertyClass> getExtensions(
     includeSourceSet: true,
     config: config,
     prioritisedSet: prioritisedSet,
-    prioritisedBrightness: prioritisedBrightness,
   );
 
   for (final tokenSet in tokenSets) {
