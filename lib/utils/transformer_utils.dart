@@ -6,8 +6,10 @@ import 'package:tuple/tuple.dart';
 
 /// Prepares the tokens by resolving the aliases and solving mathematical
 /// expressions.
-Map<String, dynamic> prepareTokens(Map<String, dynamic> map,
-    {required BuilderConfig config}) {
+Map<String, dynamic> prepareTokens(
+  Map<String, dynamic> map, {
+  required BuilderConfig config,
+}) {
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
       if (entry.key == 'flutterMapping') continue;

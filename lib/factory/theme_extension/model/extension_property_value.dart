@@ -19,10 +19,11 @@ class ExtensionPropertyValue extends ExtensionProperty {
   final String type;
 
   @override
-  String build(
-      {int indentationLevel = 0,
-      bool includeName = false,
-      BuilderConfig? config}) {
+  String build({
+    int indentationLevel = 0,
+    bool includeName = false,
+    BuilderConfig? config,
+  }) {
     final parser =
         parserForType(type, indentationLevel: indentationLevel, config: config);
     return '${indentation(level: indentationLevel)}$name: ${parser.parse(value)}';

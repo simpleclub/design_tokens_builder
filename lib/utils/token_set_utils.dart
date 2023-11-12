@@ -94,8 +94,10 @@ String tokenSetWithoutBrightness(String set) {
 ///
 /// Defined as a token set with the same name but different brightness.
 /// E.g. `light` and `dark` are siblings as `setLight` and `setDark`.
-String? findTokenSetSibling(
-    {required String set, required List<String> tokenSets}) {
+String? findTokenSetSibling({
+  required String set,
+  required List<String> tokenSets,
+}) {
   final baseName = tokenSetWithoutBrightness(set);
   final siblings = tokenSets
       .where((element) => tokenSetWithoutBrightness(element) == baseName)
