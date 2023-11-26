@@ -222,7 +222,7 @@ String generateTokenSetEnum(
   // Tuple: (prefix, initial match)
   final prefixes = [
     ...matches.map((match) => Tuple2(match.group(1), match.group(0))),
-    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch))
+    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch)),
   ];
 
   // A list of all unique prefixes.
