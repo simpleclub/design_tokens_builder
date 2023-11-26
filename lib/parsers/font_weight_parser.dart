@@ -1,4 +1,60 @@
+import 'package:collection/collection.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+
+/// [Figma FontWeight Data Type](https://www.figma.com/widget-docs/api/type-FontWeight).
+enum FigmaFontWeight {
+  /// Thin weight.
+  thin(100, 'thin'),
+
+  /// Extra light weight.
+  extraLight(200, 'extra-light'),
+
+  /// Light weight.
+  light(300, 'light'),
+
+  /// Normal weight.
+  regular(400, 'regular'),
+
+  /// Medium weight.
+  medium(500, 'medium'),
+
+  /// Semi bold weight.
+  semiBold(600, 'semi-bold'),
+
+  /// Bold weight.
+  bold(700, 'bold'),
+
+  /// Extra bold weight.
+  extraBold(800, 'extra-bold'),
+
+  /// Black weight.
+  black(900, 'black');
+
+  const FigmaFontWeight(this.numerical, this.string);
+
+  /// The numerical value
+  final int numerical;
+
+  /// The String value
+  final String string;
+
+  /// Parse [source] as a FontWeight literal and return its value.
+  ///
+  /// Example:
+  /// ```dart
+  /// var value = FontWeight.tryParse('600'); // FontWeight.semiBold
+  /// value = FontWeight.tryParse('semi-bold'); // FontWeight.semiBold
+  /// value = FontWeight.tryParse('Semi Bold'); // FontWeight.semiBold
+  /// value = FontWeight.tryParse('SemiBold'); // FontWeight.semiBold
+  /// value = FontWeight.tryParse('650'); // null
+  /// ```
+  static FigmaFontWeight? tryParse(String source) {
+    source = source.toLowerCase().replaceAll('-', '').replaceAll(' ', '');
+    return FigmaFontWeight.values.singleWhereOrNull(
+      (e) => e.numerical.toString() == source || e.string.replaceAll('-', '') == source,
+    );
+  }
+}
 
 /// Parses tokens of type `fontWeights` to Flutter code.
 ///
@@ -7,7 +63,8 @@ import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 ///
 /// E.g.
 /// Figma design tokens:
-///   "value": "400"
+///   "value": "400" or
+///   "value": "Regular"
 ///
 /// Flutter generated code:
 ///   FontWeight.w400
@@ -26,7 +83,7 @@ class FontWeightParser extends DesignTokenParser {
   @override
   String buildValue(value) {
     if (value is String) {
-      final abs = double.parse(value).toInt();
+      late final abs = FigmaFontWeight.tryParse(value)?.numerical;
 
       if (_allowedWeights.contains(abs)) {
         return 'FontWeight.w$abs';
