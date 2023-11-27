@@ -20,7 +20,7 @@ String buildTokenSet(
 
   final tokenSets = getTokenSets(tokens, config: config);
   final defaultSetData = tokens[config.defaultSetName] as Map<String, dynamic>;
-  final defaultSys = defaultSetData['sys'] as Map<String, dynamic>;
+  final defaultSys = defaultSetData['sys'] as Map<String, dynamic>?;
   for (final tokenSet in tokenSets) {
     final setData = tokens[tokenSet] as Map<String, dynamic>;
 
