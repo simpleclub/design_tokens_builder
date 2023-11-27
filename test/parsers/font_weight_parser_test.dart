@@ -90,6 +90,7 @@ void main() {
       expect(FigmaFontWeight.tryParse('extra-bold'), FigmaFontWeight.extraBold);
       expect(FigmaFontWeight.tryParse('black'), FigmaFontWeight.black);
       expect(FigmaFontWeight.tryParse('600'), FigmaFontWeight.semiBold);
+      expect(FigmaFontWeight.tryParse('600.0'), FigmaFontWeight.semiBold);
       expect(FigmaFontWeight.tryParse('semiBold'), FigmaFontWeight.semiBold);
       expect(FigmaFontWeight.tryParse('Semi Bold'), FigmaFontWeight.semiBold);
       expect(FigmaFontWeight.tryParse('SemiBold'), FigmaFontWeight.semiBold);

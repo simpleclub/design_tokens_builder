@@ -43,13 +43,20 @@ enum FigmaFontWeight {
   /// Example:
   /// ```dart
   /// var value = FontWeight.tryParse('600'); // FontWeight.semiBold
+  /// value = FontWeight.tryParse('600.0'); // FontWeight.semiBold
   /// value = FontWeight.tryParse('semi-bold'); // FontWeight.semiBold
   /// value = FontWeight.tryParse('Semi Bold'); // FontWeight.semiBold
   /// value = FontWeight.tryParse('SemiBold'); // FontWeight.semiBold
   /// value = FontWeight.tryParse('650'); // null
   /// ```
   static FigmaFontWeight? tryParse(String source) {
-    source = source.toLowerCase().replaceAll('-', '').replaceAll(' ', '');
+    final value = double.tryParse(source);
+    if (value != null) {
+      source = value.toInt().toString();
+    } else {
+      source = source.toLowerCase().replaceAll('-', '').replaceAll(' ', '');
+    }
+
     return FigmaFontWeight.values.singleWhereOrNull(
       (e) => e.numerical.toString() == source || e.string.replaceAll('-', '') == source,
     );
@@ -83,7 +90,7 @@ class FontWeightParser extends DesignTokenParser {
   @override
   String buildValue(value) {
     if (value is String) {
-      late final abs = FigmaFontWeight.tryParse(value)?.numerical;
+      final abs = FigmaFontWeight.tryParse(value)?.numerical;
 
       if (_allowedWeights.contains(abs)) {
         return 'FontWeight.w$abs';
