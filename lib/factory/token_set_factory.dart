@@ -20,7 +20,7 @@ String buildTokenSet(
 
   final tokenSets = getTokenSets(tokens, config: config);
   final defaultSetData = tokens[config.defaultSetName] as Map<String, dynamic>;
-  final defaultSys = defaultSetData['sys'] as Map<String, dynamic>;
+  final defaultSys = defaultSetData['sys'] as Map<String, dynamic>?;
   for (final tokenSet in tokenSets) {
     final setData = tokens[tokenSet] as Map<String, dynamic>;
 
@@ -222,7 +222,7 @@ String generateTokenSetEnum(
   // Tuple: (prefix, initial match)
   final prefixes = [
     ...matches.map((match) => Tuple2(match.group(1), match.group(0))),
-    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch))
+    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch)),
   ];
 
   // A list of all unique prefixes.

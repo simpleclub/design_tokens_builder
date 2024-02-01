@@ -7,7 +7,8 @@ import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 /// E.g.
 /// Figma design tokens:
 ///   "value": "14" or
-///   "value": "14px"
+///   "value": "14px" or
+///   "value": 14
 ///
 /// Flutter generated code:
 ///   14.0
@@ -32,11 +33,17 @@ class DimensionParser extends DesignTokenParser {
 
   @override
   String buildValue(value) {
-    if (value is String) {
-      final pixel = double.parse(value.split('px').first);
-      return pixel.toString();
+    late final double pixel;
+    switch (value.runtimeType) {
+      case String:
+        pixel = double.parse(value.split('px').first);
+        break;
+      case int:
+        pixel = value.toDouble();
+        break;
+      default:
+        throw Exception('Unable to parse dimension value with data: $value');
     }
-
-    throw Exception('Unable to parse dimension value with data: $value');
+    return pixel.toString();
   }
 }

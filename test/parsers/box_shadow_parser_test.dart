@@ -12,11 +12,11 @@ void main() {
   group('build value', () {
     test('1 shadow', () {
       final map = {
-        'x': '4',
-        'y': '2',
-        'spread': '3',
+        'x': 4,
+        'y': 2,
+        'spread': 3,
         'color': '#FFFFFF',
-        'blur': '5',
+        'blur': 5,
         'type': 'dropShadow',
       };
 
@@ -29,19 +29,19 @@ void main() {
     test('multiple shadows', () {
       final map = [
         {
-          'x': '4',
-          'y': '2',
-          'spread': '3',
+          'x': 4,
+          'y': 2,
+          'spread': 3,
           'color': '#FFFFFF',
-          'blur': '5',
+          'blur': 5,
           'type': 'dropShadow',
         },
         {
-          'x': '4',
-          'y': '2',
-          'spread': '3',
+          'x': 4,
+          'y': 2,
+          'spread': 3,
           'color': '#FFFFFF',
-          'blur': '5',
+          'blur': 5,
           'type': 'innerShadow',
         },
       ];
