@@ -8,6 +8,7 @@ String buildContextExtension(
   Map<String, dynamic> tokens, {
   required BuilderConfig config,
 }) {
+  print('  - Build context extensions');
   final extensions = getExtensions(tokens, config: config);
   var extensionShortcuts = <String>[];
   var extensionPart = '';

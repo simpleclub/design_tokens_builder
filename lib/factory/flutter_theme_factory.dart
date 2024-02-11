@@ -21,7 +21,7 @@ Tuple2<String, List<String>> buildFlutterTheme(
   final flutterMappingSet = data['flutterMapping'] as Map<String, dynamic>;
   final flutterTokens = resolveAliasesAndMath(
     {...flutterMappingSet},
-    tokenSetOrder: [setName, config.sourceSetName],
+    tokenSetOrder: [setName, config.sourceSetConfig.prefix],
     sourceMap: data,
   );
   final themeDataPropertyList = <String>[];

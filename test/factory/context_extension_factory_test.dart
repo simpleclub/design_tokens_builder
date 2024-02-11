@@ -4,7 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Build context extensions', () {
-    final config = BuilderConfig(sourceSetName: 'global');
+    final config = BuilderConfig(
+      tokenSetConfigs: [
+        TokenSetConfig(prefix: 'global', type: TokenSetType.source),
+      ],
+    );
 
     test('with one extension', () {
       final result = buildContextExtension(

@@ -12,6 +12,7 @@ String buildExtensions(
   Map<String, dynamic> tokens, {
   required BuilderConfig config,
 }) {
+  print('  - Build extensions');
   final extensions = getExtensions(tokens, config: config);
 
   var output = extensions.map((e) => e.buildClasses()).join('\n\n');
@@ -72,15 +73,29 @@ List<ExtensionPropertyClass> getExtensions(
   required BuilderConfig config,
   String? prioritisedSet,
   String? prioritisedBrightness,
+  bool onlySetExtensions = false,
 }) {
+  assert(
+    !onlySetExtensions || prioritisedSet != null,
+    'When onlySetExtensions is true, prioritisedSet must be set.',
+  );
   List<ExtensionProperty> extensions = [];
 
-  final tokenSets = getTokenSets(
+  var tokenSets = <String>[];
+
+  getTokenSets(
     tokens,
     includeSourceSet: true,
     config: config,
     prioritisedSet: prioritisedSet,
-  );
+  ).forEach((key, value) {
+    tokenSets.addAll(value.map((e) => key.setName(e)));
+  });
+
+  if (onlySetExtensions) {
+    tokenSets =
+        tokenSets.where((element) => element == prioritisedSet).toList();
+  }
 
   for (final tokenSet in tokenSets) {
     if ((tokens[tokenSet] as Map).isNotEmpty) {

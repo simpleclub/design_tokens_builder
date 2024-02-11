@@ -4,7 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final config = BuilderConfig(
-    sourceSetName: 'global',
+    tokenSetConfigs: [
+      TokenSetConfig(prefix: 'global', type: TokenSetType.source),
+    ],
     fontConfig: [
       FontConfig(family: 'My Font', flutterName: 'MyFlutterFont'),
     ],

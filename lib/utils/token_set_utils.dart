@@ -1,40 +1,86 @@
+import 'package:collection/collection.dart';
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
+import 'package:design_tokens_builder/utils/string_utils.dart';
 
 /// Parses token sets from token data and returns a list of all available tokens
 /// sets.
 ///
 /// Removed the source set and possible flutterMapping from the output.
-List<String> getTokenSets(
+///
+/// If `prioritisedSet` is set, the set will be moved to the front of the list
+/// of its TokenSetConfig.
+/// If `setType` is set, only the token sets of that type will be returned.
+Map<TokenSetConfig, List<String>> getTokenSets(
   Map<String, dynamic> tokens, {
   required BuilderConfig config,
   bool includeSourceSet = false,
   bool includeFlutterMappingSet = false,
   String? prioritisedSet,
+  TokenSetType? setType,
 }) {
-  final tokenSets = List<String>.from(
+  var tokenSets = <TokenSetConfig, List<String>>{};
+  final tokenSetOrder = List<String>.from(
     (tokens['\$metadata']['tokenSetOrder'] as List).cast<String>(),
   );
 
+  final sortedConfigs = config.tokenSetConfigs.sorted((a, b) {
+    final prio = a.type.sortPriority.compareTo(b.type.sortPriority);
+
+    if (prio == 0) {
+      // Sort by prefix if the type is the same. This prevents the source set
+      // which has no prefix to include all available sets.
+      return -a.prefix.compareTo(b.prefix);
+    }
+
+    return prio;
+  });
+  for (final tokenSetConfig in sortedConfigs) {
+    if (setType != null && tokenSetConfig.type != setType) {
+      tokenSetOrder
+          .removeWhere((element) => element.startsWith(tokenSetConfig.prefix));
+      continue;
+    }
+
+    final sets = tokenSetOrder
+        .where((element) => element.startsWith(tokenSetConfig.prefix))
+        .toList();
+    tokenSetOrder
+        .removeWhere((element) => element.startsWith(tokenSetConfig.prefix));
+    tokenSets[tokenSetConfig] = sets.map((e) {
+      if (!(tokenSetConfig.type == TokenSetType.flutter ||
+              tokenSetConfig.type == TokenSetType.source) &&
+          tokenSetConfig.prefix.isNotEmpty) {
+        return e.split(tokenSetConfig.prefix).last.firstLowerCased;
+      }
+
+      return e;
+    }).toList();
+  }
+
   if (!includeSourceSet) {
-    tokenSets.remove(config.sourceSetName);
+    tokenSets.remove(config.sourceSetConfig);
   }
 
   if (!includeFlutterMappingSet) {
-    tokenSets.remove('flutterMapping');
+    final flutterMappingSet = tokenSets.entries.firstWhereOrNull(
+        (element) => element.key.type == TokenSetType.flutter);
+    if (flutterMappingSet != null) {
+      tokenSets.remove(flutterMappingSet.key);
+    }
   }
 
   if (prioritisedSet != null) {
-    final setSibling =
-        findTokenSetSibling(set: prioritisedSet, tokenSets: tokenSets);
-    final prioSets = [
-      prioritisedSet,
-      if (setSibling != null) setSibling,
-    ];
-
-    tokenSets.removeWhere((element) => prioSets.contains(element));
-
-    tokenSets.insertAll(0, prioSets);
+    final priority = tokenSets.entries
+        .firstWhereOrNull((element) => element.value.contains(prioritisedSet));
+    if (priority != null) {
+      tokenSets.remove(priority);
+      final prioritySets = priority.value;
+      prioritySets.remove(prioritisedSet);
+      tokenSets[priority.key] = [prioritisedSet, ...prioritySets];
+    }
   }
+
+  tokenSets.removeWhere((key, value) => value.isEmpty);
 
   return tokenSets;
 }

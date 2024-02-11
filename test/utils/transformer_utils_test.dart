@@ -69,7 +69,11 @@ void main() {
     test('succeeds', () {
       final result = prepareTokens(
         map,
-        config: BuilderConfig(sourceSetName: 'core'),
+        config: BuilderConfig(
+          tokenSetConfigs: [
+            TokenSetConfig(prefix: 'global', type: TokenSetType.source),
+          ],
+        ),
       );
 
       expect(result, {

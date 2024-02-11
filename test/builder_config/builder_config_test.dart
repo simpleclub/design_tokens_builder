@@ -7,7 +7,12 @@ void main() {
     test('succeeds', () {
       final yaml = YamlMap.wrap({
         'tokenFilePath': 'some/path',
-        'sourceSetName': 'core',
+        'tokenSetConfigs': [
+          {'prefix': 'themeDate', 'type': 'themeData'},
+          {'prefix': 'core', 'type': 'source'},
+          {'prefix': 'platform', 'type': 'extension'},
+          {'prefix': 'flutterMapping', 'type': 'flutter'},
+        ],
         'fontConfig': [
           {'family': 'First Font', 'flutterName': 'FirstFont'},
           {'family': 'Second Font', 'flutterName': 'SecondFont'},
@@ -17,7 +22,13 @@ void main() {
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
-          sourceSetName: 'core',
+          tokenSetConfigs: [
+            TokenSetConfig(prefix: 'themeDate', type: TokenSetType.themeData),
+            TokenSetConfig(prefix: 'core', type: TokenSetType.source),
+            TokenSetConfig(prefix: 'platform', type: TokenSetType.extension),
+            TokenSetConfig(
+                prefix: 'flutterMapping', type: TokenSetType.flutter),
+          ],
           fontConfig: [
             FontConfig(family: 'First Font', flutterName: 'FirstFont'),
             FontConfig(family: 'Second Font', flutterName: 'SecondFont'),
@@ -28,15 +39,32 @@ void main() {
 
     test('succeeds with default values', () {
       final yaml = YamlMap.wrap({
+        'tokenSetConfigs': [
+          {'prefix': 'core', 'type': 'source'},
+        ],
         'tokenFilePath': 'some/path',
       });
 
       expect(
         BuilderConfig.fromYaml(yaml),
         BuilderConfig(
-          sourceSetName: 'global',
+          tokenSetConfigs: [
+            TokenSetConfig(prefix: 'core', type: TokenSetType.source),
+          ],
           fontConfig: [],
         ),
+      );
+    });
+
+    test('fails without source token set config set', () {
+      final yaml = YamlMap.wrap({
+        'tokenSetConfigs': [],
+        'tokenFilePath': 'some/path',
+      });
+
+      expect(
+        () => BuilderConfig.fromYaml(yaml),
+        throwsAssertionError,
       );
     });
   });

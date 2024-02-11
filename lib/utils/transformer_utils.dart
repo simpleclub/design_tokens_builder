@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -13,12 +14,13 @@ Map<String, dynamic> prepareTokens(
   for (final entry in map.entries) {
     if (!entry.key.startsWith('\$')) {
       if (entry.key == 'flutterMapping') continue;
-      final List<String> tokenSetOrder = getTokenSets(
+      final tokenSetOrder = getTokenSets(
         map,
         config: config,
         prioritisedSet: entry.key,
         includeSourceSet: true,
-      );
+      ).values.flattened;
+      print(tokenSetOrder);
       final replaced = resolveAliasesAndMath(
         entry.value,
         tokenSetOrder: tokenSetOrder.toList(),

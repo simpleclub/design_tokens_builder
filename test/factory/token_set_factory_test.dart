@@ -20,54 +20,67 @@ void main() {
   });
 
   group('Generate token set enum', () {
+    final generalTokenSetConfig =
+        TokenSetConfig(prefix: '', type: TokenSetType.themeData);
+    final customTokenSetConfig =
+        TokenSetConfig(prefix: 'custom', type: TokenSetType.themeData);
+    final allyTokenSetConfig = TokenSetConfig(
+      prefix: 'ally',
+      type: TokenSetType.themeData,
+    );
     final config = BuilderConfig(
-      sourceSetName: 'global',
+      tokenSetConfigs: [
+        generalTokenSetConfig,
+        customTokenSetConfig,
+        allyTokenSetConfig,
+      ],
     );
 
     test('with light, dark and global token sets', () {
-      final tokenSets = ['global', 'light', 'dark'];
-
-      final result = generateTokenSetEnum(tokenSets, config: config);
-      expect(result, '''enum GeneratedTokenSet {
+      final result = generateThemeTokenSetEnum(
+        {
+          generalTokenSetConfig: ['light', 'dark'],
+        },
+        config: config,
+      );
+      expect(result, '''enum ThemeDataTokenSet {
   general(BrightnessAdapted(
     dark: DarkThemeData(),
     light: LightThemeData(),
   ));
 
-  const GeneratedTokenSet(this.data);
+  const ThemeDataTokenSet(this.data);
 
   final BrightnessAdapted<GeneratedThemeData> data;
 }''');
     });
 
     test('with custom token set', () {
-      final tokenSets = ['custom'];
-
-      final result = generateTokenSetEnum(tokenSets, config: config);
-      expect(result, '''enum GeneratedTokenSet {
+      final result = generateThemeTokenSetEnum({
+        customTokenSetConfig: ['']
+      }, config: config);
+      expect(result, '''enum ThemeDataTokenSet {
   custom(BrightnessAdapted(
     dark: CustomThemeData(),
     light: CustomThemeData(),
   ));
 
-  const GeneratedTokenSet(this.data);
+  const ThemeDataTokenSet(this.data);
 
   final BrightnessAdapted<GeneratedThemeData> data;
 }''');
     });
 
     test('with two complete sets and custom', () {
-      final tokenSets = [
-        'global',
-        'light',
-        'dark',
-        'allyLight',
-        'allyDark',
-        'custom',
-      ];
-
-      final result = generateTokenSetEnum(tokenSets, config: config);
-      expect(result, '''enum GeneratedTokenSet {
+      final result = generateThemeTokenSetEnum(
+        {
+          generalTokenSetConfig: ['light', 'dark'],
+          allyTokenSetConfig: ['light', 'dark'],
+          customTokenSetConfig: [''],
+        },
+        config: config,
+      );
+      expect(result, '''enum ThemeDataTokenSet {
   general(BrightnessAdapted(
     dark: DarkThemeData(),
     light: LightThemeData(),
@@ -81,7 +94,7 @@ void main() {
     light: CustomThemeData(),
   ));
 
-  const GeneratedTokenSet(this.data);
+  const ThemeDataTokenSet(this.data);
 
   final BrightnessAdapted<GeneratedThemeData> data;
 }''');
@@ -90,14 +103,19 @@ void main() {
     test('with only light theme', () {
       final tokenSets = ['global', 'light'];
 
-      final result = generateTokenSetEnum(tokenSets, config: config);
-      expect(result, '''enum GeneratedTokenSet {
+      final result = generateThemeTokenSetEnum(
+        {
+          generalTokenSetConfig: ['light'],
+        },
+        config: config,
+      );
+      expect(result, '''enum ThemeDataTokenSet {
   general(BrightnessAdapted(
     dark: LightThemeData(),
     light: LightThemeData(),
   ));
 
-  const GeneratedTokenSet(this.data);
+  const ThemeDataTokenSet(this.data);
 
   final BrightnessAdapted<GeneratedThemeData> data;
 }''');

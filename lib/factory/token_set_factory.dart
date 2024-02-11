@@ -18,57 +18,117 @@ typedef ParserResultBuilder = String Function(
 /// - `ColorScheme`
 /// - `TextStyle`
 /// - `ThemeData` with all extensions
-String buildTokenSet(
+String buildThemeDataTokenSet(
   Map<String, dynamic> tokens, {
   required BuilderConfig config,
 }) {
+  print('  - Build theme data token sets');
   var output = '';
 
-  final tokenSets = getTokenSets(tokens, config: config);
+  final tokenSets =
+      getTokenSets(tokens, config: config, setType: TokenSetType.themeData);
 
-  for (final tokenSet in tokenSets) {
-    var brightness = _brightness(tokenSet: tokenSet);
-    final flutterTheme = buildFlutterTheme(
-      tokens,
-      setName: tokenSet,
-      brightness: brightness,
-      config: config,
-    );
+  for (final tokenSetConfig in tokenSets.keys) {
+    print('    Building theme data: $tokenSetConfig');
+    for (final tokenSet in tokenSets[tokenSetConfig]!) {
+      print('    - Build $tokenSet');
+      var brightness = _brightness(tokenSet: tokenSet);
+      final setName = tokenSetConfig.prefix +
+          (tokenSetConfig.prefix.isNotEmpty
+              ? tokenSet.firstUpperCased
+              : tokenSet);
+      final flutterTheme = buildFlutterTheme(
+        tokens,
+        setName: setName,
+        brightness: brightness,
+        config: config,
+      );
 
-    final extensions = getExtensions(
-      tokens,
-      config: config,
-      prioritisedSet: tokenSet,
-      prioritisedBrightness: brightness,
-    );
-    final themeDataValues = flutterTheme.item2.isEmpty
-        ? ''
-        : '\n${flutterTheme.item2.join(',\n${indentation(level: 2)}')}${flutterTheme.item2.isNotEmpty ? ',' : ''}\n';
-    var themeData = '''@override
+      print('      - Get extensions');
+      final extensions = getExtensions(
+        tokens,
+        config: config,
+        prioritisedSet: setName,
+        prioritisedBrightness: brightness,
+      );
+
+      print('      - Build output');
+      final themeDataValues = flutterTheme.item2.isEmpty
+          ? ''
+          : '\n${flutterTheme.item2.join(',\n${indentation(level: 2)}')}${flutterTheme.item2.isNotEmpty ? ',' : ''}\n';
+      var themeData = '''@override
   ThemeData get themeData => ThemeData.$brightness().copyWith($themeDataValues
     extensions: [
       ${extensions.map((e) => e.build(indentationLevel: 3, config: config)).join(
-              ',\n${indentation(level: 3)}',
-            )},
+                ',\n${indentation(level: 3)}',
+              )},
     ],
   );
 ''';
 
-    output +=
-        '''class ${tokenSet.firstUpperCased}ThemeData extends GeneratedThemeData {
-  const ${tokenSet.firstUpperCased}ThemeData();
+      final className = tokenSetConfig.setName(tokenSet).firstUpperCased;
+      output += '''class ${className}ThemeData extends GeneratedThemeData {
+  const ${className}ThemeData();
   
 ''';
 
-    if (flutterTheme.item1.isNotEmpty) {
-      output += '${indentation()}${flutterTheme.item1}\n\n';
-    }
+      if (flutterTheme.item1.isNotEmpty) {
+        output += '${indentation()}${flutterTheme.item1}\n\n';
+      }
 
-    output += '${indentation()}$themeData';
-    output += '\n}\n\n';
+      output += '${indentation()}$themeData';
+      output += '\n}\n\n';
+    }
   }
 
-  return '$output${generateTokenSetEnum(tokenSets, config: config)}';
+  return '$output${generateThemeTokenSetEnum(tokenSets, config: config)}';
+}
+
+String buildExtensionTokenSet(
+  Map<String, dynamic> tokens, {
+  required BuilderConfig config,
+}) {
+  print('  - Build extension token sets');
+
+  final tokenSets =
+      getTokenSets(tokens, config: config, setType: TokenSetType.extension);
+
+  var output = '';
+
+  for (final tokenSetConfig in tokenSets.keys) {
+    var cases = <String>[];
+    print('    Building extension: $tokenSetConfig');
+    for (final tokenSet in tokenSets[tokenSetConfig]!) {
+      print('      - Get extensions');
+      final setName = tokenSetConfig.setName(tokenSet);
+      final extensions = getExtensions(
+        tokens,
+        config: config,
+        prioritisedSet: setName,
+        onlySetExtensions: true,
+      );
+
+      print(extensions);
+
+      cases.add('''$tokenSet([
+    ${extensions.map((e) => e.build(indentationLevel: 3, config: config)).join(
+                ',\n${indentation(level: 2)}',
+              )},
+  ])''');
+    }
+
+    final enumName =
+        '${tokenSetConfig.prefix.firstUpperCased}ExtensionTokenSet';
+    output += '''enum $enumName {
+  ${cases.join(',\n  ')};
+
+  const $enumName(this.extensions);
+
+  final List<ThemeExtension> extensions;
+}''';
+  }
+
+  return output;
 }
 
 /// Returns the brightness based on the token set name.
@@ -77,7 +137,7 @@ String buildTokenSet(
 /// Returns dark if name contains dark or Dark.
 ///
 /// Returns light by default.
-String _brightness({required tokenSet}) {
+String _brightness({required String tokenSet}) {
   final darkRegex = RegExp(r'\b(\w*)(?:dark|Dark)\w*\b');
   if (darkRegex.hasMatch(tokenSet)) return 'dark';
 
@@ -90,6 +150,7 @@ String buildAttributeMap(
   BuilderConfig config, [
   int depth = 1,
 ]) {
+  print('  - Build attribute map');
   String recursiveMap(Map<String, dynamic> map, depth) {
     var output = '';
     for (final key in map.keys) {
@@ -202,33 +263,16 @@ double parsePercentage(dynamic value) {
 ///   final BrightnessAdapted<GeneratedThemeData> data;
 /// }
 /// ```
-String generateTokenSetEnum(
-  List<String> tokenSets, {
+String generateThemeTokenSetEnum(
+  Map<TokenSetConfig, List<String>> tokenSets, {
   required BuilderConfig config,
 }) {
   var cases = <String>[];
-  tokenSets.remove(config.sourceSetName);
-  final tokenSetsString = tokenSets.join(',');
-  final regex = RegExp(r'\b(\w*)(?:light|dark|Light|Dark)\w*\b');
-  final matches = regex.allMatches(tokenSetsString);
-  final nonMatchedSets =
-      tokenSets.where((set) => !matches.any((match) => match.group(0) == set));
 
-  // List of tuples containing all prefixes for topics.
-  // Tuple: (prefix, initial match)
-  final prefixes = [
-    ...matches.map((match) => Tuple2(match.group(1), match.group(0))),
-    ...nonMatchedSets.map((noMatch) => Tuple2(noMatch, noMatch)),
-  ];
-
-  // A list of all unique prefixes.
-  final uniquePrefixes = prefixes.map((e) => e.item1).toSet().toList();
-
-  for (final uniquePrefix in uniquePrefixes) {
-    final themeMatches =
-        prefixes.where((element) => element.item1 == uniquePrefix);
-    final themes =
-        themeMatches.map((e) => '${e.item2?.firstUpperCased}ThemeData()');
+  tokenSets.forEach((config, tokenSets) {
+    final set = config.prefix.isEmpty ? 'general' : config.prefix;
+    final themes = tokenSets.map((e) =>
+        '${config.prefix.firstUpperCased}${e.firstUpperCased}ThemeData()');
     final lightTheme = themes.firstWhere(
       (element) => element.contains('Light'),
       orElse: () => themes.first,
@@ -237,9 +281,6 @@ String generateTokenSetEnum(
       (element) => element.contains('Dark'),
       orElse: () => themes.first,
     );
-
-    final set = (uniquePrefix?.isEmpty ?? true) ? 'general' : uniquePrefix;
-
     cases.add(
       '$set(BrightnessAdapted(\n${indentation(
         level: 2,
@@ -247,12 +288,12 @@ String generateTokenSetEnum(
         level: 2,
       )}light: $lightTheme,\n${indentation(level: 1)}))',
     );
-  }
+  });
 
-  return '''enum GeneratedTokenSet {
+  return '''enum ThemeDataTokenSet {
   ${cases.join(',\n  ')};
 
-  const GeneratedTokenSet(this.data);
+  const ThemeDataTokenSet(this.data);
 
   final BrightnessAdapted<GeneratedThemeData> data;
 }''';

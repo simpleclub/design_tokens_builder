@@ -4,7 +4,22 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Get token sets', () {
-    final config = BuilderConfig(sourceSetName: 'global');
+    final themeDataSetConfig =
+        TokenSetConfig(prefix: '', type: TokenSetType.themeData);
+    final customDataSetConfig =
+        TokenSetConfig(prefix: 'custom', type: TokenSetType.themeData);
+    final sourceSetConfig =
+        TokenSetConfig(prefix: 'global', type: TokenSetType.source);
+    final flutterSetConfig =
+        TokenSetConfig(prefix: 'flutter', type: TokenSetType.flutter);
+    final config = BuilderConfig(
+      tokenSetConfigs: [
+        themeDataSetConfig,
+        customDataSetConfig,
+        sourceSetConfig,
+        flutterSetConfig,
+      ],
+    );
 
     test('succeeds', () {
       final result = getTokenSets(
@@ -16,31 +31,56 @@ void main() {
         config: config,
       );
 
-      expect(result, ['light', 'dark']);
+      expect(result, {
+        themeDataSetConfig: ['light', 'dark'],
+      });
+
+      final result2 = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['global', 'light', 'dark'],
+          },
+        },
+        includeSourceSet: true,
+        config: config,
+      );
+
+      expect(result2, {
+        sourceSetConfig: ['global'],
+        themeDataSetConfig: ['light', 'dark'],
+      });
     });
 
     test('succeeds with prioritisation', () {
       final data = {
         r'$metadata': {
-          'tokenSetOrder': ['light', 'dark', 'core'],
+          'tokenSetOrder': ['light', 'dark', 'global'],
         },
       };
 
       final result1 = getTokenSets(
         data,
         config: config,
+        includeSourceSet: true,
         prioritisedSet: 'dark',
       );
 
-      expect(result1, ['dark', 'light', 'core']);
+      expect(result1, {
+        sourceSetConfig: ['global'],
+        themeDataSetConfig: ['dark', 'light'],
+      });
 
       final result2 = getTokenSets(
         data,
         config: config,
+        includeSourceSet: true,
         prioritisedSet: 'light',
       );
 
-      expect(result2, ['light', 'dark', 'core']);
+      expect(result2, {
+        sourceSetConfig: ['global'],
+        themeDataSetConfig: ['light', 'dark'],
+      });
     });
 
     test('succeeds without default theme', () {
@@ -53,7 +93,88 @@ void main() {
         config: config,
       );
 
-      expect(result, ['light', 'dark']);
+      expect(result, {
+        themeDataSetConfig: ['light', 'dark'],
+      });
+    });
+
+    test('succeeds with getting specific set types', () {
+      final result = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark', 'global'],
+          },
+        },
+        includeSourceSet: true,
+        setType: TokenSetType.themeData,
+        config: config,
+      );
+
+      expect(result, {
+        themeDataSetConfig: ['light', 'dark'],
+      });
+
+      final result2 = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark', 'global'],
+          },
+        },
+        includeSourceSet: true,
+        setType: TokenSetType.source,
+        config: config,
+      );
+
+      expect(result2, {
+        sourceSetConfig: ['global'],
+      });
+    });
+
+    test('succeeds with custom', () {
+      final result = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark', 'custom'],
+          },
+        },
+        config: config,
+      );
+
+      expect(result, {
+        customDataSetConfig: [''],
+        themeDataSetConfig: ['light', 'dark'],
+      });
+    });
+
+    test('succeeds with flutter tokenSet', () {
+      final result1 = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark', 'flutter'],
+          },
+        },
+        includeFlutterMappingSet: false,
+        config: config,
+      );
+
+      expect(result1, {
+        themeDataSetConfig: ['light', 'dark'],
+      });
+
+      final result2 = getTokenSets(
+        {
+          r'$metadata': {
+            'tokenSetOrder': ['light', 'dark', 'flutter'],
+          },
+        },
+        includeFlutterMappingSet: true,
+        config: config,
+      );
+
+      expect(result2, {
+        flutterSetConfig: ['flutter'],
+        themeDataSetConfig: ['light', 'dark'],
+      });
     });
   });
 
