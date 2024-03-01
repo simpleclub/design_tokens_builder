@@ -1,6 +1,7 @@
 import 'package:design_tokens_builder/parsers/color_parser.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/parsers/dimension_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses borders according to
 /// [Tokens Studio](https://docs.tokens.studio/available-tokens/border-tokens)
@@ -33,7 +34,7 @@ class BorderParser extends DesignTokenParser {
   String flutterType([dynamic value]) => 'BoxBorder';
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is Map<String, dynamic>) {
       final color = ColorParser().parse(value['color']);
       final width = DimensionParser().parse(value['width']);

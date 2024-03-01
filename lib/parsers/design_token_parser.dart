@@ -4,6 +4,7 @@ import 'package:design_tokens_builder/parsers/border_radius_parser.dart';
 import 'package:design_tokens_builder/parsers/box_shadow_parser.dart';
 import 'package:design_tokens_builder/parsers/color_parser.dart';
 import 'package:design_tokens_builder/parsers/dimension_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 import 'package:design_tokens_builder/parsers/font_family_parser.dart';
 import 'package:design_tokens_builder/parsers/font_weight_parser.dart';
 import 'package:design_tokens_builder/parsers/line_height_parser.dart';
@@ -96,13 +97,14 @@ abstract class DesignTokenParser {
   String parse(
     dynamic value, {
     bool isConst = true,
+    TokenModifier? modifier,
   }) {
     final includeConst = isConst && _constTypes.contains(flutterType(value));
     final prefix = includeConst ? 'const ' : '';
 
     if (value is String && value.isEmpty) return 'null';
 
-    return '$prefix${buildValue(value)}';
+    return '$prefix${buildValue(value, modifier: modifier)}';
   }
 
   /// Builds the value for the specific type.
@@ -110,7 +112,8 @@ abstract class DesignTokenParser {
   /// Make sure to only override this method with any new [DesignTokenParser]
   /// you create. Please avoid directly calling this method outside
   /// [DesignTokenParser]. Prefer [DesignTokenParser.parse].
-  String buildValue(dynamic value) => throw UnimplementedError();
+  String buildValue(dynamic value, {TokenModifier? modifier}) =>
+      throw UnimplementedError();
 
   /// Builds Flutter code that's linearly interpolating the current type.
   ///

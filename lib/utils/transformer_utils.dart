@@ -20,7 +20,6 @@ Map<String, dynamic> prepareTokens(
         prioritisedSet: entry.key,
         includeSourceSet: true,
       ).values.flattened;
-      print(tokenSetOrder);
       final replaced = resolveAliasesAndMath(
         entry.value,
         tokenSetOrder: tokenSetOrder.toList(),

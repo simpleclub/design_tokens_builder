@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses text case according to Tokens studio for Figma.
 ///
@@ -24,7 +25,7 @@ class TextCaseParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     return '\'$value\'';
   }
 }

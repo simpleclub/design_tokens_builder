@@ -1,5 +1,6 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/parsers/dimension_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses spacing according to
 /// [Tokens Studio](https://docs.tokens.studio/available-tokens/spacing-tokens)
@@ -23,7 +24,7 @@ class SpacingParser extends DesignTokenParser {
   String flutterType([dynamic value]) => 'EdgeInsets';
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is String) {
       final parseDimension = DimensionParser().parse;
       final spacingValues = value.split(' ');

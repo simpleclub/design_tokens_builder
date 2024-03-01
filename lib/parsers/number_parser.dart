@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses any basic number token to a Flutter double.
 ///
@@ -32,7 +33,7 @@ class NumberParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     try {
       return double.parse(value).toString();
     } catch (e) {

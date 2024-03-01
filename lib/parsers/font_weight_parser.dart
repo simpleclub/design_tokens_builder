@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses tokens of type `fontWeights` to Flutter code.
 ///
@@ -24,7 +25,7 @@ class FontWeightParser extends DesignTokenParser {
   final _allowedWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is String) {
       final abs = double.parse(value).toInt();
 

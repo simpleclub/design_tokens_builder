@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:design_tokens_builder/parsers/color_parser.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 import 'package:design_tokens_builder/parsers/font_family_parser.dart';
 import 'package:design_tokens_builder/parsers/font_weight_parser.dart';
 import 'package:design_tokens_builder/parsers/line_height_parser.dart';
@@ -37,7 +38,7 @@ class TypographyParser extends DesignTokenParser {
   String flutterType([dynamic value]) => 'TextStyle';
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is Map<String, dynamic>) {
       final transformedEntries = value.entries
           .map((e) => _transform(e))

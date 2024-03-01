@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses any token with type other.
 /// Supports parsing durations.
@@ -27,7 +28,7 @@ class OtherParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     // Check if value is a duration.
     final regex = r'\b(\d+(\.\d+)?)\s*(ms|s|m|h|d)\b';
     final match = RegExp(regex).firstMatch(value);

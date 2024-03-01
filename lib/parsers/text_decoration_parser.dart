@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Try to parse and return a Flutter readable text decoration.
 ///
@@ -24,7 +25,7 @@ class TextDecorationParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     switch (value) {
       case 'none':
         return 'TextDecoration.none';

@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses tokens of type `color` to Flutter code.
 ///
@@ -28,7 +29,7 @@ class ColorParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is String) {
       final hexRegex = RegExp('(?:[0-9a-fA-F]{3,4}){1,2}\$');
       if (value.startsWith('linear-gradient')) {
@@ -36,8 +37,12 @@ class ColorParser extends DesignTokenParser {
         value = buildLinearGradient(value);
       } else if (hexRegex.hasMatch(value)) {
         // Validating HEX color.
-        value = buildHex(value);
+        value = buildHex(value, modifier: modifier);
+      } else {
+        value = null;
       }
+    } else {
+      value = null;
     }
 
     if (value == null) {
@@ -48,15 +53,29 @@ class ColorParser extends DesignTokenParser {
   }
 
   /// Builds a Flutter color from a hex value.
-  String? buildHex(String value) {
+  String? buildHex(String value, {TokenModifier? modifier}) {
     String? result;
     result = value.replaceAll('#', '');
     final rgb = result.substring(0, 6);
+    var o = 'FF';
     // Check if opacity is present.
-    if (result.length == 6) {
-      return 'Color(0xFF$rgb)';
+
+    if (result.length != 6 && result.length != 8) {
+      return null;
+    } else if (result.length > 6) {
+      o = result.substring(6, 8);
     }
-    final o = result.substring(6, 8);
+
+    if (modifier != null) {
+      if (modifier is TokenModifierAlpha) {
+        o = (modifier.value * 255)
+            .round()
+            .toRadixString(16)
+            .padLeft(2, '0')
+            .toUpperCase();
+      }
+    }
+
     final hexCode = '$o$rgb';
 
     return 'Color(0x$hexCode)';

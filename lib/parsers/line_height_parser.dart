@@ -1,5 +1,6 @@
 import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses the line height according to Design Token Studio.
 ///
@@ -28,7 +29,7 @@ class LineHeightParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is String) {
       if (value.contains('%')) {
         return '${parsePercentage(value)}';

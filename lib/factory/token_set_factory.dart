@@ -2,6 +2,7 @@ import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/flutter_theme_factory.dart';
 import 'package:design_tokens_builder/factory/theme_extension/theme_extension_factory.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 import 'package:tuple/tuple.dart';
@@ -108,8 +109,6 @@ String buildExtensionTokenSet(
         onlySetExtensions: true,
       );
 
-      print(extensions);
-
       cases.add('''$tokenSet([
     ${extensions.map((e) => e.build(indentationLevel: 3, config: config)).join(
                 ',\n${indentation(level: 2)}',
@@ -194,10 +193,31 @@ dynamic parseAttribute(
     indentationLevel: indentationLevel + 1,
     config: config,
   );
+  final modifier = parseModifier(attr);
 
-  final result = parser.parse(value, isConst: isConst);
+  final result = parser.parse(
+    value,
+    isConst: isConst,
+    modifier: modifier,
+  );
 
   return resultBuilder?.call(attr, result) ?? result;
+}
+
+TokenModifier? parseModifier(Map<String, dynamic> attr) {
+  if (attr.containsKey('\$extensions')) {
+    final extensions = attr['\$extensions'] as Map<String, dynamic>?;
+    final studioTokenExtension =
+        extensions?['studio.tokens'] as Map<String, dynamic>?;
+    final modifierMap =
+        studioTokenExtension?['modify'] as Map<String, dynamic>?;
+
+    if (modifierMap != null) {
+      return TokenModifier.fromMap(modifierMap);
+    }
+  }
+
+  return null;
 }
 
 /// Parses the whole token instead of parsing just an attribute of a token.

@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses and return a flutter readable code for font family.
 ///
@@ -29,7 +30,7 @@ class FontFamilyParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (config != null && config!.fontConfig.isNotEmpty) {
       final mappedFonts = config!.fontConfig;
       if (!mappedFonts.any((element) => element.family == value)) {

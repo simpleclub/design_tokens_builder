@@ -1,5 +1,6 @@
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/parsers/dimension_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses border radius according to
 /// [Tokens Studio](https://docs.tokens.studio/available-tokens/border-radius-tokens)
@@ -22,7 +23,7 @@ class BorderRadiusParser extends DesignTokenParser {
   String flutterType([dynamic value]) => 'BorderRadius';
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is String) {
       final radiiValues = value.split(' ');
       final parseDimension = DimensionParser().parse;

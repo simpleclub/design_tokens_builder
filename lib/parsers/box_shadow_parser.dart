@@ -1,6 +1,7 @@
 import 'package:design_tokens_builder/parsers/color_parser.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
 import 'package:design_tokens_builder/parsers/dimension_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// Parses box shadows according to
 /// [Tokens Studio](https://docs.tokens.studio/available-tokens/shadow-tokens)
@@ -44,7 +45,7 @@ class BoxShadowParser extends DesignTokenParser {
   }
 
   @override
-  String buildValue(value) {
+  String buildValue(value, {TokenModifier? modifier}) {
     if (value is Map<String, dynamic>) {
       return '[\n${indent()}${_parseShadow(value)},\n${indent(-1)}]';
     } else if (value is List<dynamic>) {
