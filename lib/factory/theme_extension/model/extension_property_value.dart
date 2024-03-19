@@ -1,6 +1,7 @@
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property.dart';
 import 'package:design_tokens_builder/parsers/design_token_parser.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 
 /// A property that can be used in a theme extension representing a value.
@@ -10,6 +11,7 @@ class ExtensionPropertyValue extends ExtensionProperty {
     required super.name,
     required this.value,
     required this.type,
+    required this.modifier,
   });
 
   /// The value of the property.
@@ -17,6 +19,8 @@ class ExtensionPropertyValue extends ExtensionProperty {
 
   /// The type of the property.
   final String type;
+
+  final TokenModifier? modifier;
 
   @override
   String build({
@@ -26,7 +30,7 @@ class ExtensionPropertyValue extends ExtensionProperty {
   }) {
     final parser =
         parserForType(type, indentationLevel: indentationLevel, config: config);
-    return '${indentation(level: indentationLevel)}$name: ${parser.parse(value)}';
+    return '${indentation(level: indentationLevel)}$name: ${parser.parse(value, modifier: modifier)}';
   }
 
   @override

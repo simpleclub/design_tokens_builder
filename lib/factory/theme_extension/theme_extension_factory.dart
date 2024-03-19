@@ -2,6 +2,7 @@ import 'package:design_tokens_builder/builder_config/builder_config.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property_class.dart';
 import 'package:design_tokens_builder/factory/theme_extension/model/extension_property_value.dart';
+import 'package:design_tokens_builder/factory/token_set_factory.dart';
 import 'package:design_tokens_builder/utils/string_utils.dart';
 import 'package:design_tokens_builder/utils/token_set_utils.dart';
 
@@ -169,6 +170,7 @@ List<ExtensionProperty> buildExtensionPropertyList(
         name: prefixedName,
         value: map['value'],
         type: map['type'] as String,
+        modifier: parseModifier(map),
       );
     } else {
       final prefixedName =

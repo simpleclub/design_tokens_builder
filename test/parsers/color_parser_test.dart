@@ -26,7 +26,7 @@ void main() {
       final result100 = parser.buildValue('#000000', modifier: modifier100);
       expect(result100, 'Color(0xFF000000)');
 
-      final modifier50 = TokenModifierAlpha(value: 0.5, space: 'argb');
+      final modifier50 = TokenModifierAlpha(value: 0.5, space: 'lch');
       final result50 = parser.buildValue('#12345678', modifier: modifier50);
       expect(result50, 'Color(0x80123456)');
 
