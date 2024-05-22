@@ -30,24 +30,24 @@ class BorderRadiusParser extends DesignTokenParser {
 
       switch (radiiValues.length) {
         case 1:
-          final r = parseDimension(radiiValues[0]);
+          final r = parseDimension(radiiValues[0], modifier: modifier);
           return 'BorderRadius.all(${_radius(r)})';
         case 2:
-          final r1 = parseDimension(radiiValues[0]);
-          final r2 = parseDimension(radiiValues[1]);
+          final r1 = parseDimension(radiiValues[0], modifier: modifier);
+          final r2 = parseDimension(radiiValues[1], modifier: modifier);
 
           return 'BorderRadius.only(topLeft: ${_radius(r1)}, topRight: ${_radius(r2)}, bottomLeft: ${_radius(r2)}, bottomRight: ${_radius(r1)})';
         case 3:
-          final r1 = parseDimension(radiiValues[0]);
-          final r2 = parseDimension(radiiValues[1]);
-          final r3 = parseDimension(radiiValues[2]);
+          final r2 = parseDimension(radiiValues[1], modifier: modifier);
+          final r1 = parseDimension(radiiValues[0], modifier: modifier);
+          final r3 = parseDimension(radiiValues[2], modifier: modifier);
 
           return 'BorderRadius.only(topLeft: ${_radius(r1)}, topRight: ${_radius(r2)}, bottomLeft: ${_radius(r2)}, bottomRight: ${_radius(r3)})';
         case 4:
-          final r1 = parseDimension(radiiValues[0]);
-          final r2 = parseDimension(radiiValues[1]);
-          final r3 = parseDimension(radiiValues[2]);
-          final r4 = parseDimension(radiiValues[3]);
+          final r1 = parseDimension(radiiValues[0], modifier: modifier);
+          final r2 = parseDimension(radiiValues[1], modifier: modifier);
+          final r3 = parseDimension(radiiValues[2], modifier: modifier);
+          final r4 = parseDimension(radiiValues[3], modifier: modifier);
 
           return 'BorderRadius.only(topLeft: ${_radius(r1)}, topRight: ${_radius(r2)}, bottomLeft: ${_radius(r4)}, bottomRight: ${_radius(r3)})';
         default:

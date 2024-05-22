@@ -36,7 +36,7 @@ class BorderParser extends DesignTokenParser {
   @override
   String buildValue(value, {TokenModifier? modifier}) {
     if (value is Map<String, dynamic>) {
-      final color = ColorParser().parse(value['color']);
+      final color = ColorParser().parse(value['color'], modifier: modifier);
       final width = DimensionParser().parse(value['width']);
 
       if (color == 'null' || width == 'null') {

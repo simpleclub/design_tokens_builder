@@ -328,4 +328,113 @@ void main() {
       expect(getTokenSetVariable(map, 'width'), null);
     });
   });
+
+  group('resolveExtensions', () {
+    final map = <String, dynamic>{
+      'core': <String, dynamic>{
+        'palette': <String, dynamic>{
+          'blue': <String, dynamic>{
+            'shade50': {'value': '#e6f0ff', 'type': 'color'},
+          },
+        },
+        'color': <String, dynamic>{
+          'bg': <String, dynamic>{
+            'tag': <String, dynamic>{
+              'tonal': <String, dynamic>{
+                'blue': <String, dynamic>{
+                  'bg': <String, dynamic>{
+                    'color': <String, dynamic>{
+                      'value': '{color.bg.blue.tonal}',
+                      'type': 'color'
+                    },
+                  },
+                },
+              },
+            },
+            'blue': <String, dynamic>{
+              'tonal': <String, dynamic>{
+                'value': '{color.bg.blue.weak}',
+                'type': 'color',
+                '\$extensions': <String, dynamic>{
+                  'studio.tokens': <String, dynamic>{
+                    'modify': <String, dynamic>{
+                      'type': 'alpha',
+                      'value': '0.1',
+                      'space': 'lch'
+                    },
+                  },
+                },
+              },
+              'weak': <String, dynamic>{
+                'value': '{palette.blue.shade100}',
+                'type': 'color'
+              },
+            },
+          },
+        },
+      }
+    };
+
+    test('succeeds', () {
+      final result = resolveExtensions(
+        map,
+        tokenSetOrder: ['core', 'light', 'dark'],
+        sourceMap: map,
+      );
+
+      expect(result, <String, dynamic>{
+        'core': <String, dynamic>{
+          'palette': <String, dynamic>{
+            'blue': <String, dynamic>{
+              'shade50': <String, dynamic>{'value': '#e6f0ff', 'type': 'color'},
+            },
+          },
+          'color': <String, dynamic>{
+            'bg': <String, dynamic>{
+              'tag': <String, dynamic>{
+                'tonal': <String, dynamic>{
+                  'blue': <String, dynamic>{
+                    'bg': <String, dynamic>{
+                      'color': <String, dynamic>{
+                        'value': '{color.bg.blue.tonal}',
+                        'type': 'color',
+                        '\$extensions': <String, dynamic>{
+                          'studio.tokens': <String, dynamic>{
+                            'modify': <String, dynamic>{
+                              'type': 'alpha',
+                              'value': '0.1',
+                              'space': 'lch'
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              'blue': <String, dynamic>{
+                'tonal': <String, dynamic>{
+                  'value': '{color.bg.blue.weak}',
+                  'type': 'color',
+                  '\$extensions': <String, dynamic>{
+                    'studio.tokens': <String, dynamic>{
+                      'modify': <String, dynamic>{
+                        'type': 'alpha',
+                        'value': '0.1',
+                        'space': 'lch'
+                      },
+                    },
+                  },
+                },
+                'weak': <String, dynamic>{
+                  'value': '{palette.blue.shade100}',
+                  'type': 'color'
+                },
+              },
+            },
+          },
+        }
+      });
+    });
+  });
 }

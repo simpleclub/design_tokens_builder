@@ -73,6 +73,7 @@ class ColorParser extends DesignTokenParser {
             .toRadixString(16)
             .padLeft(2, '0')
             .toUpperCase();
+        print('Modifier found for $value: $o -> ${modifier.value}');
       }
     }
 

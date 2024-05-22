@@ -6,6 +6,7 @@ void main() {
     name: 'someValue',
     value: '42',
     type: 'number',
+    modifier: null,
   );
 
   test('class setup', () {

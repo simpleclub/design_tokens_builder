@@ -20,6 +20,7 @@ void main() {
             name: 'someValue',
             value: '42',
             type: 'number',
+            modifier: null,
           ),
         ],
       ),
@@ -27,6 +28,7 @@ void main() {
         name: 'someValue',
         value: '42',
         type: 'number',
+        modifier: null,
       ),
     ],
   );

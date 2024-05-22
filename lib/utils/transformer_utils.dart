@@ -11,7 +11,19 @@ Map<String, dynamic> prepareTokens(
   Map<String, dynamic> map, {
   required BuilderConfig config,
 }) {
-  for (final entry in map.entries) {
+  print('  Resolving extensions… --------------');
+  final resolvedMap = resolveExtensions(
+    Map.from(_deepCastMap(map)),
+    tokenSetOrder: getTokenSets(
+      map,
+      config: config,
+      includeSourceSet: true,
+    ).values.flattened.toList(),
+    sourceMap: map,
+  );
+
+  print('  Resolving aliases and math… --------------');
+  for (final entry in resolvedMap.entries) {
     if (!entry.key.startsWith('\$')) {
       if (entry.key == 'flutterMapping') continue;
       final tokenSetOrder = getTokenSets(
@@ -20,15 +32,100 @@ Map<String, dynamic> prepareTokens(
         prioritisedSet: entry.key,
         includeSourceSet: true,
       ).values.flattened;
+      print(tokenSetOrder);
+      print(resolvedMap);
       final replaced = resolveAliasesAndMath(
         entry.value,
         tokenSetOrder: tokenSetOrder.toList(),
-        sourceMap: map,
+        sourceMap: resolvedMap,
       );
       map[entry.key] = replaced;
     }
   }
   return map;
+}
+
+Map<String, dynamic> resolveExtensions(
+  Map<String, dynamic> map, {
+  required List<String> tokenSetOrder,
+  required Map<String, dynamic> sourceMap,
+}) {
+  for (final entry in map.entries) {
+    if (entry.key == 'flutterMapping' ||
+        entry.key == '\$themes' ||
+        entry.key == '\$metadata') continue;
+    final value = entry.value;
+    if (value is Map<String, dynamic>) {
+      dynamic newValue = value['value'];
+
+      if (newValue == null) {
+        map[entry.key] = resolveExtensions(
+          value,
+          tokenSetOrder: tokenSetOrder,
+          sourceMap: sourceMap,
+        );
+      } else if (value.containsKey('value')) {
+        const regex = r'{([^}]+)}';
+        if (newValue is String) {
+          final matches = RegExp(regex).allMatches(newValue);
+
+          for (final match in matches) {
+            final variableName = match.group(1)?.trim();
+            if (variableName != null) {
+              dynamic extensions = findNearestExtension(
+                sourceMap,
+                tokenSetOrder: tokenSetOrder,
+                variableName: variableName,
+              );
+
+              if (extensions != null) {
+                var existingMap =
+                    Map<String, dynamic>.from(map[entry.key] as Map);
+                existingMap['\$extensions'] =
+                    extensions as Map<String, dynamic>;
+                print(map[entry.key].runtimeType);
+                map[entry.key] = existingMap;
+              }
+            }
+          }
+        }
+      }
+    } else if (value is List<dynamic>) {
+      map[entry.key] = value.map(
+        (e) {
+          return resolveExtensions(
+            e as Map<String, dynamic>,
+            tokenSetOrder: tokenSetOrder,
+            sourceMap: sourceMap,
+          );
+        },
+      ).toList();
+    }
+  }
+
+  return map;
+}
+
+Map<String, dynamic> _deepCastMap(dynamic map) {
+  if (map is! Map) {
+    throw ArgumentError('Provided value must be a Map');
+  }
+
+  var castMap = <String, dynamic>{};
+  map.forEach((key, value) {
+    if (value is Map) {
+      // Recursive call to cast nested maps
+      castMap[key.toString()] = _deepCastMap(value);
+    } else if (value is List) {
+      // Recursively cast lists of maps
+      castMap[key.toString()] =
+          value.map((item) => item is Map ? _deepCastMap(item) : item).toList();
+    } else {
+      // Assign non-Map and non-List values directly
+      castMap[key.toString()] = value;
+    }
+  });
+  return castMap;
 }
 
 /// Resolves aliases by looking in [sourceMap] for the referenced values and
@@ -70,7 +167,7 @@ Map<String, dynamic> resolveAliasesAndMath(
               sourceMap,
               tokenSetOrder: tokenSetOrder,
               variableName: variableName,
-            );
+            )?.value;
           } else {
             resolvedVariable = '';
           }
@@ -132,7 +229,7 @@ String evaluateMathExpression(String value) {
 
 /// Finds and returns a value of a variable for a given name in any token set.
 @visibleForTesting
-dynamic findVariable(
+({dynamic value, Map<String, dynamic>? extensions})? findVariable(
   Map<String, dynamic> data, {
   required List<String> tokenSetOrder,
   required String variableName,
@@ -150,9 +247,41 @@ dynamic findVariable(
   return null;
 }
 
+@visibleForTesting
+Map<String, dynamic>? findNearestExtension(
+  Map<String, dynamic> data, {
+  required List<String> tokenSetOrder,
+  required String variableName,
+}) {
+  final resolvedVariable = findVariable(data,
+      tokenSetOrder: tokenSetOrder, variableName: variableName);
+  if (resolvedVariable?.extensions != null) {
+    return resolvedVariable?.extensions;
+  }
+
+  const regex = r'{([^}]+)}';
+  dynamic newValue = resolvedVariable?.value;
+  while (newValue is String && RegExp(regex).hasMatch(newValue)) {
+    final matches = RegExp(regex).allMatches(newValue);
+
+    for (final match in matches) {
+      final variableName = match.group(1)?.trim();
+      if (variableName != null) {
+        return findNearestExtension(
+          data,
+          tokenSetOrder: tokenSetOrder,
+          variableName: variableName,
+        );
+      }
+    }
+  }
+
+  return null;
+}
+
 /// Gets and returns a variable in a given `tokenSet`.
 @visibleForTesting
-dynamic getTokenSetVariable(
+({dynamic value, Map<String, dynamic>? extensions})? getTokenSetVariable(
   Map<String, dynamic> tokenSet,
   String variableName,
 ) {
@@ -168,5 +297,5 @@ dynamic getTokenSetVariable(
       if (value == null) return null;
     }
   }
-  return value['value'];
+  return (value: value['value'], extensions: value['\$extensions']);
 }

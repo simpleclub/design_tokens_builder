@@ -1,4 +1,5 @@
 import 'package:design_tokens_builder/builder_config/builder_config.dart';
+import 'package:design_tokens_builder/parsers/extensions/modifiers.dart';
 
 /// A abstract property that can be used in a theme extension.
 abstract class ExtensionProperty {
