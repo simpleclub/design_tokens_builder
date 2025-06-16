@@ -177,9 +177,9 @@ dynamic _parseAttribute(
 /// Returns `null` if parsing failed.
 double parsePercentage(dynamic value) {
   if (value is String) {
-    final abs = int.tryParse(
-      value.split('%').first,
-    );
+    final numberPart = value.split('%').first;
+    final abs = int.tryParse(numberPart) ?? double.tryParse(numberPart);
+
     if (abs != null) {
       return abs / 100;
     }
