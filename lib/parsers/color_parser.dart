@@ -122,17 +122,32 @@ class ColorParser extends DesignTokenParser {
   }
 
   /// Parses a degree to a list of points.
+  ///
+  ///
+  /// 0 degrees relates to direction from bottom center to top center.
+  /// Rotation is clockwise.
+  /// Points are placed on sides of square with coordinates `[(-1.0,-1.0),(1.0,1.0)]`.
   List<Point> degreesToPoints(double degrees) {
     // Convert degrees to radians with the new starting point.
-    double radians = ((90 - degrees) % 360) * (pi / 180.0);
+    double radians = ((90 + degrees) % 360) * (pi / 180.0);
 
     // Calculate the x and y coordinates based on the specified angle.
     double x = cos(radians);
     double y = sin(radians);
 
+    if (x != 0 && y != 0) {
+      double u = max(x.abs(), y.abs());
+      x = x / u;
+      y = y / u;
+    }
+
     // Ensure that the coordinates stay within the range [-1, 1].
     x = x.clamp(-1, 1);
     y = y.clamp(-1, 1);
+
+    // Round to 2 decimal places to fix floating-point precision issues
+    x = (x * 100).round() / 100;
+    y = (y * 100).round() / 100;
 
     // Create Point objects for the two points.
     Point point1 = Point(x, y);
