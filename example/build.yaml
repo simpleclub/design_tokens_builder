@@ -3,3 +3,5 @@ targets:
     builders:
       design_tokens_builder:design_tokens_builder:
         enabled: true
+      design_tokens_builder:markdown_documentation_builder:
+        enabled: true
