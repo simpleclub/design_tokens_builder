@@ -21,16 +21,28 @@ class MarkdownDocumentationFactory implements Builder {
 
   @override
   Future<void> build(BuildStep buildStep) async {
-    final configFile =
-        (await buildStep.findAssets(Glob('lib/tokenbuilder.yaml')).toList())
-            .first;
+    final configFiles =
+        await buildStep.findAssets(Glob('lib/tokenbuilder.yaml')).toList();
+    if (configFiles.isEmpty) {
+      throw Exception(
+        'No tokenbuilder.yaml file found in lib directory. '
+        'Please create a tokenbuilder.yaml configuration file.',
+      );
+    }
+    final configFile = configFiles.first;
     final configString = await buildStep.readAsString(configFile);
     final yaml = loadYaml(configString) as YamlMap;
     final config = BuilderConfig.fromYaml(yaml);
     final tokenFilePath = config.tokenFilePath;
 
-    final tokenAsset = await buildStep.findAssets(Glob(tokenFilePath)).toList();
-    final string = await buildStep.readAsString(tokenAsset.first);
+    final tokenAssets = await buildStep.findAssets(Glob(tokenFilePath)).toList();
+    if (tokenAssets.isEmpty) {
+      throw Exception(
+        'No token file found at path: $tokenFilePath. '
+        'Please check the tokenFilePath in your tokenbuilder.yaml.',
+      );
+    }
+    final string = await buildStep.readAsString(tokenAssets.first);
     final token = jsonDecode(string);
 
     final processedToken = prepareTokens(token);
