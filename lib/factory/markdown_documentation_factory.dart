@@ -16,36 +16,34 @@ Builder markdownDocumentationFactory(BuilderOptions _) =>
 class MarkdownDocumentationFactory implements Builder {
   @override
   final Map<String, List<String>> buildExtensions = {
-    r'$lib$': ['tokens.md'],
+    r'tokens.json': ['tokens.md'],
   };
 
   @override
   Future<void> build(BuildStep buildStep) async {
-    final configFiles =
-        await buildStep.findAssets(Glob('lib/tokenbuilder.yaml')).toList();
-    if (configFiles.isEmpty) {
-      throw Exception(
-        'No tokenbuilder.yaml file found in lib directory. '
-        'Please create a tokenbuilder.yaml configuration file.',
-      );
-    }
-    final configFile = configFiles.first;
+    final inputId = buildStep.inputId;
+    print('inputId: ${inputId.path}');
+    final outputId = inputId.changeExtension('.dart');
+    final configFile =
+        (await buildStep.findAssets(Glob('**/tokenbuilder.yaml')).toList())
+            .first;
+    print('Parse config… ---------------------');
+
     final configString = await buildStep.readAsString(configFile);
     final yaml = loadYaml(configString) as YamlMap;
     final config = BuilderConfig.fromYaml(yaml);
-    final tokenFilePath = config.tokenFilePath;
 
-    final tokenAssets = await buildStep.findAssets(Glob(tokenFilePath)).toList();
-    if (tokenAssets.isEmpty) {
-      throw Exception(
-        'No token file found at path: $tokenFilePath. '
-        'Please check the tokenFilePath in your tokenbuilder.yaml.',
-      );
-    }
-    final string = await buildStep.readAsString(tokenAssets.first);
-    final token = jsonDecode(string);
+    print('Get tokens… -----------------------');
 
-    final processedToken = prepareTokens(token);
+    final string = await buildStep.readAsString(inputId);
+    final token = jsonDecode(string) as Map<String, dynamic>;
+
+    print('Prepare tokens… -------------------');
+
+    final processedToken = prepareTokens(token, config: config);
+    final processedDefaultSet = processedToken[config.sourceSetConfig.prefix];
+
+    print('Start building documentation… ------------');
 
     await buildStep.writeAsString(
       AssetId(buildStep.inputId.package, 'lib/tokens.md'),
