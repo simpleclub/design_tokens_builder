@@ -38,6 +38,7 @@ Right now, we support generating/parsing the following:
     - Text styles
 
 - Exposing theming and extensions via a `BuildContext` extension
+- Markdown documentation generation for all tokens with their resolved values
 
 ## Getting started
 
@@ -55,7 +56,11 @@ targets:
     builders:
       design_tokens_builder:design_tokens_builder:
         enabled: true
+      design_tokens_builder:markdown_documentation_builder:
+        enabled: true
 ```
+
+4. (Optional) Enable the markdown documentation builder to generate a `tokens.md` file with all tokens and their resolved values for easy reference.
 
 ## Usage
 
@@ -79,6 +84,30 @@ can use the shortcut like this `context.yourExtension`. We also provide shortcut
 properties like `context.colorScheme` and `context.textTheme`.
 
 ## Additional information
+
+### Markdown documentation
+
+The package can optionally generate a Markdown documentation file (`lib/tokens.md`) that lists all
+design tokens with their resolved values. This is particularly useful when you need to look up the
+actual value of a token reference like `context.color.fg.primary.base` in your codebase.
+
+To enable markdown documentation generation, add the markdown builder to your `build.yaml`:
+
+```yaml
+targets:
+  $default:
+    builders:
+      design_tokens_builder:design_tokens_builder:
+        enabled: true
+      design_tokens_builder:markdown_documentation_builder:
+        enabled: true
+```
+
+After running the build runner, you'll find a `tokens.md` file in your `lib` directory with content
+organized by token sets. Each token entry includes:
+- The full token path (e.g., `global.fontSize.base`)
+- The token type (e.g., `fontSizes`)
+- The resolved value (e.g., `10` - with aliases and mathematical expressions evaluated)
 
 ### Multi-theming and dark and light mode
 

@@ -13,3 +13,10 @@ builders:
      "$lib$": ["tokens.dart"]
     }
     build_to: source
+  markdown_documentation_builder:
+    import: "package:design_tokens_builder/design_tokens_builder.dart"
+    builder_factories: ["markdownDocumentationFactory"]
+    build_extensions: {
+     "$lib$": ["tokens.md"]
+    }
+    build_to: source
