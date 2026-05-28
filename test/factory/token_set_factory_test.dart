@@ -7,11 +7,17 @@ void main() {
     test('succeeds with %', () {
       final result = parsePercentage('420%');
       expect(result, 4.2);
+
+      final result1 = parsePercentage('694.2%');
+      expect(result1, closeTo(6.942, 0.001));
     });
 
     test('succeeds without %', () {
       final result = parsePercentage('69');
       expect(result, 0.69);
+
+      final result1 = parsePercentage('69.42');
+      expect(result1, closeTo(0.6942, 0.0001));
     });
 
     test('fails', () {

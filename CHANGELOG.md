@@ -1,3 +1,7 @@
+## UPCOMING RELEASE
+
+* Add support for decimal percentage values.
+
 ## 0.2.0+1
 
 * Improve package documentation.
