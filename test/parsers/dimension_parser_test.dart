@@ -24,8 +24,13 @@ void main() {
       expect(result, '69.0');
     });
 
+    test('should succeed when the input value is of type int', () {
+      final result = parser.buildValue(96);
+      expect(result, '96.0');
+    });
+
     test('fails', () {
-      expect(() => parser.buildValue(1), throwsException);
+      expect(() => parser.buildValue(1.0), throwsException);
       expect(() => parser.buildValue('some value'), throwsException);
     });
   });

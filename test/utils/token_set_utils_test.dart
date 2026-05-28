@@ -98,7 +98,7 @@ void main() {
           'small': {'value': 'Some value', 'type': 'someType'},
           'medium': {'value': 'Some value', 'type': 'someType 3'},
           'display': {
-            'large': {'value': 'Some value', 'type': 'someType'}
+            'large': {'value': 'Some value', 'type': 'someType'},
           },
         },
       );
@@ -106,7 +106,7 @@ void main() {
       expect(result, {
         'small': {'value': 'Some value', 'type': 'someType'},
         'display': {
-          'large': {'value': 'Some value', 'type': 'someType'}
+          'large': {'value': 'Some value', 'type': 'someType'},
         },
       });
       expect(result['medium'], null);
@@ -119,7 +119,7 @@ void main() {
           'small': {'value': 'Some new value', 'type': 'someType'},
           'medium': {'value': 'Some value', 'type': 'someType 3'},
           'display': {
-            'large': {'value': 'Some value', 'type': 'someType'}
+            'large': {'value': 'Some value', 'type': 'someType'},
           },
         },
         fallbackSetData: {
@@ -132,7 +132,7 @@ void main() {
       expect(result['small'], {'value': 'Some new value', 'type': 'someType'});
       expect(result['large'], {'value': 'Some value', 'type': 'someType'});
       expect(result['display'], {
-        'large': {'value': 'Some value', 'type': 'someType'}
+        'large': {'value': 'Some value', 'type': 'someType'},
       });
       expect(result['medium'], null);
     });

@@ -17,7 +17,7 @@ void main() {
             'textCase': 'none',
             'textDecoration': 'none',
           },
-          'type': 'typography'
+          'type': 'typography',
         },
       },
     });
@@ -35,8 +35,8 @@ void main() {
           'textCase': 'none',
           'textDecoration': 'none',
         },
-        'type': 'typography'
-      }
+        'type': 'typography',
+      },
     });
   });
 }

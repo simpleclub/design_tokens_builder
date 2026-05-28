@@ -64,7 +64,7 @@ void main() {
         'dark',
         'allyLight',
         'allyDark',
-        'custom'
+        'custom',
       ];
 
       final result = generateTokenSetEnum(tokenSets, config: config);

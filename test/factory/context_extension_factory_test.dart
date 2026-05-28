@@ -21,14 +21,14 @@ void main() {
               'color6': {'value': '#9f35a5', 'type': 'color'},
               'color7': {'value': '#73c118', 'type': 'color'},
               'color8': {'value': '#ed0c8d', 'type': 'color'},
-              'color9': {'value': '#8800ff', 'type': 'color'}
-            }
+              'color9': {'value': '#8800ff', 'type': 'color'},
+            },
           },
           '\$metadata': {
             'tokenSetOrder': [
               'dark',
-            ]
-          }
+            ],
+          },
         },
         config: config,
       );
@@ -48,13 +48,13 @@ void main() {
           'dark': {
             'sys': {
               'primary': {'value': '#f8e912', 'type': 'color'},
-            }
+            },
           },
           '\$metadata': {
             'tokenSetOrder': [
               'dark',
-            ]
-          }
+            ],
+          },
         },
         config: config,
       );
