@@ -41,13 +41,15 @@ Right now, we support generating/parsing the following:
 
 ## Getting started
 
-1. Add a `.json` file containing the tokens describing your app design.
-2. Add a `tokenbuilder.yaml` configuration
+1. Add the [`material_ui`](https://pub.dev/packages/material_ui) package to your dependencies
+   (`flutter pub add material_ui`). The generated code imports it.
+2. Add a `.json` file containing the tokens describing your app design.
+3. Add a `tokenbuilder.yaml` configuration
    file ([see example project](https://github.com/simpleclub/design_tokens_builder/blob/main/example/lib/tokenbuilder.yaml))
    in your `lib` directory
     1. Add the path leading to the json to the configuration file
     2. Map Figma font names to Flutter font family names in the configuration file
-3. Add this builder to `build.yaml`
+4. Add this builder to `build.yaml`
 
 ```yaml
 targets:
