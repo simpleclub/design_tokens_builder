@@ -1,3 +1,12 @@
+## 0.3.0
+
+* **Breaking:** The generated code imports the standalone
+  [`material_ui`](https://pub.dev/packages/material_ui) package instead of the
+  in-framework Material library, which Flutter 3.50 deprecates. Projects that
+  run the builder must depend on `material_ui` (`flutter pub add material_ui`).
+  See the
+  [migration guide](https://docs.flutter.dev/release/breaking-changes/material-ui-and-cupertino-ui).
+
 ## 0.2.0+1
 
 * Improve package documentation.

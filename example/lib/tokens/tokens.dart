@@ -2,7 +2,7 @@
 
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 final attributes = {
   'white': const Color(0xFFffffff),
